@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zhanna EduSpace</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: #fff;
+    }
+
+    header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5em;
+    }
+
+    nav {
+      position: relative;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
+      padding: 10px 15px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #e0e0e0;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      background-color: #163d5c;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .intro {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: flex-start;
+      margin-bottom: 40px;
+    }
+
+    .intro img {
+      max-width: 250px;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .intro-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .column h3 {
+      color: #0074a6;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li::before {
+      content: "✔️ ";
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .buttons a {
+      background-color: #005b94;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 14px;
+      min-width: 280px;
+      text-align: center;
+    }
+
+    .buttons a:hover {
+      background-color: #004570;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Zhanna Edu Space</h1>
+    
+<nav>
+  <a href="index.html" class="dropbtn" style="margin-right: 10px;">Home / Главная</a>
+  <div class="dropdown">
+    <button class="dropbtn">Tasks / Задания</button>
+    <div class="dropdown-content">
+      <a href="#">English / Английский</a>
+      <a href="#">Русский / Russian</a>
+      <a href="#">Suomi / Finnish</a>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  <div class="container">
+    <div class="intro">
+      <img src="Zhanna_Anshukova_1 copy 2.jpg" alt="Zhanna" />
+      <div class="intro-text">
+        <p><strong>My name is Zhanna, and I teach English and Russian as foreign languages.</strong></p>
+        <p>I hold a Master’s degree in Linguistics (Foreign Language Acquisition and Teaching), and I’ve been working with students from different countries for several years. I’m also currently doing academic research in education. In my lessons, I focus on making the process comfortable, clear, and effective — and helping you see real progress.</p>
+
+        <p><strong>Меня зовут Жанна, я преподаватель английского и русского как иностранного.</strong></p>
+        <p>У меня степень магистра по лингвистике (Теория и методы преподавания иностранных языков), и я уже несколько лет работаю с учениками из разных стран. Сейчас я также занимаюсь научной работой в области образования. Мне важно, чтобы на уроках было комфортно, понятно и полезно — и чтобы вы чувствовали результат.</p>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <h3>What I offer</h3>
+        <ul>
+          <li>Online lessons in English and Russian as foreign languages</li>
+          <li>Levels from beginner to advanced (A0 to C1)</li>
+          <li>Preparation for international exams</li>
+          <li>Personalized approach for each learner</li>
+          <li>Start with a free trial lesson</li>
+        </ul>
+      </div>
+
+      <div class="column">
+        <h3>Что я предлагаю</h3>
+        <ul>
+          <li style="white-space: nowrap;">Онлайн-занятия по английскому и русскому как иностранному</li>
+          <li>Уровни — от начинающего до продвинутого (A0–C1)</li>
+          <li>Подготовка к международным экзаменам</li>
+          <li>Индивидуальный подход к каждому ученику</li>
+          <li>Бесплатное пробное занятие</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="columns contact">
+      <div class="column">
+        <h3>Contact Me</h3>
+        <p>📧 Email: zhanna.edu.space@gmail.com<br />
+          💬 WhatsApp: +358 40 8516355</p>
+        <p>Feel free to reach out if you'd like to learn more or sign up for a free trial lesson. I’ll be happy to answer your questions and help you get started.</p>
+      </div>
+
+      <div class="column">
+        <h3>Связаться со мной</h3>
+        <p>📧 Email: zhanna.edu.space@gmail.com<br />
+          💬 WhatsApp: +358 40 8516355</p>
+        <p>Напишите мне, если вы хотите узнать больше или записаться на бесплатное пробное занятие. Я с радостью отвечу и помогу подобрать формат.</p>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <a href="https://wa.me/358408516355" target="_blank">Написать в WhatsApp / Message on WhatsApp</a>
+      <a href="mailto:zhanna.edu.space@gmail.com">Отправить email / Send email</a>
+    </div>
+  </div>
+</body>
+</html>
