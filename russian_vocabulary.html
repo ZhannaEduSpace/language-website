@@ -3,34 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Русский язык — Задания</title>
+  <title>Задания по уровням / Tasks by Level</title>
   <style>
+     nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+nav a:visited {
+  color: white;
+}
+nav a:hover {
+  text-decoration: underline;
+}
     body {
       font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
       margin: 0;
       padding: 0;
-      background-color: #f8f9fa;
       color: #333;
     }
 
     header {
       background-color: #1f4e79;
-      color: white;
-      padding: 10px 20px;
+      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .logo {
+    header h1 {
+      margin: 0;
       color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.3em;
-    }
-
-    .logo:hover {
-      text-decoration: none;
+      font-size: 20px;
     }
 
     nav {
@@ -39,17 +44,6 @@
       gap: 20px;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 1em;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
     .dropdown {
       position: relative;
     }
@@ -58,17 +52,16 @@
       background-color: #1f4e79;
       color: white;
       border: none;
-      font-size: 1em;
+      font-size: 16px;
       cursor: pointer;
-      padding: 0;
     }
 
     .dropdown-content {
       display: none;
       position: absolute;
       background-color: white;
-      min-width: 180px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
       z-index: 1;
       right: 0;
     }
@@ -77,7 +70,7 @@
       padding: 10px;
       display: block;
       text-decoration: none;
-      color: #333;
+      color: #333 !important;
     }
 
     .dropdown-content a:hover {
@@ -87,58 +80,56 @@
     .dropdown:hover .dropdown-content {
       display: block;
     }
-    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
 
     .container {
-      padding: 30px 20px;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: auto;
+      padding: 30px 20px;
     }
 
     h2 {
       text-align: center;
-      margin-bottom: 30px;
+      color: #1f4e79;
+      margin-bottom: 40px;
     }
 
-    .button-grid {
+    .columns {
       display: flex;
+      gap: 30px;
       flex-wrap: wrap;
-      gap: 20px;
       justify-content: center;
     }
 
-    .button-grid a {
-      padding: 15px 25px;
-      text-decoration: none;
-      color: white;
-      border-radius: 8px;
-      font-size: 16px;
-      text-align: center;
-      min-width: 220px;
+    .column {
+      flex: 1;
+      min-width: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
-    .vocab { background-color: #005b94; }
-    .grammar { background-color: #2c9ab7; }
-    .reading { background-color: #4caf50; }
-    .listening { background-color: #ff9800; }
-    .mixed { background-color: #9c27b0; }
-    .special { background-color: #424242; }
-
-    .button-grid a:hover {
-      opacity: 0.85;
-    }
-
-    .section-heading {
-      margin-top: 40px;
+    .column h3 {
       text-align: center;
-      font-size: 1.4em;
       color: #1f4e79;
     }
+
+    .btn {
+      padding: 15px;
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .a1a2 { background-color: #2e7d32; }         /* Dark green */
+    .b1b2 { background-color: #03045e; }       /* Blue */
+    .c1 { background-color: #ae2012; }       /* Dark red */
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <h1>ZhannaEduSpace</h1>
     <nav>
       <a href="index.html">Home</a>
       <div class="dropdown">
@@ -153,20 +144,23 @@
   </header>
 
   <div class="container">
-    <h2>Выберите раздел / Choose a Section</h2>
+    <h2>Задания по уровням / Tasks by Level</h2>
+    <div class="columns">
+      <div class="column">
+        <h3>A1–A2</h3>
+        <a class="btn a1a2" href="colors_a1.html">Colors (A1) (EN)</a>
+        <a class="btn a1a2" href="animals_a1.html">Animals (A1) (EN)</a>
+        <a class="btn a1a2" href="family_a1a2.html">Семья (A1–A2)</a>
+      </div>
 
-    <div class="button-grid">
-      <a class="vocab" href="russian_vocabulary.html">Словарный запас / Vocabulary</a>
-      <a class="grammar" href="russian_grammar.html">Грамматика / Grammar</a>
-      <a class="reading" href="russian_reading.html">Чтение / Reading</a>
-      <a class="listening" href="russian_listening.html">Аудирование / Listening</a>
-      <a class="mixed" href="russian_mixed_tasks.html">Смешанные задания / Mixed Tasks</a>
-    </div>
+      <div class="column">
+        <h3>B1–B2</h3>
+        <a class="btn b1b2" href="synonyms_b1b2.html">Синонимы (B1–B2)</a>
+      </div>
 
-    <div class="section-heading">Специальные темы / Special Topics</div>
-
-    <div class="button-grid" style="margin-top: 20px;">
-      <a class="special" href="russian_arctic.html">Арктика / The Arctic</a>
+      <div class="column">
+        <h3>C1</h3>
+      </div>
     </div>
   </div>
 </body>
