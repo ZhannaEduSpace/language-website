@@ -61,23 +61,30 @@
     }
 
     @media (max-width: 600px) {
-      body {
-        font-size: 20px;
-      }
+  body {
+    font-size: 20px;       /* общий базовый размер текста */
+    max-width: 90%;
+    margin: auto;
+    line-height: 1.6;
+  }
 
-      h2 {
-        font-size: 1.7em;
-      }
+  h2 {
+    font-size: 1.8em;
+  }
 
-      .quiz-question h3 {
-        font-size: 1.4em;
-      }
+  p, label, .quiz-question h3, .correct-answer {
+    font-size: 1.2em;
+  }
 
-      button {
-        font-size: 1.2em;
-        padding: 15px 40px;
-      }
-    }
+  button {
+    font-size: 1.3em;
+    padding: 15px 40px;
+  }
+
+  .result {
+    font-size: 1.3em;
+  }
+}
   </style>
 </head>
 <body>
