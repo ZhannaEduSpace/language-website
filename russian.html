@@ -16,13 +16,32 @@
     header {
       background-color: #1f4e79;
       color: white;
-      padding: 20px;
-      text-align: center;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    h1 {
-      margin: 0;
-      font-size: 1.8em;
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     .container {
@@ -53,12 +72,12 @@
       min-width: 220px;
     }
 
-    .vocab { background-color: #005b94; }       /* Словарный запас */
-    .grammar { background-color: #2c9ab7; }     /* Грамматика */
-    .reading { background-color: #4caf50; }     /* Чтение */
-    .listening { background-color: #ff9800; }   /* Аудирование */
-    .mixed { background-color: #9c27b0; }       /* Смешанные задания */
-    .special { background-color: #424242; }     /* Специальные темы */
+    .vocab { background-color: #005b94; }
+    .grammar { background-color: #2c9ab7; }
+    .reading { background-color: #4caf50; }
+    .listening { background-color: #ff9800; }
+    .mixed { background-color: #9c27b0; }
+    .special { background-color: #424242; }
 
     .button-grid a:hover {
       opacity: 0.85;
@@ -74,7 +93,11 @@
 </head>
 <body>
   <header>
-    <h1>Русский язык / Russian Language</h1>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="russian.html">Tasks / Задания</a>
+    </nav>
   </header>
 
   <div class="container">
