@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    html, body {
+      height: auto;
+      min-height: 1900px;
+      overflow: visible !important;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+    }
+    .quiz-question {
+      margin-bottom: 30px;
+    }
+    .quiz-question h3 {
+      margin-bottom: 10px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .feedback-label {
+      font-weight: bold;
+      margin-left: 6px;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+   button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+
+    @media (max-width: 600px) {
+  body {
+    font-size: 20px;       /* общий базовый размер текста */
+    max-width: 90%;
+    margin: auto;
+    line-height: 1.6;
+    padding-bottom: 100px;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  p, label, .quiz-question h3, .correct-answer {
+    font-size: 1.2em;
+  }
+
+  button {
+    font-size: 1.3em;
+    padding: 15px 40px;
+  }
+  .result {
+    font-size: 1.5em;
+  }
+    html, body {
+      overflow-y: visible !important;
+    }
+  </style>
+</head>
+<body>
+  <h2>🎨 Colors in Finnish (A1)</h2>
+  <p><strong>Test your Finnish vocabulary.</strong><br>
+  Choose the correct Finnish word for each color.</p>
+
+  <form id="quizForm"></form>
+  <button type="button" onclick="checkAnswers()">Check Answers</button>
+  <div class="result" id="result"></div>
+  <div style="height: 300px;"></div>
+
+  <script>
+    const questions = [
+      { en: 'red', fi: 'punainen', color: 'red', options: ['sininen', 'keltainen', 'harmaa', 'punainen'] },
+      { en: 'blue', fi: 'sininen', color: 'blue', options: ['valkoinen', 'sininen', 'ruskea', 'oranssi'] },
+      { en: 'green', fi: 'vihreä', color: 'green', options: ['vihreä', 'harmaa', 'musta', 'sininen'] },
+      { en: 'yellow', fi: 'keltainen', color: '#FFBF00', options: ['punainen', 'sininen', 'ruskea', 'keltainen'] },
+      { en: 'orange', fi: 'oranssi', color: 'orange', options: ['oranssi', 'pinkki', 'sininen', 'valkoinen'] },
+      { en: 'pink', fi: 'pinkki', color: '#d63384', options: ['vihreä', 'ruskea', 'musta', 'pinkki'] },
+      { en: 'purple', fi: 'violetti', color: 'purple', options: ['sininen', 'keltainen', 'violetti', 'valkoinen'] },
+      { en: 'brown', fi: 'ruskea', color: '#663300', options: ['harmaa', 'musta', 'sininen', 'ruskea'] },
+      { en: 'grey', fi: 'harmaa', color: 'grey', options: ['harmaa', 'punainen', 'valkoinen', 'sininen'] },
+      { en: 'black', fi: 'musta', color: 'black', options: ['ruskea', 'pinkki', 'sininen', 'musta'] },
+      { en: 'white', fi: 'valkoinen', color: 'white', options: ['keltainen', 'ruskea', 'valkoinen', 'vihreä'] },
+    ];
+
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const isWhite = item.en === 'white';
+      const colorStyle = isWhite
+        ? 'color: white; background-color: #666; padding: 2px 6px; border-radius: 4px;'
+        : `color: ${item.color}; font-weight: bold;`;
+
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q${i+1}-block`;
+      div.innerHTML = `<h3>${i+1}. How do you say <span style="${colorStyle}">${item.en}</span> in Finnish?</h3>` +
+        item.options.map(opt => `
+          <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+      form.appendChild(div);
+    });
+
+    function checkAnswers() {
+      let score = 0;
+      questions.forEach((item, i) => {
+        const name = `q${i+1}`;
+        const selected = form.querySelector(`input[name=${name}]:checked`);
+        const block = document.getElementById(`${name}-block`);
+
+        block.querySelectorAll('.feedback-label, .correct-answer').forEach(el => el.remove());
+
+        item.options.forEach(opt => {
+          const label = Array.from(block.querySelectorAll('label')).find(l => l.textContent.trim() === opt);
+          if (!label) return;
+
+          const tag = document.createElement('span');
+          tag.classList.add('feedback-label');
+
+          if (selected && selected.value === item.fi && opt === item.fi) {
+            tag.className = 'feedback-label correct';
+            tag.innerText = ' ✔';
+            score++;
+          } else if (selected && selected.value === opt && opt !== item.fi) {
+            tag.className = 'feedback-label incorrect';
+            tag.innerText = ' ✘';
+          } else if (!selected && opt === item.fi) {
+            tag.className = 'feedback-label correct';
+            tag.innerText = ' ✔';
+          }
+
+          label.appendChild(tag);
+        });
+
+        const answerNote = document.createElement('div');
+        answerNote.classList.add('correct-answer');
+        if (selected && selected.value === item.fi) {
+          answerNote.classList.add('correct');
+        } else {
+          answerNote.classList.add('incorrect');
+        }
+        answerNote.innerText = `Correct answer: ${item.fi}`;
+        block.appendChild(answerNote);
+      });
+
+      document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
+    }
+  </script>
+</body>
+</html>
