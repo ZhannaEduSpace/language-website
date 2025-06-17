@@ -41,7 +41,44 @@
     }
     button {
       margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
     }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+
+    @media (max-width: 600px) {
+  body {
+    font-size: 20px;       /* общий базовый размер текста */
+    max-width: 90%;
+    margin: auto;
+    line-height: 1.6;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  p, label, .quiz-question h3, .correct-answer {
+    font-size: 1.2em;
+  }
+
+  button {
+    font-size: 1.3em;
+    padding: 15px 40px;
+  }
+
+  .result {
+    font-size: 1.3em;
+  }
+}
   </style>
 </head>
 <body>
