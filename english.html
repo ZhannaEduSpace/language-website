@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Language — Tasks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      padding: 30px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .button-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .button-grid a {
+      padding: 15px 25px;
+      text-decoration: none;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+      text-align: center;
+      min-width: 220px;
+    }
+
+    .vocab { background-color: #005b94; }
+    .grammar { background-color: #2c9ab7; }
+    .reading { background-color: #4caf50; }
+    .listening { background-color: #ff9800; }
+    .mixed { background-color: #9c27b0; }
+    .special { background-color: #424242; }
+
+    .button-grid a:hover {
+      opacity: 0.85;
+    }
+
+    .section-heading {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 1.4em;
+      color: #1f4e79;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <div class="dropdown">
+        <button class="dropbtn">Tasks / Задания</button>
+        <div class="dropdown-content">
+          <a href="english.html">English / Английский</a>
+          <a href="russian.html">Русский / Russian</a>
+          <a href="suomi.html">Suomi / Finnish</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Choose a Section / Выберите раздел</h2>
+
+    <div class="button-grid">
+      <a class="vocab" href="english_vocabulary.html">Vocabulary / Словарный запас</a>
+      <a class="grammar" href="english_grammar.html">Grammar / Грамматика</a>
+  
+    </div>
+  </div>
+</body>
+</html>
