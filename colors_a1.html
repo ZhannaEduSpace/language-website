@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <style>
-    html, body {
+ html, body {
       height: auto;
-      min-height: 1900px;
+      min-height: 2000px;
       overflow: visible !important;
     }
     body {
@@ -19,6 +19,12 @@
     }
     .quiz-question h3 {
       margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
     }
     .correct {
       color: green;
@@ -26,147 +32,130 @@
     .incorrect {
       color: red;
     }
-    .feedback-label {
-      font-weight: bold;
-      margin-left: 6px;
-    }
-    .correct-answer {
-      font-style: italic;
-      margin-top: 5px;
-    }
-    .result {
-      margin-top: 30px;
-      font-weight: bold;
-      font-size: 1.2em;
+    .missed {
+      color: orange;
     }
     button {
       margin-top: 20px;
-      padding: 15px 30px;
-      font-size: 1.1em;
-      border: none;
-      border-radius: 5px;
-      background-color: #1f4e79;
-      color: white;
-      cursor: pointer;
     }
-
-    button:hover {
-      background-color: #163d5c;
+    label {
+      display: block;
+      margin-bottom: 5px;
     }
-
-    @media (max-width: 600px) {
-  body {
-    font-size: 20px;       /* общий базовый размер текста */
-    max-width: 90%;
-    margin: auto;
-    line-height: 1.6;
-  }
-
-  h2 {
-    font-size: 1.8em;
-  }
-
-  p, label, .quiz-question h3, .correct-answer {
-    font-size: 1.2em;
-  }
-
-  button {
-    font-size: 1.3em;
-    padding: 15px 40px;
-  }
-
-  .result {
-    font-size: 1.3em;
-  }
-}
   </style>
 </head>
 <body>
-  <h2>🎨 Colors in Russian (A1)</h2>
-  <p><strong>Test your Russian vocabulary.</strong><br>
-  Choose the correct Russian word for each color.</p>
+  <h2>🦊 Animals in Russian (A1–A2)</h2>
+  <p><strong>Choose the correct animals for each category.</strong><br>
+  In each question, <em>three animals are correct and three are not</em>.</p>
 
   <form id="quizForm"></form>
   <button type="button" onclick="checkAnswers()">Check Answers</button>
   <div class="result" id="result"></div>
-  <div style="height: 300px;"></div>
+  <div style="height: 100px;"></div>
 
   <script>
     const questions = [
-      { en: 'red', color: 'red', a: 'красный', options: ['красный', 'синий', 'зелёный', 'жёлтый'] },
-      { en: 'blue', color: 'blue', a: 'синий', options: ['голубой', 'синий', 'серый', 'чёрный'] },
-      { en: 'green', color: 'green', a: 'зелёный', options: ['зелёный', 'жёлтый', 'белый', 'коричневый'] },
-      { en: 'yellow', color: '#FFBF00', a: 'жёлтый', options: ['оранжевый', 'розовый', 'жёлтый', 'чёрный'] },
-      { en: 'orange', color: 'orange', a: 'оранжевый', options: ['оранжевый', 'красный', 'коричневый', 'фиолетовый'] },
-      { en: 'pink', color: '#d63384', a: 'розовый', options: ['розовый', 'красный', 'фиолетовый', 'серый'] },
-      { en: 'purple', color: 'purple', a: 'фиолетовый', options: ['фиолетовый', 'розовый', 'жёлтый', 'тёмный'] },
-      { en: 'brown', color: '#663300', a: 'коричневый', options: ['серый', 'чёрный', 'коричневый', 'тёмный'] },
-      { en: 'grey', color: 'grey', a: 'серый', options: ['серый', 'синий', 'чёрный', 'белый'] },
-      { en: 'black', color: 'black', a: 'чёрный', options: ['тёмный', 'чёрный', 'коричневый', 'серый'] },
-      { en: 'white', color: 'white', a: 'белый', options: ['прозрачный', 'светлый', 'серый', 'белый'] },
-      { en: 'light blue', color: '#3399cc', a: 'голубой', options: ['синий', 'голубой', 'фиолетовый', 'белый'] },
+      {
+        q: "Which of these animals live in the forest?",
+        options: ['корова', 'медведь', 'акула', 'волк', 'собака', 'лиса'],
+        correct: ['медведь', 'волк', 'лиса']
+      },
+      {
+        q: "Which of these animals are birds?",
+        options: ['утка', 'кошка', 'голубь', 'лягушка', 'воробей', 'корова'],
+        correct: ['утка', 'голубь', 'воробей']
+      },
+      {
+        q: "Which of these animals live on a farm?",
+        options: ['тигр', 'овца', 'слон', 'курица', 'медведь', 'корова'],
+        correct: ['овца', 'курица', 'корова']
+      },
+      {
+        q: "Which of these animals can fly?",
+        options: ['муха', 'лиса', 'утка', 'рыба', 'воробей', 'собака'],
+        correct: ['муха', 'утка', 'воробей']
+      },
+      {
+        q: "Which of these animals are wild?",
+        options: ['волк', 'овца', 'курица', 'медведь', 'кошка', 'тигр'],
+        correct: ['волк', 'медведь', 'тигр']
+      },
+      {
+        q: "Which of these animals are pets?",
+        options: ['медведь', 'собака', 'волк', 'корова', 'попугай', 'кошка'],
+        correct: ['собака', 'попугай', 'кошка']
+      },
+      {
+        q: "Which of these animals live in water?",
+        options: ['коза', 'рыба', 'тигр', 'акула', 'дельфин', 'курица'],
+        correct: ['рыба', 'акула', 'дельфин']
+      },
+      {
+        q: "Which of these animals live in the Arctic?",
+        options: ['крокодил', 'белый медведь', 'тюлень', 'морж', 'верблюд', 'лиса'],
+        correct: ['белый медведь', 'тюлень', 'морж']
+      }
     ];
 
-    const form = document.getElementById('quizForm');
+    const form = document.getElementById("quizForm");
 
     questions.forEach((item, i) => {
-      const isWhite = item.en === 'white';
-      const colorStyle = isWhite
-        ? 'color: white; background-color: #666; padding: 2px 6px; border-radius: 4px;'
-        : `color: ${item.color}; font-weight: bold;`;
-      const div = document.createElement('div');
-      div.className = 'quiz-question';
+      const div = document.createElement("div");
+      div.className = "quiz-question";
       div.id = `q${i+1}-block`;
-      div.innerHTML = `<h3>${i+1}. How do you say <span style="${colorStyle}">${item.en}</span> in Russian?</h3>` +
+      div.innerHTML = `<h3>${i+1}. ${item.q}</h3><p><em>Three correct, three incorrect.</em></p>` +
         item.options.map(opt => `
-          <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+          <label><input type="checkbox" name="q${i+1}" value="${opt}"> ${opt}</label>`).join('');
       form.appendChild(div);
     });
 
     function checkAnswers() {
-      let score = 0;
+      let totalCorrect = 0;
+      const maxScore = questions.length * 3;
+
       questions.forEach((item, i) => {
         const name = `q${i+1}`;
-        const selected = form.querySelector(`input[name=${name}]:checked`);
+        const selected = Array.from(form.querySelectorAll(`input[name=${name}]:checked`)).map(el => el.value);
         const block = document.getElementById(`${name}-block`);
 
-        // Remove old feedback
-        block.querySelectorAll('.feedback-label, .correct-answer').forEach(el => el.remove());
+        block.querySelectorAll('.correct-answer, .feedback-label').forEach(el => el.remove());
+
+        const correctSet = new Set(item.correct);
+        const selectedSet = new Set(selected);
 
         item.options.forEach(opt => {
           const label = Array.from(block.querySelectorAll('label')).find(l => l.textContent.trim() === opt);
           if (!label) return;
-
           const tag = document.createElement('span');
           tag.classList.add('feedback-label');
 
-          if (selected && selected.value === item.a && opt === item.a) {
-            tag.className = 'feedback-label correct';
+          if (selectedSet.has(opt) && correctSet.has(opt)) {
+            tag.className = 'correct';
             tag.innerText = ' ✔';
-            score++;
-          } else if (selected && selected.value === opt && opt !== item.a) {
-            tag.className = 'feedback-label incorrect';
+            totalCorrect++;
+          } else if (selectedSet.has(opt) && !correctSet.has(opt)) {
+            tag.className = 'incorrect';
             tag.innerText = ' ✘';
-          } else if (!selected && opt === item.a) {
-            tag.className = 'feedback-label correct';
-            tag.innerText = ' ✔';
+          } else if (!selectedSet.has(opt) && correctSet.has(opt)) {
+            tag.className = 'missed';
+            tag.innerText = ' (⭐ missed)';
+          } else {
+            tag.innerText = '';
           }
-
           label.appendChild(tag);
         });
 
         const answerNote = document.createElement('div');
-        answerNote.classList.add('correct-answer');
-        if (selected && selected.value === item.a) {
-          answerNote.classList.add('correct');
-        } else {
-          answerNote.classList.add('incorrect');
-        }
-        answerNote.innerText = `Correct answer: ${item.a}`;
+        answerNote.style.color = 'blue';
+        answerNote.style.fontStyle = 'italic';
+        answerNote.innerText = `Correct answers: ${item.correct.join(', ')}`;
         block.appendChild(answerNote);
       });
 
-      document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
+      const percent = Math.round((totalCorrect / maxScore) * 100);
+      document.getElementById('result').innerText =
+        `You got ${totalCorrect} out of ${maxScore} correct selections (${percent}%).`;
     }
   </script>
 </body>
