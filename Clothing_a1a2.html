@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    html, body {
+      height: auto;
+      min-height: 2600px;
+      overflow: visible !important;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+    }
+    .quiz-question {
+      margin-bottom: 30px;
+    }
+    .quiz-question h3 {
+      margin-bottom: 10px;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    button {
+       margin-top: 20px;
+      font-size: 1.2em;
+      padding: 15px 40px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🧵 Clothing for Cold Weather (A1–A2)</h2>
+  <p><strong>Choose the correct Russian word for each item of clothing.</strong><br>
+  Only one correct answer.</p>
+
+  <form id="quizForm"></form>
+  <button type="button" onclick="checkAnswers()">Check Answers</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const questions = [
+      {
+        q: 'What is the Russian word for "hat"?',
+        a: 'ша́пка',
+        options: ['ку́ртка', 'ша́пка', 'сапоги́', 'перча́тки']
+      },
+      {
+        q: 'What is the Russian word for "scarf"?',
+        a: 'шарф',
+        options: ['шарф', 'ва́режки', 'сви́тер', 'руба́шка']
+      },
+      {
+        q: 'What is the Russian word for "gloves"?',
+        a: 'перча́тки',
+        options: ['пальто́', 'боти́нки', 'перча́тки', 'шарф']
+      },
+      {
+        q: 'What is the Russian word for "mittens"?',
+        a: 'ва́режки',
+        options: ['ва́режки', 'та́почки', 'ку́ртка', 'ша́пка']
+      },
+      {
+        q: 'What is the Russian word for "coat"?',
+        a: 'пальто́',
+        options: ['шу́ба', 'пальто́', 'ко́фта', 'сви́тер']
+      },
+      {
+        q: 'What is the Russian word for "boots"?',
+        a: 'сапоги́',
+        options: ['сапоги́', 'ту́фли', 'перча́тки', 'носки́']
+      },
+      {
+        q: 'What is the Russian word for "sweater"?',
+        a: 'сви́тер',
+        options: ['руба́шка', 'ку́ртка', 'сви́тер', 'пиджа́к']
+      },
+      {
+        q: 'What is the Russian word for "warm jacket"?',
+        a: 'ку́ртка',
+        options: ['ко́фта', 'ша́пка', 'ку́ртка', 'пижама']
+      },
+      {
+        q: 'What is the Russian word for "socks"?',
+        a: 'носки́',
+        options: ['та́почки', 'сапоги́', 'носки́', 'шарф']
+      },
+      {
+        q: 'What is the Russian word for "fur coat"?',
+        a: 'шу́ба',
+        options: ['шу́ба', 'ко́фта', 'ку́ртка', 'пальто́']
+      },
+      {
+        q: 'What is the Russian word for "hood"?',
+        a: 'капюшо́н',
+        options: ['воро́тник', 'капюшо́н', 'реме́нь', 'шарф']
+      },
+      {
+        q: 'What is the Russian word for "thermal underwear"?',
+        a: 'термобельё',
+        options: ['термобельё', 'пижама', 'футбо́лка', 'плащ']
+      },
+      {
+        q: 'What is the Russian word for "balaclava"?',
+        a: 'балакла́ва',
+        options: ['ва́режка', 'балакла́ва', 'ша́пка', 'шарф']
+      },
+      {
+        q: 'What is the Russian word for "fleece"?',
+        a: 'флис',
+        options: ['флис', 'шерсть', 'капюшо́н', 'пухови́к']
+      },
+      {
+        q: 'What is the Russian word for "down jacket"?',
+        a: 'пухови́к',
+        options: ['пиджа́к', 'плащ', 'пухови́к', 'ку́ртка']
+      }
+    ];
+
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q${i+1}-block`;
+      div.innerHTML = `<h3>${i+1}. ${item.q}</h3>` +
+        item.options.map(opt => `
+          <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+      form.appendChild(div);
+    });
+
+    function checkAnswers() {
+      let score = 0;
+      questions.forEach((item, i) => {
+        const name = `q${i+1}`;
+        const selected = form.querySelector(`input[name=${name}]:checked`);
+        const block = document.getElementById(`${name}-block`);
+        const existing = block.querySelector('.correct-answer');
+        if (existing) existing.remove();
+        const note = document.createElement('div');
+        note.classList.add('correct-answer');
+
+        if (selected && selected.value === item.a) {
+          note.classList.add('correct');
+          score++;
+          note.innerText = `✅ Правильный ответ: ${item.a}`;
+        } else {
+          note.classList.add('incorrect');
+          note.innerText = `❌ Правильный ответ: ${item.a}`;
+        }
+
+        block.appendChild(note);
+      });
+      document.getElementById('result').innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
+    }
+  </script>
+</body>
+</html>
