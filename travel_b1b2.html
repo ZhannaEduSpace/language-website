@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    html, body {
+      height: auto;
+      min-height: 2600px;
+      overflow: visible !important;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+    }
+    .quiz-question {
+      margin-bottom: 30px;
+    }
+    .quiz-question h3 {
+      margin-bottom: 10px;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+
+    @media (max-width: 600px) {
+  body {
+    font-size: 20px;       /* общий базовый размер текста */
+    max-width: 90%;
+    margin: auto;
+    line-height: 1.6;
+    padding-bottom: 100px;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  p, label, .quiz-question h3, .correct-answer {
+    font-size: 1.2em;
+  }
+
+  button {
+    font-size: 1.3em;
+    padding: 15px 40px;
+  }
+  .result {
+    font-size: 1.5em;
+  }
+    iframe, html {
+      overflow-y: visible !important;
+    }
+  </style>
+</head>
+<body>
+  <h2>✈️ Travel (B1–B2)</h2>
+  <p><strong>Test your vocabulary on the topic of travel and holidays (Level B1–B2).</strong><br>
+  This quiz has 20 multiple-choice questions. Choose the correct answer in each case. You’ll see your score after you finish.</p>
+
+  <form id="quizForm"></form>
+  <button type="button" onclick="checkAnswers()">Check Answers</button>
+  <div class="result" id="result"></div>
+
+  <!-- Стретчер внизу — невидимый блок, чтобы гарантированно был запас -->
+  <div style="height: 300px;"></div>
+
+  <script>
+    const questions = [
+      { q: 'Which is the best synonym for "crowded"?', a: 'packed', options: ['clean', 'quiet', 'packed', 'fancy'] },
+      { q: 'Which verb means "to leave your hotel room permanently"?', a: 'check out', options: ['check in', 'get in', 'check out', 'take off'] },
+      { q: 'Which word describes a trip where you visit many places quickly?', a: 'tour', options: ['staycation', 'excursion', 'expedition', 'tour'] },
+      { q: 'Which of the following is NOT a type of accommodation?', a: 'platform', options: ['hostel', 'guesthouse', 'campsite', 'platform'] },
+      { q: 'Which item do you show at border control?', a: 'passport', options: ['brochure', 'passport', 'suitcase', 'guidebook'] },
+      { q: 'Which of the following means "to cancel or delay a trip"?', a: 'call off', options: ['take up', 'check in', 'look after', 'call off'] },
+      { q: 'Which word describes someone who loves travelling a lot?', a: 'globetrotter', options: ['couch potato', 'early bird', 'globetrotter', 'night owl'] },
+      { q: 'Which of the following means "to explore a place on foot"?', a: 'look around', options: ['check in', 'look around', 'turn in', 'run out'] },
+      { q: 'Which type of travel is usually the cheapest?', a: 'budget airline', options: ['first-class flight', 'cruise', 'budget airline', 'business-class train'] },
+      { q: 'Which of these is typically used for backpackers?', a: 'hostel', options: ['resort', 'hostel', 'villa', 'hotel suite'] },
+      { q: 'What do you call a holiday in your own country?', a: 'staycation', options: ['tour', 'cruise', 'gap year', 'staycation'] },
+      { q: 'Which of these is NOT a type of transport?', a: 'luggage', options: ['ferry', 'luggage', 'tram', 'subway'] },
+      { q: 'Which of these words describes a person showing you around a place?', a: 'tour guide', options: ['driver', 'receptionist', 'tour guide', 'porter'] },
+      { q: 'What is a souvenir?', a: 'a small gift or item you bring home', options: ['a place to stay', 'a type of food', 'a small gift or item you bring home', 'a kind of map'] },
+      { q: 'Which of the following is something you do before flying?', a: 'check in', options: ['get off', 'land', 'check in', 'unpack'] },
+    ];
+
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q${i+1}-block`;
+      div.innerHTML = `<h3>${i+1}. ${item.q}</h3>` +
+        item.options.map(opt => `
+          <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+      form.appendChild(div);
+    });
+
+    function checkAnswers() {
+      let score = 0;
+      questions.forEach((item, i) => {
+        const name = `q${i+1}`;
+        const selected = form.querySelector(`input[name=${name}]:checked`);
+        const block = document.getElementById(`${name}-block`);
+        const existing = block.querySelector('.correct-answer');
+        if (existing) existing.remove();
+        const note = document.createElement('div');
+        note.classList.add('correct-answer');
+        if (selected && selected.value === item.a) {
+          note.classList.add('correct');
+          score++;
+          note.innerText = `Correct! Answer: ${item.a}`;
+        } else {
+          note.classList.add('incorrect');
+          note.innerText = `Correct answer: ${item.a}`;
+        }
+        block.appendChild(note);
+      });
+      document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
+    }
+  </script>
+</body>
+</html>
