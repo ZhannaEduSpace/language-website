@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+html, body {
+      height: auto;
+      min-height: 1900px;
+      overflow: visible !important;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+    }
+    .quiz-question {
+      margin-bottom: 30px;
+    }
+    .quiz-question h3 {
+      margin-bottom: 10px;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+
+    @media (max-width: 600px) {
+  body {
+    font-size: 20px;       /* общий базовый размер текста */
+    max-width: 90%;
+    margin: auto;
+    line-height: 1.6;
+    padding-bottom: 100px;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  p, label, .quiz-question h3, .correct-answer {
+    font-size: 1.2em;
+  }
+
+  button {
+    font-size: 1.3em;
+    padding: 15px 40px;
+  }
+  .result {
+    font-size: 1.5em;
+  }
+    html, body {
+      overflow-y: visible !important;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔬 Science Vocabulary Quiz (C1)</h2>
+  <p><strong>Choose the best answer in each sentence. All questions focus on advanced vocabulary related to science.</strong></p>
+
+  <form id="quizForm"></form>
+  <button type="button" onclick="checkAnswers()">Check Answers</button>
+  <div class="result" id="result"></div>
+  <div style="height: 100px;"></div>
+
+  <script>
+    const questions = [
+      { q: 'The researcher formulated a clear and testable ___ before starting the experiment.', a: 'hypothesis', options: ['hypothesis', 'theorem', 'paradox', 'variable'] },
+      { q: 'The results were statistically significant, meaning they were unlikely to be due to ___.', a: 'chance', options: ['chance', 'method', 'structure', 'assumption'] },
+      { q: 'In physics, a ___ is a model that explains a natural phenomenon and has been repeatedly tested.', a: 'theory', options: ['principle', 'hypothesis', 'theory', 'speculation'] },
+      { q: 'The lab technician ensured that all the ___ were kept constant throughout the procedure.', a: 'variables', options: ['hypotheses', 'specimens', 'variables', 'conclusions'] },
+      { q: 'The discovery of penicillin was a ___ in modern medicine.', a: 'breakthrough', options: ['malfunction', 'controversy', 'breakthrough', 'formula'] },
+      { q: 'The experiment had to be repeated to ensure the results were ___.', a: 'verifiable', options: ['verifiable', 'hypothetical', 'theoretical', 'coincidental'] },
+      { q: "The scientist's work received criticism for lacking ___ evidence.", a: 'empirical', options: ['anecdotal', 'empirical', 'fictional', 'poetic'] },
+      { q: 'The research team published their findings in a peer-___ journal.', a: 'reviewed', options: ['supported', 'assessed', 'verified', 'reviewed'] },
+      { q: 'Climate change is a complex ___ influenced by both natural and human factors.', a: 'phenomenon', options: ['compound', 'variable', 'phenomenon', 'observation'] },
+      { q: 'The study had to be withdrawn due to a ___ in the data analysis process.', a: 'flaw', options: ['flaw', 'law', 'reward', 'scheme'] },
+    ];
+
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q${i+1}-block`;
+      div.innerHTML = `<h3>${i+1}. ${item.q}</h3>` +
+        item.options.map(opt => `
+          <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+      form.appendChild(div);
+    });
+
+    function checkAnswers() {
+      let score = 0;
+      questions.forEach((item, i) => {
+        const name = `q${i+1}`;
+        const selected = form.querySelector(`input[name=${name}]:checked`);
+        const block = document.getElementById(`${name}-block`);
+        const existing = block.querySelector('.correct-answer');
+        if (existing) existing.remove();
+        const note = document.createElement('div');
+        note.classList.add('correct-answer');
+        if (selected && selected.value === item.a) {
+          note.classList.add('correct');
+          score++;
+          note.innerText = `Correct! Answer: ${item.a}`;
+        } else {
+          note.classList.add('incorrect');
+          note.innerText = `Correct answer: ${item.a}`;
+        }
+        block.appendChild(note);
+      });
+      document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
+    }
+  </script>
+</body>
+</html>
