@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B7ECGNS96Y');
+</script>
+  
+  <style>
+    html, body {
+      height: auto;
+      min-height: 900px;
+      overflow: visible !important;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+    }
+    .quiz-question {
+      margin-bottom: 30px;
+    }
+    .quiz-question h3 {
+      margin-bottom: 10px;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+
+    @media (max-width: 600px) {
+  body {
+    font-size: 20px;       /* общий базовый размер текста */
+    max-width: 90%;
+    margin: auto;
+    line-height: 1.6;
+    padding-bottom: 100px;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  p, label, .quiz-question h3, .correct-answer {
+    font-size: 1.2em;
+  }
+
+  button {
+    font-size: 1.3em;
+    padding: 15px 40px;
+  }
+
+  .result {
+    font-size: 1.5em;
+  }
+  </style>
+</head>
+<body>
+  <h2>📝 Личный дневник (уровень А1–А2)</h2>
+  <p><strong>Прочитайте текст и ответьте на вопросы.</strong></p>
+
+  <p>
+    Сегóдня суббóта. Я не рабóтаю в выходны́е.
+    Я встáл в дéвять утрá, позáвтракал — ел яи́чницу и пил кóфе.
+    Потóм я пошёл в пáрк с собáкой.
+    Бы́ло теплó и сóлнечно. Я слу́шал му́зыку и смотрéл на пти́ц.
+    Пóсле прогу́лки я почитáл кни́гу и немнóго поспáл.
+    Вéчером я посмотрéл фи́льм и приготóвил у́жин — рис с овощáми.
+    Простóй, но хорóший день.
+  </p>
+
+  <form id="quizForm"></form>
+  <button type="button" onclick="checkAnswers()">Проверить ответы</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const questions = [
+      {
+        q: 'Какóй сегóдня день?',
+        a: 'суббóта',
+        options: [
+          'пя́тница',
+          'суббóта',
+          'воскресéнье'
+        ]
+      },
+      {
+        q: 'Что человéк дéлал у́тром?',
+        a: 'зáвтракал',
+        options: [
+          'рабóтал',
+          'читáл кни́гу',
+          'зáвтракал'
+        ]
+      },
+      {
+        q: 'Что он ел на завтрáк?',
+        a: 'яи́чницу и кóфе',
+        options: [
+          'яи́чницу и кóфе',
+          'кáшу',
+          'хлéб и чай'
+        ]
+      },
+        {
+        q: 'Что он дéлал вéчером?',
+        a: 'смотрéл фи́льм и готóвил',
+        options: [
+          'гуля́л в пáрке',
+          'спáл',
+          'смотрéл фи́льм и готóвил'
+        ]
+      }
+    ];
+
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q${i+1}-block`;
+      div.innerHTML = `<h3>${i+1}. ${item.q}</h3>` +
+        item.options.map(opt => `
+          <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+      form.appendChild(div);
+    });
+
+    function checkAnswers() {
+      let score = 0;
+      questions.forEach((item, i) => {
+        const name = `q${i+1}`;
+        const selected = form.querySelector(`input[name=${name}]:checked`);
+        const block = document.getElementById(`${name}-block`);
+        const existing = block.querySelector('.correct-answer');
+        if (existing) existing.remove();
+        const note = document.createElement('div');
+        note.classList.add('correct-answer');
+
+        if (selected && selected.value === item.a) {
+          note.classList.add('correct');
+          score++;
+          note.innerText = `✅ Пра́вильный отве́т: ${item.a}`;
+        } else {
+          note.classList.add('incorrect');
+          note.innerText = `❌ Пра́вильный отве́т: ${item.a}`;
+        }
+
+        block.appendChild(note);
+      });
+      document.getElementById('result').innerText = `Вы пра́вильно отве́тили на ${score} из ${questions.length} вопро́сов.`;
+    }
+  </script>
+</body>
+</html>
