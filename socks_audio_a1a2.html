@@ -96,40 +96,48 @@
   </form>
 
   <div class="result" id="result"></div>
-
   <script>
-    function checkAnswers() {
-      const answers = {
-        q1: "B",
-        q2: "B",
-        q3: "C"
-      };
+  const answers = {
+    q1: {
+      correct: "B",
+      text: "носки́"
+    },
+    q2: {
+      correct: "B",
+      text: "из магази́на и из путеше́ствий"
+    },
+    q3: {
+      correct: "C",
+      text: "да́рят ему носки́ на день рожде́ния"
+    }
+  };
 
-      let score = 0;
+  function checkAnswers() {
+    let score = 0;
 
-      for (const [key, correct] of Object.entries(answers)) {
-        const block = document.getElementById(`${key}-block`);
-        const selected = document.querySelector(`input[name="${key}"]:checked`);
-        const existing = block.querySelector('.correct-answer');
-        if (existing) existing.remove();
+    for (const [key, value] of Object.entries(answers)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
 
-        const resultText = document.createElement('div');
-        resultText.classList.add('correct-answer');
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
 
-        if (selected && selected.value === correct) {
-          resultText.classList.add('correct');
-          resultText.innerText = '✅ Правильно!';
-          score++;
-        } else {
-          resultText.classList.add('incorrect');
-          resultText.innerText = `❌ Неправильно. Правильный ответ: ${correct}`;
-        }
-
-        block.appendChild(resultText);
+      if (selected && selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильно! Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Неправильно. Правильный ответ: ${value.text}`;
       }
 
-      document.getElementById('result').innerText = `Вы правильно ответили на ${score} из 3 вопросов.`;
+      block.appendChild(resultText);
     }
-  </script>
+
+    document.getElementById('result').innerText = `Вы правильно ответили на ${score} из 3 вопросов.`;
+  }
+</script>
 </body>
 </html>
