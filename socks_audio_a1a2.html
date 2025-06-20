@@ -19,11 +19,14 @@
       max-width: 750px;
       margin: auto;
       padding: 20px;
+      padding-bottom: 100px; /* добавленный отступ для защиты кнопки */
       background-color: #f8f9fa;
       color: #333;
+      text-align: left;
     }
 
-    h2, p.instruction {
+    h2, .instruction {
+      text-align: left;
       margin-bottom: 10px;
     }
 
@@ -73,19 +76,6 @@
     button:hover {
       background-color: #163d5c;
     }
-
-    .footer-space {
-      height: 100px; /* дополнительное пространство снизу */
-    }
-
-    @media (max-width: 600px) and (orientation: landscape) {
-      body {
-        padding-bottom: 0;
-      }
-      .footer-space {
-        height: 140px; /* больше запаса в горизонтали */
-      }
-    }
   </style>
 </head>
 <body>
@@ -123,7 +113,6 @@
     <button type="button" onclick="checkAnswers()">Проверить ответы</button>
   </form>
 
-  <div class="footer-space"></div>
   <div class="result" id="result"></div>
 
   <script>
