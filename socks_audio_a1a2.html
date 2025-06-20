@@ -30,10 +30,11 @@
 
    audio {
      display: block;
-     margin: 20px 0 30px 0;
+     margin: 30px auto;
      width: 100%;
      max-width: 100%;
-     height: auto;
+     height: 40px;
+     box-sizing: border-box;
     }
  
     .question {
@@ -73,6 +74,10 @@
     button:hover {
       background-color: #163d5c;
     }
+    @media (max-width: 600px) and (orientation: landscape) {
+  audio {
+    height: 50px; /* чуть выше, если в горизонтали */
+  }
   </style>
 </head>
 <body>
