@@ -16,19 +16,21 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-
-    .page-wrapper {
       max-width: 750px;
       margin: auto;
       padding: 20px;
+      background-color: #f8f9fa;
+      color: #333;
+      position: relative;
     }
 
     h2 {
+      text-align: center;
+    }
+
+    /* Инструкция */
+    p {
+      font-size: 1.1em;
       text-align: center;
     }
 
@@ -79,54 +81,57 @@
       background-color: #163d5c;
     }
 
+    /* Отступ снизу, чтобы не обрезалась кнопка */
+    body::after {
+      content: "";
+      display: block;
+      height: 100px;
+    }
+
+    /* Дополнительно: чуть выше плеер в горизонтали */
     @media (max-width: 600px) and (orientation: landscape) {
       audio {
         height: 50px;
-      }
-
-      .page-wrapper {
-        padding-bottom: 120px; /* добавляет свободное пространство внизу */
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="page-wrapper">
-    <h2>🎧 Носки (аудирование) (уровень A1–A2)</h2>
+  <h2>🎧 Носки (аудирование) (уровень A1–A2)</h2>
+  <p><strong>Послушайте аудиозапись и ответьте на вопросы.</strong></p>
 
-    <audio controls>
-      <source src="audio/socks_ru_a.mp3" type="audio/mpeg">
-      Ваш браузер не поддерживает аудиоэлемент.
-    </audio>
+  <audio controls>
+    <source src="audio/socks_ru_a.mp3" type="audio/mpeg">
+    Ваш браузер не поддерживает аудиоэлемент.
+  </audio>
 
-    <form id="quizForm">
-      <div class="question" id="q1-block">
-        <p>1. Что Артём óчень лю́бит?</p>
-        <label><input type="radio" name="q1" value="A"> A) маши́ны</label><br>
-        <label><input type="radio" name="q1" value="B"> B) носки́</label><br>
-        <label><input type="radio" name="q1" value="C"> C) котóв</label><br>
-      </div>
+  <form id="quizForm">
+    <div class="question" id="q1-block">
+      <p>1. Что Артём óчень лю́бит?</p>
+      <label><input type="radio" name="q1" value="A"> A) маши́ны</label><br>
+      <label><input type="radio" name="q1" value="B"> B) носки́</label><br>
+      <label><input type="radio" name="q1" value="C"> C) котóв</label><br>
+    </div>
 
-      <div class="question" id="q2-block">
-        <p>2. Отку́да у негó есть носки́?</p>
-        <label><input type="radio" name="q2" value="A"> A) тóлько из магази́на</label><br>
-        <label><input type="radio" name="q2" value="B"> B) из магази́на и из путеше́ствий</label><br>
-        <label><input type="radio" name="q2" value="C"> C) от роди́телей</label><br>
-      </div>
+    <div class="question" id="q2-block">
+      <p>2. Отку́да у негó есть носки́?</p>
+      <label><input type="radio" name="q2" value="A"> A) тóлько из магази́на</label><br>
+      <label><input type="radio" name="q2" value="B"> B) из магази́на и из путеше́ствий</label><br>
+      <label><input type="radio" name="q2" value="C"> C) от роди́телей</label><br>
+    </div>
 
-      <div class="question" id="q3-block">
-        <p>3. Что друзья́ Артёма дéлают?</p>
-        <label><input type="radio" name="q3" value="A"> A) покупáют ему маши́ны</label><br>
-        <label><input type="radio" name="q3" value="B"> B) приво́зят ему носки́ из Герма́нии</label><br>
-        <label><input type="radio" name="q3" value="C"> C) да́рят ему носки́ на день рожде́ния</label><br>
-      </div>
+    <div class="question" id="q3-block">
+      <p>3. Что друзья́ Артёма дéлают?</p>
+      <label><input type="radio" name="q3" value="A"> A) покупáют ему маши́ны</label><br>
+      <label><input type="radio" name="q3" value="B"> B) приво́зят ему носки́ из Герма́нии</label><br>
+      <label><input type="radio" name="q3" value="C"> C) да́рят ему носки́ на день рожде́ния</label><br>
+    </div>
 
-      <button type="button" onclick="checkAnswers()">Проверить ответы</button>
-    </form>
+    <button type="button" onclick="checkAnswers()">Проверить ответы</button>
+  </form>
 
-    <div class="result" id="result"></div>
-  </div>
+  <div class="result" id="result"></div>
 
   <script>
     const answers = {
@@ -171,6 +176,6 @@
       document.getElementById('result').innerText = `Вы правильно ответили на ${score} из 3 вопросов.`;
     }
   </script>
-  <div style="height: 100px;"></div>
+
 </body>
 </html>
