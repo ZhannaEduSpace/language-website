@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B7ECGNS96Y');
+  </script>
+
+  <style>
+    html, body {
+      height: auto;
+      min-height: 1500px;
+      overflow: visible !important;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+    }
+    .quiz-question {
+      margin-bottom: 30px;
+    }
+    .quiz-question h3 {
+      margin-bottom: 10px;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    button {
+      margin-top: 20px;
+      font-size: 1.2em;
+      padding: 15px 40px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🗣 Лексика и грамматика в коротких диалогах (A1–A2)</h2>
+  <p><strong>Выберите наиболее подходящий ответ в коротком диалоге.</strong><br>
+  В каждом вопросе только один правильный ответ.</p>
+
+  <form id="quizForm"></form>
+  <button type="button" onclick="checkAnswers()">Проверить ответы</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const questions = [
+      {
+        q: 'А: Как тебя зовут?\nБ:',
+        a: 'Меня зовут Анна.',
+        options: ['Ее зовут Анна.', 'Его зовут Игорь.', 'Меня зовут Анна.']
+      },
+      {
+        q: 'А: Ты откуда?\nБ:',
+        a: 'Я из Испании.',
+        options: ['Я из Испании.', 'Я говорю по-испански.', 'Я люблю Испанию.']
+      },
+      {
+        q: 'А: Ты говоришь по-русски?\nБ:',
+        a: 'Да, я говорю хорошо.',
+        options: ['Да, ты говоришь хорошо.', 'Да, она говорит хорошо.', 'Да, я говорю хорошо.']
+      },
+      {
+        q: 'А: Где ты живёшь?\nБ:',
+        a: 'Я живу в Москве.',
+        options: ['Я живу в Москве.', 'Я еду в Москву.', 'Ты живешь в Москва.']
+      },
+      {
+        q: 'А: Что ты делаешь сейчас?\nБ:',
+        a: 'Я читаю книгу.',
+        options: ['Я читал книгу.', 'Я читаю книгу.', 'Я буду читать книгу.']
+      },
+      {
+        q: 'А: Ты любишь спорт?\nБ:',
+        a: 'Нет, я не люблю.',
+        options: ['Нет, мы не любим.', 'Нет, я ты не любишь.', 'Нет, я не люблю.']
+      },
+      {
+        q: 'А: Какой сегодня день?\nБ:',
+        a: 'Сегодня вторник.',
+        options: ['Сегодня вторник.', 'Вчера был вторник.', 'Во вторник.']
+      },
+      {
+        q: 'А: Тебе нравится эта песня?\nБ:',
+        a: 'Да, очень нравится.',
+        options: ['Да, очень любим.', 'Да, очень нравится.', 'Да, я нравлюсь.']
+      }
+    ];
+
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q${i+1}-block`;
+      div.innerHTML = `<h3>${i+1}.<br>${item.q.replace(/\n/g, '<br>')}</h3>` +
+        item.options.map(opt => `
+          <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+      form.appendChild(div);
+    });
+
+    function checkAnswers() {
+      let score = 0;
+      questions.forEach((item, i) => {
+        const name = `q${i+1}`;
+        const selected = form.querySelector(`input[name=${name}]:checked`);
+        const block = document.getElementById(`${name}-block`);
+        const existing = block.querySelector('.correct-answer');
+        if (existing) existing.remove();
+        const note = document.createElement('div');
+        note.classList.add('correct-answer');
+
+        if (selected && selected.value === item.a) {
+          note.classList.add('correct');
+          score++;
+          note.innerText = `✅ Правильный ответ: ${item.a}`;
+        } else {
+          note.classList.add('incorrect');
+          note.innerText = `❌ Правильный ответ: ${item.a}`;
+        }
+
+        block.appendChild(note);
+      });
+      document.getElementById('result').innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
+    }
+  </script>
+</body>
+</html>
