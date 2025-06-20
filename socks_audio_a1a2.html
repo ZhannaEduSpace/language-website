@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>🎧 Носки (аудирование) (уровень A1–A2)</title>
-   
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
@@ -12,7 +12,7 @@
     gtag('js', new Date());
     gtag('config', 'G-B7ECGNS96Y');
   </script>
-  
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -21,17 +21,10 @@
       padding: 20px;
       background-color: #f8f9fa;
       color: #333;
-      position: relative;
     }
 
-    h2 {
-      text-align: center;
-    }
-
-    /* Инструкция */
-    p {
-      font-size: 1.1em;
-      text-align: center;
+    h2, p.instruction {
+      margin-bottom: 10px;
     }
 
     audio {
@@ -81,17 +74,16 @@
       background-color: #163d5c;
     }
 
-    /* Отступ снизу, чтобы не обрезалась кнопка */
-    body::after {
-      content: "";
-      display: block;
-      height: 100px;
+    .footer-space {
+      height: 100px; /* дополнительное пространство снизу */
     }
 
-    /* Дополнительно: чуть выше плеер в горизонтали */
     @media (max-width: 600px) and (orientation: landscape) {
-      audio {
-        height: 50px;
+      body {
+        padding-bottom: 0;
+      }
+      .footer-space {
+        height: 140px; /* больше запаса в горизонтали */
       }
     }
   </style>
@@ -99,7 +91,7 @@
 <body>
 
   <h2>🎧 Носки (аудирование) (уровень A1–A2)</h2>
-  <p><strong>Послушайте аудиозапись и ответьте на вопросы.</strong></p>
+  <p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
 
   <audio controls>
     <source src="audio/socks_ru_a.mp3" type="audio/mpeg">
@@ -131,22 +123,14 @@
     <button type="button" onclick="checkAnswers()">Проверить ответы</button>
   </form>
 
+  <div class="footer-space"></div>
   <div class="result" id="result"></div>
 
   <script>
     const answers = {
-      q1: {
-        correct: "B",
-        text: "носки́"
-      },
-      q2: {
-        correct: "B",
-        text: "из магази́на и из путеше́ствий"
-      },
-      q3: {
-        correct: "C",
-        text: "да́рят ему носки́ на день рожде́ния"
-      }
+      q1: { correct: "B", text: "носки́" },
+      q2: { correct: "B", text: "из магази́на и из путеше́ствий" },
+      q3: { correct: "C", text: "да́рят ему носки́ на день рожде́ния" }
     };
 
     function checkAnswers() {
