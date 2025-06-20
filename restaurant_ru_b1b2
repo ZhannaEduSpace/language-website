@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>🍲 Рассказ про поход в ресторан (аудирование) (B1–B2)</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B7ECGNS96Y');
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+      padding-bottom: 100px; /* добавленный отступ для защиты кнопки */
+      background-color: #f8f9fa;
+      color: #333;
+      text-align: left;
+    }
+
+    h2, .instruction {
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    audio {
+      display: block;
+      margin: 30px auto;
+      width: 100%;
+      max-width: 100%;
+      height: 80px;
+      box-sizing: border-box;
+    }
+
+    .question {
+      margin-bottom: 30px;
+    }
+
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎧 Носки (аудирование) (уровень A1–A2)</h2>
+  <p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+  <audio controls>
+    <source src="audio/restaurant_ru_b.mp3" type="audio/mpeg">
+    Ваш браузер не поддерживает аудиоэлемент.
+  </audio>
+
+  <form id="quizForm">
+    <div class="question" id="q1-block">
+      <p>1. Что заказа́ла де́вушка в рестора́не?</p>
+      <label><input type="radio" name="q1" value="A"> A) Па́сту с гриба́ми и чай</label><br>
+      <label><input type="radio" name="q1" value="B"> B) Па́сту с гриба́ми и сок</label><br>
+      <label><input type="radio" name="q1" value="C"> C) Рис с овоща́ми и сок</label><br>
+    </div>
+
+    <div class="question" id="q2-block">
+      <p>2. Почему́ она́ отказа́лась от па́сты?</p>
+      <label><input type="radio" name="q2" value="A"> A) Она́ была́ холо́дная</label><br>
+      <label><input type="radio" name="q2" value="B"> B) В блю́де бы́ло мя́со</label><br>
+      <label><input type="radio" name="q2" value="C"> C) Ей не понра́вился вкус</label><br>
+    </div>
+
+    <div class="question" id="q3-block">
+      <p>3. Како́е блю́до она́ взяла́ в ито́ге?</p>
+      <label><input type="radio" name="q3" value="A"> A) Суп без мя́са</label><br>
+      <label><input type="radio" name="q3" value="B"> B) Рис с овоща́ми и гриба́ми</label><br>
+      <label><input type="radio" name="q3" value="C"> C) Па́сту с сы́ром</label><br>
+    </div>
+
+    <button type="button" onclick="checkAnswers()">Проверить ответы</button>
+  </form>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    const answers = {
+      q1: { correct: "B", text: "Па́сту с гриба́ми и сок" },
+      q2: { correct: "B", text: "Ей не понра́вился вкус" },
+      q3: { correct: "C", text: "Рис с овоща́ми и гриба́ми" }
+    };
+
+    function checkAnswers() {
+      let score = 0;
+
+      for (const [key, value] of Object.entries(answers)) {
+        const block = document.getElementById(`${key}-block`);
+        const selected = document.querySelector(`input[name="${key}"]:checked`);
+        const existing = block.querySelector('.correct-answer');
+        if (existing) existing.remove();
+
+        const resultText = document.createElement('div');
+        resultText.classList.add('correct-answer');
+
+        if (selected && selected.value === value.correct) {
+          resultText.classList.add('correct');
+          resultText.innerText = `✅ Правильно! Правильный ответ: ${value.text}`;
+          score++;
+        } else {
+          resultText.classList.add('incorrect');
+          resultText.innerText = `❌ Неправильно. Правильный ответ: ${value.text}`;
+        }
+
+        block.appendChild(resultText);
+      }
+
+      document.getElementById('result').innerText = `Вы правильно ответили на ${score} из 3 вопросов.`;
+    }
+  </script>
+</body>
+</html>
