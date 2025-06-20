@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8">
   
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-B7ECGNS96Y');
-</script>
+  <!-- ✅ ДОБАВЛЕН viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B7ECGNS96Y');
+  </script>
   
   <style>
     body {
@@ -51,37 +53,66 @@
       color: white;
       cursor: pointer;
     }
-
     button:hover {
       background-color: #163d5c;
     }
 
     @media (max-width: 600px) {
-  body {
-    font-size: 20px;       /* общий базовый размер текста */
-    max-width: 90%;
-    margin: auto;
-    line-height: 1.6;
-    padding-bottom: 100px;
-  }
+      body {
+        font-size: 20px;
+        max-width: 90%;
+        margin: auto;
+        line-height: 1.6;
+        padding-bottom: 100px;
+      }
 
-  h2 {
-    font-size: 1.8em;
-  }
+      h2 {
+        font-size: 1.8em;
+      }
 
-  p, label, .quiz-question h3, .correct-answer {
-    font-size: 1.2em;
-  }
+      p, label, .quiz-question h3, .correct-answer {
+        font-size: 1.2em;
+      }
 
-  button {
-    font-size: 1.3em;
-    padding: 15px 40px;
-  }
-  .result {
-    font-size: 1.5em;
-  }
-    html, body {
-      overflow-y: visible !important;
+      button {
+        font-size: 1.3em;
+        padding: 15px 40px;
+      }
+
+      .result {
+        font-size: 1.5em;
+      }
+
+      html, body {
+        overflow-y: visible !important;
+      }
+
+      /* ✅ ДОБАВЛЕННЫЕ новые стили */
+      body {
+        font-size: 22px;
+      }
+
+      h2 {
+        font-size: 2em;
+      }
+
+      p, label, .quiz-question h3, .correct-answer {
+        font-size: 1.3em;
+      }
+
+      input[type="radio"] {
+        transform: scale(1.5);
+        margin-right: 8px;
+      }
+
+      button {
+        font-size: 1.4em;
+        padding: 16px 45px;
+      }
+
+      .result {
+        font-size: 1.6em;
+      }
     }
   </style>
 </head>
