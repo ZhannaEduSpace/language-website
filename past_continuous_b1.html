@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+    <!-- ✅ ДОБАВЛЕН viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B7ECGNS96Y');
+</script>
+  
+  <style>
+    html, body {
+      height: auto;
+      min-height: 2600px;
+      overflow: visible !important;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+    }
+    .quiz-question {
+      margin-bottom: 30px;
+    }
+    .quiz-question h3 {
+      margin-bottom: 10px;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+
+    @media (max-width: 600px) {
+  body {
+    font-size: 14px;
+    max-width: 90%;
+    margin: auto;
+    line-height: 1.6;
+    padding-bottom: 100px;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  p, label, .quiz-question h3, .correct-answer {
+    font-size: 1.3em;
+  }
+
+  input[type="radio"] {
+    transform: scale(1.5);
+    margin-right: 8px;
+  }
+
+  button {
+    font-size: 1.4em;
+    padding: 16px 45px;
+  }
+
+  .result {
+    font-size: 1.6em;
+  }
+
+  html, body {
+    overflow-y: visible !important;
+  }
+}
+  </style>
+</head>
+<body>
+  <h2>⏱️ Past Continuous (B1)</h2>
+  <p> Choose the correct option to complete the sentence.</p>
+
+  <form id="quizForm"></form>
+  <button type="button" onclick="checkAnswers()">Check Answers</button>
+  <div class="result" id="result"></div>
+
+  <!-- Стретчер внизу — невидимый блок, чтобы гарантированно был запас -->
+  <div style="height: 40px;"></div>
+
+  <script>
+    const questions = [
+  {
+    q: 'I ______ TV at 8 p.m. yesterday.',
+    a: 'was watching',
+    options: ['watched', 'had watched', 'was watching', 'am watching']
+  },
+  {
+    q: 'While I ______, the phone rang.',
+    a: 'was cooking',
+    options: ['cooked', 'was cooking', 'cook', 'have cooked']
+  },
+  {
+    q: 'They ______ football when it started to rain.',
+    a: 'were playing',
+    options: ['played', 'have played', 'are playing', 'were playing']
+  },
+  {
+    q: 'We were not ______ attention during the lesson.',
+    a: 'paying',
+    options: ['paying', 'paid', 'pay', 'were paying']
+  },
+  {
+    q: 'What ______ she doing when you saw her?',
+    a: 'was',
+    options: ['did', 'is', 'was', 'were']
+  },
+  {
+    q: 'I ______ to music and doing my homework at the same time.',
+    a: 'was listening',
+    options: ['listened', 'was listening', 'listen', 'listening']
+  },
+  {
+    q: 'He ______ when I entered the room.',
+    a: 'was sleeping',
+    options: ['slept', 'sleeps', 'was sleeping', 'is sleeping']
+  },
+  {
+    q: 'It ______ heavily when we left the cinema.',
+    a: 'was raining',
+    options: ['rained', 'was raining', 'has rained', 'rains']
+  },
+  {
+    q: 'While they ______, their friends were waiting for them.',
+    a: 'were shopping',
+    options: ['are shopping', 'were shopping', 'shopped', 'shop']
+  },
+  {
+    q: 'I ______ to call you, but I forgot.',
+    a: 'was trying',
+    options: ['was trying', 'try', 'tried', 'trying']
+  }
+];
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q${i+1}-block`;
+      div.innerHTML = `<h3>${i+1}. ${item.q}</h3>` +
+        item.options.map(opt => `
+          <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+      form.appendChild(div);
+    });
+
+    function checkAnswers() {
+      let score = 0;
+      questions.forEach((item, i) => {
+        const name = `q${i+1}`;
+        const selected = form.querySelector(`input[name=${name}]:checked`);
+        const block = document.getElementById(`${name}-block`);
+        const existing = block.querySelector('.correct-answer');
+        if (existing) existing.remove();
+        const note = document.createElement('div');
+        note.classList.add('correct-answer');
+        if (selected && selected.value === item.a) {
+          note.classList.add('correct');
+          score++;
+          note.innerText = `Correct! Answer: ${item.a}`;
+        } else {
+          note.classList.add('incorrect');
+          note.innerText = `Correct answer: ${item.a}`;
+        }
+        block.appendChild(note);
+      });
+      document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
+    }
+  </script>
+  <div style="background-color: #bff7ff; padding: 30px 20px; margin-top: 40px; border-top: 2px solid #008fa4; border-bottom: 2px solid #008fa4;">
+      <h3 style="color: #d84315;">🔥 Летний мини-курс: “Английский для поиска работы” 🔥</h3>
+      <p>Ищете работу в ЕС, но:</p>
+      <ul>
+        <li>— не уверены в своём CV?</li>
+        <li>— не знаете, как писать cover letter?</li>
+        <li>— боитесь говорить на собеседовании на английском?</li>
+      </ul>
+      <p>Я создала мини-курс из 3 индивидуальных онлайн-занятий по 1 часу, чтобы помочь вам подготовиться быстро и по делу:</p>
+      <ul>
+        <li>📄 Разберём ваше CV — стилистика, язык, требования индустрии</li>
+        <li>💌 Напишем или улучшим сопроводительное письмо</li>
+        <li>🎙 Потренируемся в формате интервью — с фразами, фидбэком и уверенностью</li>
+      </ul>
+      <p>📆 Гибкий график, онлайн, 1:1<br />
+         🌍 Подходит для жителей ЕС<br />
+         💶 <strong>Летняя цена: всего 25 евро за весь курс</strong> (вместо 60€)</p>
+      <p><strong>Записаться можно по:</strong></p>
+      <p>📱 WhatsApp: +358 40 8516 355<br />
+         📨 Telegram: @ZhannaEduSpace<br />
+         ✉️ email: zhanna.edu.space@gmail.com</p>
+    </div>
+</body>
+</html>
