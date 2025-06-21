@@ -20,11 +20,12 @@
     banner.style.alignItems = "center";
     banner.style.zIndex = "1000";
 
-    const lang = navigator.language.startsWith("ru") ? "ru" : "en";
     const text = document.createElement("div");
-    text.innerHTML = (lang === "ru")
-      ? 'Этот сайт использует файлы cookie для аналитики и показа рекламы. <a href="/privacy.html" style="color:#00f;">Подробнее</a>'
-      : 'This site uses cookies for analytics and ads. <a href="/privacy.html" style="color:#00f;">Learn more</a>';
+text.innerHTML = `
+  Этот сайт использует файлы cookie для аналитики и показа рекламы.<br/>
+  This site uses cookies for analytics and ads.
+  <a href="/privacy.html" style="color:#00f; margin-left: 10px;">Подробнее / Learn more</a>
+`;
 
     const button = document.createElement("button");
     button.textContent = (lang === "ru") ? "Согласен" : "I accept";
