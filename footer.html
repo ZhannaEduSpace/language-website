@@ -1,0 +1,48 @@
+<footer style="text-align: center; font-size: 0.75em; color: #888; margin-top: 60px; padding: 20px 0;">
+  © 2025, Все права защищены |
+  <a href="/privacy.html" style="color: #888; text-decoration: none;">Политика конфиденциальности</a>
+</footer>
+
+<script>
+  // Cookie banner (показывается один раз)
+  if (!localStorage.getItem("cookiesAccepted")) {
+    const banner = document.createElement("div");
+    banner.style.position = "fixed";
+    banner.style.bottom = "0";
+    banner.style.left = "0";
+    banner.style.right = "0";
+    banner.style.backgroundColor = "#f0f0f0";
+    banner.style.padding = "15px";
+    banner.style.fontSize = "0.9em";
+    banner.style.boxShadow = "0 -2px 5px rgba(0,0,0,0.1)";
+    banner.style.display = "flex";
+    banner.style.justifyContent = "space-between";
+    banner.style.alignItems = "center";
+    banner.style.zIndex = "1000";
+
+    const lang = navigator.language.startsWith("ru") ? "ru" : "en";
+    const text = document.createElement("div");
+    text.innerHTML = (lang === "ru")
+      ? 'Этот сайт использует файлы cookie для аналитики и показа рекламы. <a href="/privacy.html" style="color:#00f;">Подробнее</a>'
+      : 'This site uses cookies for analytics and ads. <a href="/privacy.html" style="color:#00f;">Learn more</a>';
+
+    const button = document.createElement("button");
+    button.textContent = (lang === "ru") ? "Согласен" : "I accept";
+    button.style.marginLeft = "20px";
+    button.style.padding = "6px 12px";
+    button.style.border = "none";
+    button.style.backgroundColor = "#007BFF";
+    button.style.color = "white";
+    button.style.borderRadius = "4px";
+    button.style.cursor = "pointer";
+
+    button.onclick = function () {
+      localStorage.setItem("cookiesAccepted", "true");
+      banner.remove();
+    };
+
+    banner.appendChild(text);
+    banner.appendChild(button);
+    document.body.appendChild(banner);
+  }
+</script>
