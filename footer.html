@@ -4,7 +4,6 @@
 </footer>
 
 <script>
-  // Cookie banner (показывается один раз)
   if (!localStorage.getItem("cookiesAccepted")) {
     const banner = document.createElement("div");
     banner.style.position = "fixed";
@@ -20,15 +19,15 @@
     banner.style.alignItems = "center";
     banner.style.zIndex = "1000";
 
-   const text = document.createElement("div");
-text.innerHTML = `
-  Этот сайт использует файлы cookie для аналитики и показа рекламы.<br/>
-  This site uses cookies for analytics and ads.
-  <a href="/privacy.html" style="color:#00f; margin-left: 10px;">Подробнее / Learn more</a>
-`;
+    const text = document.createElement("div");
+    text.innerHTML = `
+      Этот сайт использует файлы cookie для аналитики и показа рекламы.<br/>
+      This site uses cookies for analytics and ads.
+      <a href="/privacy.html" style="color:#00f; margin-left: 10px;">Подробнее / Learn more</a>
+    `;
 
     const button = document.createElement("button");
-    button.textContent = (lang === "ru") ? "Согласен" : "I accept";
+    button.textContent = "Согласен / I accept";
     button.style.marginLeft = "20px";
     button.style.padding = "6px 12px";
     button.style.border = "none";
