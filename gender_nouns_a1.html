@@ -191,5 +191,14 @@
       document.getElementById('result').innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
     }
   </script>
+    <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
 </body>
 </html>
