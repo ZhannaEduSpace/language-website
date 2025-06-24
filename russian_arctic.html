@@ -5,28 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Задания по уровням / Tasks by Level</title>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-B7ECGNS96Y');
-  </script>
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-B7ECGNS96Y');
+</script>
+  
   <style>
+     nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+nav a:visited {
+  color: white;
+}
+nav a:hover {
+  text-decoration: underline;
+}
     body {
       font-family: Arial, sans-serif;
       background-color: #f8f9fa;
       margin: 0;
       padding: 0;
       color: #333;
-    }
-
-    .wrapper {
-      max-width: 750px;
-      margin: auto;
-      padding: 20px;
     }
 
     header {
@@ -47,20 +53,6 @@
       display: flex;
       align-items: center;
       gap: 20px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 10px;
-    }
-
-    nav a:visited {
-      color: white;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
     }
 
     .dropdown {
@@ -100,6 +92,12 @@
       display: block;
     }
 
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
     h2 {
       text-align: center;
       color: #1f4e79;
@@ -135,9 +133,9 @@
       font-size: 16px;
     }
 
-    .a1a2 { background-color: #2e7d32; }
-    .b1b2 { background-color: #03045e; }
-    .c1   { background-color: #ae2012; }
+    .a1a2 { background-color: #2e7d32; }         /* Dark green */
+    .b1b2 { background-color: #03045e; }       /* Blue */
+    .c1 { background-color: #ae2012; }       /* Dark red */
   </style>
 </head>
 <body>
@@ -156,7 +154,7 @@
     </nav>
   </header>
 
-  <div class="wrapper">
+  <div class="container">
     <h2>Задания по уровням / Tasks by Level</h2>
     <div class="columns">
       <div class="column">
@@ -176,46 +174,44 @@
         <a class="btn c1" href="Arctic_text_c1.html">Арктика (текст) (C1)</a>
       </div>
     </div>
-
-    <div style="background-color: #e6f7ff; padding: 10px 20px; margin-top: 40px; border-top: 2px solid #3399cc; border-bottom: 2px solid #3399cc;">
-      <h3 style="color: #1a73e8;">🧭 Do you study the Arctic? Learn Russian for research and real-life communication.</h3>
-      <p>Russian is still a key language across many parts of the Arctic — whether you're doing fieldwork, reading local reports, interviewing people, or building cooperation.</p>
-
-      <h4>🎯 I offer individual online Russian lessons tailored to:</h4>
-      <ul>
-        <li>Arctic research and environmental topics</li>
-        <li>Basic and practical Russian for fieldwork</li>
-        <li>Reading and understanding local sources</li>
-        <li>Cross-cultural communication</li>
-      </ul>
-
-      <p>🧊 I’m based in Arctic Europe and understand your context.<br>
-         All levels welcome — from complete beginners to those who need support with specific projects.</p>
-
-      <p>📆 Flexible schedule | 1:1 format | Online<br>
-         🎁 Free trial lesson available</p>
-
-      <p><strong>📩 Contact me:</strong><br>
-         Telegram: @ZhannaEduSpace<br>
-         WhatsApp: +358 40 8516 355<br>
-         Email: zhanna.edu.space@gmail.com</p>
-
-      <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 15px;">
-        <a href="https://t.me/ZhannaEduSpace" target="_blank" style="background-color: #0088cc; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on Telegram</a>
-        <a href="https://wa.me/358408516355" target="_blank" style="background-color: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on WhatsApp</a>
-        <a href="mailto:zhanna.edu.space@gmail.com" style="background-color: #1f4e79; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Send Email</a>
-      </div>
-    </div>
   </div>
+ <div style="background-color: #e6f7ff; padding: 10px 40px; margin-top: 40px; border-top: 2px solid #3399cc; border-bottom: 2px solid #3399cc;">
+  <h3 style="color: #1a73e8;">🧭 Do you study the Arctic? Learn Russian for research and real-life communication.</h3>
+  <p>Russian is still a key language across many parts of the Arctic — whether you're doing fieldwork, reading local reports, interviewing people, or building cooperation.</p>
 
-  <div id="footer-placeholder"></div>
-  <script>
-    fetch('/footer.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('footer-placeholder').innerHTML = html;
-        eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
-      });
-  </script>
+  <h4>🎯 I offer individual online Russian lessons tailored to:</h4>
+  <ul>
+    <li>Arctic research and environmental topics</li>
+    <li>Basic and practical Russian for fieldwork</li>
+    <li>Reading and understanding local sources</li>
+    <li>Cross-cultural communication</li>
+  </ul>
+
+  <p>🧊 I’m based in Arctic Europe and understand your context.<br>
+     All levels welcome — from complete beginners to those who need support with specific projects.</p>
+
+  <p>📆 Flexible schedule | 1:1 format | Online<br>
+     🎁 Free trial lesson available</p>
+
+  <p><strong>📩 Contact me:</strong><br>
+     Telegram: @ZhannaEduSpace<br>
+     WhatsApp: +358 40 8516 355<br>
+     Email: zhanna.edu.space@gmail.com</p>
+
+  <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 15px;">
+    <a href="https://t.me/ZhannaEduSpace" target="_blank" style="background-color: #0088cc; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on Telegram</a>
+    <a href="https://wa.me/358408516355" target="_blank" style="background-color: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on WhatsApp</a>
+    <a href="mailto:zhanna.edu.space@gmail.com" style="background-color: #1f4e79; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Send Email</a>
+  </div>
+</div>
+      <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
 </body>
 </html>
