@@ -132,48 +132,48 @@
       },
       {
         q: 'He ______ vielä asemalle.',
-        a: 'счастливый',
-        options: ['злой', 'печальный', 'счастливый']
+        a: 'eivät ole menneet',
+        options: ['ei menneet', 'eivät ole menneet', 'ei mene']
       },
       {
         q: 'Me ______ elokuviin eilen.',
-        a: 'позитивный',
-        options: ['позитивный', 'грустный', 'отвратительный']
+        a: 'menimme',
+        options: ['menimme', 'menemme', 'olemme menneet']
       },
       {
         q: '______ sinä jo kotiin?',
-        a: 'рискованный',
-        options: ['грязный', 'рискованный', 'здоровый']
+        a: 'Oletko mennyt',
+        options: ['Menitkö', 'Oletko mennyt', 'Menetkö']
       },
       {
         q: 'He eivät ______ kouluun tänään.',
-        a: 'тупой',
-        options: ['видный', 'весёлый', 'явственный']
+        a: 'mene',
+        options: ['mene', 'menneet', 'mennyt']
       },
       {
         q: 'Miksi te ______ museoon eilen?',
-        a: 'трудность',
-        options: ['злость', 'радость', 'трудность']
+        a: 'ette menneet',
+        options: ['ette mene', 'ette ole menneet', 'ette menneet']
       },
       {
         q: 'Minä en ______ tänään kouluun, koska olen sairas.',
-        a: 'гигантский',
-        options: ['маленький', 'гигантский', 'лёгкий']
+        a: 'mene',
+        options: ['mennyt', 'mene', 'meni']
       },
       {
         q: 'Me ______ koskaan sinne.',
-        a: 'позволять',
-        options: ['позволять', 'мешать', 'запрещать']
+        a: 'emme ole menneet',
+        options: ['emme ole menneet', 'emme menneet', 'emme mene']
       },
       {
         q: '______ he illalla ravintolaan?',
-        a: 'скорый',
-        options: ['медленный', 'длинный', 'скорый']
+        a: 'Menevätkö',
+        options: ['Ovatko menneet', 'Menivätkö', 'Menevätkö']
       },
       {
         q: '______ he tänään illalla ravintolaan?',
-        a: 'печальный',
-        options: ['весёлый', 'печальный', 'страшный']
+        a: 'Menevätkö',
+        options: ['Menivätkö', 'Menevätkö', 'Mennäänkö']
       }
     ];
 
@@ -203,10 +203,10 @@
         if (selected && selected.value === item.a) {
           note.classList.add('correct');
           score++;
-          note.innerText = `✅ Correct! Answer: ${item.a}`;
+          note.innerText = `✅ Oikein! Vastaus: ${item.a}`;
         } else {
           note.classList.add('incorrect');
-          note.innerText = `❌ Correct answer: ${item.a}`;
+          note.innerText = `❌ Oikea vastaus: ${item.a}`;
         }
 
         block.appendChild(note);
