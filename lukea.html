@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Lukea </title>
+
+    <!-- ✅ ДОБАВЛЕН viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B7ECGNS96Y');
+</script>
+  
+  <style>
+    html, body {
+      height: auto;
+      min-height: 2000px;
+      overflow: visible !important;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .quiz-question {
+      margin-bottom: 30px;
+    }
+
+    .quiz-question h3 {
+      margin-bottom: 10px;
+    }
+
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+
+   @media (max-width: 600px) {
+  body {
+    font-size: 14px;
+    max-width: 90%;
+    margin: auto;
+    line-height: 1.6;
+    padding-bottom: 100px;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  p, label, .quiz-question h3, .correct-answer {
+    font-size: 1.3em;
+  }
+
+  input[type="radio"] {
+    transform: scale(1.5);
+    margin-right: 8px;
+  }
+
+  button {
+    font-size: 1.4em;
+    padding: 16px 45px;
+  }
+
+  .result {
+    font-size: 1.6em;
+  }
+
+  html, body {
+    overflow-y: visible !important;
+  }
+}
+  </style>
+</head>
+<body>
+  <h2>📰 Lukea </h2>
+  <p><strong> Verbi: lukea. Valitse oikea verbin muoto. Harjoitellaan kolmea aikamuotoa: preesens, imperfekti ja perfekti. </strong><br>
+  Verb: lukea (to read). Choose the correct verb form. We practice 3 tenses (preesens, imperfekti, perfekti).
+  Глагол: lukea (читать). Выберите правильную форму глагола. Тренируем 3 времени (preesens, imperfekti, perfekti).</p>
+
+  <form id="quizForm"></form>
+  <button type="button" onclick="checkAnswers()">Tarkista vastaukset</button>
+  <div class="result" id="result"></div>
+  <div style="height: 200px;"></div>
+
+  <script>
+    const questions = [
+      {
+        q: 'Minä ______ usein kirjoja iltaisin.',
+        a: 'luen',
+        options: ['luin', 'luen', 'olen lukenut']
+      },
+      {
+        q: 'Me ______ tämän artikkelin eilen koulussa.',
+        a: 'lukimme',
+        options: ['olemme lukeneet', 'lukimme', 'lukivat']
+      },
+      {
+        q: 'Hän ei ______ sitä kirjaa vielä.',
+        a: 'ole lukenut',
+        options: ['ole lukenut', 'lue', 'luki']
+      },
+      {
+        q: '______ sinä sen sähköpostin jo?',
+        a: 'Oletko lukenut',
+        options: ['Luetko', 'Luitko', 'Oletko lukenut']
+      },
+      {
+        q: 'Me ______ monta sivua viime viikolla.',
+        a: 'luimme',
+        options: ['olemme lukeneet', 'lukemme', 'luimme']
+      },
+      {
+        q: 'Miksi te ette ______ kirjastossa eilen?',
+        a: 'lukeneet',
+        options: ['lukeneet', 'ole lukeneet', 'lukeneetko']
+      },
+      {
+        q: 'Minä ______ tämän romaanin kokonaan!',
+        a: 'olen lukenut',
+        options: ['olen lukenut', 'luen', 'luin']
+      },
+      {
+        q: 'Me ______ usein yhdessä iltaisin.',
+        a: 'luemme',
+        options: ['olemme lukeneet', 'luemme', 'luimme']
+      },
+      {
+        q: 'Etkö sinä vielä ______ sen tehtävän?',
+        a: 'ole lukenut',
+        options: ['ole lukenut', 'lukenut', 'lukenet']
+      },
+      {
+        q: 'Minä ______ joka ilta kirjaa ennen nukkumaanmenoa.',
+        a: 'luen',
+        options: ['lukenut', 'luin', 'luen']
+      }
+    ];
+
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q${i+1}-block`;
+      div.innerHTML = `<h3>${i+1}. ${item.q}</h3>` +
+        item.options.map(opt => `
+          <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+      form.appendChild(div);
+    });
+
+    function checkAnswers() {
+      let score = 0;
+      questions.forEach((item, i) => {
+        const name = `q${i+1}`;
+        const selected = form.querySelector(`input[name=${name}]:checked`);
+        const block = document.getElementById(`${name}-block`);
+        const existing = block.querySelector('.correct-answer');
+        if (existing) existing.remove();
+        const note = document.createElement('div');
+        note.classList.add('correct-answer');
+
+        if (selected && selected.value === item.a) {
+          note.classList.add('correct');
+          score++;
+          note.innerText = `✅ Oikein! Vastaus: ${item.a}`;
+        } else {
+          note.classList.add('incorrect');
+          note.innerText = `❌ Oikea vastaus: ${item.a}`;
+        }
+
+        block.appendChild(note);
+      });
+      document.getElementById('result').innerText = `Sait ${score} oikein ${questions.length}:stä.`;
+    }
+  </script>
+    <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+</body>
+</html>
