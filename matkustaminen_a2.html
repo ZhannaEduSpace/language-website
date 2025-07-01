@@ -218,9 +218,7 @@
       document.getElementById('result').innerText = `Sait ${score} oikein ${questions.length}:stä.`;
     }
   </script>
-    <div id="footer-placeholder"></div>
-<script>
-
+   
 <div style="background-color: #e6ffe8; padding: 10px 20px; margin-top: 40px; border-top: 2px solid #33cc3e; border-bottom: 2px solid #4dcc33;">
   <h3 style="color: #047d23;">🎓 Хотите учиться в Финляндии, но финский язык — это слишком сложно?</h3>
   <p>Во многих университетах и профессиональных училищах Финляндии есть программы на английском языке — и их становится всё больше.</p>
@@ -249,7 +247,8 @@
   </div>
 </div>
 
-  
+   <div id="footer-placeholder"></div>
+<script>
   fetch('/footer.html')
     .then(res => res.text())
     .then(html => {
