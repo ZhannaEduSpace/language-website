@@ -51,9 +51,19 @@ html, body {
     }
     button {
       margin-top: 20px;
-      font-size: 1.2em;
-      padding: 15px 40px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
     }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+
     @media (max-width: 600px) {
   body {
     font-size: 14px;
@@ -201,6 +211,27 @@ html, body {
       document.getElementById('result').innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
     }
   </script>
+
+<div style="background-color: #bff7ff; padding: 10px 20px; margin-top: 40px; border-top: 2px solid #008fa4; border-bottom: 2px solid #008fa4;">
+      <h3 style="color: #d84315;">🪆 Learn Russian with a personal teacher</h3>
+      <p>Whether you're just starting out or want to improve your Russian for work, travel, or study — I offer individual online lessons tailored to your needs and interests.</p>
+  
+      <p>🎯 I can help you with:</p>
+      <ul>
+        <li>Speaking and listening for everyday situations</li>
+        <li>Reading and understanding authentic texts</li>
+        <li>Grammar and pronunciation</li>
+        <li>Specialized topics — from culture to academic or professional contexts</li>
+      </ul>
+      <p>📆  Lessons are 1:1, fully online, and flexible in scheduling.<br />
+         🌍 I’m based in Europe and speak English fluently, so I can support you in learning Russian step by step — even if you're a complete beginner.<br />
+        <strong>🎁 Free trial lesson available — let's discuss your goals and create a learning plan that works for you.</strong> </p>
+      <p><strong>Contact me:</strong></p>
+      <p>📱 WhatsApp: +358 40 8516 355<br />
+         📨 Telegram: @ZhannaEduSpace<br />
+         ✉️ email: zhanna.edu.space@gmail.com</p>
+    </div>
+  
     <div id="footer-placeholder"></div>
 <script>
   fetch('/footer.html')
