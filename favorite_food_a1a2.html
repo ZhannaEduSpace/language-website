@@ -148,7 +148,7 @@
       <label><input type="radio" name="q3" value="C">It is hot and tasty</label><br>
     </div>
 
-    <button type="button" onclick="checkAnswers()">Проверить ответы</button>
+    <button type="button" onclick="checkAnswers()">Check Answers</button>
   </form>
 
   <div class="result" id="result"></div>
@@ -174,17 +174,17 @@
 
         if (selected && selected.value === value.correct) {
           resultText.classList.add('correct');
-          resultText.innerText = `✅ Правильно! Правильный ответ: ${value.text}`;
+          resultText.innerText = `✅ Correct answer: ${value.text}`;
           score++;
         } else {
           resultText.classList.add('incorrect');
-          resultText.innerText = `❌ Неправильно. Правильный ответ: ${value.text}`;
+          resultText.innerText = `❌ Correct answer: ${value.text}`;
         }
 
         block.appendChild(resultText);
       }
 
-      document.getElementById('result').innerText = `Вы правильно ответили на ${score} из 3 вопросов.`;
+      document.getElementById('result').innerText = `You got ${score} out of 3 correct.`;
     }
   </script>
 
