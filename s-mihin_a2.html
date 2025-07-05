@@ -4,54 +4,71 @@
   <meta charset="UTF-8">
   <title>Mihin? — sisäpaikallissija</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       max-width: 750px;
       margin: auto;
-      padding: 20px;
-      background-color: #f9f9f9;
+      padding: 30px 20px;
+      background-color: #f9fafc;
+      color: #333;
     }
+
     h2 {
-      margin-bottom: 10px;
+      color: #1f4e79;
     }
-    p {
-      margin: 5px 0;
-    }
+
     .question {
-      margin-bottom: 15px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
+
+    .question label {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
     input[type="text"] {
-      padding: 6px;
+      padding: 8px 12px;
       font-size: 1em;
-      width: 100%;
+      width: 40%;
       max-width: 300px;
-      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
     }
+
     .correct {
       color: green;
-      margin-top: 5px;
+      margin-top: 4px;
     }
+
     .incorrect {
       color: red;
-      margin-top: 5px;
+      margin-top: 4px;
     }
+
     .result {
-      margin-top: 25px;
+      margin-top: 30px;
       font-weight: bold;
       font-size: 1.2em;
     }
+
     button {
-      margin-top: 20px;
-      padding: 10px 25px;
+      margin-top: 25px;
+      padding: 12px 28px;
       font-size: 1em;
       background-color: #1f4e79;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
+      transition: background 0.3s;
     }
+
     button:hover {
       background-color: #163d5c;
     }
@@ -60,6 +77,7 @@
 <body>
 
   <h2>📍 Mihin? — sisäpaikallissija</h2>
+
   <p><strong>🇫🇮 Finnish:</strong> Kirjoita sana muotoon “mihin?” (sisäpaikallissija).<br>
      Esimerkiksi: <em>talo → taloon</em></p>
   <p><strong>🇬🇧 English:</strong> Write the word in the “to where?” form (inner location case).<br>
@@ -68,9 +86,7 @@
      Пример: <em>talo → taloon</em></p>
   <p><strong>⚠️ Huom! / Внимание:</strong> Käytä suomalaisia kirjaimia (ä, ö, å) / Используйте финские буквы (ä, ö, å) — иначе ответ будет неправильным.</p>
 
-  <form id="quizForm">
-    <!-- Вопросы -->
-  </form>
+  <form id="quizForm"></form>
 
   <button onclick="checkAnswers()">Tarkista vastaukset / Проверить ответы</button>
   <div class="result" id="result"></div>
@@ -101,8 +117,8 @@
       const div = document.createElement("div");
       div.className = "question";
       div.id = `q${index}`;
-      div.innerHTML = `<strong>${index + 1}. ${q.base} →</strong><br>
-        <input type="text" id="input${index}" placeholder="Kirjoita sana / Напишите слово">`;
+      div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input${index}" placeholder="Kirjoita sana">`;
       form.appendChild(div);
     });
 
