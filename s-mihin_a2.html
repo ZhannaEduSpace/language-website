@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Mihin? — sisäpaikallissija</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h2 {
+      margin-bottom: 10px;
+    }
+    p {
+      margin: 5px 0;
+    }
+    .question {
+      margin-bottom: 15px;
+    }
+    input[type="text"] {
+      padding: 6px;
+      font-size: 1em;
+      width: 100%;
+      max-width: 300px;
+      box-sizing: border-box;
+    }
+    .correct {
+      color: green;
+      margin-top: 5px;
+    }
+    .incorrect {
+      color: red;
+      margin-top: 5px;
+    }
+    .result {
+      margin-top: 25px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      font-size: 1em;
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #163d5c;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📍 Mihin? — sisäpaikallissija</h2>
+  <p><strong>🇫🇮 Finnish:</strong> Kirjoita sana muotoon “mihin?” (sisäpaikallissija).<br>
+     Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>🇬🇧 English:</strong> Write the word in the “to where?” form (inner location case).<br>
+     Example: <em>talo → taloon</em></p>
+  <p><strong>🇷🇺 Русский:</strong> Напишите слово в форме “куда?” (внутренний падеж).<br>
+     Пример: <em>talo → taloon</em></p>
+  <p><strong>⚠️ Huom! / Внимание:</strong> Käytä suomalaisia kirjaimia (ä, ö, å) / Используйте финские буквы (ä, ö, å) — иначе ответ будет неправильным.</p>
+
+  <form id="quizForm">
+    <!-- Вопросы -->
+  </form>
+
+  <button onclick="checkAnswers()">Tarkista vastaukset / Проверить ответы</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const questions = [
+      { base: "museo", answer: "museoon" },
+      { base: "tyyny", answer: "tyynyyn" },
+      { base: "harmaa", answer: "harmaaseen" },
+      { base: "pallo", answer: "palloon" },
+      { base: "vihreä", answer: "vihreään" },
+      { base: "maa", answer: "maahan" },
+      { base: "kapea", answer: "kapeaan" },
+      { base: "takuu", answer: "takuuseen" },
+      { base: "pää", answer: "päähän" },
+      { base: "kirje", answer: "kirjeeseen" },
+      { base: "osoite", answer: "osoitteeseen" },
+      { base: "kala", answer: "kalaan" },
+      { base: "suu", answer: "suuhun" },
+      { base: "ravintola", answer: "ravintolaan" },
+      { base: "Espoo", answer: "Espooseen" },
+      { base: "kappale", answer: "kappaleeseen" }
+    ];
+
+    const form = document.getElementById("quizForm");
+
+    questions.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q${index}`;
+      div.innerHTML = `<strong>${index + 1}. ${q.base} →</strong><br>
+        <input type="text" id="input${index}" placeholder="Kirjoita sana / Напишите слово">`;
+      form.appendChild(div);
+    });
+
+    function normalize(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers() {
+      let score = 0;
+
+      questions.forEach((q, i) => {
+        const userInput = normalize(document.getElementById(`input${i}`).value);
+        const correct = normalize(q.answer);
+        const block = document.getElementById(`q${i}`);
+
+        let feedback = block.querySelector(".correct") || block.querySelector(".incorrect");
+        if (feedback) feedback.remove();
+
+        const msg = document.createElement("div");
+        if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Oikein / Правильно: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Väärin / Неправильно. Oikea vastaus: ${q.answer}`;
+        }
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result").innerText = `Sait oikein ${score} / ${questions.length} / Вы правильно ответили на ${score} из ${questions.length}`;
+    }
+  </script>
+</body>
+</html>
