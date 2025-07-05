@@ -80,15 +80,15 @@
 
   <p><strong>🇫🇮 Finnish:</strong> Kirjoita sana muotoon “mihin?” (sisäpaikallissija).<br>
      Esimerkiksi: <em>talo → taloon</em></p>
-  <p><strong>🇬🇧 English:</strong> Write the word in the “to where?” form (inner location case).<br>
+  <p> Write the word in the “to where?” form (inner location case).<br>
      Example: <em>talo → taloon</em></p>
-  <p><strong>🇷🇺 Русский:</strong> Напишите слово в форме “куда?” (внутренний падеж).<br>
+  <p> Напишите слово в форме “куда?” (внутренний падеж).<br>
      Пример: <em>talo → taloon</em></p>
-  <p><strong>⚠️ Huom! / Внимание:</strong> Käytä suomalaisia kirjaimia (ä, ö, å) / Используйте финские буквы (ä, ö, å) — иначе ответ будет неправильным.</p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö, å)</p>
 
   <form id="quizForm"></form>
 
-  <button onclick="checkAnswers()">Tarkista vastaukset / Проверить ответы</button>
+  <button onclick="checkAnswers()">Tarkista vastaukset</button>
   <div class="result" id="result"></div>
 
   <script>
@@ -140,11 +140,11 @@
         const msg = document.createElement("div");
         if (userInput === correct) {
           msg.className = "correct";
-          msg.textContent = `✅ Oikein / Правильно: ${q.answer}`;
+          msg.textContent = `✅ Oikein: ${q.answer}`;
           score++;
         } else {
           msg.className = "incorrect";
-          msg.textContent = `❌ Väärin / Неправильно. Oikea vastaus: ${q.answer}`;
+          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
         }
         block.appendChild(msg);
       });
