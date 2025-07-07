@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indefinite Pronouns (B1–B2)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    h2 {
+      font-size: 1.8em;
+    }
+    p {
+      font-size: 1.1em;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    .question span {
+      display: inline-block;
+      min-width: 60%;
+    }
+    input[type="text"] {
+      padding: 8px 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 200px;
+      max-width: 90%;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .result {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 30px;
+    }
+    button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #163d5c;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🧠 Indefinite Pronouns (B1–B2)</h2>
+  <p>Choose the correct word to complete each sentence.<br>
+  You can use: <em>anything, anywhere, anyone, everything, nothing, nobody, someone, something, somewhere</em></p>
+  <p>There is only one correct answer in each case.</p>
+
+  <form id="quizForm"></form>
+
+  <button type="button" onclick="checkAnswers()">Check Answers</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const questions = [
+      { q: 'Someone left their phone on the table.', a: 'someone' },
+      { q: 'I’m hungry. Let’s eat ___ before the movie.', a: 'something' },
+      { q: 'There isn’t ___ interesting on TV tonight.', a: 'anything' },
+      { q: '___ knows the answer to this question.', a: 'nobody' },
+      { q: 'I need ___ quiet to work this afternoon.', a: 'somewhere' },
+      { q: 'She looked around, but she couldn’t see ___ she knew.', a: 'anyone' },
+      { q: '___ in the box is broken.', a: 'everything' },
+      { q: 'I don’t want to go ___ this weekend — I’m too tired.', a: 'anywhere' },
+      { q: 'He said ___ strange, but I didn’t understand what he meant.', a: 'something' },
+      { q: '___ ever happens in this town.', a: 'nothing' },
+    ];
+
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'question';
+      div.id = `q${i+1}-block`;
+
+      const parts = item.q.split('___');
+      let sentenceHTML = '';
+
+      if (parts.length === 2) {
+        sentenceHTML = `${parts[0]} <input type="text" id="input${i}"> ${parts[1]}`;
+      } else {
+        sentenceHTML = item.q.replace(item.a, `<input type="text" id="input${i}">`);
+      }
+
+      div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+      form.appendChild(div);
+    });
+
+    function normalize(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers() {
+      let score = 0;
+
+      questions.forEach((item, i) => {
+        const input = document.getElementById(`input${i}`);
+        const userAnswer = normalize(input.value);
+        const correctAnswer = normalize(item.a);
+
+        let feedback = document.querySelector(`#q${i+1}-block .correct-answer`);
+        if (feedback) feedback.remove();
+
+        const result = document.createElement('div');
+        result.classList.add('correct-answer');
+
+        if (userAnswer === correctAnswer) {
+          result.classList.add('correct');
+          result.textContent = `✅ Correct! Answer: ${item.a}`;
+          score++;
+        } else {
+          result.classList.add('incorrect');
+          result.textContent = `❌ Correct answer: ${item.a}`;
+        }
+
+        document.getElementById(`q${i+1}-block`).appendChild(result);
+      });
+
+      document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
+    }
+  </script>
+</body>
+</html>
