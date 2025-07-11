@@ -1,6 +1,11 @@
+<!DOCTYPE html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <title>Task: "My Trip to Portugal" Listening (B1-B2)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <!-- ✅ ДОБАВЛЕН viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Google tag (gtag.js) -->
@@ -15,83 +20,13 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f8f9fa;
-      color: #333;
-    }
-
-    /* Добавленные стили хедера */
-    header {
-      background-color: #0f4c81;
-      color: white;
-      padding: 10px 0;
-      width: 100%;
-    }
-
-    header .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      text-decoration: none;
-      color: white;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .dropbtn {
-      background-color: #0f4c81;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: white;
-      color: black;
-      min-width: 160px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-
-    .dropdown-content a {
-      color: black;
-      padding: 10px 16px;
-      text-decoration: none;
-      display: block;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .container {
       max-width: 750px;
       margin: auto;
       padding: 20px;
-      padding-bottom: 100px;
-      font-size: 16px;
-      line-height: 1.6;
+      padding-bottom: 100px; /* добавленный отступ для защиты кнопки */
+      background-color: #f8f9fa;
+      color: #333;
+      text-align: left;
     }
 
     h2, .instruction {
@@ -145,54 +80,44 @@
     button:hover {
       background-color: #163d5c;
     }
-
     @media (max-width: 600px) {
-      .container {
-        max-width: 90%;
-      }
+  body {
+    font-size: 14px;
+    max-width: 90%;
+    margin: auto;
+    line-height: 1.6;
+    padding-bottom: 100px;
+  }
 
-      body {
-        font-size: 14px;
-        line-height: 1.6;
-        padding-bottom: 100px;
-      }
+  h2 {
+    font-size: 2em;
+  }
 
-      h2 {
-        font-size: 2em;
-      }
+  p, label, .quiz-question h3, .correct-answer {
+    font-size: 1.3em;
+  }
 
-      p, label, .quiz-question h3, .correct-answer {
-        font-size: 1.3em;
-      }
+  input[type="radio"] {
+    transform: scale(1.5);
+    margin-right: 8px;
+  }
 
-      input[type="radio"] {
-        transform: scale(1.5);
-        margin-right: 8px;
-      }
+  button {
+    font-size: 1.4em;
+    padding: 16px 45px;
+  }
 
-      button {
-        font-size: 1.4em;
-        padding: 16px 45px;
-      }
+  .result {
+    font-size: 1.6em;
+  }
 
-      .result {
-        font-size: 1.6em;
-      }
-
-      html, body {
-        overflow-y: visible !important;
-      }
-    }
+  html, body {
+    overflow-y: visible !important;
+  }
+}
   </style>
 </head>
-
 <body>
- <div id="header-container"></div>
-<script>
-  fetch("header.html")
-    .then(r => r.text())
-    .then(t => document.getElementById("header-container").innerHTML = t);
-</script>
 
   <div class="container">
     <h2>🧳 My Trip to Portugal (B1-B2)</h2>
