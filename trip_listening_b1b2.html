@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Task: "My Trip to Portugal" Listening (B1-B2)</title>
 
-    <!-- ✅ ДОБАВЛЕН viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Google tag (gtag.js) -->
@@ -19,15 +18,19 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    .container {
       max-width: 750px;
       margin: auto;
       padding: 20px;
+      padding-bottom: 100px;
       font-size: 16px;
       line-height: 1.6;
-      padding-bottom: 100px; /* добавленный отступ для защиты кнопки */
-      background-color: #f8f9fa;
-      color: #333;
-      text-align: left;
     }
 
     h2, .instruction {
@@ -81,123 +84,126 @@
     button:hover {
       background-color: #163d5c;
     }
+
     @media (max-width: 600px) {
-  body {
-    font-size: 14px;
-    max-width: 90%;
-    margin: auto;
-    line-height: 1.6;
-    padding-bottom: 100px;
-  }
+      .container {
+        max-width: 90%;
+      }
 
-  h2 {
-    font-size: 2em;
-  }
+      body {
+        font-size: 14px;
+        line-height: 1.6;
+        padding-bottom: 100px;
+      }
 
-  p, label, .quiz-question h3, .correct-answer {
-    font-size: 1.3em;
-  }
+      h2 {
+        font-size: 2em;
+      }
 
-  input[type="radio"] {
-    transform: scale(1.5);
-    margin-right: 8px;
-  }
+      p, label, .quiz-question h3, .correct-answer {
+        font-size: 1.3em;
+      }
 
-  button {
-    font-size: 1.4em;
-    padding: 16px 45px;
-  }
+      input[type="radio"] {
+        transform: scale(1.5);
+        margin-right: 8px;
+      }
 
-  .result {
-    font-size: 1.6em;
-  }
+      button {
+        font-size: 1.4em;
+        padding: 16px 45px;
+      }
 
-  html, body {
-    overflow-y: visible !important;
-  }
-}
+      .result {
+        font-size: 1.6em;
+      }
+
+      html, body {
+        overflow-y: visible !important;
+      }
+    }
   </style>
 </head>
 <body>
-  
+
   <div id="header-placeholder"></div>
-<script>
-  fetch('/header.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('header-placeholder').innerHTML = html;
-    });
-</script>
-
-
-  <h2>🧳 My Trip to Portugal (B1-B2)</h2>
-  <p class="instruction">Listen to the audio recording and choose the correct answers.</p>
-
-  <audio controls>
-    <source src="audio/trip_en_b1b2.mp3" type="audio/mpeg">
-    Ваш браузер не поддерживает аудиоэлемент.
-  </audio>
-
- <form id="quizForm"></form>
-  <button type="button" onclick="checkAnswers()">Check Answers</button>
-  <div class="result" id="result"></div>
-
   <script>
-    const questions = [
-      { q: 'What impressed the speaker about Lisbon?', 
-      a: 'The rich food culture and traditional transport', 
-      options: ['The number of modern buildings', 'The rich food culture and traditional transport', 'The quiet and peaceful atmosphere'] },
-      { q: 'Where did the speaker stay in Porto?', 
-      a: 'At a guesthouse near the water', 
-      options: ['At a guesthouse near the water', 'At a guesthouse in the forest', 'At a guesthouse near a castle'] },
-      { q: 'How did the speaker feel about the rainy day?', 
-      a: 'It didn’t spoil the experience', 
-      options: ['It ruined the end of the trip', 'It was the best day of the trip', 'It didn’t spoil the experience'] },
-      { q: 'Which aspect of Portugal stood out most to the speaker?', 
-      a: 'The combination of history and modern life', 
-      options: ['The combination of history and modern life', 'The high mountains and cold climate', 'The low cost of travel'] },
-      { q: 'What does the speaker suggest at the end of the monologue?', 
-      a: 'That Portugal is worth visiting', 
-      options: ['That people should avoid traveling in summer', 'That Portugal is worth visiting', 'He suggests visiting a different country'] }
-    ];
-
-    const form = document.getElementById('quizForm');
-
-    questions.forEach((item, i) => {
-      const div = document.createElement('div');
-      div.className = 'quiz-question';
-      div.id = `q${i+1}-block`;
-      div.innerHTML = `<h3>${i+1}. ${item.q}</h3>` +
-        item.options.map(opt => `
-          <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
-      form.appendChild(div);
-    });
-
-    function checkAnswers() {
-      let score = 0;
-      questions.forEach((item, i) => {
-        const name = `q${i+1}`;
-        const selected = form.querySelector(`input[name=${name}]:checked`);
-        const block = document.getElementById(`${name}-block`);
-        const existing = block.querySelector('.correct-answer');
-        if (existing) existing.remove();
-        const note = document.createElement('div');
-        note.classList.add('correct-answer');
-        if (selected && selected.value === item.a) {
-          note.classList.add('correct');
-          score++;
-          note.innerText = `✅ Correct! Answer: ${item.a}`;
-        } else {
-          note.classList.add('incorrect');
-          note.innerText = `❌ Correct answer: ${item.a}`;
-        }
-        block.appendChild(note);
+    fetch('/header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
       });
-      document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
-    }
   </script>
 
- <div style="background-color: #bff7ff; padding: 10px 20px; margin-top: 40px; border-top: 2px solid #008fa4; border-bottom: 2px solid #008fa4;">
+  <div class="container">
+    <h2>🧳 My Trip to Portugal (B1-B2)</h2>
+    <p class="instruction">Listen to the audio recording and choose the correct answers.</p>
+
+    <audio controls>
+      <source src="audio/trip_en_b1b2.mp3" type="audio/mpeg">
+      Ваш браузер не поддерживает аудиоэлемент.
+    </audio>
+
+    <form id="quizForm"></form>
+    <button type="button" onclick="checkAnswers()">Check Answers</button>
+    <div class="result" id="result"></div>
+
+    <script>
+      const questions = [
+        { q: 'What impressed the speaker about Lisbon?', 
+          a: 'The rich food culture and traditional transport', 
+          options: ['The number of modern buildings', 'The rich food culture and traditional transport', 'The quiet and peaceful atmosphere'] },
+        { q: 'Where did the speaker stay in Porto?', 
+          a: 'At a guesthouse near the water', 
+          options: ['At a guesthouse near the water', 'At a guesthouse in the forest', 'At a guesthouse near a castle'] },
+        { q: 'How did the speaker feel about the rainy day?', 
+          a: 'It didn’t spoil the experience', 
+          options: ['It ruined the end of the trip', 'It was the best day of the trip', 'It didn’t spoil the experience'] },
+        { q: 'Which aspect of Portugal stood out most to the speaker?', 
+          a: 'The combination of history and modern life', 
+          options: ['The combination of history and modern life', 'The high mountains and cold climate', 'The low cost of travel'] },
+        { q: 'What does the speaker suggest at the end of the monologue?', 
+          a: 'That Portugal is worth visiting', 
+          options: ['That people should avoid traveling in summer', 'That Portugal is worth visiting', 'He suggests visiting a different country'] }
+      ];
+
+      const form = document.getElementById('quizForm');
+
+      questions.forEach((item, i) => {
+        const div = document.createElement('div');
+        div.className = 'quiz-question';
+        div.id = `q${i+1}-block`;
+        div.innerHTML = `<h3>${i+1}. ${item.q}</h3>` +
+          item.options.map(opt => `
+            <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+        form.appendChild(div);
+      });
+
+      function checkAnswers() {
+        let score = 0;
+        questions.forEach((item, i) => {
+          const name = `q${i+1}`;
+          const selected = form.querySelector(`input[name=${name}]:checked`);
+          const block = document.getElementById(`${name}-block`);
+          const existing = block.querySelector('.correct-answer');
+          if (existing) existing.remove();
+          const note = document.createElement('div');
+          note.classList.add('correct-answer');
+          if (selected && selected.value === item.a) {
+            note.classList.add('correct');
+            score++;
+            note.innerText = `✅ Correct! Answer: ${item.a}`;
+          } else {
+            note.classList.add('incorrect');
+            note.innerText = `❌ Correct answer: ${item.a}`;
+          }
+          block.appendChild(note);
+        });
+        document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
+      }
+    </script>
+
+    <div style="background-color: #bff7ff; padding: 10px 20px; margin-top: 40px; border-top: 2px solid #008fa4; border-bottom: 2px solid #008fa4;">
       <h3 style="color: #d84315;">🔥 Летний мини-курс: “Английский для поиска работы” 🔥</h3>
       <p>Ищете работу в ЕС, но:</p>
       <ul>
@@ -219,22 +225,22 @@
          📨 Telegram: @ZhannaEduSpace<br />
          ✉️ email: zhanna.edu.space@gmail.com</p>
    
-     <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 15px;">
-    <a href="https://t.me/ZhannaEduSpace" target="_blank" style="background-color: #0088cc; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on Telegram</a>
-    <a href="https://wa.me/358408516355" target="_blank" style="background-color: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on WhatsApp</a>
-    <a href="mailto:zhanna.edu.space@gmail.com" style="background-color: #1f4e79; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Send Email</a>
-  </div>
+      <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 15px;">
+        <a href="https://t.me/ZhannaEduSpace" target="_blank" style="background-color: #0088cc; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on Telegram</a>
+        <a href="https://wa.me/358408516355" target="_blank" style="background-color: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on WhatsApp</a>
+        <a href="mailto:zhanna.edu.space@gmail.com" style="background-color: #1f4e79; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Send Email</a>
+      </div>
     </div>
+  </div>
 
-  
-    <div id="footer-placeholder"></div>
-<script>
-  fetch('/footer.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('footer-placeholder').innerHTML = html;
-      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
-    });
-</script>
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+        eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+      });
+  </script>
 </body>
 </html>
