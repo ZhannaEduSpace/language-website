@@ -1,16 +1,23 @@
-<header>
-  <div class="container">
-    <a href="index.html" class="logo">ZhannaEduSpace</a>
-    <nav>
-      <a href="index.html">Home</a>
-      <div class="dropdown">
-        <button class="dropbtn">Tasks / Задания</button>
-        <div class="dropdown-content">
-          <a href="english.html">English / Английский</a>
-          <a href="russian.html">Русский / Russian</a>
-          <a href="suomi.html">Suomi / Finnish</a>
-        </div>
-      </div>
-    </nav>
+<header style="background-color: #0f4c81; padding: 10px;">
+  <a href="index.html" class="logo" style="font-size: 24px; font-weight: bold; text-decoration: none; color: white; margin-right: 20px;">ZhannaEduSpace</a>
+  <a href="index.html" style="color: white; text-decoration: none; margin-right: 20px;">Home</a>
+  <div class="dropdown" style="display: inline-block; position: relative;">
+    <button class="dropbtn" style="background-color: #0f4c81; color: white; border: none; font-size: 16px; cursor: pointer;">Tasks / Задания</button>
+    <div class="dropdown-content" style="display: none; position: absolute; background-color: white; color: black; min-width: 160px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1;">
+      <a href="english.html" style="color: black; padding: 10px 16px; text-decoration: none; display: block;">English / Английский</a>
+      <a href="russian.html" style="color: black; padding: 10px 16px; text-decoration: none; display: block;">Русский / Russian</a>
+      <a href="suomi.html" style="color: black; padding: 10px 16px; text-decoration: none; display: block;">Suomi / Finnish</a>
+    </div>
   </div>
 </header>
+
+<script>
+  const btn = document.querySelector(".dropbtn");
+  const menu = btn?.nextElementSibling;
+  if (btn && menu) {
+    btn.addEventListener("mouseover", () => menu.style.display = "block");
+    btn.addEventListener("mouseout", () => menu.style.display = "none");
+    menu.addEventListener("mouseover", () => menu.style.display = "block");
+    menu.addEventListener("mouseout", () => menu.style.display = "none");
+  }
+</script>
