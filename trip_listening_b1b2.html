@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Task: "My Trip to Portugal" Listening (B1-B2)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
  <!-- ✅ ДОБАВЛЕН viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,6 +27,109 @@
       background-color: #f8f9fa;
       color: #333;
       text-align: left;
+    }
+     header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      padding: 30px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .button-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .button-grid a {
+      padding: 15px 25px;
+      text-decoration: none;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+      text-align: center;
+      min-width: 220px;
     }
 
     h2, .instruction {
