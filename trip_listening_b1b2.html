@@ -187,14 +187,12 @@
 </head>
 
 <body>
-  <div id="header-container"></div>
-  <script>
-    fetch("header.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("header-container").innerHTML = data;
-      });
-  </script>
+ <div id="header-container"></div>
+<script>
+  fetch("header.html")
+    .then(r => r.text())
+    .then(t => document.getElementById("header-container").innerHTML = t);
+</script>
 
   <div class="container">
     <h2>🧳 My Trip to Portugal (B1-B2)</h2>
