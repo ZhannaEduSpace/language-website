@@ -36,63 +36,7 @@ nav a:hover {
       color: #333;
     }
 
-    header {
-      background-color: #1f4e79;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header h1 {
-      margin: 0;
-      color: white;
-      font-size: 20px;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .dropdown {
-      position: relative;
-    }
-
-    .dropbtn {
-      background-color: #1f4e79;
-      color: white;
-      border: none;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: white;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      right: 0;
-    }
-
-    .dropdown-content a {
-      padding: 10px;
-      display: block;
-      text-decoration: none;
-      color: #333 !important;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #f1f1f1;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
+    https://github.com/ZhannaEduSpace/language-website/edit/main/english_vocabulary.html
     .container {
       max-width: 1200px;
       margin: auto;
@@ -140,12 +84,12 @@ nav a:hover {
   </style>
 </head>
 <body>
+  
   <header>
-    <h1>ZhannaEduSpace</h1>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
     <nav>
-      <a href="index.html">Home</a>
       <div class="dropdown">
-        <button class="dropbtn">Tasks / Задания</button>
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
         <div class="dropdown-content">
           <a href="english.html">English / Английский</a>
           <a href="russian.html">Русский / Russian</a>
@@ -154,6 +98,7 @@ nav a:hover {
       </div>
     </nav>
   </header>
+
 
   <div class="container">
     <h2>Задания по уровням / Tasks by Level</h2>
