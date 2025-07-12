@@ -79,6 +79,16 @@
       cursor: pointer;
       padding: 0;
     }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
 
     .dropdown-content {
       display: none;
@@ -211,7 +221,7 @@
     <a href="index.html" class="logo">ZhannaEduSpace</a>
     <nav>
       <div class="dropdown">
-        <button class="dropbtn">Tasks / Задания</button>
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
         <div class="dropdown-content">
           <a href="english.html">English / Английский</a>
           <a href="russian.html">Русский / Russian</a>
