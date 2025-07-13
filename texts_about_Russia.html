@@ -9,7 +9,7 @@
       font-family: Arial, sans-serif;
       max-width: 800px;
       margin: auto;
-      padding: 20px;
+      padding: 0;
     }
     
     header {
@@ -97,6 +97,12 @@
       display: block;
     }
     /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+ 
+    .container {
+      padding: 30px 40px;
+      max-width: 900px;
+      margin: auto;
+    }
     
     h1 {
       font-size: 2em;
@@ -136,7 +142,7 @@
     </nav>
   </header>
 
-
+  <div class="container">
   <h1>🪆 Тексты про Россию</h1>
 
    <div class="video-container">
@@ -166,6 +172,17 @@
   <div class="video-container">
     <iframe src="https://www.youtube.com/embed/J6cbIc8Fdeg" allowfullscreen></iframe>
   </div>
+     </div>
 
+ <div id="footer-placeholder"></div>
+  <script>
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+        eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+      });
+  </script>
+  
 </body>
 </html>
