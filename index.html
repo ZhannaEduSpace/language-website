@@ -16,15 +16,16 @@
 </script>
   
   <style>
-    body {
+   body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      font-size: 16px;
+      line-height: 1.4;
+      background-color: #f8f9fa;
       color: #333;
-      background-color: #fff;
     }
-
-    header {
+     header {
       background-color: #1f4e79;
       color: white;
       padding: 10px 20px;
@@ -33,62 +34,87 @@
       align-items: center;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.5em;
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
     }
 
     nav {
-      position: relative;
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
     }
 
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
     .dropdown {
       position: relative;
-      display: inline-block;
     }
 
     .dropbtn {
       background-color: #1f4e79;
       color: white;
       border: none;
-      cursor: pointer;
       font-size: 1em;
-      padding: 10px 15px;
+      cursor: pointer;
+      padding: 0;
     }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
 
     .dropdown-content {
       display: none;
       position: absolute;
-      right: 0;
       background-color: white;
-      min-width: 200px;
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       z-index: 1;
+      right: 0;
     }
 
     .dropdown-content a {
-      color: black;
-      padding: 10px 15px;
-      text-decoration: none;
+      padding: 10px;
       display: block;
+      text-decoration: none;
+      color: #333;
     }
 
     .dropdown-content a:hover {
-      background-color: #e0e0e0;
+      background-color: #f1f1f1;
     }
 
     .dropdown:hover .dropdown-content {
       display: block;
     }
-
-    .dropdown:hover .dropbtn {
-      background-color: #163d5c;
-    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
 
     .container {
-      max-width: 1000px;
+      padding: 10px 40px;
+      max-width: 1300px;
       margin: auto;
-      padding: 30px 20px;
     }
 
     .intro {
@@ -166,21 +192,18 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>Zhanna Edu Space</h1>
-    
-<nav>
-  <a href="index.html" class="dropbtn" style="margin-right: 10px;">Home / Главная</a>
-  <div class="dropdown">
-    <button class="dropbtn">Tasks / Задания</button>
-    <div class="dropdown-content">
-      <a href="english.html">English / Английский</a>
-      <a href="russian.html">Русский / Russian</a>
-      <a href="suomi.html">Suomi / Finnish</a>
-    </div>
-  </div>
-</nav>
-
+   <header>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
+        <div class="dropdown-content">
+          <a href="english.html">English / Английский</a>
+          <a href="russian.html">Русский / Russian</a>
+          <a href="suomi.html">Suomi / Finnish</a>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <div class="container">
