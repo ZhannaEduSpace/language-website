@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Task: Choosing the Right Gift (Listening) (B1-B2)</title>
+
+    <!-- ✅ ДОБАВЛЕН viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B7ECGNS96Y');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+
+  <style>
+   body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+     header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      padding: 15px 40px;
+      max-width: 750px;
+      margin: auto;
+    }
+
+    h2, .instruction {
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    audio {
+      display: block;
+      margin: 30px auto;
+      width: 100%;
+      max-width: 100%;
+      height: 80px;
+      box-sizing: border-box;
+    }
+
+    .question {
+      margin-bottom: 30px;
+    }
+
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+    @media (max-width: 600px) {
+  body {
+    font-size: 14px;
+    margin: auto;
+    line-height: 1.6;
+    padding-bottom: 100px;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  p, label, .quiz-question h3, .correct-answer {
+    font-size: 1.3em;
+  }
+
+  input[type="radio"] {
+    transform: scale(1.5);
+    margin-right: 8px;
+  }
+
+  button {
+    font-size: 1.4em;
+    padding: 16px 45px;
+  }
+
+  .result {
+    font-size: 1.6em;
+  }
+
+  html, body {
+    overflow-y: visible !important;
+  }
+}
+  </style>
+</head>
+<body>
+
+   <header>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
+        <div class="dropdown-content">
+          <a href="english.html">English / Английский</a>
+          <a href="russian.html">Русский / Russian</a>
+          <a href="suomi.html">Suomi / Finnish</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+  <h2>🎁 Choosing the Right Gift (B1-B2)</h2>
+  <p class="instruction">Listen to the audio recording and choose True or False for each statement.</p>
+
+ <audio controls controlsList="nodownload noplaybackrate">
+    <source src="audio/gift_en_b1b2.mp3" type="audio/mpeg">
+    Ваш браузер не поддерживает аудиоэлемент.
+  </audio>
+
+ <form id="quizForm"></form>
+  <button type="button" onclick="checkAnswers()">Check Answers</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const questions = [
+  {
+    q: `The speaker wanted to buy something more personal than usual for Ben’s birthday.`,
+    a: 'True',
+    options: ['True', 'False']
+  },
+  {
+    q: `Ben has never owned any wearable tech devices.`,
+    a: 'False',
+    options: ['True', 'False']
+  },
+  {
+    q: `The speaker thought a cooking class would suit Ben’s busy schedule.`,
+    a: 'False',
+    options: ['True', 'False']
+  },
+  {
+    q: `The final gift was connected to a memory they shared.`,
+    a: 'True',
+    options: ['True', 'False']
+  },
+  {
+    q: `Ben seemed touched by the gift he received.`,
+    a: 'True',
+    options: ['True', 'False']
+  }
+    ];
+
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q${i+1}-block`;
+      div.innerHTML = `<h3>${i+1}. ${item.q}</h3>` +
+        item.options.map(opt => `
+          <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+      form.appendChild(div);
+    });
+
+    function checkAnswers() {
+      let score = 0;
+      questions.forEach((item, i) => {
+        const name = `q${i+1}`;
+        const selected = form.querySelector(`input[name=${name}]:checked`);
+        const block = document.getElementById(`${name}-block`);
+        const existing = block.querySelector('.correct-answer');
+        if (existing) existing.remove();
+        const note = document.createElement('div');
+        note.classList.add('correct-answer');
+
+        if (selected && selected.value === item.a) {
+          note.classList.add('correct');
+          score++;
+          note.innerText = `✅ Correct answer: ${item.a}`;
+        } else {
+          note.classList.add('incorrect');
+          note.innerText = `❌ Correct answer: ${item.a}`;
+        }
+
+        block.appendChild(note);
+      });
+      document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
+    }
+  </script>
+
+ <div style="background-color: #bff7ff; padding: 10px 20px; margin-top: 40px; border-top: 2px solid #008fa4; border-bottom: 2px solid #008fa4;">
+      <h3 style="color: #d84315;">🔥 Летний мини-курс: “Английский для поиска работы” 🔥</h3>
+      <p>Ищете работу в ЕС, но:</p>
+      <ul>
+        <li> не уверены в своём CV?</li>
+        <li> не знаете, как писать cover letter?</li>
+        <li> боитесь говорить на собеседовании на английском?</li>
+      </ul>
+      <p>Я создала мини-курс из 3 индивидуальных онлайн-занятий по 1 часу, чтобы помочь вам подготовиться быстро и по делу:</p>
+      <ul>
+        <li>📄 Разберём ваше CV — стилистика, язык, требования индустрии</li>
+        <li>💌 Напишем или улучшим сопроводительное письмо</li>
+        <li>🎙 Потренируемся в формате интервью — с фразами, фидбэком и уверенностью</li>
+      </ul>
+      <p>📆 Гибкий график, онлайн, 1:1<br />
+         🌍 Подходит для жителей ЕС<br />
+         💶 <strong>Летняя цена: всего 25 евро за весь курс</strong> (вместо 60€)</p>
+      <p><strong>Записаться можно по:</strong></p>
+      <p>📱 WhatsApp: +358 40 8516 355<br />
+         📨 Telegram: @ZhannaEduSpace<br />
+         ✉️ email: zhanna.edu.space@gmail.com</p>
+   
+     <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 15px;">
+    <a href="https://t.me/ZhannaEduSpace" target="_blank" style="background-color: #0088cc; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on Telegram</a>
+    <a href="https://wa.me/358408516355" target="_blank" style="background-color: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on WhatsApp</a>
+    <a href="mailto:zhanna.edu.space@gmail.com" style="background-color: #1f4e79; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Send Email</a>
+  </div>
+    </div>
+
+  
+    <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+</body>
+</html>
