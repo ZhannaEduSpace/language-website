@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<title>Тест: Учёба в университете (B1-B2)</title>
+
+    <!-- ✅ ДОБАВЛЕН viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B7ECGNS96Y');
+</script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+  
+  <style>
+   body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+     header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      padding: 10px 40px;
+      max-width: 750px;
+      margin: auto;
+    }
+    .quiz-question {
+      margin-bottom: 30px;
+    }
+
+    .quiz-question h3 {
+      margin-bottom: 10px;
+    }
+
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+
+   @media (max-width: 600px) {
+  body {
+    font-size: 14px;
+    max-width: 90%;
+    margin: auto;
+    line-height: 1.6;
+    padding-bottom: 100px;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  p, label, .quiz-question h3, .correct-answer {
+    font-size: 1.3em;
+  }
+
+  input[type="radio"] {
+    transform: scale(1.5);
+    margin-right: 8px;
+  }
+
+  button {
+    font-size: 1.4em;
+    padding: 16px 45px;
+  }
+
+  .result {
+    font-size: 1.6em;
+  }
+
+  html, body {
+    overflow-y: visible !important;
+  }
+}
+  </style>
+</head>
+<body>
+
+   <header>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
+        <div class="dropdown-content">
+          <a href="english.html">English / Английский</a>
+          <a href="russian.html">Русский / Russian</a>
+          <a href="suomi.html">Suomi / Finnish</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+  <h2>📝 Учёба в университете (B1-B2)</h2>
+  <p><strong>Вы́берите пра́вильное сло́во.</strong><br>
+ В ка́ждом вопро́се то́лько оди́н пра́вильный отве́т.</p>
+
+  <form id="quizForm"></form>
+  <button type="button" onclick="checkAnswers()">Проверить ответы</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const questions = [
+      {
+        q: 'Перед сессией мы готовимся к __________.',
+        a: 'экзаменам',
+        options: ['шпаргалкам', 'письмам', 'экзаменам', 'ответам']
+      },
+      {
+        q: 'У меня завтра последний __________, и лето начнётся!',
+        a: 'экзамен',
+        options: ['семестр', 'экзамен', 'учебник', 'книга']
+      },
+      {
+        q: 'Если на экзамене найдут __________, могут аннулировать вашу работу.',
+        a: 'шпаргалку',
+        options: ['шпаргалку', 'оценку', 'зачётку', 'бумагу']
+      },
+      {
+        q: 'В конце семестра студентов ждёт самое трудное — начинается __________.',
+        a: 'сессия',
+        options: ['каникулы', 'расписание', 'сессия', 'зачетка']
+      },
+      {
+        q: 'Чтобы получить __________, нужно набрать не меньше 70 баллов.',
+        a: 'зачёт',
+        options: ['экзамен', 'ответ', 'зачёт', 'вопрос']
+      },
+      {
+        q: 'Многие студенты ведут __________, чтобы не забыть важные темы.',
+        a: 'конспекты',
+        options: ['экзамены', 'оценки', 'конспекты', 'зачёты']
+      },
+      {
+        q: 'Мы читаем и обсуждаем статьи на __________ по социологии каждую неделю.',
+        a: 'семинаре',
+        options: ['семинаре', 'каникулах', 'перемене', 'парте']
+      },
+      {
+        q: 'После окончания университета студенты получают __________.',
+        a: 'диплом',
+        options: ['расписание', 'дневник', 'пересдачу', 'диплом']
+      },
+      {
+        q: 'Если студент не сдал экзамен, ему назначают __________.',
+        a: 'пересдачу',
+        options: ['лекцию', 'пересдачу', 'каникулы', 'сессию']
+      },
+      {
+        q: 'Как называется высшая оценка в русской системе образования?',
+        a: 'отлично',
+        options: ['хорошо', 'удовлетворительно', 'отлично', 'нормально']
+      }
+    ];
+
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q${i+1}-block`;
+      div.innerHTML = `<h3>${i+1}. ${item.q}</h3>` +
+        item.options.map(opt => `
+          <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+      form.appendChild(div);
+    });
+
+    function checkAnswers() {
+      let score = 0;
+      questions.forEach((item, i) => {
+        const name = `q${i+1}`;
+        const selected = form.querySelector(`input[name=${name}]:checked`);
+        const block = document.getElementById(`${name}-block`);
+        const existing = block.querySelector('.correct-answer');
+        if (existing) existing.remove();
+        const note = document.createElement('div');
+        note.classList.add('correct-answer');
+
+        if (selected && selected.value === item.a) {
+          note.classList.add('correct');
+          score++;
+          note.innerText = `✅ Correct! Answer: ${item.a}`;
+        } else {
+          note.classList.add('incorrect');
+          note.innerText = `❌ Correct answer: ${item.a}`;
+        }
+
+        block.appendChild(note);
+      });
+      document.getElementById('result').innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
+    }
+  </script>
+
+ <div style="background-color: #bff7ff; padding: 10px 20px; margin-top: 40px; border-top: 2px solid #008fa4; border-bottom: 2px solid #008fa4;">
+      <h3 style="color: #d84315;">🪆 Learn Russian with a personal teacher</h3>
+      <p>Whether you're just starting out or want to improve your Russian for work, travel, or study — I offer individual online lessons tailored to your needs and interests.</p>
+  
+      <p>🎯 I can help you with:</p>
+      <ul>
+        <li>Speaking and listening for everyday situations</li>
+        <li>Reading and understanding authentic texts</li>
+        <li>Grammar and pronunciation</li>
+        <li>Specialized topics — from culture to academic or professional contexts</li>
+      </ul>
+      <p>📆  Lessons are 1:1, fully online, and flexible in scheduling.<br />
+         🌍 I’m based in Europe and speak English fluently, so I can support you in learning Russian step by step — even if you're a complete beginner.<br />
+        <strong>🎁 Free trial lesson available — let's discuss your goals and create a learning plan that works for you.</strong> </p>
+      <p><strong>Contact me:</strong></p>
+      <p>📱 WhatsApp: +358 40 8516 355<br />
+         📨 Telegram: @ZhannaEduSpace<br />
+         ✉️ email: zhanna.edu.space@gmail.com</p>
+
+     <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 15px;">
+    <a href="https://t.me/ZhannaEduSpace" target="_blank" style="background-color: #0088cc; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on Telegram</a>
+    <a href="https://wa.me/358408516355" target="_blank" style="background-color: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on WhatsApp</a>
+    <a href="mailto:zhanna.edu.space@gmail.com" style="background-color: #1f4e79; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Send Email</a>
+  </div>
+    </div>
+  
+    <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+</body>
+</html>
