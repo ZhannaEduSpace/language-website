@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Задание: Наречия от прилагательных (B1)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B7ECGNS96Y');
+</script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+     header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      padding: 30px 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #1f4e79;
+    }
+
+    .question {
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .question label {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    input[type="text"] {
+      padding: 8px 12px;
+      font-size: 1em;
+      width: 40%;
+      max-width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .correct {
+      color: green;
+      margin-top: 4px;
+    }
+
+    .incorrect {
+      color: red;
+      margin-top: 4px;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 28px;
+      font-size: 1em;
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+  </style>
+</head>
+<body>
+  
+ <header>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
+        <div class="dropdown-content">
+          <a href="english.html">English / Английский</a>
+          <a href="russian.html">Русский / Russian</a>
+          <a href="suomi.html">Suomi / Finnish</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+  <h2>📘 Наречия от прилагательных (B1)</h2>
+
+  <p><strong>Образуйте наречие от прилагательного.</strong><br>
+  Напишите ответ в поле.<br>
+  Например: <em>аккуратный → аккуратно</em></p>
+
+
+  <form id="quizForm"></form>
+
+  <button onclick="checkAnswers()">Проверить ответы</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const questions = [
+      { base: "серьёзный", answer: "серьёзно" },
+      { base: "аккуратный", answer: "аккуратно" },
+      { base: "уверенный", answer: "уверенно" },
+      { base: "вежливый", answer: "вежливо" },
+      { base: "сильный", answer: "сильно" },
+      { base: "громкий", answer: "громко" },
+      { base: "тихий", answer: "тихо" },
+      { base: "холодный", answer: "холодно" },
+      { base: "медленный", answer: "медленно" },
+      { base: "лёгкий", answer: "легко" },
+      { base: "плохой", answer: "плохо" },
+      { base: "активный", answer: "активно" },
+      { base: "ясный", answer: "ясно" },
+      { base: "ранний", answer: "рано" },
+      { base: "дружелюбный", answer: "дружелюбно" }
+    ];
+
+    const form = document.getElementById("quizForm");
+
+    questions.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q${index}`;
+      div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input${index}" placeholder="Напишите ответ">`;
+      form.appendChild(div);
+    });
+
+    function normalize(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers() {
+      let score = 0;
+
+      questions.forEach((q, i) => {
+        const userInput = normalize(document.getElementById(`input${i}`).value);
+        const correct = normalize(q.answer);
+        const block = document.getElementById(`q${i}`);
+
+        let feedback = block.querySelector(".correct") || block.querySelector(".incorrect");
+        if (feedback) feedback.remove();
+
+        const msg = document.createElement("div");
+        if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Правильно: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Неправильно. Правильный ответ: ${q.answer}`;
+        }
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result").innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
+    }
+  </script>
+
+<div style="background-color: #bff7ff; padding: 10px 20px; margin-top: 40px; border-top: 2px solid #008fa4; border-bottom: 2px solid #008fa4;">
+      <h3 style="color: #d84315;">🪆 Learn Russian with a personal teacher</h3>
+      <p>Whether you're just starting out or want to improve your Russian for work, travel, or study — I offer individual online lessons tailored to your needs and interests.</p>
+  
+      <p>🎯 I can help you with:</p>
+      <ul>
+        <li>Speaking and listening for everyday situations</li>
+        <li>Reading and understanding authentic texts</li>
+        <li>Grammar and pronunciation</li>
+        <li>Specialized topics — from culture to academic or professional contexts</li>
+      </ul>
+      <p>📆  Lessons are 1:1, fully online, and flexible in scheduling.<br />
+         🌍 I’m based in Europe and speak English fluently, so I can support you in learning Russian step by step — even if you're a complete beginner.<br />
+        <strong>🎁 Free trial lesson available — let's discuss your goals and create a learning plan that works for you.</strong> </p>
+      <p><strong>Contact me:</strong></p>
+      <p>📱 WhatsApp: +358 40 8516 355<br />
+         📨 Telegram: @ZhannaEduSpace<br />
+         ✉️ email: zhanna.edu.space@gmail.com</p>
+
+     <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 15px;">
+    <a href="https://t.me/ZhannaEduSpace" target="_blank" style="background-color: #0088cc; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on Telegram</a>
+    <a href="https://wa.me/358408516355" target="_blank" style="background-color: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on WhatsApp</a>
+    <a href="mailto:zhanna.edu.space@gmail.com" style="background-color: #1f4e79; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Send Email</a>
+  </div>
+    </div>
+  
+    <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+  
+</body>
+</html>
