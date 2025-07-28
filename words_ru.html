@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Настоящие слова</title>
+  
+    <!-- ✅ ДОБАВЛЕН viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B7ECGNS96Y');
+</script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+  
+  <style>
+  body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+     header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      padding: 10px 40px;
+      max-width: 750px;
+      margin: auto;
+    }
+    .quiz-question {
+      margin-bottom: 30px;
+    }
+    .quiz-question h3 {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+     button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+
+    @media (max-width: 600px) {
+  body {
+    font-size: 14px;
+    max-width: 90%;
+    margin: auto;
+    line-height: 1.6;
+    padding-bottom: 100px;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  p, label, .quiz-question h3, .correct-answer {
+    font-size: 1.3em;
+  }
+
+  input[type="radio"] {
+    transform: scale(1.5);
+    margin-right: 8px;
+  }
+
+  button {
+    font-size: 1.4em;
+    padding: 16px 45px;
+  }
+
+  .result {
+    font-size: 1.6em;
+  }
+
+  html, body {
+    overflow-y: visible !important;
+  }
+}
+  </style>
+</head>
+<body>
+
+   <header>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
+        <div class="dropdown-content">
+          <a href="english.html">English / Английский</a>
+          <a href="russian.html">Русский / Russian</a>
+          <a href="suomi.html">Suomi / Finnish</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+ <h3>Выберите настоящие слова из списка</h3>
+<p><em>Отметьте все настоящие русские слова. Осторожно: некоторые — вымышленные!</em></p>
+
+<div id="wordList">
+  <!-- Слова появятся тут динамически -->
+</div>
+
+<button onclick="checkRealWords()">Проверить</button>
+<div id="feedbackWords"></div>
+<div id="feedbackSummary" style="margin-top: 20px; font-weight: bold;"></div>
+
+  <script>
+   const words = [
+  { text: "кот", real: true },
+  { text: "шкум", real: false },
+  { text: "стол", real: true },
+  { text: "блюмка", real: false },
+  { text: "трава", real: true },
+  { text: "флюнтик", real: false },
+  { text: "дом", real: true },
+  { text: "жмак", real: false },
+  { text: "ручка", real: true },
+  { text: "молик", real: false }
+];
+
+const wordList = document.getElementById("wordList");
+
+words.forEach((word, index) => {
+  const div = document.createElement("div");
+  div.style.marginBottom = "6px";
+
+  div.innerHTML = `
+    <label>
+      <input type="checkbox" id="word-${index}"> 
+      <span style="font-size: 1.2em">${word.text}</span>
+      <span id="feedback-${index}" style="margin-left: 10px;"></span>
+    </label>`;
+  wordList.appendChild(div);
+});
+
+function checkRealWords() {
+  let total = words.length;
+  let correct = 0;
+
+  words.forEach((word, index) => {
+    const checkbox = document.getElementById(`word-${index}`);
+    const feedback = document.getElementById(`feedback-${index}`);
+    feedback.innerHTML = "";
+
+    const chosen = checkbox.checked;
+
+    // Пользователь выбрал правильно:
+    if (word.real && chosen) {
+      correct++;
+      feedback.innerHTML = "✔ настоящее слово";
+      feedback.style.color = "green";
+    }
+    // Пользователь НЕ выбрал фейк — тоже правильно:
+    else if (!word.real && !chosen) {
+      correct++;
+      feedback.innerHTML = "✔ несуществующее слово";
+      feedback.style.color = "green";
+    }
+    // Ошибка: выбрал фейк или пропустил настоящее
+    else {
+      feedback.innerHTML = "❌ " + (word.real ? "настоящее слово" : "несуществующее слово");
+      feedback.style.color = "red";
+    }
+  });
+
+  const percent = Math.round((correct / total) * 100);
+  document.getElementById("feedbackSummary").innerText = `Результат: ${correct} из ${total} (${percent}%)`;
+}
+  </script>
+  
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+</body>
+</html>
