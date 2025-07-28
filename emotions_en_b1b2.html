@@ -227,6 +227,7 @@ nav a:hover {
   <div class="sentence" data-answer="excited">The kids are really <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> about the school trip tomorrow.</div>
 
   <button onclick="checkAnswers()">Check Answers</button>
+   <div class="result" id="result" style="font-weight: bold; margin-top: 20px;"></div>
 
   <script>
     const wordBank = document.getElementById("wordBank");
@@ -282,21 +283,26 @@ nav a:hover {
     };
 
     function checkAnswers() {
-      const zones = document.querySelectorAll(".drop-zone");
-      zones.forEach(zone => {
-        const sentence = zone.closest(".sentence");
-        const correct = sentence.dataset.answer;
-        const word = zone.querySelector(".word");
-        sentence.classList.remove("correct", "incorrect");
+  const zones = document.querySelectorAll(".drop-zone");
+  let score = 0;
+  
+  zones.forEach(zone => {
+    const sentence = zone.closest(".sentence");
+    const correct = sentence.dataset.answer;
+    const word = zone.querySelector(".word");
+    sentence.classList.remove("correct", "incorrect");
 
-        if (word && word.innerText.toLowerCase() === correct) {
-          sentence.classList.add("correct");
-        } else {
-          sentence.classList.add("incorrect");
-        }
-      });
-     document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
+    if (word && word.innerText.toLowerCase() === correct) {
+      sentence.classList.add("correct");
+      score++;
+    } else {
+      sentence.classList.add("incorrect");
     }
+  });
+
+  document.getElementById("result").innerText = `You answered correctly on ${score} out of ${zones.length} questions.`;
+}
+
   </script>
     </div>
 
