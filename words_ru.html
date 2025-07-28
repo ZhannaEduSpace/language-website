@@ -121,6 +121,9 @@
       max-width: 750px;
       margin: auto;
     }
+    .word-item {
+    font-size: 1.5em; /* в полтора раза больше обычного */
+   }
     .quiz-question {
       margin-bottom: 30px;
     }
@@ -157,6 +160,11 @@
     button:hover {
       background-color: #163d5c;
     }
+    input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-right: 10px;
+    cursor: pointer;
+   }
 
     @media (max-width: 600px) {
   body {
@@ -246,7 +254,7 @@ words.forEach((word, index) => {
   div.innerHTML = `
     <label>
       <input type="checkbox" id="word-${index}"> 
-      <span style="font-size: 1.2em">${word.text}</span>
+      <span class="word-item">${word.text}</span>
       <span id="feedback-${index}" style="margin-left: 10px;"></span>
     </label>`;
   wordList.appendChild(div);
