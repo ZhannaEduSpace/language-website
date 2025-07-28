@@ -4,117 +4,89 @@
   <meta charset="UTF-8">
   <title>Feelings & Emotions (B1-B2)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-B7ECGNS96Y');
-</script>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
-     crossorigin="anonymous"></script>
-  
   <style>
     body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  line-height: 1.4;
-  background-color: #f8f9fa;
-  color: #333;
-}
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      color: #333;
+    }
     header {
-  background-color: #1f4e79;
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+    .logo:hover {
+      text-decoration: none;
+    }
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
 
-.logo {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.3em;
-}
+    .dropdown {
+      position: relative;
+    }
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: none;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
 
-.logo:hover {
-  text-decoration: none;
-}
-
-nav {
-  display: flex;
-  align-items: baseline;
-  gap: 20px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 1em;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* ▼▼▼ dropdown styles ▼▼▼ */
-.dropdown {
-  position: relative;
-}
-
-.dropbtn {
-  background-color: #1f4e79;
-  color: white;
-  border: none;
-  font-size: 1em;
-  cursor: pointer;
-  padding: 0;
-  text-decoration: none;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 180px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  right: 0;
-}
-
-.dropdown-content a {
-  padding: 10px;
-  display: block;
-  text-decoration: none;
-  color: #333;
-}
-
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-/* ▲▲▲ конец dropdown ▲▲▲ */
-
-     .container {
+    .container {
       padding: 15px 40px;
       max-width: 1000px;
       margin: auto;
     }
-
     h2 {
       color: #1f4e79;
     }
-
     .word-bank {
       display: flex;
       flex-wrap: wrap;
@@ -123,22 +95,19 @@ nav a:hover {
       background-color: #e8f0fa;
       border-radius: 8px;
       margin-bottom: 25px;
-      min-height: 45px;
-      align-items: center;
+      min-height: 50px;
     }
-
-  .word {
-     padding: 4px 10px;
-     background-color: #e0ecff;
-     border: 1px solid #1f4e79;
-     border-radius: 8px;
-     cursor: grab;
-     user-select: none;
-     font-size: 1em;
-     min-width: 70px;
-     text-align: center;
-   }
-
+    .word {
+      padding: 4px 10px;
+      background-color: #e0ecff;
+      border: 1px solid #1f4e79;
+      border-radius: 8px;
+      cursor: grab;
+      user-select: none;
+      font-size: 1em;
+      min-width: 70px;
+      text-align: center;
+    }
     .sentence {
       background-color: #fff;
       border-radius: 6px;
@@ -146,7 +115,6 @@ nav a:hover {
       margin-bottom: 10px;
       transition: background-color 0.3s;
     }
-
     .drop-zone {
       display: inline-block;
       min-width: 90px;
@@ -155,22 +123,15 @@ nav a:hover {
       vertical-align: middle;
       margin: 0 4px;
       text-align: center;
-      background-color: transparent;
     }
-
-    .drop-zone.over {
-    }
-
     .correct {
       background-color: #e0f7e9 !important;
       border-left: 4px solid #28a745;
     }
-
     .incorrect {
       background-color: #fce4e4 !important;
       border-left: 4px solid #dc3545;
     }
-
     button {
       margin-top: 20px;
       padding: 10px 20px;
@@ -181,7 +142,6 @@ nav a:hover {
       border-radius: 6px;
       cursor: pointer;
     }
-
     button:hover {
       background-color: #163d5c;
     }
@@ -189,7 +149,7 @@ nav a:hover {
 </head>
 <body>
 
-  <header>
+<header>
   <a href="index.html" class="logo">ZhannaEduSpace</a>
   <nav>
     <div class="dropdown">
@@ -203,103 +163,69 @@ nav a:hover {
   </nav>
 </header>
 
- <div class="container">
+<div class="container">
   <h2>😱 Feelings & Emotions (B1-B2)</h2>
- <p><strong>Complete the sentences by dragging the correct emotion from the list.</strong><br>(You can change your answer by dragging the word back to the list.)</p>
+  <p><strong>Complete the sentences by dragging the correct emotion from the list.</strong><br>(You can change your answer by dragging the word back to the list.)</p>
+
   <div class="word-bank" id="wordBank">
-    <div class="word" draggable="true">anxious</div>
-    <div class="word" draggable="true">relieved</div>
-    <div class="word" draggable="true">excited</div>
-    <div class="word" draggable="true">confident</div>
-    <div class="word" draggable="true">frustrated</div>
-    <div class="word" draggable="true">upset</div>
-    <div class="word" draggable="true">proud</div>
-    <div class="word" draggable="true">surprised</div>
+    <div class="word">anxious</div>
+    <div class="word">relieved</div>
+    <div class="word">excited</div>
+    <div class="word">confident</div>
+    <div class="word">frustrated</div>
+    <div class="word">upset</div>
+    <div class="word">proud</div>
+    <div class="word">surprised</div>
   </div>
 
-  <div class="sentence" data-answer="surprised">He was <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> to see his childhood friend at the party.</div>
-  <div class="sentence" data-answer="relieved">I'm <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> that I passed the driving test.</div>
-  <div class="sentence" data-answer="anxious">She felt <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> before giving her first presentation.</div>
-  <div class="sentence" data-answer="upset">We were <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> when our team lost the final game.</div>
-  <div class="sentence" data-answer="frustrated">She was <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> because the website kept crashing during the application process.</div>
-  <div class="sentence" data-answer="confident">After weeks of preparation, I feel <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> about the exam.</div>
-  <div class="sentence" data-answer="proud">Their parents were very <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> of them for winning the competition.</div>
-  <div class="sentence" data-answer="excited">The kids are really <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> about the school trip tomorrow.</div>
+  <div class="sentence" data-answer="surprised">He was <span class="drop-zone"></span> to see his childhood friend at the party.</div>
+  <div class="sentence" data-answer="relieved">I'm <span class="drop-zone"></span> that I passed the driving test.</div>
+  <div class="sentence" data-answer="anxious">She felt <span class="drop-zone"></span> before giving her first presentation.</div>
+  <div class="sentence" data-answer="upset">We were <span class="drop-zone"></span> when our team lost the final game.</div>
+  <div class="sentence" data-answer="frustrated">She was <span class="drop-zone"></span> because the website kept crashing during the application process.</div>
+  <div class="sentence" data-answer="confident">After weeks of preparation, I feel <span class="drop-zone"></span> about the exam.</div>
+  <div class="sentence" data-answer="proud">Their parents were very <span class="drop-zone"></span> of them for winning the competition.</div>
+  <div class="sentence" data-answer="excited">The kids are really <span class="drop-zone"></span> about the school trip tomorrow.</div>
 
   <button onclick="checkAnswers()">Check Answers</button>
+</div>
 
-  <script>
-    const wordBank = document.getElementById("wordBank");
+<!-- ✅ Подключаем библиотеку -->
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 
-    document.querySelectorAll(".word").forEach(word => {
-      word.addEventListener("dragstart", e => {
-        e.dataTransfer.setData("text/plain", e.target.innerText);
-      });
+<script>
+  // Сделать wordBank зоной для перетаскивания
+  new Sortable(document.getElementById("wordBank"), {
+    group: "shared",
+    animation: 150,
+    sort: false
+  });
+
+  // Каждую drop-зону сделать перетаскиваемой
+  document.querySelectorAll(".drop-zone").forEach(zone => {
+    new Sortable(zone, {
+      group: "shared",
+      animation: 150,
+      sort: false
     });
+  });
 
-    function allowDrop(e) {
-      e.preventDefault();
-      e.target.classList.add("over");
-    }
+  function checkAnswers() {
+    document.querySelectorAll(".sentence").forEach(sentence => {
+      sentence.classList.remove("correct", "incorrect");
+      const drop = sentence.querySelector(".drop-zone .word");
+      const expected = sentence.dataset.answer;
 
-    function drop(e) {
-      e.preventDefault();
-      e.target.classList.remove("over");
-
-      const wordText = e.dataTransfer.getData("text/plain");
-      const dropTarget = e.target;
-
-      if (!dropTarget.classList.contains("drop-zone")) return;
-
-      // Найти существующее слово и вернуть его в wordBank
-      const existing = dropTarget.querySelector(".word");
-      if (existing) wordBank.appendChild(existing);
-
-      // Найти перетаскиваемый элемент
-      const dragged = [...document.querySelectorAll(".word")].find(w => w.innerText === wordText);
-      if (dragged) {
-        dropTarget.innerHTML = '';
-        dropTarget.appendChild(dragged);
+      if (drop && drop.innerText.toLowerCase() === expected) {
+        sentence.classList.add("correct");
+      } else {
+        sentence.classList.add("incorrect");
       }
-    }
+    });
+  }
+</script>
 
-    // Вернуть слово в банк
-    wordBank.ondragover = allowDrop;
-    wordBank.ondrop = function(e) {
-      e.preventDefault();
-      const wordText = e.dataTransfer.getData("text/plain");
-      const dragged = [...document.querySelectorAll(".word")].find(w => w.innerText === wordText);
-
-      // Удалить из старой зоны
-      const parentZone = dragged?.parentElement;
-      if (parentZone && parentZone.classList.contains("drop-zone")) {
-        parentZone.innerHTML = '';
-      }
-
-      if (dragged && !wordBank.contains(dragged)) {
-        wordBank.appendChild(dragged);
-      }
-    };
-
-    function checkAnswers() {
-      const zones = document.querySelectorAll(".drop-zone");
-      zones.forEach(zone => {
-        const sentence = zone.closest(".sentence");
-        const correct = sentence.dataset.answer;
-        const word = zone.querySelector(".word");
-        sentence.classList.remove("correct", "incorrect");
-
-        if (word && word.innerText.toLowerCase() === correct) {
-          sentence.classList.add("correct");
-        } else {
-          sentence.classList.add("incorrect");
-        }
-      });
-    }
-  </script>
-    </div>
-
-  <div id="footer-placeholder"></div>
+<div id="footer-placeholder"></div>
 <script>
   fetch('/footer.html')
     .then(res => res.text())
