@@ -299,10 +299,10 @@
         if (selected && selected.value === item.a) {
           note.classList.add('correct');
           score++;
-          note.innerText = `✅ Correct answer: ${item.a}`;
+          note.innerText = `✅ Oikein! Vastaus: ${item.a}`;
         } else {
           note.classList.add('incorrect');
-          note.innerText = `❌ Correct answer: ${item.a}`;
+          note.innerText = `❌ Oikea vastaus: ${item.a}`;
         }
 
         block.appendChild(note);
