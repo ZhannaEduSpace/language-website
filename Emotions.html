@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Drag & Drop: Emotions</title>
+  <title>Drag & Drop Emotions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
@@ -19,7 +19,11 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #e8f0fa;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      min-height: 60px;
     }
 
     .word {
@@ -51,6 +55,10 @@
       margin: 0 4px;
       text-align: center;
       background-color: transparent;
+    }
+
+    .drop-zone.over {
+      background-color: #d9eaff;
     }
 
     .correct {
@@ -94,39 +102,45 @@
     <div class="word" draggable="true">surprised</div>
   </div>
 
-  <div class="sentence" data-answer="surprised">He was <span class="drop-zone" ondragover="event.preventDefault()" ondrop="drop(event)"></span> to see his childhood friend at the party.</div>
-  <div class="sentence" data-answer="relieved">I'm <span class="drop-zone" ondragover="event.preventDefault()" ondrop="drop(event)"></span> that I passed the driving test.</div>
-  <div class="sentence" data-answer="anxious">She felt <span class="drop-zone" ondragover="event.preventDefault()" ondrop="drop(event)"></span> before giving her first presentation.</div>
-  <div class="sentence" data-answer="upset">We were <span class="drop-zone" ondragover="event.preventDefault()" ondrop="drop(event)"></span> when our team lost the final game.</div>
-  <div class="sentence" data-answer="frustrated">She was <span class="drop-zone" ondragover="event.preventDefault()" ondrop="drop(event)"></span> because the website kept crashing during the application process.</div>
-  <div class="sentence" data-answer="confident">After weeks of preparation, I feel <span class="drop-zone" ondragover="event.preventDefault()" ondrop="drop(event)"></span> about the exam.</div>
-  <div class="sentence" data-answer="proud">Their parents were very <span class="drop-zone" ondragover="event.preventDefault()" ondrop="drop(event)"></span> of them for winning the competition.</div>
-  <div class="sentence" data-answer="excited">The kids are really <span class="drop-zone" ondragover="event.preventDefault()" ondrop="drop(event)"></span> about the school trip tomorrow.</div>
+  <div class="sentence" data-answer="surprised">He was <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> to see his childhood friend at the party.</div>
+  <div class="sentence" data-answer="relieved">I'm <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> that I passed the driving test.</div>
+  <div class="sentence" data-answer="anxious">She felt <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> before giving her first presentation.</div>
+  <div class="sentence" data-answer="upset">We were <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> when our team lost the final game.</div>
+  <div class="sentence" data-answer="frustrated">She was <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> because the website kept crashing during the application process.</div>
+  <div class="sentence" data-answer="confident">After weeks of preparation, I feel <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> about the exam.</div>
+  <div class="sentence" data-answer="proud">Their parents were very <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> of them for winning the competition.</div>
+  <div class="sentence" data-answer="excited">The kids are really <span class="drop-zone" ondragover="allowDrop(event)" ondrop="drop(event)"></span> about the school trip tomorrow.</div>
 
   <button onclick="checkAnswers()">Check Answers</button>
 
   <script>
     const wordBank = document.getElementById("wordBank");
 
-    // Активируем drag'n'drop
     document.querySelectorAll(".word").forEach(word => {
       word.addEventListener("dragstart", e => {
         e.dataTransfer.setData("text/plain", e.target.innerText);
       });
     });
 
+    function allowDrop(e) {
+      e.preventDefault();
+      e.target.classList.add("over");
+    }
+
     function drop(e) {
       e.preventDefault();
+      e.target.classList.remove("over");
+
       const wordText = e.dataTransfer.getData("text/plain");
       const dropTarget = e.target;
 
       if (!dropTarget.classList.contains("drop-zone")) return;
 
-      // Удалить старое слово из зоны, если есть
+      // Найти существующее слово и вернуть его в wordBank
       const existing = dropTarget.querySelector(".word");
       if (existing) wordBank.appendChild(existing);
 
-      // Найти и вставить перетаскиваемое слово
+      // Найти перетаскиваемый элемент
       const dragged = [...document.querySelectorAll(".word")].find(w => w.innerText === wordText);
       if (dragged) {
         dropTarget.innerHTML = '';
@@ -134,13 +148,22 @@
       }
     }
 
-    // Позволить вернуть обратно
-    wordBank.ondragover = event => event.preventDefault();
-    wordBank.ondrop = e => {
+    // Вернуть слово в банк
+    wordBank.ondragover = allowDrop;
+    wordBank.ondrop = function(e) {
       e.preventDefault();
       const wordText = e.dataTransfer.getData("text/plain");
       const dragged = [...document.querySelectorAll(".word")].find(w => w.innerText === wordText);
-      if (dragged) wordBank.appendChild(dragged);
+
+      // Удалить из старой зоны
+      const parentZone = dragged?.parentElement;
+      if (parentZone && parentZone.classList.contains("drop-zone")) {
+        parentZone.innerHTML = '';
+      }
+
+      if (dragged && !wordBank.contains(dragged)) {
+        wordBank.appendChild(dragged);
+      }
     };
 
     function checkAnswers() {
