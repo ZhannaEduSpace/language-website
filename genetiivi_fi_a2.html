@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genetiivin muodostus (A2)</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B7ECGNS96Y');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+     header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      padding: 15px 40px;
+      max-width: 750px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 1.8em;
+    }
+    p {
+      font-size: 1.1em;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    .question span {
+      display: inline-block;
+      min-width: 60%;
+    }
+    input[type="text"] {
+      padding: 8px 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 130px;
+      max-width: 90%;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .result {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 30px;
+    }
+    button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #163d5c;
+    }
+  </style>
+</head>
+<body>
+
+   <header>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
+        <div class="dropdown-content">
+          <a href="english.html">English / Английский</a>
+          <a href="russian.html">Русский / Russian</a>
+          <a href="suomi.html">Suomi / Finnish</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+  <h2>✏️ Genetiivin muodostus (A2)</h2>
+  <p><strong>Täydennä lause genetiivissä olevalla sanalla. Sana on sulkeissa.</strong> Esimerkiksi: Tämä on <em>opettajan</em> kirja. (opettaja)</p>
+  <p> Complete the sentence with the word in the genitive case. The word is in brackets. Example: Tämä on <em>opettajan</em> kirja. (opettaja)</p>
+  <p> Вставьте слово в форме генитива. Слово дано в скобках. Пример: Tämä on <em>opettajan</em> kirja. (opettaja)</p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+
+
+  <form id="quizForm"></form>
+
+  <button type="button" onclick="checkAnswers()">Tarkista vastauksets</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const questions = [
+      { q: 'Avaan ___ oven. (auto)', a: 'auton' },
+      { q: 'Luen ___ kirjeen. (ystävä)', a: 'ystävän' },
+      { q: 'Käytän ___ konetta. (opiskelija)', a: 'opiskelijan' },
+      { q: 'Otan ___ laukun. (äiti)', a: 'äidin' },
+      { q: 'Tässä on ___ avain. (huone)', a: 'huoneen' },
+      { q: 'Tarvitsen ___ puhelinta. (veli)', a: 'veljen' },
+      { q: 'Katson ___ valokuvia. (lapsi)', a: 'lapsen' },
+      { q: 'Siivoan ___ pöydän. (keittiö)', a: 'keittiön' },
+      { q: 'Tämä on ___ pyörä. (poika)', a: 'pojan' },
+      { q: 'Kuuntelen ___ musiikkia. (tyttö)', a: 'tytön' },
+    ];
+
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'question';
+      div.id = `q${i+1}-block`;
+
+      const parts = item.q.split('___');
+      let sentenceHTML = '';
+
+      if (parts.length === 2) {
+        sentenceHTML = `${parts[0]} <input type="text" id="input${i}"> ${parts[1]}`;
+      } else {
+        sentenceHTML = item.q.replace(item.a, `<input type="text" id="input${i}">`);
+      }
+
+      div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+      form.appendChild(div);
+    });
+
+    function normalize(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers() {
+      let score = 0;
+
+      questions.forEach((item, i) => {
+        const input = document.getElementById(`input${i}`);
+        const userAnswer = normalize(input.value);
+        const correctAnswer = normalize(item.a);
+
+        let feedback = document.querySelector(`#q${i+1}-block .correct-answer`);
+        if (feedback) feedback.remove();
+
+        const result = document.createElement('div');
+        result.classList.add('correct-answer');
+
+        if (userAnswer === correctAnswer) {
+          result.classList.add('correct');
+          result.textContent = `✅ Oikein! Vastaus: ${item.a}`;
+          score++;
+        } else {
+          result.classList.add('incorrect');
+          result.textContent = `❌ Oikea vastaus: ${item.a}`;
+        }
+
+        document.getElementById(`q${i+1}-block`).appendChild(result);
+      });
+
+      document.getElementById('result').innerText = `Sait ${score} oikein ${questions.length}:stä.`;
+    }
+  </script>
+
+ <div style="background-color: #e6ffe8; padding: 10px 20px; margin-top: 40px; border-top: 2px solid #33cc3e; border-bottom: 2px solid #4dcc33;">
+  <h3 style="color: #047d23;">🎓 Хотите учиться в Финляндии, но финский язык — это слишком сложно?</h3>
+  <p>Во многих университетах и профессиональных училищах Финляндии есть программы на английском языке — и их становится всё больше.</p>
+
+  <h4>🎯 Я помогу вам подготовиться:</h4>
+  <ul>
+    <li>к вступительным экзаменам на английском,</li>
+    <li>к собеседованиям и написанию мотивационных писем,</li>
+    <li>к реальному общению во время учёбы и в жизни.</li>
+  </ul>
+
+  <p>🌍 Я живу в Финляндии и хорошо знаю местную систему образования.</p>
+
+  <p>📆 Первое пробное занятие — бесплатно.<br>
+    На нём мы определим ваш уровень, цели и сделаем индивидуальный план занятий.</p>
+
+  <p><strong>📩 Свяжитесь со мной:</strong><br>
+     Telegram: @ZhannaEduSpace<br>
+     WhatsApp: +358 40 8516 355<br>
+     Email: zhanna.edu.space@gmail.com</p>
+
+  <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 15px;">
+    <a href="https://t.me/ZhannaEduSpace" target="_blank" style="background-color: #0088cc; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on Telegram</a>
+    <a href="https://wa.me/358408516355" target="_blank" style="background-color: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Message on WhatsApp</a>
+    <a href="mailto:zhanna.edu.space@gmail.com" style="background-color: #1f4e79; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Send Email</a>
+  </div>
+
+  
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+  
+</body>
+</html>
