@@ -1,184 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Drag & Drop Emotions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ⚠️ Только внутренняя часть кода, если нужно вставлю всё целиком -->
+<style>
+  /* 🔹 Изменено: компактнее и невидимые зоны */
+  .drop-zone {
+    display: inline-block;
+    min-width: 90px;
+    min-height: 28px;
+    border-bottom: 2px dashed #999;
+    vertical-align: middle;
+    margin: 0 4px;
+    text-align: center;
+    background-color: transparent;
+  }
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background-color: #f2f2f2;
-    }
+  .sentence {
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    border-radius: 5px;
+  }
 
-    h2 {
-      color: #1f4e79;
-    }
+  /* ✅ Цвета при проверке */
+  .correct {
+    background-color: #e0f7e9 !important;
+    border-left: 4px solid #28a745;
+  }
 
-    .word-bank {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 30px;
-    }
+  .incorrect {
+    background-color: #fce4e4 !important;
+    border-left: 4px solid #dc3545;
+  }
 
-    .word {
-      padding: 8px 14px;
-      background-color: #e0ecff;
-      border: 1px solid #1f4e79;
-      border-radius: 8px;
-      cursor: grab;
-      user-select: none;
-      font-size: 1em;
-      min-width: 80px;
-      text-align: center;
-    }
+  /* 🧩 Карточка */
+  .word {
+    padding: 6px 12px;
+    background-color: #e0ecff;
+    border: 1px solid #1f4e79;
+    border-radius: 8px;
+    cursor: grab;
+    user-select: none;
+    font-size: 1em;
+    min-width: 80px;
+    text-align: center;
+    margin-bottom: 4px;
+  }
 
-    .drop-zone {
-      display: inline-block;
-      min-width: 90px;
-      min-height: 28px;
-      border: 2px dashed #ccc;
-      border-radius: 6px;
-      vertical-align: middle;
-      margin: 0 6px;
-      padding: 3px;
-      text-align: center;
-      background-color: #fff;
-    }
+  .word-bank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+</style>
 
-    .sentence {
-      margin-bottom: 18px;
-      background: white;
-      padding: 10px 15px;
-      border-radius: 6px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
+<script>
+  const wordBank = document.getElementById("wordBank");
 
-    .correct {
-      background-color: #d4edda !important;
-      border-color: #28a745 !important;
-    }
+  // Обновим drop-зоны: если уже есть слово — вернуть его обратно в банк
+  function drop(e) {
+    e.preventDefault();
+    const wordText = e.dataTransfer.getData("text/plain");
 
-    .incorrect {
-      background-color: #f8d7da !important;
-      border-color: #dc3545 !important;
-    }
+    const dropTarget = e.target;
+    if (!dropTarget.classList.contains("drop-zone")) return;
 
-    button {
-      margin-top: 25px;
-      padding: 10px 20px;
-      background-color: #1f4e79;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
-      cursor: pointer;
-    }
+    const existing = dropTarget.querySelector(".word");
+    if (existing) wordBank.appendChild(existing); // вернуть прежнее слово
 
-    button:hover {
-      background-color: #163d5c;
-    }
-  </style>
-</head>
-<body>
+    const dragged = [...document.querySelectorAll(".word")]
+      .find(w => w.innerText === wordText);
 
-  <h2>😊 Fill in the blanks with the correct emotion</h2>
+    if (dragged) dropTarget.innerHTML = '', dropTarget.appendChild(dragged);
+  }
 
-  <div class="word-bank" id="wordBank">
-    <div class="word" draggable="true">anxious</div>
-    <div class="word" draggable="true">relieved</div>
-    <div class="word" draggable="true">excited</div>
-    <div class="word" draggable="true">confident</div>
-    <div class="word" draggable="true">frustrated</div>
-    <div class="word" draggable="true">upset</div>
-    <div class="word" draggable="true">proud</div>
-    <div class="word" draggable="true">surprised</div>
-  </div>
+  // Позволяем вернуть карточку обратно
+  wordBank.ondragover = event => event.preventDefault();
+  wordBank.ondrop = e => {
+    e.preventDefault();
+    const wordText = e.dataTransfer.getData("text/plain");
+    const dragged = [...document.querySelectorAll(".word")]
+      .find(w => w.innerText === wordText);
+    if (dragged) wordBank.appendChild(dragged);
+  };
 
-  <div id="sentences"></div>
-
-  <button onclick="checkAnswers()">Check Answers</button>
-
-  <script>
-    const sentencesData = [
-      { text: "He was ___ to see his childhood friend at the party.", answer: "surprised" },
-      { text: "I'm ___ that I passed the driving test.", answer: "relieved" },
-      { text: "She felt ___ before giving her first presentation.", answer: "anxious" },
-      { text: "We were ___ when our team lost the final game.", answer: "upset" },
-      { text: "She was ___ because the website kept crashing during the application process.", answer: "frustrated" },
-      { text: "After weeks of preparation, I feel ___ about the exam.", answer: "confident" },
-      { text: "Their parents were very ___ of them for winning the competition.", answer: "proud" },
-      { text: "The kids are really ___ about the school trip tomorrow.", answer: "excited" }
-    ];
-
-    const sentencesContainer = document.getElementById("sentences");
-
-    sentencesData.forEach((item, index) => {
-      const div = document.createElement("div");
-      div.className = "sentence";
-      div.dataset.answer = item.answer.toLowerCase();
-      div.innerHTML = `${item.text.replace("___", `<span class="drop-zone" data-index="${index}" ondragover="event.preventDefault()" ondrop="drop(event)"></span>`)}`;
-      sentencesContainer.appendChild(div);
+  // Drag start
+  document.querySelectorAll(".word").forEach(word => {
+    word.addEventListener("dragstart", e => {
+      e.dataTransfer.setData("text/plain", e.target.innerText);
     });
+  });
 
-    const words = document.querySelectorAll(".word");
+  function checkAnswers() {
+    const zones = document.querySelectorAll(".drop-zone");
 
-    words.forEach(word => {
-      word.addEventListener("dragstart", e => {
-        e.dataTransfer.setData("text/plain", e.target.innerText);
-        e.dataTransfer.setData("source", "bank");
-      });
+    zones.forEach(zone => {
+      const sentence = zone.closest(".sentence");
+      const correct = sentence.dataset.answer;
+      const word = zone.querySelector(".word");
+      sentence.classList.remove("correct", "incorrect");
+
+      if (word && word.innerText.toLowerCase() === correct) {
+        sentence.classList.add("correct");
+      } else {
+        sentence.classList.add("incorrect");
+      }
     });
-
-    function drop(e) {
-      const wordText = e.dataTransfer.getData("text/plain");
-      const existing = e.target.querySelector(".word");
-
-      // If already filled, return word to bank
-      if (existing) {
-        document.getElementById("wordBank").appendChild(existing);
-      }
-
-      const dragged = Array.from(document.querySelectorAll(".word"))
-        .find(w => w.innerText === wordText);
-
-      if (dragged) {
-        e.target.innerHTML = '';
-        e.target.appendChild(dragged);
-      }
-    }
-
-    // Allow returning words to bank
-    const wordBank = document.getElementById("wordBank");
-    wordBank.ondragover = event => event.preventDefault();
-    wordBank.ondrop = e => {
-      const wordText = e.dataTransfer.getData("text/plain");
-      const dragged = Array.from(document.querySelectorAll(".word"))
-        .find(w => w.innerText === wordText);
-
-      if (dragged) {
-        wordBank.appendChild(dragged);
-      }
-    };
-
-    function checkAnswers() {
-      const allZones = document.querySelectorAll(".drop-zone");
-
-      allZones.forEach(zone => {
-        const parent = zone.closest(".sentence");
-        const correct = parent.dataset.answer;
-        const word = zone.querySelector(".word");
-        parent.classList.remove("correct", "incorrect");
-
-        if (word && word.innerText.toLowerCase() === correct) {
-          parent.classList.add("correct");
-        } else {
-          parent.classList.add("incorrect");
-        }
-      });
-    }
-  </script>
-</body>
-</html>
+  }
+</script>
