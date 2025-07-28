@@ -2,8 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Drag & Drop Emotions</title>
+  <title>Feelings & Emotions (B1-B2)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B7ECGNS96Y');
+</script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+  
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -23,7 +37,7 @@
       background-color: #e8f0fa;
       border-radius: 8px;
       margin-bottom: 25px;
-      min-height: 70px;
+      min-height: 60px;
       align-items: center;
     }
 
@@ -89,8 +103,8 @@
 </head>
 <body>
 
-  <h2>😊 Fill in the blanks with the correct emotion</h2>
-
+  <h2>😱 Feelings & Emotions (B1-B2)</h2>
+ <p><strong>Complete the sentences by dragging the correct emotion from the list.</strong><be>(You can change your answer by dragging the word back to the list.)</p>
   <div class="word-bank" id="wordBank">
     <div class="word" draggable="true">anxious</div>
     <div class="word" draggable="true">relieved</div>
@@ -183,5 +197,14 @@
     }
   </script>
 
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
 </body>
 </html>
