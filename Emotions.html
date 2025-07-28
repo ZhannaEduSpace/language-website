@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Emotions – Drag and Drop</title>
+  <title>Drag & Drop – Emotions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
@@ -35,33 +35,38 @@
       font-size: 1em;
       user-select: none;
       box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      transition: transform 0.2s ease;
     }
 
-    .word:active {
-      transform: scale(1.05);
-      cursor: grabbing;
+    .word.dragging {
+      opacity: 0.5;
     }
 
     .sentence {
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       font-size: 1.1em;
     }
 
     .dropzone {
       display: inline-block;
-      min-width: 120px;
+      min-width: 130px;
+      min-height: 40px;
       padding: 8px 12px;
       margin: 0 5px;
       border: 2px dashed #aaa;
-      border-radius: 6px;
+      border-radius: 8px;
       vertical-align: middle;
       background-color: white;
+      text-align: center;
+      transition: background-color 0.2s;
     }
 
     .dropzone.hovered {
-      border-color: #1f4e79;
       background-color: #e1f0ff;
+      border-color: #1f4e79;
+    }
+
+    .dropzone.filled {
+      background-color: #eef;
     }
 
     button {
@@ -86,12 +91,24 @@
       font-weight: bold;
       font-size: 1.2em;
     }
+
+    .sentence.correct {
+      background-color: #d1ffd7;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .sentence.incorrect {
+      background-color: #ffd1d1;
+      padding: 5px;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
 
 <h2>🎯 Emotions — Drag & Drop</h2>
-<p style="text-align:center;">Drag the correct emotion word into each sentence below.</p>
+<p style="text-align:center;">Drag the correct word into each sentence. You can change your mind!</p>
 
 <div class="word-bank" id="wordBank">
   <div class="word" draggable="true">anxious</div>
@@ -105,14 +122,14 @@
 </div>
 
 <div class="sentences">
-  <div class="sentence">1. He was <span class="dropzone" data-answer="surprised"></span> to see his childhood friend at the party.</div>
-  <div class="sentence">2. I'm <span class="dropzone" data-answer="relieved"></span> that I passed the driving test.</div>
-  <div class="sentence">3. She felt <span class="dropzone" data-answer="anxious"></span> before giving her first presentation.</div>
-  <div class="sentence">4. We were <span class="dropzone" data-answer="upset"></span> when our team lost the final game.</div>
-  <div class="sentence">5. She was <span class="dropzone" data-answer="frustrated"></span> because the website kept crashing during the application process.</div>
-  <div class="sentence">6. After weeks of preparation, I feel <span class="dropzone" data-answer="confident"></span> about the exam.</div>
-  <div class="sentence">7. Their parents were very <span class="dropzone" data-answer="proud"></span> of them for winning the competition.</div>
-  <div class="sentence">8. The kids are really <span class="dropzone" data-answer="excited"></span> about the school trip tomorrow.</div>
+  <div class="sentence" data-answer="surprised">1. He was <span class="dropzone"></span> to see his childhood friend at the party.</div>
+  <div class="sentence" data-answer="relieved">2. I'm <span class="dropzone"></span> that I passed the driving test.</div>
+  <div class="sentence" data-answer="anxious">3. She felt <span class="dropzone"></span> before giving her first presentation.</div>
+  <div class="sentence" data-answer="upset">4. We were <span class="dropzone"></span> when our team lost the final game.</div>
+  <div class="sentence" data-answer="frustrated">5. She was <span class="dropzone"></span> because the website kept crashing during the application process.</div>
+  <div class="sentence" data-answer="confident">6. After weeks of preparation, I feel <span class="dropzone"></span> about the exam.</div>
+  <div class="sentence" data-answer="proud">7. Their parents were very <span class="dropzone"></span> of them for winning the competition.</div>
+  <div class="sentence" data-answer="excited">8. The kids are really <span class="dropzone"></span> about the school trip tomorrow.</div>
 </div>
 
 <button onclick="checkAnswers()">Check Answers</button>
@@ -121,15 +138,17 @@
 <script>
   let dragged = null;
 
+  const wordBank = document.getElementById('wordBank');
+
   document.querySelectorAll('.word').forEach(word => {
     word.addEventListener('dragstart', () => {
       dragged = word;
-      setTimeout(() => word.style.display = 'none', 0);
+      word.classList.add('dragging');
     });
 
     word.addEventListener('dragend', () => {
       dragged = null;
-      word.style.display = 'inline-block';
+      word.classList.remove('dragging');
     });
   });
 
@@ -139,27 +158,51 @@
     zone.addEventListener('dragleave', () => zone.classList.remove('hovered'));
 
     zone.addEventListener('drop', () => {
-      if (dragged) {
-        zone.textContent = dragged.textContent;
-        zone.classList.remove('hovered');
-        dragged.remove();
+      zone.classList.remove('hovered');
+
+      // вернуть прежнее слово обратно
+      if (zone.textContent.trim()) {
+        const oldWord = document.createElement('div');
+        oldWord.className = 'word';
+        oldWord.textContent = zone.textContent.trim();
+        oldWord.setAttribute('draggable', true);
+        wordBank.appendChild(oldWord);
+        attachDragListeners(oldWord);
       }
+
+      zone.textContent = dragged.textContent;
+      zone.classList.add('filled');
+      dragged.remove();
     });
   });
 
-  function checkAnswers() {
-    let correct = 0;
-    const zones = document.querySelectorAll('.dropzone');
-
-    zones.forEach(zone => {
-      const userWord = zone.textContent.trim().toLowerCase();
-      const expected = zone.dataset.answer.toLowerCase();
-      if (userWord === expected) {
-        correct++;
-      }
+  function attachDragListeners(word) {
+    word.addEventListener('dragstart', () => {
+      dragged = word;
+      word.classList.add('dragging');
     });
 
-    document.getElementById('result').textContent = `You got ${correct} out of ${zones.length} correct.`;
+    word.addEventListener('dragend', () => {
+      dragged = null;
+      word.classList.remove('dragging');
+    });
+  }
+
+  function checkAnswers() {
+    let correct = 0;
+    const sentences = document.querySelectorAll('.sentence');
+    sentences.forEach(s => {
+      const answer = s.dataset.answer.trim().toLowerCase();
+      const user = s.querySelector('.dropzone').textContent.trim().toLowerCase();
+      s.classList.remove('correct', 'incorrect');
+      if (user === answer) {
+        s.classList.add('correct');
+        correct++;
+      } else {
+        s.classList.add('incorrect');
+      }
+    });
+    document.getElementById('result').textContent = `You got ${correct} out of ${sentences.length} correct.`;
   }
 </script>
 
