@@ -281,9 +281,8 @@ function checkRealWords() {
     // Пользователь НЕ выбрал фейк — тоже правильно:
     else if (!word.real && !chosen) {
       correct++;
-      feedback.innerHTML = "✔ несуществующее слово";
-      feedback.style.color = "blue";
-    }
+     feedback.innerHTML = `<span style="color:green">✔</span> <span style="color:blue">несуществующее слово</span>`;
+}
     // Ошибка: выбрал фейк или пропустил настоящее
     else {
       feedback.innerHTML = "❌ " + (word.real ? "настоящее слово" : "несуществующее слово");
