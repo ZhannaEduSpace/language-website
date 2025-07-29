@@ -292,7 +292,7 @@ function checkRealWords() {
     }
 
     // Показываем результат
-    feedback.innerHTML = `${icon} <span style="color:${wordColor}">${wordLabel}</span>`;
+   feedback.innerHTML = `${icon} <span>${wordLabel}</span>`;
   });
 
   const percent = Math.round((correct / total) * 100);
