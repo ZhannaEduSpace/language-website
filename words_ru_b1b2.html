@@ -272,27 +272,30 @@ function checkRealWords() {
 
     const chosen = checkbox.checked;
 
-    // Пользователь выбрал правильно:
-    if (word.real && chosen) {
+    // Определим цвет слова:
+    const wordColor = word.real ? "green" : "blue";
+    const wordLabel = word.real ? "настоящее слово" : "несуществующее слово";
+
+    let icon = "";
+    let isCorrect = false;
+
+    // Правильный выбор
+    if ((word.real && chosen) || (!word.real && !chosen)) {
+      isCorrect = true;
       correct++;
-      feedback.innerHTML = "✔ настоящее слово";
-      feedback.style.color = "green";
+      icon = `<span style="color:green">✔</span>`;
+    } else {
+      icon = `<span style="color:red">❌</span>`;
     }
-    // Пользователь НЕ выбрал фейк — тоже правильно:
-    else if (!word.real && !chosen) {
-      correct++;
-     feedback.innerHTML = `<span style="color:green">✔</span> <span style="color:blue">несуществующее слово</span>`;
-}
-    // Ошибка: выбрал фейк или пропустил настоящее
-    else {
-      feedback.innerHTML = "❌ " + (word.real ? "настоящее слово" : "несуществующее слово");
-      feedback.style.color = "red";
-    }
+
+    // Показываем результат
+    feedback.innerHTML = `${icon} <span style="color:${wordColor}">${wordLabel}</span>`;
   });
 
   const percent = Math.round((correct / total) * 100);
   document.getElementById("feedbackSummary").innerText = `Результат: ${correct} из ${total} (${percent}%)`;
 }
+    
   </script>
   
   <div id="footer-placeholder"></div>
