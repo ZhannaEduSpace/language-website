@@ -192,46 +192,35 @@
   <p> Напишите существительное от глагола, используя суффикс us / ys / mus / mys. Пример: allekirjoittaa → <em>allekirjoitus</em></p>
   <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
+    <form id="quizForm"></form>
 
-
-  <form id="quizForm"></form>
-
-  <button type="button" onclick="checkAnswers()">Tarkista vastauksets</button>
+  <button onclick="checkAnswers()">Tarkista vastaukset</button>
   <div class="result" id="result"></div>
 
   <script>
     const questions = [
-      { q: 'varata', a: 'varaus' },
-      { q: 'hakea', a: 'hakemus' },
-      { q: 'kysyä', a: 'kysymys' },
-      { q: 'ehdottaa', a: 'ehdotus' },
-      { q: 'sopia', a: 'sopimus' },
-      { q: 'väsyä', a: 'väsymys' },
-      { q: 'äänestää', a: 'äänestys' },
-      { q: 'anoa', a: 'anomus' },
-      { q: 'kokea', a: 'kokemus' },
-      { q: 'mitata', a: 'mittaus' },
-      { q: 'opettaa', a: 'opetus' },
-      { q: 'tutkia', a: 'tutkimus' },
+      { base: "varata", answer: "varaus" },
+      { base: "hakea", answer: "hakemus" },
+      { base: "kysyä", answer: "kysymys" },
+      { base: "ehdottaa", answer: "ehdotus" },
+      { base: "sopia", answer: "sopimus" },
+      { base: "väsyä", answer: "väsymys" },
+      { base: "äänestää", answer: "äänestys" },
+      { base: "anoa", answer: "anomus" },
+      { base: "kokea", answer: "kokemus" },
+      { base: "mitata", answer: "mittaus" },
+      { base: "opettaa", answer: "opetus" },
+      { base: "tutkia", answer: "tutkimus" }
     ];
 
-    const form = document.getElementById('quizForm');
+    const form = document.getElementById("quizForm");
 
-    questions.forEach((item, i) => {
-      const div = document.createElement('div');
-      div.className = 'question';
-      div.id = `q${i+1}-block`;
-
-      const parts = item.q.split('___');
-      let sentenceHTML = '';
-
-      if (parts.length === 2) {
-        sentenceHTML = `${parts[0]} <input type="text" id="input${i}"> ${parts[1]}`;
-      } else {
-        sentenceHTML = item.q.replace(item.a, `<input type="text" id="input${i}">`);
-      }
-
-      div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+    questions.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q${index}`;
+      div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input${index}" placeholder="Kirjoita sana">`;
       form.appendChild(div);
     });
 
@@ -242,30 +231,27 @@
     function checkAnswers() {
       let score = 0;
 
-      questions.forEach((item, i) => {
-        const input = document.getElementById(`input${i}`);
-        const userAnswer = normalize(input.value);
-        const correctAnswer = normalize(item.a);
+      questions.forEach((q, i) => {
+        const userInput = normalize(document.getElementById(`input${i}`).value);
+        const correct = normalize(q.answer);
+        const block = document.getElementById(`q${i}`);
 
-        let feedback = document.querySelector(`#q${i+1}-block .correct-answer`);
+        let feedback = block.querySelector(".correct") || block.querySelector(".incorrect");
         if (feedback) feedback.remove();
 
-        const result = document.createElement('div');
-        result.classList.add('correct-answer');
-
-        if (userAnswer === correctAnswer) {
-          result.classList.add('correct');
-          result.textContent = `✅ Oikein! Vastaus: ${item.a}`;
+        const msg = document.createElement("div");
+        if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Oikein: ${q.answer}`;
           score++;
         } else {
-          result.classList.add('incorrect');
-          result.textContent = `❌ Oikea vastaus: ${item.a}`;
+          msg.className = "incorrect";
+          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
         }
-
-        document.getElementById(`q${i+1}-block`).appendChild(result);
+        block.appendChild(msg);
       });
 
-      document.getElementById('result').innerText = `Sait ${score} oikein ${questions.length}:stä.`;
+      document.getElementById("result").innerText = `Sait ${score} oikein ${questions.length}:stä.`;
     }
   </script>
 
