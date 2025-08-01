@@ -24,7 +24,7 @@
       font-family: Arial, sans-serif;
       background-color: #f8f9fa;
       color: #333;
-      padding: 20px;
+      padding: 0px;
       margin: 0;
     }
 header {
@@ -163,7 +163,22 @@ header {
     button:hover {
       background-color: #163d5c;
     }
+  .question {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+.question input[type="text"] {
+  font-size: 1em;
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 200px;
+  max-width: 90%;
+  margin-left: 8px;
+}
   </style>
+  
 </head>
 <body>
 
@@ -183,84 +198,82 @@ header {
 
   <div class="container">
     <h2>🍽️ Ruoka ja Juoma (A1)</h2>
-    <form id="quizForm"></form>
-    <button onclick="checkAnswers()">Tarkista vastaukset</button>
-    <div class="result" id="result"></div>
-  </div>
+   <p><strong>Kirjoita ruoan tai juoman nimi. Ensimmäinen kirjain on annettu vihjeeksi.</strong> Esimerkiksi: 🥓 <em><strong>p</strong>ekoni</em> </p>
+  <p> Write the name of the food or drink. The first letter is given as a hint. Example: 🥓 <em><strong>p</strong>ekoni</em> </p>
+  <p> Напишите название еды или напитка. Первая буква дана как подсказка. Пример: 🥓 <em><strong>p</strong>ekoni</em> </p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+    
+    <div class="container">
+  <h2>Mikä tämä on?</h2>
 
-  <script>
-    const questions = [
-      { emoji: "🍞", question: "Mikä tämä on?", answer: "leipä" },
-      { emoji: "🥚", question: "Mikä tämä on?", answer: "kananmuna" },
-      { emoji: "🍷", question: "Mikä tämä on?", answer: "viini" },
-      { emoji: "🍦", question: "Mikä tämä on?", answer: "jäätelö" },
-      { emoji: "🍺", question: "Mikä tämä on?", answer: "olut" },
-      { emoji: "🍲", question: "Mikä tämä on?", answer: "keitto" },
-      { emoji: "🍰", question: "Mikä tämä on?", answer: "kakku" },
-      { emoji: "🧃", question: "Mikä tämä on?", answer: "mehu" },
-      { emoji: "🧈", question: "Mikä tämä on?", answer: "voi" },
-      { emoji: "🥛", question: "Mikä tämä on?", answer: "maito" },
-      { emoji: "🧀", question: "Mikä tämä on?", answer: "juusto" },
-      { emoji: "☕", question: "Mikä tämä on?", answer: "kahvi" },
-      { emoji: "🧂", question: "Mikä tämä on?", answer: "suola" },
-      { emoji: "🍗", question: "Mikä tämä on?", answer: "kana" }
-    ];
+  <form id="quizForm"></form>
 
-    const form = document.getElementById("quizForm");
+  <button onclick="checkAnswers()">Tarkista vastaukset</button>
+  <div class="result" id="result"></div>
+</div>
 
-    questions.forEach((q, index) => {
-      const div = document.createElement("div");
-      div.className = "question";
-      div.id = `q${index}`;
-
-      const placeholder = q.answer.charAt(0) + "...";
-
-      div.innerHTML = `
-        <label>${index + 1}. ${q.emoji} ${q.question}</label>
-        <input type="text" id="input${index}" placeholder="${placeholder}">
-      `;
-      form.appendChild(div);
-    });
-
-    function normalize(str) {
-      return str.trim().toLowerCase();
-    }
-
-    function checkAnswers() {
-      let score = 0;
-
-      questions.forEach((q, i) => {
-        const userInput = normalize(document.getElementById(`input${i}`).value);
-        const correct = normalize(q.answer);
-        const block = document.getElementById(`q${i}`);
-
-        let old = block.querySelector(".correct, .incorrect");
-        if (old) old.remove();
-
-        const msg = document.createElement("div");
-        if (userInput === correct) {
-          msg.className = "correct";
-          msg.textContent = `✅ Oikein: ${q.answer}`;
-          score++;
-        } else {
-          msg.className = "incorrect";
-          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
-        }
-        block.appendChild(msg);
-      });
-
-      document.getElementById("result").innerText = `Sait ${score} oikein ${questions.length}:stä.`;
-    }
-  </script>
-
-   <div id="footer-placeholder"></div>
 <script>
-  fetch('/footer.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('footer-placeholder').innerHTML = html;
-      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+  const questions = [
+    { emoji: "🍞", answer: "leipä" },
+    { emoji: "🥚", answer: "muna" },
+    { emoji: "🍷", answer: "viini" },
+    { emoji: "🍦", answer: "jäätelö" },
+    { emoji: "🍺", answer: "olut" },
+    { emoji: "🍲", answer: "keitto" },
+    { emoji: "🍰", answer: "kakku" },
+    { emoji: "🧃", answer: "mehu" },
+    { emoji: "🧈", answer: "voi" },
+    { emoji: "🥛", answer: "maito" },
+    { emoji: "🧀", answer: "juusto" },
+    { emoji: "☕", answer: "kahvi" },
+    { emoji: "🧂", answer: "suola" },
+    { emoji: "🍗", answer: "kana" }
+  ];
+
+  const form = document.getElementById("quizForm");
+
+  questions.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q${index}`;
+
+    const placeholder = q.answer.charAt(0) + "...";
+
+    div.innerHTML = `
+      <label>${q.emoji} → <input type="text" id="input${index}" placeholder="${placeholder}"></label>
+    `;
+    form.appendChild(div);
+  });
+
+  function normalize(str) {
+    return str.trim().toLowerCase();
+  }
+
+  function checkAnswers() {
+    let score = 0;
+
+    questions.forEach((q, i) => {
+      const userInput = normalize(document.getElementById(`input${i}`).value);
+      const correct = normalize(q.answer);
+      const block = document.getElementById(`q${i}`);
+
+      let old = block.querySelector(".correct, .incorrect");
+      if (old) old.remove();
+
+      const msg = document.createElement("div");
+      if (userInput === correct) {
+        msg.className = "correct";
+        msg.textContent = `✅ Oikein: ${q.answer}`;
+        score++;
+      } else {
+        msg.className = "incorrect";
+        msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+      }
+      block.appendChild(msg);
     });
+
+    document.getElementById("result").innerText = `Sait ${score} oikein ${questions.length}:stä.`;
+  }
 </script>
 
 </body>
