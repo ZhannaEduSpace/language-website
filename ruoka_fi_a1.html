@@ -177,6 +177,10 @@ header {
   max-width: 90%;
   margin-left: 8px;
 }
+  .question label span.emoji {
+  font-size: 2em; /* можешь уменьшить до 1.5em, если слишком крупно */
+  margin-right: 10px;
+}
   </style>
   
 </head>
@@ -214,20 +218,21 @@ header {
 
 <script>
   const questions = [
-    { emoji: "🍞", answer: "leipä" },
-    { emoji: "🥚", answer: "muna" },
-    { emoji: "🍷", answer: "viini" },
-    { emoji: "🍦", answer: "jäätelö" },
-    { emoji: "🍺", answer: "olut" },
-    { emoji: "🥩", answer: "liha" },
-    { emoji: "🍰", answer: "kakku" },
-    { emoji: "🧃", answer: "mehu" },
-    { emoji: "🧈", answer: "voi" },
-    { emoji: "🥛", answer: "maito" },
-    { emoji: "🧀", answer: "juusto" },
-    { emoji: "☕", answer: "kahvi" },
-    { emoji: "🧂", answer: "suola" },
-    { emoji: "🍗", answer: "kana" }
+{ emoji: '<span class="emoji">🍞</span>', answer: "leipä" },
+{ emoji: '<span class="emoji">🥚</span>', answer: "muna" },
+{ emoji: '<span class="emoji">🍷</span>', answer: "viini" },
+{ emoji: '<span class="emoji">🍦</span>', answer: "jäätelö" },
+{ emoji: '<span class="emoji">🍺</span>', answer: "olut" },
+{ emoji: '<span class="emoji">🥩</span>', answer: "liha" },
+{ emoji: '<span class="emoji">🍰</span>', answer: "kakku" },
+{ emoji: '<span class="emoji">🧃</span>', answer: "mehu" },
+{ emoji: '<span class="emoji">🧈</span>', answer: "voi" },
+{ emoji: '<span class="emoji">🥛</span>', answer: "maito" },
+{ emoji: '<span class="emoji">🧀</span>', answer: "juusto" },
+{ emoji: '<span class="emoji">☕</span>', answer: "kahvi" },
+{ emoji: '<span class="emoji">🧂</span>', answer: "suola" },
+{ emoji: '<span class="emoji">🍗</span>', answer: "kana" }
+
   ];
 
   const form = document.getElementById("quizForm");
