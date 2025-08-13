@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harjoitus: Kolmas verbityyppi (preesens) (A2)</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B7ECGNS96Y');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+     header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      padding: 15px 40px;
+      max-width: 750px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 1.8em;
+    }
+    p {
+      font-size: 1.1em;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    .question span {
+      display: inline-block;
+      min-width: 60%;
+    }
+    input[type="text"] {
+      padding: 8px 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 130px;
+      max-width: 90%;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .result {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 30px;
+    }
+    button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #163d5c;
+    }
+  </style>
+</head>
+<body>
+
+   <header>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
+        <div class="dropdown-content">
+          <a href="english.html">English / Английский</a>
+          <a href="russian.html">Русский / Russian</a>
+          <a href="suomi.html">Suomi / Finnish</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+  <h2>🐶 Kolmas verbityyppi (preesens) (A2)</h2>
+  <p><strong>Kirjoita verbi oikeassa preesensmuodossa. Kaikki verbit ovat kolmannen tyypin verbejä.</strong> Esimerkiksi: Koira <em>puree</em> kenkää! (purra)</p>
+  <p> Complete with the correct present tense form. All verbs are type 3. Example: Koira <em>puree</em> kenkää! (purra)</p>
+  <p> Впишите глагол в правильной форме настоящего времени. Все глаголы — глаголы третьего типа. Пример: Koira <em>puree</em> kenkää! (purra)</p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+
+
+  <form id="quizForm"></form>
+
+  <button type="button" onclick="checkAnswers()">Tarkista vastaukset</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const questions = [
+  { q: 'Minä _______ kotiin kello viisi. (tulla)', a: ['tulen'] },
+  { q: 'Me _______ usein tulevaisuutta. (ajatella)', a: ['ajattelemme'] },
+  { q: 'Sinä _______ puistossa joka päivä. (kävellä)', a: ['kävelet'] },
+  { q: 'Hän _______ kirjan pöydälle. (panna)', a: ['panee'] },
+  { q: 'Me _______ elokuviin viikonloppuna. (mennä)', a: ['menemme'] },
+  { q: 'Hän _______ usein, kun katsoo surullisia elokuvia. (surra)', a: ['suree'] },
+  { q: 'He _______ aikaisin aamulla. (nousta)', a: ['nousevat'] },
+  { q: 'Me _______ ongelman yhdessä. (ratkaista)', a: ['ratkaisemme'] },
+  { q: 'Minä _______ yliopistossa. (opiskella)', a: ['opiskelen'] },
+  { q: 'Me _______ ystävien kanssa kahvilassa. (keskustella)', a: ['keskustelemme'] },
+  { q: 'Sinä _______ bussista pysäkillä. (nousta)', a: ['nouset'] },
+  { q: 'Hän _______ kouluun. (pyöräillä)', a: ['pyöräilee'] },
+];
+
+
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'question';
+      div.id = `q${i+1}-block`;
+
+      const parts = item.q.split('___');
+      let sentenceHTML = '';
+
+      if (parts.length === 2) {
+        sentenceHTML = `${parts[0]} <input type="text" id="input${i}"> ${parts[1]}`;
+      } else {
+        sentenceHTML = item.q.replace(item.a, `<input type="text" id="input${i}">`);
+      }
+
+      div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+      form.appendChild(div);
+    });
+
+    function normalize(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers() {
+      let score = 0;
+
+      questions.forEach((item, i) => {
+        const input = document.getElementById(`input${i}`);
+        const userAnswer = normalize(input.value);
+        const correctAnswers = Array.isArray(item.a) ? item.a.map(normalize) : [normalize(item.a)];
+
+        let feedback = document.querySelector(`#q${i+1}-block .correct-answer`);
+        if (feedback) feedback.remove();
+
+        const result = document.createElement('div');
+        result.classList.add('correct-answer');
+
+        if (correctAnswers.includes(userAnswer)) {
+          result.classList.add('correct');
+          result.textContent = `✅ Oikein! Vastaus: ${item.a}`;
+          score++;
+        } else {
+          result.classList.add('incorrect');
+         result.textContent = `❌ Oikea vastaus: ${item.a.join(' tai ')}`;
+        }
+
+        document.getElementById(`q${i+1}-block`).appendChild(result);
+      });
+
+      document.getElementById('result').innerText = `Sait ${score} oikein ${questions.length}:stä.`;
+    }
+  </script>
+
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+  
+</body>
+</html>
