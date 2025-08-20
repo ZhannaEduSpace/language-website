@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Задание по русскому языку: День рождения (аудирование) (A1–A2)</title>
-
-    <!-- ✅ ДОБАВЛЕН viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8TVEFE4L1Y');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8TVEFE4L1Y');
+  </script>
   
+  <!-- AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
 
@@ -30,7 +28,7 @@
       background-color: #f8f9fa;
       color: #333;
     }
-     header {
+    header {
       background-color: #1f4e79;
       color: white;
       padding: 10px 20px;
@@ -46,256 +44,119 @@
       font-size: 1.3em;
     }
 
-    .logo:hover {
-      text-decoration: none;
-    }
-
     nav {
       display: flex;
-      align-items: baseline;
       gap: 20px;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      font-size: 1em;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    /* ====== Новый макет: контент + сайдбар ====== */
+    .page-layout {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 1100px;
+      margin: auto;
+      gap: 20px;
     }
-
-    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
-    .dropdown {
-      position: relative;
-    }
-
-    .dropbtn {
-      background-color: #1f4e79;
-      color: white;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
-      padding: 0;
-    }
-    
-    .dropbtn,
-    .dropdown-content a {
-    text-decoration: none;
-    }
-
-   .dropbtn:hover,
-   .dropdown-content a:hover {
-   text-decoration: none;
-   }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: white;
-      min-width: 180px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      right: 0;
-    }
-
-    .dropdown-content a {
-      padding: 10px;
-      display: block;
-      text-decoration: none;
-      color: #333;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #f1f1f1;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
-
     .container {
       padding: 10px 40px;
       max-width: 750px;
-      margin: auto;
+      background: #fff;
+      flex: 1;
     }
-    h2, .instruction {
-      text-align: left;
-      margin-bottom: 10px;
-    }
-
-    audio {
-      display: block;
-      margin: 30px auto;
-      width: 100%;
-      max-width: 100%;
-      height: 80px;
-      box-sizing: border-box;
+    .sidebar {
+      width: 160px;
+      flex-shrink: 0;
     }
 
-    .question {
-      margin-bottom: 30px;
+    /* Чтобы на телефонах сайдбар уезжал вниз */
+    @media (max-width: 900px) {
+      .page-layout {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        margin: 20px auto;
+        text-align: center;
+      }
     }
-
-    .correct-answer {
-      font-style: italic;
-      margin-top: 5px;
-    }
-
-    .correct {
-      color: green;
-    }
-
-    .incorrect {
-      color: red;
-    }
-
-    .result {
-      margin-top: 30px;
-      font-weight: bold;
-      font-size: 1.2em;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 12px 25px;
-      font-size: 1.1em;
-      border: none;
-      border-radius: 5px;
-      background-color: #1f4e79;
-      color: white;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #163d5c;
-    }
-    @media (max-width: 600px) {
-  body {
-    font-size: 14px;
-    margin: auto;
-    line-height: 1.6;
-    padding-bottom: 100px;
-  }
-
-  h2 {
-    font-size: 2em;
-  }
-
-  p, label, .quiz-question h3, .correct-answer {
-    font-size: 1.3em;
-  }
-
-  input[type="radio"] {
-    transform: scale(1.5);
-    margin-right: 8px;
-  }
-
-  button {
-    font-size: 1.4em;
-    padding: 16px 45px;
-  }
-
-  .result {
-    font-size: 1.6em;
-  }
-
-  html, body {
-    overflow-y: visible !important;
-  }
-}
   </style>
 </head>
 <body>
   
- <header>
-    <a href="index.html" class="logo">ZhannaEduSpace</a>
-    <nav>
-      <div class="dropdown">
-        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
-        <div class="dropdown-content">
-          <a href="english.html">English / Английский</a>
-          <a href="russian.html">Русский / Russian</a>
-          <a href="suomi.html">Suomi / Finnish</a>
-        </div>
+<header>
+  <a href="index.html" class="logo">ZhannaEduSpace</a>
+  <nav>
+    <div class="dropdown">
+      <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
+      <div class="dropdown-content">
+        <a href="english.html">English / Английский</a>
+        <a href="russian.html">Русский / Russian</a>
+        <a href="suomi.html">Suomi / Finnish</a>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>
+
+<!-- ✅ Начало общего контейнера -->
+<div class="page-layout">
 
   <div class="container">
-  <h2>🎂 День рождения (аудирование) (A1–A2)</h2>
-  <p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+    <h2>🎂 День рождения (аудирование) (A1–A2)</h2>
+    <p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
 
-  <audio controls controlsList="nodownload noplaybackrate">
-    <source src="audio/birthday_ru_a1a2.mp3" type="audio/mpeg">
-    Ваш браузер не поддерживает аудиоэлемент.
-  </audio>
+    <audio controls controlsList="nodownload noplaybackrate">
+      <source src="audio/birthday_ru_a1a2.mp3" type="audio/mpeg">
+      Ваш браузер не поддерживает аудиоэлемент.
+    </audio>
 
-  <form id="quizForm">
-    <div class="question" id="q1-block">
-      <p>1. Ско́лько лет испо́лнилось говоря́щему?</p>
-      <label><input type="radio" name="q1" value="A"> 19</label><br>
-      <label><input type="radio" name="q1" value="B"> 20</label><br>
-      <label><input type="radio" name="q1" value="C"> 21</label><br>
-    </div>
+    <form id="quizForm">
+      <div class="question" id="q1-block">
+        <p>1. Ско́лько лет испо́лнилось говоря́щему?</p>
+        <label><input type="radio" name="q1" value="A"> 19</label><br>
+        <label><input type="radio" name="q1" value="B"> 20</label><br>
+        <label><input type="radio" name="q1" value="C"> 21</label><br>
+      </div>
 
-    <div class="question" id="q2-block">
-      <p>2. Что пригото́вила ма́ма?</p>
-      <label><input type="radio" name="q2" value="A"> Пи́ццу</label><br>
-      <label><input type="radio" name="q2" value="B"> Сала́т</label><br>
-      <label><input type="radio" name="q2" value="C"> Торт</label><br>
-    </div>
+      <div class="question" id="q2-block">
+        <p>2. Что пригото́вила ма́ма?</p>
+        <label><input type="radio" name="q2" value="A"> Пи́ццу</label><br>
+        <label><input type="radio" name="q2" value="B"> Сала́т</label><br>
+        <label><input type="radio" name="q2" value="C"> Торт</label><br>
+      </div>
 
-    <div class="question" id="q3-block">
-      <p>3. Кто пришёл в го́сти?</p>
-      <label><input type="radio" name="q3" value="A"> А́ня, Ле́на и Ди́ма</label><br>
-      <label><input type="radio" name="q3" value="B"> Ма́ша, Ко́ля и Ле́на</label><br>
-      <label><input type="radio" name="q3" value="C"> А́ня, Ма́ша и Ди́ма</label><br>
-    </div>
+      <div class="question" id="q3-block">
+        <p>3. Кто пришёл в го́сти?</p>
+        <label><input type="radio" name="q3" value="A"> А́ня, Ле́на и Ди́ма</label><br>
+        <label><input type="radio" name="q3" value="B"> Ма́ша, Ко́ля и Ле́на</label><br>
+        <label><input type="radio" name="q3" value="C"> А́ня, Ма́ша и Ди́ма</label><br>
+      </div>
 
-    <button type="button" onclick="checkAnswers()">Проверить ответы</button>
-  </form>
+      <button type="button" onclick="checkAnswers()">Проверить ответы</button>
+    </form>
 
-  <div class="result" id="result"></div>
+    <div class="result" id="result"></div>
+  </div>
 
-  <script>
-    const answers = {
-      q1: { correct: "B", text: "20" },
-      q2: { correct: "C", text: "Торт" },
-      q3: { correct: "A", text: "А́ня, Ле́на и Ди́ма" }
-    };
+  <!-- ✅ Сайдбар с рекламой -->
+  <aside class="sidebar">
+    <ins class="adsbygoogle"
+         style="display:block; width:160px; height:600px"
+         data-ad-client="ca-pub-6488869290074237"
+         data-ad-slot="1676090812"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </aside>
+</div>
+<!-- конец page-layout -->
 
-    function checkAnswers() {
-      let score = 0;
-
-      for (const [key, value] of Object.entries(answers)) {
-        const block = document.getElementById(`${key}-block`);
-        const selected = document.querySelector(`input[name="${key}"]:checked`);
-        const existing = block.querySelector('.correct-answer');
-        if (existing) existing.remove();
-
-        const resultText = document.createElement('div');
-        resultText.classList.add('correct-answer');
-
-        if (selected && selected.value === value.correct) {
-          resultText.classList.add('correct');
-          resultText.innerText = `✅ Правильно! Правильный ответ: ${value.text}`;
-          score++;
-        } else {
-          resultText.classList.add('incorrect');
-          resultText.innerText = `❌ Неправильно. Правильный ответ: ${value.text}`;
-        }
-
-        block.appendChild(resultText);
-      }
-
-      document.getElementById('result').innerText = `Вы правильно ответили на ${score} из 3 вопросов.`;
-    }
-  </script>
-  
-    <div id="footer-placeholder"></div>
+<div id="footer-placeholder"></div>
 <script>
   fetch('/footer.html')
     .then(res => res.text())
@@ -303,6 +164,37 @@
       document.getElementById('footer-placeholder').innerHTML = html;
       eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
     });
+
+  const answers = {
+    q1: { correct: "B", text: "20" },
+    q2: { correct: "C", text: "Торт" },
+    q3: { correct: "A", text: "А́ня, Ле́на и Ди́ма" }
+  };
+
+  function checkAnswers() {
+    let score = 0;
+    for (const [key, value] of Object.entries(answers)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (selected && selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильно! Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Неправильно. Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+    document.getElementById('result').innerText = `Вы правильно ответили на ${score} из 3 вопросов.`;
+  }
 </script>
 </body>
 </html>
