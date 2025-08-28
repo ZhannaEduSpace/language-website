@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Possessive Adjectives and Possessive Pronouns (A1-A2)</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8TVEFE4L1Y');
+</script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+     header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      padding: 15px 40px;
+      max-width: 750px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 1.8em;
+    }
+    p {
+      font-size: 1.1em;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    .question span {
+      display: inline-block;
+      min-width: 60%;
+    }
+    input[type="text"] {
+      padding: 8px 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 30px;
+      max-width: 90%;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .result {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 30px;
+    }
+    button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #163d5c;
+    }
+    select {
+    font-size: 1.2em;
+    padding: 10px 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 70px;
+    max-width: 90%;
+    }
+  </style>
+</head>
+<body>
+
+   <header>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
+        <div class="dropdown-content">
+          <a href="english.html">English / Английский</a>
+          <a href="russian.html">Русский / Russian</a>
+          <a href="suomi.html">Suomi / Finnish</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<div class="container">
+  <h2>Possessive Adjectives and Possessive Pronouns (A1–A2)</h2>
+  <p>Choose the correct possessive (adjective or pronoun).</p>
+
+  <form id="quizForm"></form>
+  <button type="button" onclick="checkAnswers()">Check answers</button>
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+  const questions = [
+    { q: "This is ___ book.", options: ["my", "mine"], answer: "my" },
+    { q: "Is this car ___?", options: ["your", "yours"], answer: "yours" },
+    { q: "I like ___ dress.", options: ["her", "hers"], answer: "her" },
+    { q: "That house is ___ .", options: ["their", "theirs"], answer: "theirs" },
+    { q: "These are ___ children.", options: ["their", "theirs"], answer: "their" },
+    { q: "This is ___ coffee.", options: ["my", "mine"], answer: "my" },
+    { q: "The black bag is ___.", options: ["your", "yours"], answer: "yours" },
+    { q: "___ phone is on the table.", options: ["Her", "Hers"], answer: "Her" },
+    { q: "The new bicycles are ___.", options: ["their", "theirs"], answer: "theirs" },
+    { q: "The problem isn’t ___.", options: ["my", "mine"], answer: "mine" },
+    { q: "I don’t know ___ parents.", options: ["her", "hers"], answer: "her" },
+    { q: "Is this pen ___?.", options: ["your", "yours"], answer: "yours" },
+    { q: "Yes, this idea is ___.", options: ["her", "hers"], answer: "hers" },
+    { q: "This victory is ___, congratulations!", options: ["your", "yours"], answer: "yours" },
+    { q: "This red bag is ___, not mine.", options: ["her", "hers"], answer: "hers" },
+  ];
+
+  const form = document.getElementById("quizForm");
+
+  // Генерация разметки: у каждого вопроса свой select со своими опциями
+  questions.forEach((item, idx) => {
+    const wrap = document.createElement("div");
+    wrap.className = "question";
+    wrap.id = `q${idx+1}-block`;
+
+    const selectId = `sel${idx}`;
+    const selectHTML =
+      `<select id="${selectId}">
+         <option value="">—</option>
+         ${item.options.map(opt => `<option value="${opt}">${opt}</option>`).join("")}
+       </select>`;
+
+    const parts = item.q.split("___");
+    const sentenceHTML = parts.length === 2
+      ? `${parts[0]} ${selectHTML} ${parts[1]}`
+      : `${item.q.replace("___", selectHTML)}`;  // на случай, если пробелы и т.п.
+
+    wrap.innerHTML = `<label>${idx+1}. ${sentenceHTML}</label>`;
+    form.appendChild(wrap);
+  });
+
+  function checkAnswers() {
+    let score = 0;
+
+    questions.forEach((item, idx) => {
+      const block = document.getElementById(`q${idx+1}-block`);
+      const select = document.getElementById(`sel${idx}`);
+      const user = (select.value || "").toLowerCase().trim();
+      const correct = item.answer.toLowerCase();
+
+      // убираем прошлую подсказку
+      const old = block.querySelector(".correct-answer");
+      if (old) old.remove();
+
+      const note = document.createElement("div");
+      note.classList.add("correct-answer");
+
+      if (user === correct) {
+        score++;
+        note.classList.add("correct");
+        note.textContent = `✅ Correct: ${item.answer}`;
+      } else {
+        note.classList.add("incorrect");
+        note.textContent = `❌ Correct answer: ${item.answer}`;
+      }
+
+      block.appendChild(note);
+    });
+
+    document.getElementById("result").textContent =
+      `You got ${score} out of ${questions.length} correct.`;
+  }
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+<!-- HorizontalAd -->
+<ins class="adsbygoogle"
+     style="display:block; margin-top:30px;"
+     data-ad-client="ca-pub-6488869290074237"
+     data-ad-slot="5202889392"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  </div>
+  
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+  
+</body>
+</html>
