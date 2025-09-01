@@ -198,6 +198,17 @@
     overflow-y: visible !important;
   }
 }
+    .feedback {
+  font-size: 1.2em;
+  margin-left: 10px;
+}
+.correct {
+  color: green;
+}
+.incorrect {
+  color: red;
+}
+
   </style>
 </head>
 <body>
@@ -318,27 +329,39 @@
     };
 
     function checkAnswers() {
-      let score = 0;
-      let total = Object.keys(answers).length;
+  let score = 0;
 
-      for (let key in answers) {
-        const select = document.getElementById(key);
-        if (!select) continue;
+  questions.forEach((item, i) => {
+    const select = document.getElementById(`input${i}`);
+    const userAnswer = select.value;
+    const correctAnswer = item.a;
 
-        const userAnswer = select.value;
-        const correctAnswer = answers[key];
+    // удалить старую обратную связь
+    let oldFeedback = document.querySelector(`#feedback${i}`);
+    if (oldFeedback) oldFeedback.remove();
 
-        if (userAnswer === correctAnswer) {
-          select.style.borderColor = "green";
-          score++;
-        } else {
-          select.style.borderColor = "red";
-        }
-      }
+    // создать новую
+    const feedback = document.createElement("span");
+    feedback.id = `feedback${i}`;
+    feedback.classList.add("feedback");
 
-      document.getElementById("result").textContent =
-        `Вы правильно выбрали ${score} из ${total} ответов.`;
+    if (userAnswer === correctAnswer) {
+      feedback.textContent = "✅";
+      feedback.classList.add("correct");
+      score++;
+    } else {
+      feedback.textContent = "❌";
+      feedback.classList.add("incorrect");
     }
+
+    // добавить сразу после select
+    select.insertAdjacentElement("afterend", feedback);
+  });
+
+  document.getElementById("result").innerText = 
+    `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
+}
+
   </script>
 
  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
