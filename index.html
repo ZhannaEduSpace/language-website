@@ -2,204 +2,145 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zhanna EduSpace</title>
+  <title>ZhannaEduSpace — задания по английскому, русскому и финскому</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
-     crossorigin="anonymous"></script>
-  
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8TVEFE4L1Y');
+  </script>
 
-  gtag('config', 'G-8TVEFE4L1Y');
-</script>
+  <!-- AdSense: подключаем ОДИН раз -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237" crossorigin="anonymous"></script>
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
-     crossorigin="anonymous"></script>
-  
   <style>
-   body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      font-size: 16px;
-      line-height: 1.4;
-      background-color: #f8f9fa;
-      color: #333;
-    }
-     header {
-      background-color: #1f4e79;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    :root{
+      --brand:#1f4e79;
+      --bg:#f8f9fa;
+      --text:#333;
+      --card-bg:#fff;
+      --shadow:0 8px 24px rgba(0,0,0,.08);
+      --radius:14px;
     }
 
-    .logo {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.3em;
+    /* База */
+    html,body{height:100%;}
+    body{
+      margin:0; padding:0;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:16px; line-height:1.5;
+      color:var(--text); background:var(--bg);
     }
 
-    .logo:hover {
-      text-decoration: none;
+    /* Хедер (как у тебя на страницах) */
+    header{
+      background:var(--brand); color:#fff;
+      padding:10px 20px;
+      display:flex; align-items:center; justify-content:space-between;
     }
+    .logo{color:#fff; text-decoration:none; font-weight:bold; font-size:1.3em;}
+    nav{display:flex; align-items:baseline; gap:20px;}
+    nav a{color:#fff; text-decoration:none; font-size:1em;}
+    nav a:hover{text-decoration:underline;}
 
-    nav {
-      display: flex;
-      align-items: baseline;
-      gap: 20px;
+    .dropdown{position:relative;}
+    .dropbtn{
+      background:transparent; border:0; color:#fff;
+      cursor:pointer; font-size:1em; padding:0; text-decoration:none;
     }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 1em;
+    .dropdown-content{
+      display:none; position:absolute; right:0; top:calc(100% + 8px);
+      min-width:180px; background:#fff; color:var(--text);
+      box-shadow:var(--shadow); border-radius:10px; overflow:hidden; z-index:1000;
     }
-
-    nav a:hover {
-      text-decoration: underline;
+    .dropdown-content a{
+      display:block; padding:10px 12px; text-decoration:none; color:var(--text);
     }
+    .dropdown-content a:hover{background:#f1f1f1;}
+    .dropdown:hover .dropdown-content{display:block;}
 
-    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
-    .dropdown {
-      position: relative;
+    /* Контейнеры */
+    .wrap{max-width:1100px; margin:0 auto; padding:20px; }
+    .hero{padding:18px 0 8px;}
+    .hero h1{
+      margin:8px 0 6px;
+      font-size:clamp(20px, 2.5vw + 12px, 32px);
+      color:var(--brand);
     }
+    .hero p{margin:0; color:#555;}
 
-    .dropbtn {
-      background-color: #1f4e79;
-      color: white;
-      border: none;
-      font-size: 1em;
-      cursor: pointer;
-      padding: 0;
+    /* Карточки-языки */
+    .cards{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
     }
-    
-    .dropbtn,
-    .dropdown-content a {
-    text-decoration: none;
+    .card{
+      background:var(--card-bg);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+      display:flex; flex-direction:column; gap:12px;
+      transition:transform .12s ease, box-shadow .12s ease;
     }
+    .card:hover{ transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,0,0,.12); }
 
-   .dropbtn:hover,
-   .dropdown-content a:hover {
-   text-decoration: none;
-   }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: white;
-      min-width: 180px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      right: 0;
+    .flag{font-size:28px;}
+    .card h2{
+      display:flex; align-items:center; gap:10px;
+      margin:0; font-size:1.25rem; color:#1b3651;
     }
-
-    .dropdown-content a {
-      padding: 10px;
-      display: block;
-      text-decoration: none;
-      color: #333;
+    .card p{margin:0; color:#555; min-height:3em;}
+    .card .actions{margin-top:auto; display:flex; gap:10px; flex-wrap:wrap;}
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      background:var(--brand); color:#fff; font-weight:600;
     }
+    .btn.secondary{background:#2c6f9e;}
+    .btn:hover{filter:brightness(1.05);}
 
-    .dropdown-content a:hover {
-      background-color: #f1f1f1;
+    /* Реклама ниже карточек */
+    .ad-block{margin-top:26px;}
+
+    /* Блок "О проекте" */
+    .about{
+      margin-top:28px;
+      background:#fff; border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:22px;
+      display:grid; grid-template-columns:1fr 2fr; gap:20px;
+      align-items:start;
     }
+    .about h3{margin:0 0 8px; color:#1b3651;}
+    .about p{margin:0 0 8px;}
+    .about small{color:#666;}
 
-    .dropdown:hover .dropdown-content {
-      display: block;
+    /* Футер-заглушка */
+    .footer-space{height:16px;}
+
+    /* Мобилки */
+    @media (max-width:900px){
+      .cards{grid-template-columns:1fr 1fr;}
+      .about{grid-template-columns:1fr;}
     }
-    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
-
-    .container {
-      padding: 20px 40px;
-      max-width: 1050px;
-      margin: auto;
-    }
-
-    .intro {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      align-items: flex-start;
-      margin-bottom: 40px;
-    }
-
-    .intro img {
-      max-width: 250px;
-      border-radius: 8px;
-      flex-shrink: 0;
-    }
-
-    .intro-text {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .columns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-
-    .column {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .column h3 {
-      color: #0074a6;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    ul li::before {
-      content: "✔️ ";
-    }
-
-    .contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      margin-bottom: 30px;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .buttons a {
-      background-color: #005b94;
-      color: #fff;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 14px;
-      min-width: 280px;
-      text-align: center;
-    }
-
-    .buttons a:hover {
-      background-color: #004570;
+    @media (max-width:560px){
+      .wrap{padding:14px;}
+      .cards{grid-template-columns:1fr;}
     }
   </style>
 </head>
 <body>
-   <header>
-    <a href="index.html" class="logo">ZhannaEduSpace</a>
+
+  <!-- Шапка сайта (унифицированная) -->
+  <header>
+    <a class="logo" href="index.html">ZhannaEduSpace</a>
     <nav>
       <div class="dropdown">
         <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
@@ -212,85 +153,86 @@
     </nav>
   </header>
 
-  <div class="container">
-    <div class="intro">
-      <img src="Zhanna_Anshukova_1 copy 2.jpg" alt="Zhanna" />
-      <div class="intro-text">
-        <p><strong>My name is Zhanna, and I teach English and Russian as foreign languages.</strong></p>
-        <p>I hold a Master’s degree in Linguistics (Foreign Language Acquisition and Teaching), and I’ve been working with students from different countries for several years. I’m also currently doing academic research in education. In my lessons, I focus on making the process comfortable, clear, and effective — and helping you see real progress.</p>
+  <main class="wrap">
+    <!-- Хиро -->
+    <section class="hero" aria-label="О сайте">
+      <h1>Онлайн-задания по английскому, русскому и финскому</h1>
+      <p>Выбирайте язык и уровень — решайте задания прямо в браузере. Подходит для самостоятельной работы и как домашнее задание от преподавателя.</p>
+    </section>
 
-        <p><strong>Меня зовут Жанна, я преподаватель английского и русского как иностранного.</strong></p>
-        <p>У меня степень магистра по лингвистике (Теория и методы преподавания иностранных языков), и я уже несколько лет работаю с учениками из разных стран. Сейчас я также занимаюсь научной работой в области образования. Мне важно, чтобы на уроках было комфортно, понятно и полезно — и чтобы вы чувствовали результат.</p>
+    <!-- Карточки языков -->
+    <section class="cards" aria-label="Выбор языка">
+      <!-- ENGLISH -->
+      <article class="card">
+        <h2><span class="flag">🇬🇧</span> English</h2>
+        <p>Грамматика, лексика, тренажёры уровней A1–B2. Задания с мгновенной проверкой.</p>
+        <div class="actions">
+          <a class="btn" href="english.html">Перейти к упражнениям</a>
+        </div>
+      </article>
+
+      <!-- RUSSIAN -->
+      <article class="card">
+        <h2><span class="flag">🇷🇺</span> Русский</h2>
+        <p>Задания по русскому как иностранному: предлоги, аудирование, тренажёры.</p>
+        <div class="actions">
+          <a class="btn" href="russian.html">Перейти к упражнениям</a>
+        </div>
+      </article>
+
+      <!-- FINNISH -->
+      <article class="card">
+        <h2><span class="flag">🇫🇮</span> Suomi / Finnish</h2>
+        <p>Финский язык: склонения, глаголы, словарь — от A1 до B1/B2.</p>
+        <div class="actions">
+          <a class="btn" href="suomi.html">Перейти к упражнениям</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Рекламный блок (один горизонтальный) -->
+    <section class="ad-block" aria-label="Реклама">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-6488869290074237"
+           data-ad-slot="5202889392"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </section>
+
+    <!-- Блок "О проекте" -->
+    <section class="about" aria-label="О проекте">
+      <div>
+        <h3>О проекте</h3>
+        <p><strong>ZhannaEduSpace</strong> — это бесплатные интерактивные упражнения по английскому, русскому и финскому языкам. Задания подходят для самостоятельной практики и как доп.материал к урокам.</p>
+        <p>Сайт развивается постепенно: я добавляю новые упражнения и улучшаю старые. Если вы преподаватель — можете давать прямые ссылки на задания ученикам.</p>
+        <small>Небольшой блок «Обо мне» и контакты по-прежнему доступны на отдельных страницах.</small>
       </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <h3>What I offer</h3>
-        <ul>
-          <li>Online lessons in English and Russian as foreign languages</li>
-          <li>Levels from beginner to advanced (A0 to C1)</li>
-          <li>Preparation for international exams</li>
-          <li>Personalized approach for each learner</li>
-          <li>Start with a free trial lesson</li>
-        </ul>
+      <div>
+        <h3>Как пользоваться</h3>
+        <p>1) Выберите язык выше. 2) Зайдите в нужный раздел/уровень. 3) Решайте — проверка ответов встроена в каждое упражнение.</p>
+        <p>Если что-то отображается странно на телефоне — дайте знать, я поправлю вёрстку.</p>
       </div>
+    </section>
 
-      <div class="column">
-        <h3>Что я предлагаю</h3>
-        <ul>
-          <li>Онлайн-занятия по английскому и русскому как иностранному</li>
-          <li>Уровни — от начинающего до продвинутого (A0–C1)</li>
-          <li>Подготовка к международным экзаменам</li>
-          <li>Индивидуальный подход к каждому ученику</li>
-          <li>Бесплатное пробное занятие</li>
-        </ul>
-      </div>
-    </div>
-    <div class="columns contact">
-      <div class="column">
-        <h3>Contact Me</h3>
-        <p>📧 Email: zhanna.edu.space@gmail.com<br />
-          💬 WhatsApp: +358 40 8516355</p>
-        <p>Feel free to reach out if you'd like to learn more or sign up for a free trial lesson. I’ll be happy to answer your questions and help you get started.</p>
-      </div>
+    <div class="footer-space"></div>
+  </main>
 
-      <div class="column">
-        <h3>Связаться со мной</h3>
-        <p>📧 Email: zhanna.edu.space@gmail.com<br />
-          💬 WhatsApp: +358 40 8516355</p>
-        <p>Напишите мне, если вы хотите узнать больше или записаться на бесплатное пробное занятие. Я с радостью отвечу и помогу подобрать формат.</p>
-      </div>
-    </div>
-
-    <div class="buttons">
-      <a href="https://wa.me/358408516355" target="_blank">Написать в WhatsApp / Message on WhatsApp</a>
-      <a href="mailto:zhanna.edu.space@gmail.com">Отправить email / Send email</a>
-      <a href="https://t.me/ZhannaEduSpace">Написать в Телеграм / Message on Telegram</a>
-    </div>
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
-     crossorigin="anonymous"></script>
-<!-- HorizontalAd -->
-<ins class="adsbygoogle"
-     style="display:block; margin-top:30px;"
-     data-ad-client="ca-pub-6488869290074237"
-     data-ad-slot="5202889392"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  </div>
-    
- <div id="footer-placeholder"></div>
-<script>
-  fetch('/footer.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('footer-placeholder').innerHTML = html;
-      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
-    });
-</script>
+  <!-- Футер подгружается как и раньше -->
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(html => {
+        const host = document.getElementById('footer-placeholder');
+        host.innerHTML = html;
+        const scripts = Array.from(host.getElementsByTagName('script'));
+        if (scripts.length) {
+          // выполнить возможные скрипты из footer.html
+          eval(scripts.map(s => s.innerHTML).join(';'));
+        }
+      });
+  </script>
 </body>
 </html>
