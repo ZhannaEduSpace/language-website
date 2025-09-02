@@ -23,7 +23,7 @@
       margin: 0;
       padding: 0;
       font-size: 16px;
-      line-height: 1.7;
+      line-height: 1.4;
       background-color: #f8f9fa;
       color: #333;
     }
@@ -62,7 +62,12 @@
     .dropdown-content a:hover { background: #f1f1f1; }
     .dropdown:hover .dropdown-content { display: block; }
 
-    .container { padding: 10px 40px; max-width: 880px; margin: auto; }
+    .container {
+  padding: 10px 40px;
+  max-width: 880px;
+  margin: auto;
+  line-height: 1.7;   /* ← увеличенный интервал только внутри контейнера */
+}
     h2 { margin: 16px 0; color: #1f4e79; }
     .result { margin-top: 24px; font-weight: bold; font-size: 1.1em; }
 
