@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>English Language Task: Prepositions of Time (A2)</title>
+  
+  <!-- ✅ ДОБАВЛЕН viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8TVEFE4L1Y');
+</script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+     header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      padding: 15px 40px;
+      max-width: 750px;
+      margin: auto;
+    }
+    .quiz-question {
+      margin-bottom: 30px;
+    }
+    .quiz-question h3 {
+      margin-bottom: 10px;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #163d5c;
+    }
+
+    @media (max-width: 600px) {
+  body {
+    font-size: 15px;
+    margin: auto;
+    line-height: 1.6;
+    padding-bottom: 100px;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  p, label, .quiz-question h3, .correct-answer {
+    font-size: 1.3em;
+  }
+
+  input[type="radio"] {
+    transform: scale(1.5);
+    margin-right: 8px;
+  }
+
+  button {
+    font-size: 1.4em;
+    padding: 16px 45px;
+  }
+
+  .result {
+    font-size: 1.6em;
+  }
+
+  html, body {
+    overflow-y: visible !important;
+  }
+}
+  </style>
+</head>
+<body>
+
+   <header>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
+        <div class="dropdown-content">
+          <a href="english.html">English / Английский</a>
+          <a href="russian.html">Русский / Russian</a>
+          <a href="suomi.html">Suomi / Finnish</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+  <h2>🕒 Prepositions of Time (A2)</h2>
+  <p><strong>Choose the correct preposition of time to complete each sentence.</strong><br>If no preposition is needed, choose the dash (—).</p>
+
+  <form id="quizForm"></form>
+  <button type="button" onclick="checkAnswers()">Check Answers</button>
+  <div class="result" id="result"></div>
+
+  <script>
+  const questions = [
+      { q: "I usually get up ___ 7 o’clock.", a: "at", options: ["in", "at", "on"] },
+      { q: "The concert is ___ Saturday evening.", a: "on", options: ["—", "in", "on"] },
+      { q: "I have an important meeting ___ tomorrow.", a: "—", options: ["on", "in", "—"] },
+      { q: "We go skiing ___ the winter.", a: "in", options: ["at", "on", "in"] },
+      { q: "I was born ___ 2002.", a: "in", options: ["on", "in", "at"] },
+      { q: "They’re arriving ___ Christmas.", a: "at", options: ["—", "on", "at"] },
+      { q: "We visited them ___ last Sunday.", a: "—", options: ["at", "—", "on"] },
+      { q: "She likes to read ___ the morning.", a: "in", options: ["in", "on", "at"] },
+      { q: "Let’s meet ___ lunchtime.", a: "at", options: ["at", "on", "—"] },
+      { q: "He was very famous ___ the 20th century.", a: "in", options: ["on", "in", "at"] }
+      { q: "We’re going to the beach ___ a hot day.", a: "on", options: ["—", "in", "on"] }
+      { q: "The store closes ___ midnight.", a: "at", options: ["at", "in", "—"] }
+      { q: "I’ll call you ___ an hour.", a: "in", options: ["on", "in", "at"] }
+      { q: "She got married ___ May 6th.", a: "on", options: ["in", "at", "on"] }
+      { q: "She’s coming ___ next weekend.", a: "—", options: ["in", "at", "—"] }
+    ];
+
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q${i+1}-block`;
+      div.innerHTML = `<h3>${i+1}. ${item.q}</h3>` +
+        item.options.map(opt => `
+          <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+      form.appendChild(div);
+    });
+
+    function checkAnswers() {
+      let score = 0;
+      questions.forEach((item, i) => {
+        const name = `q${i+1}`;
+        const selected = form.querySelector(`input[name=${name}]:checked`);
+        const block = document.getElementById(`${name}-block`);
+        const existing = block.querySelector('.correct-answer');
+        if (existing) existing.remove();
+        const note = document.createElement('div');
+        note.classList.add('correct-answer');
+        if (selected && selected.value === item.a) {
+          note.classList.add('correct');
+          score++;
+          note.innerText = `Correct! Answer: ${item.a}`;
+        } else {
+          note.classList.add('incorrect');
+          note.innerText = `Correct answer: ${item.a}`;
+        }
+        block.appendChild(note);
+      });
+      document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
+    }
+  </script>
+        </div>
+
+  <div class="container">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+<!-- HorizontalAd -->
+<ins class="adsbygoogle"
+     style="display:block; margin-top:30px;"
+     data-ad-client="ca-pub-6488869290074237"
+     data-ad-slot="5202889392"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+</body>
+</html>
