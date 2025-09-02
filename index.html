@@ -134,6 +134,50 @@
       .wrap{padding:14px;}
       .cards{grid-template-columns:1fr;}
     }
+    
+    /* Трёхъязычный блок: 3 столбца на десктопе */
+.about-i18n{
+  margin-top:28px;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+  padding:22px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:18px;
+}
+.about-i18n h3{
+  margin:0 0 8px;
+  color:#1b3651;
+  font-size:1.1rem;
+}
+.about-i18n p{ margin:0 0 8px; color:#444; }
+.about-i18n ol{ margin:8px 0 0; padding-left:18px; }
+
+.contact-cta{
+  margin-top:18px;
+  display:flex;
+  justify-content:center;
+}
+.btn-contact{
+  background:transparent;
+  color:#1f4e79;
+  border:2px solid #1f4e79;
+  border-radius:10px;
+  padding:10px 16px;
+  text-decoration:none;
+  font-weight:600;
+}
+.btn-contact:hover{
+  background:#1f4e79;
+  color:#fff;
+}
+
+/* Адаптив */
+@media (max-width: 900px){
+  .about-i18n{ grid-template-columns: 1fr; }
+}
+
   </style>
 </head>
 <body>
@@ -201,20 +245,51 @@
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </section>
 
-    <!-- Блок "О проекте" -->
-    <section class="about" aria-label="О проекте">
-      <div>
-        <h3>О проекте</h3>
-        <p><strong>ZhannaEduSpace</strong> — это бесплатные интерактивные упражнения по английскому, русскому и финскому языкам. Задания подходят для самостоятельной практики и как доп.материал к урокам.</p>
-        <p>Сайт развивается постепенно: я добавляю новые упражнения и улучшаю старые. Если вы преподаватель — можете давать прямые ссылки на задания ученикам.</p>
-        <small>Небольшой блок «Обо мне» и контакты по-прежнему доступны на отдельных страницах.</small>
-      </div>
-      <div>
-        <h3>Как пользоваться</h3>
-        <p>1) Выберите язык выше. 2) Зайдите в нужный раздел/уровень. 3) Решайте — проверка ответов встроена в каждое упражнение.</p>
-        <p>Если что-то отображается странно на телефоне — дайте знать, я поправлю вёрстку.</p>
-      </div>
-    </section>
+<section class="about-i18n" aria-label="О проекте / How to use / Tietoa projektista">
+  <!-- RU -->
+  <article>
+    <h3>О проекте</h3>
+    <p><strong>ZhannaEduSpace</strong> — это бесплатные интерактивные задания по английскому, русскому и финскому языкам. Подходит для самостоятельной практики и как домашнее задание от преподавателя.</p>
+    <h3>Как пользоваться</h3>
+    <ol>
+      <li>Выберите язык и уровень.</li>
+      <li>Откройте упражнение и выполните задания.</li>
+      <li>Нажмите «Проверить», чтобы увидеть результат.</li>
+      <li>Возвращайтесь регулярно для новых заданий.</li>
+    </ol>
+  </article>
+
+  <!-- EN -->
+  <article>
+    <h3>About the Project</h3>
+    <p><strong>ZhannaEduSpace</strong> offers free interactive exercises in English, Russian and Finnish. Use it for self-study or as teacher-assigned homework.</p>
+    <h3>How to Use</h3>
+    <ol>
+      <li>Choose your language and level.</li>
+      <li>Open an exercise and complete the tasks.</li>
+      <li>Click “Check” to see your score.</li>
+      <li>Come back regularly for new practice.</li>
+    </ol>
+  </article>
+
+  <!-- FI -->
+  <article>
+    <h3>Tietoa projektista</h3>
+    <p><strong>ZhannaEduSpace</strong> tarjoaa ilmaisia interaktiivisia harjoituksia englanniksi, venäjäksi ja suomeksi. Sopii itseopiskeluun ja opettajan antamiksi kotitehtäviksi.</p>
+    <h3>Näin käytät</h3>
+    <ol>
+      <li>Valitse kieli ja taso.</li>
+      <li>Avaa harjoitus ja tee tehtävät.</li>
+      <li>Paina “Tarkista” nähdäksesi tuloksen.</li>
+      <li>Palaa säännöllisesti uusien harjoitusten pariin.</li>
+    </ol>
+  </article>
+</section>
+
+<div class="contact-cta">
+  <a class="btn-contact" href="contacts.html">Контакты / Contacts / Yhteystiedot</a>
+</div>
+
 
     <div class="footer-space"></div>
   </main>
