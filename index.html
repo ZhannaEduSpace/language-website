@@ -198,19 +198,59 @@
   </header>
 
   <main class="wrap">
-    <!-- Хиро -->
-    <section class="hero" aria-label="О сайте">
-     <h2>
-  Online exercises in English, Russian and Finnish<br>
-  Онлайн-задания по английскому, русскому и финскому<br>
-  Verkkoharjoituksia englanniksi, venäjäksi ja suomeksi
-</h2>
-<p>
-  Choose a language and level — do the tasks directly in your browser.<br>
-  Выбирайте язык и уровень — решайте задания прямо в браузере.<br>
-  Valitse kieli ja taso — tee tehtävät suoraan selaimessa.
-</p>
-</section>
+  <style>
+  .hero {
+    max-width: 1100px;
+    margin: 48px auto 28px;
+    padding: 0 24px;
+  }
+  .hero-title {
+    color: #1f2a3a;
+    font-weight: 800;
+    line-height: 1.15;
+    font-size: clamp(28px, 4.2vw, 46px);
+    letter-spacing: 0.2px;
+    margin: 0 0 10px;
+  }
+  .hero-title .alt {
+    display: block;
+    font-weight: 700;
+    font-size: 0.72em;          /* меньше основного */
+    line-height: 1.25;
+    color: #5c6b7a;             /* приглушённый */
+    margin-top: 6px;
+  }
+  .hero-sub {
+    margin: 0;
+    color: #445264;
+    font-size: clamp(16px, 1.7vw, 20px);
+    line-height: 1.45;
+  }
+  .hero-sub .alt {
+    display: block;
+    opacity: .85;               /* ещё чуть тише */
+    margin-top: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .hero { margin-top: 28px; }
+    .hero-title .alt { font-size: .78em; }
+  }
+</style>
+
+<div class="hero">
+  <h1 class="hero-title">
+    <span class="primary">Online exercises in English, Russian and Finnish</span>
+    <span class="alt">Онлайн-задания по английскому, русскому и финскому</span>
+    <span class="alt">Verkkoharjoituksia englanniksi, venäjäksi ja suomeksi</span>
+  </h1>
+
+  <p class="hero-sub">
+    <span class="primary">Choose a language and level — do the tasks directly in your browser.</span>
+    <span class="alt">Выбирайте язык и уровень — решайте задания прямо в браузере.</span>
+    <span class="alt">Valitse kieli ja taso — tee tehtävät suoraan selaimessa.</span>
+  </p>
+</div>
 
     <!-- Карточки языков -->
     <section class="cards" aria-label="Выбор языка">
