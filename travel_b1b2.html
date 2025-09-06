@@ -215,9 +215,6 @@
   <button type="button" onclick="checkAnswers()">Check Answers</button>
   <div class="result" id="result"></div>
 
-  <!-- Стретчер внизу — невидимый блок, чтобы гарантированно был запас -->
-  <div style="height: 40px;"></div>
-
   <script>
     const questions = [
       { q: 'Which is the best synonym for "crowded"?', a: 'packed', options: ['clean', 'quiet', 'packed', 'fancy'] },
@@ -272,6 +269,7 @@
       document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
     }
   </script>
+      </div>
     
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
