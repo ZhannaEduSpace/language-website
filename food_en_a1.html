@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Language Task: What is it? (Food and Drinks) (A1)</title>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8TVEFE4L1Y');
+</script>
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+  
+
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      padding: 0px;
+      margin: 0;
+    }
+header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      max-width: 750px;
+      margin: auto;
+      padding: 20px;
+    }
+    h2 {
+      color: #1f4e79;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+    input[type="text"] {
+      padding: 8px 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 80%;
+      max-width: 300px;
+    }
+    .correct {
+      color: green;
+      margin-top: 5px;
+    }
+    .incorrect {
+      color: red;
+      margin-top: 5px;
+    }
+    .result {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 30px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #163d5c;
+    }
+  .question {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+.question input[type="text"] {
+  font-size: 1em;
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 200px;
+  max-width: 90%;
+  margin-left: 8px;
+}
+  .question label span.emoji {
+  font-size: 2em; /* можешь уменьшить до 1.5em, если слишком крупно */
+  margin-right: 10px;
+}
+  </style>
+  
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
+        <div class="dropdown-content">
+          <a href="english.html">English / Английский</a>
+          <a href="russian.html">Русский / Russian</a>
+          <a href="suomi.html">Suomi / Finnish</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>🍽️ Food and Drinks (A1)</h2>
+  <p><strong>Write the name of the food or drink. The first letter is given as a hint.</strong> Example: 🥓 → <em><strong>b</strong>acon</em></p>
+ 
+    <div class="container">
+  <h2>What is it?</h2>
+
+  <form id="quizForm"></form>
+
+  <button onclick="checkAnswers()">Check Answers</button>
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+  const questions = [
+{ emoji: '<span class="emoji">🍞</span>', answer: "bread" },
+{ emoji: '<span class="emoji">🥚</span>', answer: "egg" },
+{ emoji: '<span class="emoji">🍷</span>', answer: "wine" },
+{ emoji: '<span class="emoji">🍺</span>', answer: "beer" },
+{ emoji: '<span class="emoji">🥩</span>', answer: "meat" },
+{ emoji: '<span class="emoji">🍰</span>', answer: "cake" },
+{ emoji: '<span class="emoji">🧃</span>', answer: "juice" },
+{ emoji: '<span class="emoji">🧈</span>', answer: "butter" },
+{ emoji: '<span class="emoji">🥛</span>', answer: "milk" },
+{ emoji: '<span class="emoji">🧀</span>', answer: "cheese" },
+{ emoji: '<span class="emoji">☕</span>', answer: "coffee" },
+{ emoji: '<span class="emoji">🧂</span>', answer: "salt" },
+{ emoji: '<span class="emoji">🍗</span>', answer: "chicken" }
+
+  ];
+
+  const form = document.getElementById("quizForm");
+
+  questions.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q${index}`;
+
+    const placeholder = q.answer.charAt(0) + "...";
+
+    div.innerHTML = `
+      <label>${q.emoji} → <input type="text" id="input${index}" placeholder="${placeholder}"></label>
+    `;
+    form.appendChild(div);
+  });
+
+  function normalize(str) {
+    return str.trim().toLowerCase();
+  }
+
+  function checkAnswers() {
+    let score = 0;
+
+    questions.forEach((q, i) => {
+      const userInput = normalize(document.getElementById(`input${i}`).value);
+      const correct = normalize(q.answer);
+      const block = document.getElementById(`q${i}`);
+
+      let old = block.querySelector(".correct, .incorrect");
+      if (old) old.remove();
+
+      const msg = document.createElement("div");
+      if (userInput === correct) {
+        msg.className = "correct";
+        msg.textContent = `✅ Correct! Answer: ${q.answer}`;
+        score++;
+      } else {
+        msg.className = "incorrect";
+        msg.textContent = `❌ Correct answer: ${q.answer}`;
+      }
+      block.appendChild(msg);
+    });
+
+    document.getElementById("result").innerText = `You got ${score} out of ${questions.length} correct.`;
+  }
+</script>
+     </div>
+
+   <div class="container">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+<!-- HorizontalAd -->
+<ins class="adsbygoogle"
+     style="display:block; margin-top:30px;"
+     data-ad-client="ca-pub-6488869290074237"
+     data-ad-slot="5202889392"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  </div>
+
+     <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+
+</body>
+</html>
