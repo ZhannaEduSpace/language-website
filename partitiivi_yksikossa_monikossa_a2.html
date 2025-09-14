@@ -206,116 +206,132 @@
 
   <form id="quizForm"></form>
 
-  <button onclick="checkAnswers()">Tarkista vastaukset</button>
-  <div class="result" id="result"></div>
+<button onclick="checkAnswers()">Tarkista vastaukset</button>
+<div class="result" id="result"></div>
 
-  <script>
-    const questions = [
-      { base: "talo", singular: "taloa", plural: "taloja" },
-      { base: "kukka", singular: "kukkaa", plural: "kukkia" },
-      { base: "auto", singular: "autoa", plural: "autoja" },
-      { base: "nalle", singular: "nallea", plural: "nalleja" },
-      { base: "opiskelija", singular: "opiskelijaa", plural: "opiskelijoita" },
-      { base: "kala", singular: "kalaa", plural: "kaloja" },
-      { base: "lapsi", singular: "lasta", plural: "lapsia" },
-      { base: "puhelin", singular: "puhelinta", plural: "puhelimia" },
-      { base: "mies", singular: "miestä", plural: "miehiä" },
-      { base: "vesi", singular: "vettä", plural: "vesiä" },
-      { base: "iso", singular: "isoa", plural: "isoja" },
-      { base: "kaunis", singular: "kaunista", plural: "kauniita" },
-      { base: "suuri", singular: "suurta", plural: "suuria" },
-      { base: "vanha", singular: "vanhaa", plural: "vanhoja" },
-      { base: "punainen", singular: "punaista", plural: "punaisia" }
-    ];
+<script>
+  const questions = [
+    { base: "talo", singular: "taloa", plural: "taloja" },
+    { base: "kukka", singular: "kukkaa", plural: "kukkia" },
+    { base: "auto", singular: "autoa", plural: "autoja" },
+    { base: "nalle", singular: "nallea", plural: "nalleja" },
+    { base: "opiskelija", singular: "opiskelijaa", plural: "opiskelijoita" },
+    { base: "kala", singular: "kalaa", plural: "kaloja" },
+    { base: "lapsi", singular: "lasta", plural: "lapsia" },
+    { base: "puhelin", singular: "puhelinta", plural: "puhelimia" },
+    { base: "mies", singular: "miestä", plural: "miehiä" },
+    { base: "vesi", singular: "vettä", plural: "vesiä" },
+    { base: "iso", singular: "isoa", plural: "isoja" },
+    { base: "kaunis", singular: "kaunista", plural: "kauniita" },
+    { base: "suuri", singular: "suurta", plural: "suuria" },
+    { base: "vanha", singular: "vanhaa", plural: "vanhoja" },
+    { base: "punainen", singular: "punaista", plural: "punaisia" }
+  ];
 
-    const form = document.getElementById("quizForm");
+  const form = document.getElementById("quizForm");
 
-    questions.forEach((q, index) => {
-      const div = document.createElement("div");
-      div.className = "question";
-      div.id = `q${index}`;
-      div.innerHTML = `
-        <label>${index + 1}. ${q.base}</label><br>
+  questions.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q${index}`;
+    div.innerHTML = `
+      <label>${index + 1}. ${q.base}</label>
+      <div class="input-block">
         <input type="text" id="input${index}_s" placeholder="Yksikkö (singular)">
+        <div id="feedback${index}_s"></div>
+      </div>
+      <div class="input-block">
         <input type="text" id="input${index}_p" placeholder="Monikko (plural)">
-      `;
-      form.appendChild(div);
+        <div id="feedback${index}_p"></div>
+      </div>
+    `;
+    form.appendChild(div);
+  });
+
+  function normalize(str) {
+    return str.trim().toLowerCase();
+  }
+
+  function checkAnswers() {
+    let score = 0;
+
+    questions.forEach((q, i) => {
+      const inputSingular = normalize(document.getElementById(`input${i}_s`).value);
+      const inputPlural = normalize(document.getElementById(`input${i}_p`).value);
+
+      const correctSingular = normalize(q.singular);
+      const correctPlural = normalize(q.plural);
+
+      const feedbackSingular = document.getElementById(`feedback${i}_s`);
+      const feedbackPlural = document.getElementById(`feedback${i}_p`);
+
+      feedbackSingular.innerHTML = "";
+      feedbackPlural.innerHTML = "";
+
+      const msgSingular = document.createElement("div");
+      const msgPlural = document.createElement("div");
+
+      if (inputSingular === correctSingular) {
+        msgSingular.className = "correct";
+        msgSingular.textContent = `✅ Yksikkö oikein: ${q.singular}`;
+        score++;
+      } else {
+        msgSingular.className = "incorrect";
+        msgSingular.textContent = `❌ Yksikkö väärin. Oikea: ${q.singular}`;
+      }
+
+      if (inputPlural === correctPlural) {
+        msgPlural.className = "correct";
+        msgPlural.textContent = `✅ Monikko oikein: ${q.plural}`;
+        score++;
+      } else {
+        msgPlural.className = "incorrect";
+        msgPlural.textContent = `❌ Monikko väärin. Oikea: ${q.plural}`;
+      }
+
+      feedbackSingular.appendChild(msgSingular);
+      feedbackPlural.appendChild(msgPlural);
     });
 
-    function normalize(str) {
-      return str.trim().toLowerCase();
-    }
+    const total = questions.length * 2;
+    document.getElementById("result").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
 
-    function checkAnswers() {
-      let score = 0;
+<style>
+  .question {
+    margin-bottom: 1.5em;
+  }
 
-      questions.forEach((q, i) => {
-        const inputSingular = normalize(document.getElementById(`input${i}_s`).value);
-        const inputPlural = normalize(document.getElementById(`input${i}_p`).value);
+  .input-block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
 
-        const correctSingular = normalize(q.singular);
-        const correctPlural = normalize(q.plural);
+  input[type="text"] {
+    padding: 5px;
+    width: 200px;
+    margin-bottom: 2px;
+  }
 
-        const block = document.getElementById(`q${i}`);
+  .correct {
+    color: green;
+    font-size: 0.9em;
+    margin-top: 2px;
+  }
 
-        // Удаляем старую обратную связь
-        let feedbacks = block.querySelectorAll(".correct, .incorrect");
-        feedbacks.forEach(f => f.remove());
+  .incorrect {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 2px;
+  }
 
-        const msgSingular = document.createElement("div");
-        const msgPlural = document.createElement("div");
-
-        if (inputSingular === correctSingular) {
-          msgSingular.className = "correct";
-          msgSingular.textContent = `✅ Yksikkö oikein: ${q.singular}`;
-          score++;
-        } else {
-          msgSingular.className = "incorrect";
-          msgSingular.textContent = `❌ Yksikkö väärin. Oikea: ${q.singular}`;
-        }
-
-        if (inputPlural === correctPlural) {
-          msgPlural.className = "correct";
-          msgPlural.textContent = `✅ Monikko oikein: ${q.plural}`;
-          score++;
-        } else {
-          msgPlural.className = "incorrect";
-          msgPlural.textContent = `❌ Monikko väärin. Oikea: ${q.plural}`;
-        }
-
-        block.appendChild(msgSingular);
-        block.appendChild(msgPlural);
-      });
-
-      const total = questions.length * 2;
-      document.getElementById("result").innerText = `Sait ${score} oikein ${total}:stä.`;
-    }
-  </script>
-
-  <style>
-    .question {
-      margin-bottom: 1em;
-    }
-
-    input[type="text"] {
-      margin: 5px;
-      padding: 5px;
-      width: 200px;
-    }
-
-    .correct {
-      color: green;
-    }
-
-    .incorrect {
-      color: red;
-    }
-
-    #result {
-      margin-top: 1em;
-      font-weight: bold;
-    }
-  </style>
+  #result {
+    margin-top: 1em;
+    font-weight: bold;
+  }
+</style>
 </div>
 
 
