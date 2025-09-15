@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Задание: Определите стиль слова (C1)</title>
+  
+    <!-- ✅ ДОБАВЛЕН viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8TVEFE4L1Y');
+</script>
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+  
+  <style>
+  body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 18px;
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+     header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      padding: 10px 40px;
+      max-width: 850px;
+      margin: auto;
+    }
+    .word-item {
+    font-size: 1.3em; /* в полтора раза больше обычного */
+   }
+    .quiz-question {
+      margin-bottom: 30px;
+    }
+    .quiz-question h3 {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+     button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+    input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-right: 10px;
+    cursor: pointer;
+   }
+
+    @media (max-width: 600px) {
+  body {
+    font-size: 14px;
+    margin: auto;
+    line-height: 1.6;
+    padding-bottom: 100px;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+  h3 {
+    font-size: 1.6em;
+  }
+
+  p, label, .quiz-question h3, .correct-answer {
+    font-size: 1.3em;
+  }
+
+  input[type="radio"] {
+    transform: scale(1.5);
+    margin-right: 8px;
+  }
+
+  button {
+    font-size: 1.4em;
+    padding: 16px 45px;
+  }
+
+  .result {
+    font-size: 1.6em;
+  }
+
+  html, body {
+    overflow-y: visible !important;
+  }
+}
+  </style>
+</head>
+<body>
+
+   <header>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
+        <div class="dropdown-content">
+          <a href="english.html">English / Английский</a>
+          <a href="russian.html">Русский / Russian</a>
+          <a href="suomi.html">Suomi / Finnish</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+  <h3>🎓 Определите стиль слова (C1)</h3>
+  <p>Отметьте стиль каждого слова: <strong>книжное</strong>, <strong>нейтральное</strong> или <strong>разговорное</strong>.</p>
+
+  <div id="styleQuiz"></div>
+
+  <button onclick="checkStyles()">Проверить</button>
+  <div id="styleResult" style="margin-top: 20px; font-weight: bold;"></div>
+
+  <script>
+    const words = [
+      { word: "иссякнуть", style: "книжное" },
+      { word: "дрыхнуть", style: "разговорное" },
+      { word: "прикол", style: "разговорное" },
+      { word: "прекратить", style: "нейтральное" },
+      { word: "чувак", style: "разговорное" },
+      { word: "тупить", style: "разговорное" },
+      { word: "употреблять", style: "нейтральное" },
+      { word: "шлёпнуться", style: "разговорное" },
+      { word: "вознамериться", style: "книжное" },
+      { word: "фигня", style: "разговорное" },
+      { word: "соизволить", style: "книжное" },
+      { word: "кушать", style: "разговорное" }
+    ];
+
+    const container = document.getElementById("styleQuiz");
+
+    words.forEach((item, index) => {
+      const block = document.createElement("div");
+      block.style.marginBottom = "10px";
+
+      block.innerHTML = `
+        <label><strong>${index + 1}. ${item.word}</strong></label><br>
+        <label><input type="radio" name="q${index}" value="книжное"> книжное</label>
+        <label><input type="radio" name="q${index}" value="нейтральное" style="margin-left: 10px;"> нейтральное</label>
+        <label><input type="radio" name="q${index}" value="разговорное" style="margin-left: 10px;"> разговорное</label>
+        <span id="feedback-${index}" style="margin-left: 15px;"></span>
+      `;
+      container.appendChild(block);
+    });
+
+    function checkStyles() {
+      let correct = 0;
+
+      words.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const feedback = document.getElementById(`feedback-${index}`);
+        feedback.innerHTML = "";
+
+        if (!selected) {
+          feedback.innerHTML = `<span style="color: red;">❌ не выбрано</span>`;
+          return;
+        }
+
+        if (selected.value === item.style) {
+          feedback.innerHTML = `<span style="color: green;">✅ ${item.style}</span>`;
+          correct++;
+        } else {
+          feedback.innerHTML = `<span style="color: red;">❌ правильный ответ: ${item.style}</span>`;
+        }
+      });
+
+      const percent = Math.round((correct / words.length) * 100);
+      document.getElementById("styleResult").innerText = `Результат: ${correct} из ${words.length} (${percent}%)`;
+    }
+  </script>
+</div>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+<!-- HorizontalAd -->
+<ins class="adsbygoogle"
+     style="display:block; margin-top:30px;"
+     data-ad-client="ca-pub-6488869290074237"
+     data-ad-slot="5202889392"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  </div>
+  
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+</body>
+</html>
