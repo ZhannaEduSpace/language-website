@@ -292,7 +292,7 @@ header {
 
       const fb = document.createElement('span');
       fb.className = 'feedback ' + (val === correct ? 'correct' : 'incorrect');
-      fb.textContent = (val === correct) ? '✅' : '❌';
+      fb.textContent = (val === correct) ? ' ✅' : ' ❌';
       sel.insertAdjacentElement('afterend', fb);
 
       if (val === correct) score++;
