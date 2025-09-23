@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>English Language Task: Plurals (regular and irregular) (A1)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8TVEFE4L1Y');
+</script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.2;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+     header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      padding: 30px 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #1f4e79;
+    }
+
+    .question {
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .question label {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    input[type="text"] {
+      padding: 8px 12px;
+      font-size: 1em;
+      width: 40%;
+      max-width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .correct {
+      color: green;
+      margin-top: 4px;
+    }
+
+    .incorrect {
+      color: red;
+      margin-top: 4px;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 28px;
+      font-size: 1em;
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+  </style>
+</head>
+<body>
+  
+ <header>
+    <a href="index.html" class="logo">ZhannaEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">Tasks / Задания</a>
+        <div class="dropdown-content">
+          <a href="english.html">English / Английский</a>
+          <a href="russian.html">Русский / Russian</a>
+          <a href="suomi.html">Suomi / Finnish</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+  <h2>🧮 English Language Task: Plurals (regular and irregular) (A1)</h2>
+
+  <p><strong>Write the nouns in the plural.</strong> Example: a car → <em>cars</em></p>
+ 
+
+  <form id="quizForm"></form>
+
+  <button onclick="checkAnswers()">Check Answers</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const questions = [
+      { base: "a book", answer: "books" },
+      { base: "a dress", answer: "dresses" },
+      { base: "a tomato", answer: "tomatoes" },
+      { base: "a knife", answer: "knives" },
+      { base: "a man", answer: "men" },
+      { base: "a boy", answer: "boys" },
+      { base: "a bus", answer: "buses" },
+      { base: "a child", answer: "children" },
+      { base: "a radio", answer: "radios" },
+      { base: "a mouse", answer: "mice" },
+      { base: "a fox", answer: "foxes" },
+      { base: "a sheep", answer: "sheep" },
+      { base: "a tooth", answer: "teeth" },
+      { base: "a cherry", answer: "cherries" },
+      { base: "a video", answer: "videos" },
+      { base: "a strawberry", answer: "strawberries" },
+      { base: "a foot", answer: "feet" },
+      { base: "a roof", answer: "roofs" }
+    ];
+
+    const form = document.getElementById("quizForm");
+
+    questions.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q${index}`;
+      div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input${index}" placeholder="Kirjoita sana">`;
+      form.appendChild(div);
+    });
+
+    function normalize(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers() {
+      let score = 0;
+
+      questions.forEach((q, i) => {
+        const userInput = normalize(document.getElementById(`input${i}`).value);
+        const correct = normalize(q.answer);
+        const block = document.getElementById(`q${i}`);
+
+        let feedback = block.querySelector(".correct") || block.querySelector(".incorrect");
+        if (feedback) feedback.remove();
+
+        const msg = document.createElement("div");
+        if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Correct answer: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Correct answer: ${q.answer}`;
+        }
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result").innerText = `You got ${score} out of ${questions.length} correct.`;
+    }
+  </script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+<!-- HorizontalAd -->
+<ins class="adsbygoogle"
+     style="display:block; margin-top:30px;"
+     data-ad-client="ca-pub-6488869290074237"
+     data-ad-slot="5202889392"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  </div>
+  
+    <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+  
+</body>
+</html>
