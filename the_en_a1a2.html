@@ -214,91 +214,97 @@ header {
 
   <form id="quizForm">
     <p>1. I saw a cat. <select id="q1">
-      <option value="">—</option>
-      <option value="on">on</option>
-      <option value="under">under</option>
+      <option value="">Choose...</option>
+      <option value="the">the</option>
+      <option value="–">–</option>
     </select> cat was very cute.</p>
 
-    <p>2. <select id="q2">
+    <p>2. My daughter goes to <select id="q5">
       <option value="">—</option>
-      <option value="under">under</option>
-      <option value="on">on</option>
-    </select> Earth goes around the Sun.</p>
+      <option value="the">the</option>
+      <option value="–">–</option>
+    </select> school.</p>
 
     <p>3. We visited <select id="q3">
       <option value="">—</option>
-      <option value="on">on</option>
-      <option value="behind">behind</option>
+      <option value="the">the</option>
+      <option value="–">–</option>
     </select> Alps last year.</p>
 
     <p>4. My brother plays <select id="q4">
       <option value="">—</option>
-      <option value="in front of">in front of</option>
-      <option value="behind">behind</option>
+      <option value="the">the</option>
+      <option value="–">–</option>
     </select> guitar very well.</p>
 
-    <p>5. My daughter goes to <select id="q5">
+     <p>5. <select id="q2">
       <option value="">—</option>
-      <option value="on">on</option>
-      <option value="in front of">in front of</option>
-    </select> school.</p>
+      <option value="The">The</option>
+      <option value="–">–</option>
+    </select> Earth goes around the Sun.</p>
 
     <p>6. She had <select id="q6">
       <option value="">—</option>
-      <option value="next to">next to</option>
-      <option value="on">on</option>
+      <option value="the">the</option>
+      <option value="–">–</option>
     </select> lunch at 1 p.m.</p>
 
     <p>7. <select id="q7">
       <option value="">—</option>
-      <option value="above">above</option>
-      <option value="next to">next to</option>
+      <option value="The">The</option>
+      <option value="–">–</option>
     </select> Nile is the longest river in Africa.</p>
 
     <p>8.This is <select id="q8">
       <option value="">—</option>
-      <option value="behind">behind</option>
-      <option value="in front of">in front of</option>
+      <option value="the">the</option>
+      <option value="–">–</option>
     </select> best pizza I’ve ever eaten!</p>
 
    <p>9.My friend speaks <select id="q8">
       <option value="">—</option>
-      <option value="behind">behind</option>
-      <option value="in front of">in front of</option>
+      <option value="the">the</option>
+      <option value="–">–</option>
     </select> Italian.</p>
 
    <p>10. <select id="q8">
       <option value="">—</option>
-      <option value="behind">behind</option>
-      <option value="in front of">in front of</option>
+      <option value="The">The</option>
+      <option value="–">–</option>
     </select> Moon looks beautiful tonight.</p>
 
    <p>11.She bought <select id="q8">
       <option value="">—</option>
-      <option value="behind">behind</option>
-      <option value="in front of">in front of</option>
+      <option value="the">the</option>
+      <option value="–">–</option>
     </select> dress I showed her yesterday.</p>
 
    <p>12.We swam in <select id="q8">
       <option value="">—</option>
-      <option value="behind">behind</option>
-      <option value="in front of">in front of</option>
+      <option value="the">the</option>
+      <option value="–">–</option>
     </select> Mediterranean Sea.</p>
 
    <p>13.I love playing <select id="q8">
       <option value="">—</option>
-      <option value="behind">behind</option>
-      <option value="in front of">in front of</option>
+      <option value="the">the</option>
+      <option value="–">–</option>
     </select> tennis.</p>
 
    <p>14. <select id="q8">
       <option value="">—</option>
-      <option value="behind">behind</option>
-      <option value="in front of">in front of</option>
+      <option value="The">The</option>
+      <option value="–">–</option>
     </select> Browns live next door.</p>
 
+    <p>15.My brother is still in <select id="q8">
+      <option value="">—</option>
+      <option value="The">The</option>
+      <option value="–">–</option>
+    </select> bed.</p>
+
     <br>
-    <button type="button" onclick="checkAnswers()">Проверить ответы</button>
+    <button type="button" onclick="checkAnswers()">Check Answers</button>
   </form>
 
   <div class="result" id="result"></div>
@@ -306,20 +312,21 @@ header {
 
 <script>
   const answers = {
-    q1: "on",
-    q2: "under",
-    q3: "on",
-    q4: "in front of",
-    q5: "in front of",
-    q6: "next to",
-    q7: "above",
-    q8: "behind",
-    q9: "behind",
-    q10: "behind",
-    q11: "behind",
-    q12: "behind",
-    q13: "behind",
-    q14: "behind"
+    q1: "the",
+    q2: "–",
+    q3: "the",
+    q4: "the",
+    q5: "The",
+    q6: "–",
+    q7: "The",
+    q8: "the",
+    q9: "–",
+    q10: "The",
+    q11: "the",
+    q12: "the",
+    q13: "–",
+    q14: "The"
+    q15: "–",
   };
 
   function checkAnswers() {
