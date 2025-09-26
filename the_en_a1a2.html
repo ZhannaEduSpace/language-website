@@ -189,6 +189,9 @@ header {
   font-size: 18px; /* увеличь/уменьши по вкусу */
   line-height: 1.5;
 }
+  select option[disabled] {
+  color: #999;
+}
   </style>
   
 </head>
@@ -214,7 +217,7 @@ header {
 
   <form id="quizForm">
     <p>1. I saw a cat. <select id="q1">
-      <option value="">Choose...</option>
+      <option value="" disabled selected hidden>Choose...</option>
       <option value="the">the</option>
       <option value="–">–</option>
     </select> cat was very cute.</p>
