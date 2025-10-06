@@ -304,22 +304,30 @@
 
 /* Кнопки связи (универсальные) */
 .buttons{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
 }
+
 .buttons a{
-  display:inline-block;
-  padding:10px 14px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:600;
-  border:2px solid var(--brand);
-  color:var(--brand);
-  background:transparent;
+  flex: 1 1 180px;              /* каждая кнопка тянется одинаково */
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid var(--brand);
+  color: var(--brand);
+  background: #fff;
+  transition: all 0.15s ease;
 }
-.buttons a:hover{ background:var(--brand); color:#fff; }
+
+.buttons a:hover{
+  background: var(--brand);
+  color: #fff;
+  transform: translateY(-1px);
+}
 
 /* Адаптив */
 @media (max-width: 900px){
