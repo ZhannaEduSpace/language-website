@@ -286,6 +286,46 @@
     .hero { margin-top: 28px; }
     .hero-title .alt { font-size: .78em; }
   }
+
+    /* Promo: индивидуальные/групповые занятия */
+.lesson-cta{
+  margin-top:24px;
+  background:#fff;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:20px 22px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:16px;
+  align-items:start;
+}
+.lesson-cta p{ margin:0 0 8px; color:#444; }
+.lesson-cta .hint{ color:#666; font-size:.95em; }
+
+/* Кнопки связи (универсальные) */
+.buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+.buttons a{
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  border:2px solid var(--brand);
+  color:var(--brand);
+  background:transparent;
+}
+.buttons a:hover{ background:var(--brand); color:#fff; }
+
+/* Адаптив */
+@media (max-width: 900px){
+  .lesson-cta{ grid-template-columns: 1fr; }
+}
+  /* Promo: индивидуальные/групповые занятия конец*/
 </style>
 
 <div class="hero">
@@ -326,7 +366,36 @@
         </div>
       </article>
     </section>
+    
+<!-- Promo: индивидуальные и групповые занятия -->
+<section class="lesson-cta" aria-label="Online lessons promo">
+  <!-- EN -->
+  <article>
+    <p><strong>Would you like to improve your English or Russian?</strong></p>
+    <p>I offer live online individual and small group lessons (up to 6 students) for adults and children who live in the European Union. Lessons are tailored to your level and goals — speaking practice, grammar, vocabulary or exam preparation.</p>
+    <p class="hint">EU residents only.</p>
 
+    <div class="buttons">
+      <a href="mailto:zhanna.edu.space@gmail.com">Send email</a>
+      <a href="https://t.me/ZhannaEduSpace" target="_blank">Message on Telegram</a>
+      <a href="https://wa.me/358408516355" target="_blank">Chat on WhatsApp</a>
+    </div>
+  </article>
+
+  <!-- RU -->
+  <article>
+    <p><strong>Хотите улучшить свой английский или русский язык?</strong></p>
+    <p>Провожу онлайн-занятия индивидуально и в небольших группах (до 6 человек) для взрослых и детей, проживающих в странах Европейского Союза. Программа подбирается под ваш уровень и цели — разговорная практика, грамматика, лексика или подготовка к экзаменам.</p>
+    <p class="hint">Только для жителей Евросоюза.</p>
+
+    <div class="buttons">
+      <a href="mailto:zhanna.edu.space@gmail.com">Отправить email</a>
+      <a href="https://t.me/ZhannaEduSpace" target="_blank">Написать в Телеграм</a>
+      <a href="https://wa.me/358408516355" target="_blank">Написать в WhatsApp</a>
+    </div>
+  </article>
+</section>
+<!-- Promo: индивидуальные и групповые занятия конец-->
     <!-- Рекламный блок (один горизонтальный) -->
     <section class="ad-block" aria-label="Реклама">
       <ins class="adsbygoogle"
