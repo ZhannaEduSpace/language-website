@@ -208,27 +208,40 @@
   <div class="result" id="result"></div>
 
   <script>
+    // 10 слов, перемешаны по типам. Без farther/further.
     const questions = [
-      { base: "good", answer: "better, best" },
-      { base: "small", answer: "smaller, smallest" },
-      { base: "beautiful", answer: "more beautiful, most beautiful" },
-      { base: "bad", answer: "worse, worst" },
-      { base: "big", answer: "bigger, biggest" },
-      { base: "interesting", answer: "more interesting, most interesting" },
-      { base: "easy", answer: "easier, easiest" },
-      { base: "many / much", answer: "more, most" },
-      { base: "tall", answer: "taller, tallest" },
-      { base: "happy", answer: "happier, happiest" }
+      { base: "good", comp: "better", super: "best" },
+      { base: "small", comp: "smaller", super: "smallest" },
+      { base: "beautiful", comp: "more beautiful", super: "most beautiful" },
+      { base: "bad", comp: "worse", super: "worst" },
+      { base: "big", comp: "bigger", super: "biggest" },
+      { base: "interesting", comp: "more interesting", super: "most interesting" },
+      { base: "easy", comp: "easier", super: "easiest" },
+      { base: "many / much", comp: "more", super: "most" },
+      { base: "tall", comp: "taller", super: "tallest" },
+      { base: "happy", comp: "happier", super: "happiest" }
     ];
 
     const form = document.getElementById("quizForm");
 
+    // Рендер полей: два отдельных инпута (comparative + superlative) и два блока фидбека
     questions.forEach((q, index) => {
       const div = document.createElement("div");
       div.className = "question";
       div.id = `q${index}`;
-      div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
-        <input type="text" id="input${index}" placeholder="Write comparative and superlative">`;
+      div.innerHTML = `
+        <label class="word-label">${index + 1}. ${q.base}</label>
+        <div class="inputs-row">
+          <div class="input-block">
+            <input type="text" id="input${index}_c" placeholder="comparative (сравнительная)">
+            <div id="feedback${index}_c"></div>
+          </div>
+          <div class="input-block">
+            <input type="text" id="input${index}_s" placeholder="superlative (превосходная)">
+            <div id="feedback${index}_s"></div>
+          </div>
+        </div>
+      `;
       form.appendChild(div);
     });
 
@@ -240,28 +253,101 @@
       let score = 0;
 
       questions.forEach((q, i) => {
-        const userInput = normalize(document.getElementById(`input${i}`).value);
-        const correct = normalize(q.answer);
-        const block = document.getElementById(`q${i}`);
+        const inputComp = normalize(document.getElementById(`input${i}_c`).value);
+        const inputSuper = normalize(document.getElementById(`input${i}_s`).value);
 
-        let feedback = block.querySelector(".correct") || block.querySelector(".incorrect");
-        if (feedback) feedback.remove();
+        const correctComp = normalize(q.comp);
+        const correctSuper = normalize(q.super);
 
-        const msg = document.createElement("div");
-        if (userInput === correct) {
-          msg.className = "correct";
-          msg.textContent = `✅ Correct answer: ${q.answer}`;
+        const feedbackComp = document.getElementById(`feedback${i}_c`);
+        const feedbackSuper = document.getElementById(`feedback${i}_s`);
+
+        feedbackComp.innerHTML = "";
+        feedbackSuper.innerHTML = "";
+
+        const msgComp = document.createElement("div");
+        const msgSuper = document.createElement("div");
+
+        if (inputComp === correctComp) {
+          msgComp.className = "correct";
+          msgComp.textContent = `✅ Correct comparative: ${q.comp}`;
           score++;
         } else {
-          msg.className = "incorrect";
-          msg.textContent = `❌ Correct answer: ${q.answer}`;
+          msgComp.className = "incorrect";
+          msgComp.textContent = `❌ Correct comparative: ${q.comp}`;
         }
-        block.appendChild(msg);
+
+        if (inputSuper === correctSuper) {
+          msgSuper.className = "correct";
+          msgSuper.textContent = `✅ Correct superlative: ${q.super}`;
+          score++;
+        } else {
+          msgSuper.className = "incorrect";
+          msgSuper.textContent = `❌ Correct superlative: ${q.super}`;
+        }
+
+        feedbackComp.appendChild(msgComp);
+        feedbackSuper.appendChild(msgSuper);
       });
 
-      document.getElementById("result").innerText = `You got ${score} out of ${questions.length} correct.`;
+      const total = questions.length * 2;
+      document.getElementById("result").innerText = `You got ${score} correct out of ${total}.`;
     }
   </script>
+
+  <style>
+    .question {
+      margin-bottom: 1.25em;
+    }
+
+    .word-label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .inputs-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .input-block {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 4px;
+    }
+
+    input[type="text"] {
+      padding: 6px 8px;
+      width: 240px;
+      max-width: 100%;
+      margin-bottom: 2px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="text"]::placeholder {
+      color: #888; /* серый placeholder */
+    }
+
+    .correct {
+      color: green;
+      font-size: 0.9em;
+      margin-top: 2px;
+    }
+
+    .incorrect {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 2px;
+    }
+
+    #result {
+      margin-top: 1em;
+      font-weight: bold;
+    }
+  </style>
 </div>
   
     <div id="footer-placeholder"></div>
