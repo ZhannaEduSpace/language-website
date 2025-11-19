@@ -83,19 +83,19 @@
 
 /* 🟢 Finnish */
 .side-menu-fi {
-  background-color: #e4f7f1;
-  border-right: 1px solid #9ecfbc;
+  background-color: #1f4e79;
+  border-right: 1px solid #2b5f90;
 }
 
 .side-menu-fi .lang-link {
-  background-color: #168f5c;
+  background-color: #163d5c;
 }
 
 .side-menu-fi .section-link {
-  background-color: #1fb57a;
+  background-color: #e6eff7;
 }
 
 .side-menu-fi .lang-link:hover,
 .side-menu-fi .section-link:hover {
-  background-color: #0f6e46;
+  background-color: #c3d3e6;
 }
