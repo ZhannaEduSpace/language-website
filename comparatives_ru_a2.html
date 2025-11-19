@@ -2,7 +2,7 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8">
-  <title>Задание: Сравнительная степень прилагательных и наречий (A2)</title>
+  <title>Задание по русскому языку: Сравнительная степень прилагательных и наречий (A2)</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
@@ -36,6 +36,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;   /* ← добавляем */
+      z-index: 2000;        /* ← добавляем */
     }
 
     .logo {
@@ -180,6 +182,9 @@
       background-color: #163d5c;
     }
   </style>
+
+  <link rel="stylesheet" href="/side-menu.css">
+
 </head>
 <body>
   
@@ -196,6 +201,8 @@
       </div>
     </nav>
   </header>
+
+  <div id="side-menu-placeholder"></div>
 
   <div class="container">
   <h2>⚖️ Сравнительная степень прилагательных и наречий (A2)</h2>
@@ -294,6 +301,12 @@
       eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
     });
 </script>
-  
+
+  <script>
+  fetch('/side-menu-ru.html')
+    .then(r => r.text())
+    .then(html => document.getElementById('side-menu-placeholder').innerHTML = html);
+</script>
+
 </body>
 </html>
