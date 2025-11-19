@@ -45,21 +45,21 @@
 
 /* 🟡 Russian */
 .side-menu-ru {
-  background-color: #fff8e1;
-  border-right: 1px solid #e0c97a;
+  background-color: #1f4e79;
+  border-right: 1px solid #2b5f90;
 }
 
 .side-menu-ru .lang-link {
-  background-color: #f2b600;
+  background-color: #163d5c;
 }
 
 .side-menu-ru .section-link {
-  background-color: #ffc533;
+  background-color: #e6eff7;
 }
 
 .side-menu-ru .lang-link:hover,
 .side-menu-ru .section-link:hover {
-  background-color: #e0a800;
+  background-color: #c3d3e6;
 }
 
 /* 🔴 English */
