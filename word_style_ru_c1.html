@@ -37,6 +37,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;   /* ← добавляем */
+      z-index: 2000;        /* ← добавляем */
     }
 
     .logo {
@@ -204,6 +206,9 @@
   }
 }
   </style>
+
+  <link rel="stylesheet" href="/side-menu.css">
+
 </head>
 <body>
 
@@ -220,6 +225,8 @@
       </div>
     </nav>
   </header>
+  
+  <div id="side-menu-placeholder"></div>
 
   <div class="container">
   <h3>🎓 Определите стиль слова (C1)</h3>
@@ -232,18 +239,18 @@
 
   <script>
     const words = [
-      { word: "иссякнуть", style: "книжное" },
-      { word: "дрыхнуть", style: "разговорное" },
-      { word: "прикол", style: "разговорное" },
-      { word: "прекратить", style: "нейтральное" },
-      { word: "чувак", style: "разговорное" },
-      { word: "тупить", style: "разговорное" },
-      { word: "употреблять", style: "нейтральное" },
+      { word: "исся́кнуть", style: "книжное" },
+      { word: "дры́хнуть", style: "разговорное" },
+      { word: "прико́л", style: "разговорное" },
+      { word: "прекрати́ть", style: "нейтральное" },
+      { word: "чува́к", style: "разговорное" },
+      { word: "тупи́ть", style: "разговорное" },
+      { word: "употребля́ть", style: "нейтральное" },
       { word: "шлёпнуться", style: "разговорное" },
-      { word: "вознамериться", style: "книжное" },
-      { word: "фигня", style: "разговорное" },
-      { word: "соизволить", style: "книжное" },
-      { word: "человек", style: "нейтральное" }
+      { word: "вознаме́риться", style: "книжное" },
+      { word: "фигня́", style: "разговорное" },
+      { word: "соизво́лить", style: "книжное" },
+      { word: "челове́к", style: "нейтральное" }
     ];
 
     const container = document.getElementById("styleQuiz");
@@ -312,5 +319,12 @@
       eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
     });
 </script>
+
+  <script>
+  fetch('/side-menu-ru.html')
+    .then(r => r.text())
+    .then(html => document.getElementById('side-menu-placeholder').innerHTML = html);
+</script>
+
 </body>
 </html>
