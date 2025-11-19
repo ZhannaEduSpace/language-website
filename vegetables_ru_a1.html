@@ -191,40 +191,49 @@
 }
     .side-menu {
   position: fixed;
-  top: 70px;           /* чуть ниже синей шапки */
-  left: 20px;
+  top: 70px;              /* чуть ниже синей шапки */
+  left: 0;
   width: 230px;
-  background: #ffffff;
-  padding: 12px 14px;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  font-size: 0.9rem;
-  line-height: 1.4;
+  padding: 10px 0;
+  font-size: 1rem;        /* шрифт покрупнее */
   z-index: 1000;
 }
 
-.side-section + .side-section {
-  margin-top: 10px;
+.side-section {
+  margin-bottom: 12px;
 }
 
-.side-title {
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.side-menu a {
+/* Сама "плашка" языка – тёмно-синяя, как шапка */
+.lang-link {
   display: block;
+  padding: 10px 16px;
+  background-color: #1f4e79;   /* тот же цвет, что header */
+  color: #ffffff;
   text-decoration: none;
-  color: #123456;   /* можешь поменять на свой цвет */
+  font-weight: 600;
+  border-radius: 0 8px 8px 0;
   margin-bottom: 4px;
 }
 
-.side-menu a:hover {
-  text-decoration: underline;
+/* Разделы русского – посветлее синий */
+.section-link {
+  display: block;
+  padding: 8px 18px;
+  background-color: #2b5f90;  /* чуть светлее */
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 3px;
+  font-size: 0.95rem;
 }
 
-/* На телефонах меню прячем, чтобы не мешало */
+.lang-link:hover,
+.section-link:hover {
+  background-color: #163d5c;   /* лёгкое затемнение при наведении */
+}
+
+/* На планшетах/телефоне боковое меню скрываем,
+   чтобы не мешало контенту */
 @media (max-width: 1024px) {
   .side-menu {
     display: none;
@@ -249,31 +258,26 @@
     </nav>
   </header>
 
-  <!-- 👉 БОКОВОЕ МЕНЮ -->
+   <!-- 👉 БОКОВОЕ МЕНЮ -->
   <div class="side-menu">
     <div class="side-section">
-      <div class="side-title">Русский язык</div>
-      <a href="russian.html">Все задания по русскому</a>
-      <a href="russian_vocabulary.html">Словарный запас</a>
-      <a href="russian_grammar.html">Грамматика</a>
-      <a href="russian_reading.html">Чтение</a>
-      <a href="russian_listening.html">Аудирование</a>
-      <a href="russian_mixed_tasks.html">Смешанные задания</a>
-      <a href="russian_video.html">Видео</a>
-      <a href="russian_arctic.html">Арктика (спецтема)</a>
-      <a href="audiobook-dmitriy.html">Аудиокнига</a>
-    </div>
-
-    <hr>
-
-    <div class="side-section">
-      <div class="side-title">English / Английский</div>
-      <a href="english.html">All English tasks</a>
+      <a href="russian.html" class="lang-link">Русский язык</a>
+      <a href="russian_vocabulary.html" class="section-link">Словарный запас</a>
+      <a href="russian_grammar.html" class="section-link">Грамматика</a>
+      <a href="russian_reading.html" class="section-link">Чтение</a>
+      <a href="russian_listening.html" class="section-link">Аудирование</a>
+      <a href="russian_mixed_tasks.html" class="section-link">Смешанные задания</a>
+      <a href="russian_video.html" class="section-link">Видео</a>
+      <a href="russian_arctic.html" class="section-link">Арктика (спецтема)</a>
+      <a href="audiobook-dmitriy.html" class="section-link">Аудиокнига</a>
     </div>
 
     <div class="side-section">
-      <div class="side-title">Suomi / Finnish</div>
-      <a href="suomi.html">Kaikki harjoitukset</a>
+      <a href="english.html" class="lang-link">English language</a>
+    </div>
+
+    <div class="side-section">
+      <a href="suomi.html" class="lang-link">Suomen kieli</a>
     </div>
   </div>
   <!-- 👆 конец бокового меню -->
