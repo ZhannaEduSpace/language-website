@@ -7,12 +7,17 @@
   padding: 15px 0 150px;
   font-size: 1.05rem;
   z-index: 1000;
+
+  /* фон всей левой колонки */
+  background-color: #e6eff7;
+  border-right: 1px solid #c3d3e6;
 }
 
 .side-section {
   margin-bottom: 20px;
 }
 
+/* Общие настройки ссылок в меню */
 .lang-link,
 .section-link {
   display: block;
@@ -22,80 +27,30 @@
   margin-bottom: 4px;
 }
 
+/* Большая кнопка языка (Русский язык / English language / Suomen kieli) */
 .lang-link {
   padding: 12px 20px;
   font-weight: 600;
   font-size: 1.05rem;
+  background-color: #1f4e79;   /* тёмно-синий, как шапка */
 }
 
+/* Кнопки разделов (Словарный запас, Грамматика и т.п.) */
 .section-link {
   padding: 10px 24px;
   font-size: 1rem;
+  background-color: #2b5f90;   /* чуть светлее синий */
 }
 
+/* Hover — один и тот же для всех ссылок */
+.lang-link:hover,
+.section-link:hover {
+  background-color: #163d5c;   /* ещё темнее при наведении */
+}
+
+/* На мобильных меню прячем, чтобы не мешало контенту */
 @media (max-width: 1024px) {
   .side-menu {
     display: none;
   }
-}
-
-/* ------------------------------------------------------ */
-/* 🔹 Цвета для каждого языка (все в одном файле)         */
-/* ------------------------------------------------------ */
-
-/* 🟡 Russian */
-.side-menu-ru {
-  background-color: #e6eff7;
-  border-right: 1px solid #2b5f90;
-}
-
-.side-menu-ru .lang-link {
-  background-color: #163d5c;
-}
-
-.side-menu-ru .section-link {
-  background-color: #1f4e79;
-}
-
-.side-menu-ru .lang-link:hover,
-.side-menu-ru .section-link:hover {
-  background-color: #c3d3e6;
-}
-
-/* 🔴 English */
-.side-menu-en {
-  background-color: #ffe6e6;
-  border-right: 1px solid #e0a0a0;
-}
-
-.side-menu-en .lang-link {
-  background-color: #b3002d;
-}
-
-.side-menu-en .section-link {
-  background-color: #cc3355;
-}
-
-.side-menu-en .lang-link:hover,
-.side-menu-en .section-link:hover {
-  background-color: #990026;
-}
-
-/* 🟢 Finnish */
-.side-menu-fi {
-  background-color: #1f4e79;
-  border-right: 1px solid #2b5f90;
-}
-
-.side-menu-fi .lang-link {
-  background-color: #163d5c;
-}
-
-.side-menu-fi .section-link {
-  background-color: #e6eff7;
-}
-
-.side-menu-fi .lang-link:hover,
-.side-menu-fi .section-link:hover {
-  background-color: #c3d3e6;
 }
