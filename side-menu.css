@@ -1,24 +1,59 @@
-/* Боковое меню: позиция, размер, фон */
+/* ===== БОКОВОЕ МЕНЮ ZhannaEduSpace ===== */
+
+/* Колонка слева: позиция, размеры, фон */
 .side-menu {
   position: fixed;
-  top: 0;                 /* колонка начинается с самого верха окна */
+  top: 0;                 /* фон начинается прямо от верхнего края окна */
   left: 0;
   width: 240px;
   min-height: 100vh;      /* тянем колонку на всю высоту экрана */
-
-  /* ЭТОТ ОТСТУП ВАЖЕН:
-     сколько пространства сверху над кнопкой "Русский язык" */
-  padding: 70px 0 40px;   /* было 80 — можно менять 60–80 по вкусу */
-
+  padding: 70px 0 40px;   /* отступ сверху = высота хедера примерно */
   font-size: 1.05rem;
   z-index: 900;           /* ниже хедера, чтобы его не перекрывать */
 
-  background-color: #e6eff7;   /* светло-голубой фон всей колонки */
-  border-right: 1px solid #c3d3e6;
+  background-color: #e6eff7;       /* светло-голубой фон всей колонки */
+  border-right: 1px solid #c3d3e6; /* тонкая граница справа */
 }
 
+/* Отступы между группами ссылок */
 .side-section {
   margin-bottom: 20px;
 }
 
-/* Об*
+/* Общий стиль ссылок в меню (языки + разделы) */
+.lang-link,
+.section-link {
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 4px;
+}
+
+/* Большая плашка языка: "Русский язык", "English language", "Suomen kieli" */
+.lang-link {
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  background-color: #1f4e79;   /* тёмно-синий, как шапка */
+}
+
+/* Плашки разделов: "Словарный запас", "Грамматика" и т.п. */
+.section-link {
+  padding: 10px 24px;
+  font-size: 1rem;
+  background-color: #2b5f90;   /* чуть светлее синий */
+}
+
+/* Hover для всех кнопок */
+.lang-link:hover,
+.section-link:hover {
+  background-color: #163d5c;   /* чуть темнее при наведении */
+}
+
+/* На планшетах/телефонах боковое меню прячем */
+@media (max-width: 1024px) {
+  .side-menu {
+    display: none;
+  }
+}
