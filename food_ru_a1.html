@@ -34,6 +34,8 @@ header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;   /* ← добавляем */
+      z-index: 2000;        /* ← добавляем */
     }
 
     .logo {
@@ -183,6 +185,8 @@ header {
 }
   </style>
   
+  <link rel="stylesheet" href="/side-menu.css">
+
 </head>
 <body>
 
@@ -199,6 +203,8 @@ header {
       </div>
     </nav>
   </header>
+
+  <div id="side-menu-placeholder"></div>
 
   <div class="container">
     <h2>🍽️ Еда и напитки (A1)</h2>
@@ -301,6 +307,12 @@ header {
       document.getElementById('footer-placeholder').innerHTML = html;
       eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
     });
+</script>
+  
+<script>
+  fetch('/side-menu-ru.html')
+    .then(r => r.text())
+    .then(html => document.getElementById('side-menu-placeholder').innerHTML = html);
 </script>
 
 </body>
