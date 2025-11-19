@@ -1,0 +1,101 @@
+/* 🔹 Общие стили — форма, размеры, структура */
+.side-menu {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 240px;
+  padding: 15px 0 150px;
+  font-size: 1.05rem;
+  z-index: 1000;
+}
+
+.side-section {
+  margin-bottom: 20px;
+}
+
+.lang-link,
+.section-link {
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 4px;
+}
+
+.lang-link {
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.section-link {
+  padding: 10px 24px;
+  font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .side-menu {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------ */
+/* 🔹 Цвета для каждого языка (все в одном файле)         */
+/* ------------------------------------------------------ */
+
+/* 🟡 Russian */
+.side-menu-ru {
+  background-color: #fff8e1;
+  border-right: 1px solid #e0c97a;
+}
+
+.side-menu-ru .lang-link {
+  background-color: #f2b600;
+}
+
+.side-menu-ru .section-link {
+  background-color: #ffc533;
+}
+
+.side-menu-ru .lang-link:hover,
+.side-menu-ru .section-link:hover {
+  background-color: #e0a800;
+}
+
+/* 🔴 English */
+.side-menu-en {
+  background-color: #ffe6e6;
+  border-right: 1px solid #e0a0a0;
+}
+
+.side-menu-en .lang-link {
+  background-color: #b3002d;
+}
+
+.side-menu-en .section-link {
+  background-color: #cc3355;
+}
+
+.side-menu-en .lang-link:hover,
+.side-menu-en .section-link:hover {
+  background-color: #990026;
+}
+
+/* 🟢 Finnish */
+.side-menu-fi {
+  background-color: #e4f7f1;
+  border-right: 1px solid #9ecfbc;
+}
+
+.side-menu-fi .lang-link {
+  background-color: #168f5c;
+}
+
+.side-menu-fi .section-link {
+  background-color: #1fb57a;
+}
+
+.side-menu-fi .lang-link:hover,
+.side-menu-fi .section-link:hover {
+  background-color: #0f6e46;
+}
