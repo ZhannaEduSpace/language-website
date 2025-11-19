@@ -45,7 +45,7 @@
 
 /* 🟡 Russian */
 .side-menu-ru {
-  background-color: #1f4e79;
+  background-color: #e6eff7;
   border-right: 1px solid #2b5f90;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .side-menu-ru .section-link {
-  background-color: #e6eff7;
+  background-color: #1f4e79;
 }
 
 .side-menu-ru .lang-link:hover,
