@@ -189,7 +189,49 @@
     overflow-y: visible !important;
   }
 }
+    .side-menu {
+  position: fixed;
+  top: 70px;           /* чуть ниже синей шапки */
+  left: 20px;
+  width: 230px;
+  background: #ffffff;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  z-index: 1000;
+}
+
+.side-section + .side-section {
+  margin-top: 10px;
+}
+
+.side-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.side-menu a {
+  display: block;
+  text-decoration: none;
+  color: #123456;   /* можешь поменять на свой цвет */
+  margin-bottom: 4px;
+}
+
+.side-menu a:hover {
+  text-decoration: underline;
+}
+
+/* На телефонах меню прячем, чтобы не мешало */
+@media (max-width: 1024px) {
+  .side-menu {
+    display: none;
+  }
+}
   </style>
+  
 </head>
 <body>
 
@@ -206,6 +248,35 @@
       </div>
     </nav>
   </header>
+
+  <!-- 👉 БОКОВОЕ МЕНЮ -->
+  <div class="side-menu">
+    <div class="side-section">
+      <div class="side-title">Русский язык</div>
+      <a href="russian.html">Все задания по русскому</a>
+      <a href="russian_vocabulary.html">Словарный запас</a>
+      <a href="russian_grammar.html">Грамматика</a>
+      <a href="russian_reading.html">Чтение</a>
+      <a href="russian_listening.html">Аудирование</a>
+      <a href="russian_mixed_tasks.html">Смешанные задания</a>
+      <a href="russian_video.html">Видео</a>
+      <a href="russian_arctic.html">Арктика (спецтема)</a>
+      <a href="audiobook-dmitriy.html">Аудиокнига</a>
+    </div>
+
+    <hr>
+
+    <div class="side-section">
+      <div class="side-title">English / Английский</div>
+      <a href="english.html">All English tasks</a>
+    </div>
+
+    <div class="side-section">
+      <div class="side-title">Suomi / Finnish</div>
+      <a href="suomi.html">Kaikki harjoitukset</a>
+    </div>
+  </div>
+  <!-- 👆 конец бокового меню -->
 
   <div class="container">
   <h2>🍆 Овощи (A1)</h2>
