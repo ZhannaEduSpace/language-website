@@ -239,18 +239,18 @@
 
   <script>
     const words = [
-      { word: "исся́кнуть", style: "книжное" },
-      { word: "дры́хнуть", style: "разговорное" },
-      { word: "прико́л", style: "разговорное" },
-      { word: "прекрати́ть", style: "нейтральное" },
-      { word: "чува́к", style: "разговорное" },
-      { word: "тупи́ть", style: "разговорное" },
-      { word: "употребля́ть", style: "нейтральное" },
-      { word: "шлёпнуться", style: "разговорное" },
-      { word: "вознаме́риться", style: "книжное" },
-      { word: "фигня́", style: "разговорное" },
-      { word: "соизво́лить", style: "книжное" },
-      { word: "челове́к", style: "нейтральное" }
+      { word: "исся́кнуть", style: "кни́жное" },
+      { word: "дры́хнуть", style: "разгово́рное" },
+      { word: "прико́л", style: "разгово́рное" },
+      { word: "прекрати́ть", style: "нейтра́льное" },
+      { word: "чува́к", style: "разгово́рное" },
+      { word: "тупи́ть", style: "разгово́рное" },
+      { word: "употребля́ть", style: "нейтра́льное" },
+      { word: "шлёпнуться", style: "разгово́рное" },
+      { word: "вознаме́риться", style: "кни́жное" },
+      { word: "фигня́", style: "разгово́рное" },
+      { word: "соизво́лить", style: "кни́жное" },
+      { word: "челове́к", style: "нейтра́льное" }
     ];
 
     const container = document.getElementById("styleQuiz");
@@ -261,9 +261,9 @@
 
       block.innerHTML = `
         <label><strong>${index + 1}. ${item.word}</strong></label><br>
-        <label><input type="radio" name="q${index}" value="книжное"> книжное</label>
-        <label><input type="radio" name="q${index}" value="нейтральное" style="margin-left: 10px;"> нейтральное</label>
-        <label><input type="radio" name="q${index}" value="разговорное" style="margin-left: 10px;"> разговорное</label>
+        <label><input type="radio" name="q${index}" value="кни́жное"> книжное</label>
+        <label><input type="radio" name="q${index}" value="нейтра́льное" style="margin-left: 10px;"> нейтральное</label>
+        <label><input type="radio" name="q${index}" value="разгово́рное" style="margin-left: 10px;"> разговорное</label>
         <span id="feedback-${index}" style="margin-left: 15px;"></span>
       `;
       container.appendChild(block);
