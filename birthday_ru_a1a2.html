@@ -37,6 +37,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;   /* ← добавляем */
+      z-index: 2000;        /* ← добавляем */
     }
 
     .logo {
@@ -189,6 +191,9 @@
       }
     }
   </style>
+
+  <link rel="stylesheet" href="/side-menu.css">
+
 </head>
 <body>
 
@@ -205,6 +210,8 @@
     </div>
   </nav>
 </header>
+
+  <div id="side-menu-placeholder"></div>
 
 <div class="page-layout">
   <!-- Контент -->
@@ -301,6 +308,12 @@
 
     document.getElementById('result').innerText = `Вы правильно ответили на ${score} из 3 вопросов.`;
   }
+</script>
+
+  <script>
+  fetch('/side-menu-ru.html')
+    .then(r => r.text())
+    .then(html => document.getElementById('side-menu-placeholder').innerHTML = html);
 </script>
 
 </body>
