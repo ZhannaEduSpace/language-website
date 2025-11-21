@@ -38,6 +38,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;   /* ← добавляем */
+      z-index: 2000;        /* ← добавляем */
     }
 
     .logo {
@@ -200,6 +202,9 @@
   }
 }
   </style>
+
+  <link rel="stylesheet" href="/side-menu.css">
+
 </head>
 <body>
 
@@ -216,6 +221,8 @@
       </div>
     </nav>
   </header>
+
+  <div id="side-menu-placeholder"></div>
 
   <div class="container">
   <h2>🧍‍♂️ Почему одиночество стало нормой (C1)</h2>
@@ -355,5 +362,12 @@
       eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
     });
 </script>
+
+  <script>
+  fetch('/side-menu-ru.html')
+    .then(r => r.text())
+    .then(html => document.getElementById('side-menu-placeholder').innerHTML = html);
+</script>
+
 </body>
 </html>
