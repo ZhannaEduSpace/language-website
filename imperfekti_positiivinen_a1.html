@@ -208,7 +208,7 @@ header {
 
   <div class="container">
 <h2>📖 Imperfekti (A1)</h2>
-  <p><strong>Kirjoita verbi oikeassa imperfektimuodossa.</strong> Esimerkiksi: Me	opiskelemme. → Me <em>opiskelimme</em>.</p>
+  <p><strong>Harjoitus 1. Kirjoita verbi oikeassa imperfektimuodossa.</strong> Esimerkiksi: Me	opiskelemme. → Me <em>opiskelimme</em>.</p>
   <p> Complete with the correct past tense form. Example: Me opiskelemme. → Me <em>opiskelimme</em>.</p>
   <p> Впишите глагол в правильной форме прошедшего времени. Пример: Me opiskelemme. → Me <em>opiskelimme</em>.</p>
   <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
@@ -285,6 +285,83 @@ header {
 
       document.getElementById('result').innerText = `Sait ${score} oikein ${questions.length}:stä.`;
     }
+
+     <p><strong>Harjoitus 2. Kirjoita verbi oikeassa imperfektimuodossa.</strong> Esimerkiksi: Me	opiskelemme. → Me <em>opiskelimme</em>.</p>
+  <p> Complete with the correct past tense form. Example: Me opiskelemme. → Me <em>opiskelimme</em>.</p>
+  <p> Впишите глагол в правильной форме прошедшего времени. Пример: Me opiskelemme. → Me <em>opiskelimme</em>.</p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+    
+    <form id="quizForm2"></form>
+
+  <button type="button" onclick="checkAnswers2()">Tarkista vastaukset</button>
+  <div class="result" id="result2"></div>
+
+  <script>
+    const questions2 = [
+  { q: 'Hän kysyy. → Hän ___.', a: ['kysyi'] },
+  { q: 'He jäävät. → He ___.', a: ['jäivät'] },
+  { q: 'Minä	piirrän. → Minä ___.', a: ['piirsin'] },
+  { q: 'Me	nauramme. → Me ___.', a: ['nauroimme'] },
+  { q: 'Sinä juot. → Sinä ___.', a: ['joit'] },
+  { q: 'Te	uitte. → Te ___.', a: ['uitte'] },
+  { q: 'Hän	odottaa. → Hän ___.', a: ['odotti'] },
+  { q: 'Me tuomme. → Me ___.', a: ['toimme'] },
+  { q: 'Sinä itket. → Sinä ___.', a: ['itkit'] },
+  { q: 'Minä matkustan. → Minä ___.', a: ['matkustin'] },
+]; 
+    
+    const form2 = document.getElementById('quizForm2');
+
+questions2.forEach((item, i) => {
+  const div = document.createElement('div');
+  div.className = 'question';
+  div.id = `q2-${i+1}-block`; // ← добавила 2
+
+  const parts = item.q.split('___');
+  let sentenceHTML = '';
+
+  if (parts.length === 2) {
+    sentenceHTML = `${parts[0]} <input type="text" id="input2-${i}"> ${parts[1]}`; // ← добавила 2
+  } else {
+    sentenceHTML = item.q.replace(item.a, `<input type="text" id="input2-${i}">`); // ← добавила 2
+  }
+
+  div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+  form2.appendChild(div);
+});
+
+function normalize(str) {
+  return str.trim().toLowerCase();
+}
+
+function checkAnswers2() { // ← добавила 2
+  let score = 0;
+
+  questions2.forEach((item, i) => { // ← добавила 2
+    const input = document.getElementById(`input2-${i}`); // ← добавила 2
+    const userAnswer = normalize(input.value);
+    const correctAnswers = Array.isArray(item.a) ? item.a.map(normalize) : [normalize(item.a)];
+
+    let feedback = document.querySelector(`#q2-${i+1}-block .correct-answer`);
+    if (feedback) feedback.remove();
+
+    const result = document.createElement('div');
+    result.classList.add('correct-answer');
+
+    if (correctAnswers.includes(userAnswer)) {
+      result.classList.add('correct');
+      result.textContent = `✅ Oikein! Vastaus: ${item.a}`;
+      score++;
+    } else {
+      result.classList.add('incorrect');
+      result.textContent = `❌ Oikea vastaus: ${item.a.join(' tai ')}`;
+    }
+
+    document.getElementById(`q2-${i+1}-block`).appendChild(result); // ← добавила 2
+  });
+
+  document.getElementById('result2').innerText = `Sait ${score} oikein ${questions2.length}:stä.`; // ← добавила 2
+}
 </script>
 
   
