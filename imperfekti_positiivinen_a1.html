@@ -467,11 +467,11 @@ function checkAnswers2() { // ← добавила 2
     { q: 'Minä herään. → Minä ___.', a: ['heräsin'] },
     { q: 'Me menemme. → Me ___.', a: ['menimme'] },
     { q: 'He istuvat. → He ___.', a: ['istuivat'] },
-    { q: 'Te alatte. → He ___.', a: ['aloitte'] },
-    { q: 'Sinä tarvitset. → He ___.', a: ['tarvitsit'] },
-    { q: 'Hän tietää. → He ___.', a: ['tiesi'] },
-    { q: 'Minä sanon. → He ___.', a: ['sanoin'] },
-    { q: 'Me leivomme. → He ___.', a: ['leivoimme'] },
+    { q: 'Te alatte. → Te ___.', a: ['aloitte'] },
+    { q: 'Sinä tarvitset. → Sinä ___.', a: ['tarvitsit'] },
+    { q: 'Hän tietää. → Hän ___.', a: ['tiesi'] },
+    { q: 'Minä sanon. → Minä ___.', a: ['sanoin'] },
+    { q: 'Me leivomme. → Me ___.', a: ['leivoimme'] },
   ];
 
   const form4 = document.getElementById('quizForm4');
@@ -525,7 +525,88 @@ function checkAnswers2() { // ← добавила 2
     document.getElementById('result4').innerText = `Sait ${score} oikein ${questions4.length}:stä.`;
   }
 </script>
-    
+
+    <hr style="margin: 40px 0;">
+
+<!-- ▸ УПРАЖНЕНИЕ 5 -->
+<p><strong>Harjoitus 5. Kirjoita verbi oikeassa imperfektimuodossa.</strong> Esimerkiksi: Me opiskelemme. → Me <em>opiskelimme</em>.</p>
+<p>Complete with the correct past tense form. Example: Me opiskelemme. → Me <em>opiskelimme</em>.</p>
+<p>Впишите глагол в правильной форме прошедшего времени. Пример: Me opiskelemme. → Me <em>opiskelimme</em>.</p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizForm5"></form>
+
+<button type="button" onclick="checkAnswers5()">Tarkista vastaukset</button>
+<div class="result" id="result5"></div>
+
+<script>
+  const questions5 = [
+    { q: 'He tekevät. → He ___.', a: ['tekivät'] },
+    { q: 'Minä säilön. → Minä ___.', a: ['säilöin'] },
+    { q: 'Hän pesee. → Hän ___.', a: ['pesi'] },
+    { q: 'Me ajamme. → Me ___.', a: ['ajoimme'] },
+    { q: 'Sinä vastaat. → Sinä ___.', a: ['vastasit'] },
+    { q: 'Te rakennatte. → Te ___.', a: ['rakensitte'] },
+    { q: 'Minä myyn. → Minä ___.', a: ['myin'] },
+    { q: 'Sinä maksat. → Sinä ___.', a: ['maksoit'] },
+    { q: 'Hän kävelee. → Hän ___.', a: ['käveli'] },
+    { q: 'Te huudatte. → Te ___.', a: ['huusitte'] },
+  ];
+
+  const form5 = document.getElementById('quizForm5');
+
+  questions5.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.id = `q5-${i+1}-block`;
+
+    const parts = item.q.split('___');
+    let sentenceHTML = '';
+
+    if (parts.length === 2) {
+      sentenceHTML = `${parts[0]} <input type="text" id="input5-${i}"> ${parts[1]}`;
+    } else {
+      sentenceHTML = item.q.replace(item.a, `<input type="text" id="input5-${i}">`);
+    }
+
+    div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+    form5.appendChild(div);
+  });
+
+  function checkAnswers5() {
+    let score = 0;
+
+    questions5.forEach((item, i) => {
+      const input = document.getElementById(`input5-${i}`);
+      const userAnswer = input.value.trim().toLowerCase();
+      const correctAnswers = Array.isArray(item.a)
+        ? item.a.map(a => a.toLowerCase())
+        : [item.a.toLowerCase()];
+
+      let feedback = document.querySelector(`#q5-${i+1}-block .correct-answer`);
+      if (feedback) feedback.remove();
+
+      const result = document.createElement('div');
+      result.classList.add('correct-answer');
+
+      if (correctAnswers.includes(userAnswer)) {
+        result.classList.add('correct');
+        result.textContent = `✅ Oikein! Vastaus: ${Array.isArray(item.a) ? item.a.join(' / ') : item.a}`;
+        score++;
+      } else {
+        result.classList.add('incorrect');
+        result.textContent = Array.isArray(item.a)
+          ? `❌ Oikea vastaus: ${item.a.join(' tai ')}`
+          : `❌ Oikea vastaus: ${item.a}`;
+      }
+
+      document.getElementById(`q5-${i+1}-block`).appendChild(result);
+    });
+
+    document.getElementById('result5').innerText = `Sait ${score} oikein ${questions5.length}:stä.`;
+  }
+</script>
+
   </div>
 
      <div id="footer-placeholder"></div>
