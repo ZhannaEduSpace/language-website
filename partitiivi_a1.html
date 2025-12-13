@@ -228,12 +228,6 @@
       { base: "hevonen", answer: "hevosta" },
       { base: "metsä", answer: "metsää" },
       { base: "tyttö", answer: "tyttöä" },
-      { base: "hame", answer: "hametta" },
-      { base: "pää", answer: "päätä" },
-      { base: "hammas", answer: "hammasta" },
-      { base: "nainen", answer: "naista" },
-      { base: "maito", answer: "maitoa" },
-      { base: "poika", answer: "poikaa" }
     ];
 
     const form = document.getElementById("quizForm");
@@ -263,20 +257,96 @@
         if (feedback) feedback.remove();
 
         const msg = document.createElement("div");
-        if (userInput === correct) {
-          msg.className = "correct";
-          msg.textContent = `✅ Oikein: ${q.answer}`;
-          score++;
-        } else {
-          msg.className = "incorrect";
-          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
-        }
+       if (userInput === "") {
+        msg.classList.add("incorrect");
+        msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (userInput === correct) {
+        msg.classList.add("correct");
+        msg.textContent = `✅ Oikein: ${q.answer}`;
+        score++;
+      } else {
+        msg.classList.add("incorrect");
+        msg.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${q.answer}`;
+      }
         block.appendChild(msg);
       });
 
       document.getElementById("result").innerText = `Sait ${score} oikein ${questions.length}:stä.`;
     }
   </script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 2. Kirjoita nämä sanat partitiivissa.</strong></p>
+<p>Write these words in the partitive case.</p>
+<p>Напишите данные слова в форме партитива.</p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizForm2"></form>
+
+<button type="button" onclick="checkAnswers2()">Tarkista vastaukset (Harjoitus 2)</button>
+<div class="result" id="result2"></div>
+
+<script>
+  const questions2 = [
+    { base: "hame", answer: "hametta" },
+    { base: "pää", answer: "päätä" },
+    { base: "hammas", answer: "hammasta" },
+    { base: "nainen", answer: "naista" },
+    { base: "maito", answer: "maitoa" },
+    { base: "poika", answer: "poikaa" }
+    { base: "koulu", answer: "koulua" },
+    { base: "kauppa", answer: "kauppaa" },
+    { base: "puu", answer: "puuta" },
+    { base: "loma", answer: "lomaa" },
+  ];
+
+  const form2 = document.getElementById("quizForm2");
+
+  questions2.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q2-${index}`;
+    div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
+      <input type="text" id="input2-${index}" placeholder="Kirjoita sana">`;
+    form2.appendChild(div);
+  });
+
+  function checkAnswers2() {
+    let score = 0;
+
+    questions2.forEach((q, i) => {
+      const inputEl = document.getElementById(`input2-${i}`);
+      const userInput = normalize(inputEl.value);
+      const correct = normalize(q.answer);
+      const block = document.getElementById(`q2-${i}`);
+
+      let feedback = block.querySelector(".correct-answer");
+      if (feedback) feedback.remove();
+
+      const msg = document.createElement("div");
+      msg.classList.add("correct-answer");
+
+      if (userInput === "") {
+        msg.classList.add("incorrect");
+        msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (userInput === correct) {
+        msg.classList.add("correct");
+        msg.textContent = `✅ Oikein: ${q.answer}`;
+        score++;
+      } else {
+        msg.classList.add("incorrect");
+        msg.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${q.answer}`;
+      }
+
+      block.appendChild(msg);
+    });
+
+    document.getElementById("result2").innerText =
+      `Sait ${score} oikein ${questions2.length}:stä.`;
+  }
+</script>
+
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
