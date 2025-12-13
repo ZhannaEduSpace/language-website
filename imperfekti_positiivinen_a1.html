@@ -271,14 +271,18 @@ header {
         const result = document.createElement('div');
         result.classList.add('correct-answer');
 
-        if (correctAnswers.includes(userAnswer)) {
-          result.classList.add('correct');
-          result.textContent = `✅ Oikein! Vastaus: ${item.a}`;
-          score++;
-        } else {
-          result.classList.add('incorrect');
-         result.textContent = `❌ Oikea vastaus: ${item.a.join(' tai ')}`;
-        }
+      if (userAnswer === '' || userAnswer.trim() === '') {
+  result.classList.add('incorrect');
+  result.textContent = '⚠️ Kirjoita ensin vastaus!';
+} else if (correctAnswers.includes(userAnswer)) {
+  result.classList.add('correct');
+  result.textContent = `✅ Oikein! Vastaus: ${Array.isArray(item.a) ? item.a.join(' / ') : item.a}`;
+  score++;
+} else {
+  result.classList.add('incorrect');
+  result.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${Array.isArray(item.a) ? item.a.join(' / ') : item.a}`;
+}
+
 
         document.getElementById(`q${i+1}-block`).appendChild(result);
       });
