@@ -688,6 +688,87 @@ function checkAnswers2() { // ← добавила 2
   }
 </script>
 
+    <hr style="margin: 40px 0;">
+
+<!-- ▸ УПРАЖНЕНИЕ 7 -->
+<p><strong>Harjoitus 7. Kirjoita verbi oikeassa imperfektimuodossa.</strong> Esimerkiksi: Me opiskelemme. → Me <em>opiskelimme</em>.</p>
+<p>Complete with the correct past tense form. Example: Me opiskelemme. → Me <em>opiskelimme</em>.</p>
+<p>Впишите глагол в правильной форме прошедшего времени. Пример: Me opiskelemme. → Me <em>opiskelimme</em>.</p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizForm7"></form>
+
+<button type="button" onclick="checkAnswers7()">Tarkista vastaukset</button>
+<div class="result" id="result7"></div>
+
+<script>
+  const questions7 = [
+    { q: 'Minä näen. → Minä ___.', a: ['näin'] },
+    { q: 'He laittavat. → He ___.', a: ['laittoivat'] },
+    { q: 'Sinä pyydät. → Sinä ___.', a: ['pyysit'] },
+    { q: 'Hän haluaa. → Hän ___.', a: ['halusi'] },
+    { q: 'Me tarkastamme. → Me ___.', a: ['tarkastimme'] },
+    { q: 'Te soitatte. → Te ___.', a: ['soititte'] },
+    { q: 'Hän lentää. → Hän ___.', a: ['lensi'] },
+    { q: 'Minä näen. → Minä ___.', a: ['näin'] },
+    { q: 'Sinä rakastat. → Sinä ___.', a: ['rakastit'] },
+    { q: 'Me eksymme. → Me ___.', a: ['eksyimme'] },
+  ];
+
+  const form7 = document.getElementById('quizForm7');
+
+  questions7.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.id = `q7-${i+1}-block`;
+
+    const parts = item.q.split('___');
+    let sentenceHTML = '';
+
+    if (parts.length === 2) {
+      sentenceHTML = `${parts[0]} <input type="text" id="input7-${i}"> ${parts[1]}`;
+    } else {
+      sentenceHTML = item.q.replace(item.a, `<input type="text" id="input7-${i}">`);
+    }
+
+    div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+    form7.appendChild(div);
+  });
+
+  function checkAnswers7() {
+    let score = 0;
+
+    questions7.forEach((item, i) => {
+      const input = document.getElementById(`input7-${i}`);
+      const userAnswer = input.value.trim().toLowerCase();
+      const correctAnswers = Array.isArray(item.a)
+        ? item.a.map(a => a.toLowerCase())
+        : [item.a.toLowerCase()];
+
+      let feedback = document.querySelector(`#q7-${i+1}-block .correct-answer`);
+      if (feedback) feedback.remove();
+
+      const result = document.createElement('div');
+      result.classList.add('correct-answer');
+
+      if (correctAnswers.includes(userAnswer)) {
+        result.classList.add('correct');
+        result.textContent = `✅ Oikein! Vastaus: ${Array.isArray(item.a) ? item.a.join(' / ') : item.a}`;
+        score++;
+      } else {
+        result.classList.add('incorrect');
+        result.textContent = Array.isArray(item.a)
+          ? `❌ Oikea vastaus: ${item.a.join(' tai ')}`
+          : `❌ Oikea vastaus: ${item.a}`;
+      }
+
+      document.getElementById(`q7-${i+1}-block`).appendChild(result);
+    });
+
+    document.getElementById('result7').innerText = `Sait ${score} oikein ${questions7.length}:stä.`;
+  }
+</script>
+
   </div>
 
      <div id="footer-placeholder"></div>
