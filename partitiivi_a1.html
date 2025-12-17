@@ -851,6 +851,77 @@
   }
 </script>
 
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 10. Kirjoita nämä sanat partitiivissa.</strong></p>
+<p>Write these words in the partitive case.</p>
+<p>Напишите данные слова в форме партитива.</p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizForm10"></form>
+
+<button type="button" onclick="checkAnswers10()">Tarkista vastaukset</button>
+<div class="result" id="result10"></div>
+
+<script>
+  const questions10 = [
+    { base: "viinirypäle", answer: "viinirypälettä" },
+    { base: "haarukka", answer: "haarukkaa" },
+    { base: "paita", answer: "paitaa" },
+    { base: "meri", answer: "merta" },
+    { base: "solmio", answer: "solmiota" },
+    { base: "vesi", answer: "vettä" },
+    { base: "sairaala", answer: "sairaalaa" },
+    { base: "hampurilainen", answer: "hampurilaista" },
+    { base: "käsi", answer: "kättä" },
+    { base: "kokous", answer: "kokousta" }
+  ];
+
+  const form10 = document.getElementById("quizForm10");
+
+  questions10.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q10-${index}`;
+    div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
+      <input type="text" id="input10-${index}" placeholder="Kirjoita sana">`;
+    form10.appendChild(div);
+  });
+
+  function checkAnswers10() {
+    let score = 0;
+
+    questions10.forEach((q, i) => {
+      const inputEl = document.getElementById(`input10-${i}`);
+      const userInput = normalize(inputEl.value);
+      const correct = normalize(q.answer);
+      const block = document.getElementById(`q10-${i}`);
+
+      let feedback = block.querySelector(".correct-answer");
+      if (feedback) feedback.remove();
+
+      const msg = document.createElement("div");
+      msg.classList.add("correct-answer");
+
+      if (userInput === "") {
+        msg.classList.add("incorrect");
+        msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (userInput === correct) {
+        msg.classList.add("correct");
+        msg.textContent = `✅ Oikein: ${q.answer}`;
+        score++;
+      } else {
+        msg.classList.add("incorrect");
+        msg.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${q.answer}`;
+      }
+
+      block.appendChild(msg);
+    });
+
+    document.getElementById("result10").innerText =
+      `Sait ${score} oikein ${questions10.length}:stä.`;
+  }
+</script>
     
   </div>
   
