@@ -1005,6 +1005,88 @@
   }
 </script>
 
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 12. Kirjoita sanapari partitiivissa.</strong></p>
+<p>Esimerkiksi: <em>punainen omena → punaista omenaa</em></p>
+<p>Write the adjective + noun in the partitive case.</p>
+<p>Напишите словосочетание (прилагательное + существительное) в форме партитива.</p>
+<p><strong>⚠️ Huom!:</strong> Kirjoita kaksi sanaa</p>
+
+<form id="quizForm12"></form>
+
+<button type="button" onclick="checkAnswers12()">Tarkista vastaukset</button>
+<div class="result" id="result12"></div>
+
+<script>
+  const questions12 = [
+    { base: "helppo tehtävä", answer: "	helppoa tehtävää" },
+     { base: "nopea juna", answer: "nopeaa junaa" },
+     { base: "lämmin kesä", answer: "lämmintä kesää" },
+     { base: "korkea puu", answer: "korkeaa puuta" },
+     { base: "ystävällinen mies", answer: "ystävällistä miestä" },
+     { base: "tärkeä kokous", answer: "tärkeää kokousta" },
+     { base: "pieni sieni", answer: "pientä sientä" },
+     { base: "sininen pipo", answer: "sinistä pipoa" },
+     { base: "tylsä työ", answer: "tylsää työtä" },
+     { base: "halpa lasi", answer: "halpaa lasia" }
+  ];
+
+  const form12 = document.getElementById("quizForm12");
+
+  questions12.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q12-${index}`;
+    div.innerHTML = `
+      <label>${index + 1}. ${q.base} →</label>
+      <input type="text" id="input12-${index}" placeholder="Kirjoita kaksi sanaa">
+    `;
+    form12.appendChild(div);
+  });
+
+  function normalizeAdvanced(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkAnswers12() {
+    let score = 0;
+
+    questions12.forEach((q, i) => {
+      const inputEl = document.getElementById(`input12-${i}`);
+      const userAnswer = normalizeAdvanced(inputEl.value);
+      const correct = normalizeAdvanced(q.answer);
+      const block = document.getElementById(`q12-${i}`);
+
+      let feedback = block.querySelector(".correct-answer");
+      if (feedback) feedback.remove();
+
+      const msg = document.createElement("div");
+      msg.classList.add("correct-answer");
+
+      if (userAnswer === "") {
+        msg.classList.add("incorrect");
+        msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (userAnswer === correct) {
+        msg.classList.add("correct");
+        msg.textContent = `✅ Oikein: ${q.answer}`;
+        score++;
+      } else {
+        msg.classList.add("incorrect");
+        msg.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${q.answer}`;
+      }
+
+      block.appendChild(msg);
+    });
+
+    document.getElementById("result12").innerText =
+      `Sait ${score} oikein ${questions12.length}:stä.`;
+  }
+</script>
+
     
   </div>
   
