@@ -753,6 +753,111 @@
   }
 </script>
 
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 6. Kirjoita nämä sanat partitiivissa yksikössä ja monikossa.</strong> Esimerkiksi: <em>kahvi → kahvia, kahveja</em></p>
+<p>Write these words in the partitive singular and plural. Example: <em>kahvi → kahvia, kahveja</em></p>
+<p>Напишите данные слова в форме партитива (единственное и множественное число). Пример: <em>kahvi → kahvia, kahveja</em></p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizForm6"></form>
+
+<button type="button" onclick="checkAnswers6()">Tarkista vastaukset</button>
+<div class="result" id="result6"></div>
+
+<script>
+  const questions6 = [
+    { base: "lämmin", singular: "lämmintä", plural: "lämpimiä" },
+    { base: "katkarapu", singular: "katkarapua", plural: "katkarapuja" },
+    { base: "työ", singular: "työtä", plural: "töitä" },
+    { base: "sydän", singular: "sydäntä", plural: "sydämiä" },
+    { base: "hauska", singular: "hauskaa", plural: "hauskoja" },
+    { base: "lentokone", singular: "lentokonetta", plural: "lentokoneita" },
+    { base: "kana", singular: "kanaa", plural: "kanoja" },
+    { base: "tori", singular: "toria", plural: "toreja" },
+    { base: "meri", singular: "merta", plural: "meriä" },
+    { base: "kausi", singular: "kautta", plural: "kausia" }
+  ];
+
+  const form6 = document.getElementById("quizForm6");
+
+  questions6.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q6-${index}`;
+    div.innerHTML = `
+      <label>${index + 1}. ${q.base}</label>
+      <div class="input-block">
+        <input type="text" id="input6-${index}_s" placeholder="Yksikkö (singular)">
+        <div id="feedback6-${index}_s"></div>
+      </div>
+      <div class="input-block">
+        <input type="text" id="input6-${index}_p" placeholder="Monikko (plural)">
+        <div id="feedback6-${index}_p"></div>
+      </div>
+    `;
+    form6.appendChild(div);
+  });
+
+  function normalize6(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkAnswers6() {
+    let score = 0;
+
+    questions6.forEach((q, i) => {
+      const inputSingular = normalize6(document.getElementById(`input6-${i}_s`).value);
+      const inputPlural   = normalize6(document.getElementById(`input6-${i}_p`).value);
+
+      const correctSingular = normalize6(q.singular);
+      const correctPlural   = normalize6(q.plural);
+
+      const feedbackSingular = document.getElementById(`feedback6-${i}_s`);
+      const feedbackPlural   = document.getElementById(`feedback6-${i}_p`);
+
+      feedbackSingular.innerHTML = "";
+      feedbackPlural.innerHTML = "";
+
+      const msgSingular = document.createElement("div");
+      const msgPlural   = document.createElement("div");
+
+      if (inputSingular === "") {
+        msgSingular.className = "incorrect";
+        msgSingular.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (inputSingular === correctSingular) {
+        msgSingular.className = "correct";
+        msgSingular.textContent = `✅ Yksikkö oikein: ${q.singular}`;
+        score++;
+      } else {
+        msgSingular.className = "incorrect";
+        msgSingular.textContent = `❌ Yksikkö väärin. Oikea: ${q.singular}`;
+      }
+
+      if (inputPlural === "") {
+        msgPlural.className = "incorrect";
+        msgPlural.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (inputPlural === correctPlural) {
+        msgPlural.className = "correct";
+        msgPlural.textContent = `✅ Monikko oikein: ${q.plural}`;
+        score++;
+      } else {
+        msgPlural.className = "incorrect";
+        msgPlural.textContent = `❌ Monikko väärin. Oikea: ${q.plural}`;
+      }
+
+      feedbackSingular.appendChild(msgSingular);
+      feedbackPlural.appendChild(msgPlural);
+    });
+
+    const total = questions6.length * 2;
+    document.getElementById("result6").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
+
     
 </div>
 
