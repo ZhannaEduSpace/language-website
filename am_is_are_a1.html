@@ -268,17 +268,17 @@
         const note = document.createElement('div');
         note.classList.add('correct-answer');
       
-       if (selectedValue === '') {
-        note.classList.add('incorrect');
-        note.innerText = '⚠️ Please choose an answer first!';
-      } else if (normalize2(selectedValue) === normalize2(item.a)) {
-        note.classList.add('correct');
-        note.innerText = `✅ Correct! Answer: ${item.a}`;
-        score++;
-      } else {
-        note.classList.add('incorrect');
-        note.innerText = `❌ Not quite. Correct answer: ${item.a}`;
-      }
+       if (!selected) {
+  note.classList.add('incorrect');
+  note.innerText = '⚠️ Please choose an answer first!';
+} else if (selected.value === item.a) {
+  note.classList.add('correct');
+  note.innerText = `✅ Correct! Answer: ${item.a}`;
+  score++;
+} else {
+  note.classList.add('incorrect');
+  note.innerText = `❌ Not quite. Correct answer: ${item.a}`;
+}
 
         block.appendChild(note);
       });
