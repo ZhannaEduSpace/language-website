@@ -650,6 +650,109 @@
   }
 </script>
 
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 5. Kirjoita nämä sanat partitiivissa yksikössä ja monikossa.</strong> Esimerkiksi: kahvi → <em>kahvia, kahveja</em></p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizForm5"></form>
+
+<button type="button" onclick="checkAnswers5()">Tarkista vastaukset</button>
+<div class="result" id="result5"></div>
+
+<script>
+  const questions5 = [
+    { base: "kieli", singular: "kieltä", plural: "kieliä" },
+    { base: "veitsi", singular: "veistä", plural: "veitsiä" },
+    { base: "peruna", singular: "perunaa", plural: "perunoita" },
+    { base: "pitkä", singular: "pitkää", plural: "pitkiä" },
+    { base: "joki", singular: "jokea", plural: "jokia" },
+    { base: "vene", singular: "venettä", plural: "veneitä" },
+    { base: "sänky", singular: "sänkyä", plural: "sänkyjä" },
+    { base: "tähti", singular: "tähteä", plural: "tähtiä" },
+    { base: "kallis", singular: "kallista", plural: "kalliita" },
+    { base: "bussi", singular: "bussia", plural: "busseja" }
+  ];
+
+  const form5 = document.getElementById("quizForm5");
+
+  questions5.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q5-${index}`;
+    div.innerHTML = `
+      <label>${index + 1}. ${q.base}</label>
+      <div class="input-block">
+        <input type="text" id="input5-${index}_s" placeholder="Yksikkö (singular)">
+        <div id="feedback5-${index}_s"></div>
+      </div>
+      <div class="input-block">
+        <input type="text" id="input5-${index}_p" placeholder="Monikko (plural)">
+        <div id="feedback5-${index}_p"></div>
+      </div>
+    `;
+    form5.appendChild(div);
+  });
+
+  function normalize5(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkAnswers5() {
+    let score = 0;
+
+    questions5.forEach((q, i) => {
+      const inputSingular = normalize5(document.getElementById(`input5-${i}_s`).value);
+      const inputPlural   = normalize5(document.getElementById(`input5-${i}_p`).value);
+
+      const correctSingular = normalize5(q.singular);
+      const correctPlural   = normalize5(q.plural);
+
+      const feedbackSingular = document.getElementById(`feedback5-${i}_s`);
+      const feedbackPlural   = document.getElementById(`feedback5-${i}_p`);
+
+      feedbackSingular.innerHTML = "";
+      feedbackPlural.innerHTML = "";
+
+      const msgSingular = document.createElement("div");
+      const msgPlural   = document.createElement("div");
+
+      if (inputSingular === "") {
+        msgSingular.className = "incorrect";
+        msgSingular.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (inputSingular === correctSingular) {
+        msgSingular.className = "correct";
+        msgSingular.textContent = `✅ Yksikkö oikein: ${q.singular}`;
+        score++;
+      } else {
+        msgSingular.className = "incorrect";
+        msgSingular.textContent = `❌ Yksikkö väärin. Oikea: ${q.singular}`;
+      }
+
+      if (inputPlural === "") {
+        msgPlural.className = "incorrect";
+        msgPlural.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (inputPlural === correctPlural) {
+        msgPlural.className = "correct";
+        msgPlural.textContent = `✅ Monikko oikein: ${q.plural}`;
+        score++;
+      } else {
+        msgPlural.className = "incorrect";
+        msgPlural.textContent = `❌ Monikko väärin. Oikea: ${q.plural}`;
+      }
+
+      feedbackSingular.appendChild(msgSingular);
+      feedbackPlural.appendChild(msgPlural);
+    });
+
+    const total = questions5.length * 2;
+    document.getElementById("result5").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
+
     
 </div>
 
