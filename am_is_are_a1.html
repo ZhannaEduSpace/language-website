@@ -192,6 +192,12 @@
     overflow-y: visible !important;
   }
 }
+    select {
+  padding: 6px 10px;
+  font-size: 1em;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
   </style>
 
   <link rel="stylesheet" href="/side-menu.css">
@@ -261,20 +267,110 @@
         if (existing) existing.remove();
         const note = document.createElement('div');
         note.classList.add('correct-answer');
-        if (selected && selected.value === item.a) {
-          note.classList.add('correct');
-          score++;
-          note.innerText = `Correct! Answer: ${item.a}`;
-        } else {
-          note.classList.add('incorrect');
-          note.innerText = `Correct answer: ${item.a}`;
-        }
+      
+       if (selectedValue === '') {
+        note.classList.add('incorrect');
+        note.innerText = '⚠️ Please choose an answer first!';
+      } else if (normalize2(selectedValue) === normalize2(item.a)) {
+        note.classList.add('correct');
+        note.innerText = `✅ Correct! Answer: ${item.a}`;
+        score++;
+      } else {
+        note.classList.add('incorrect');
+        note.innerText = `❌ Not quite. Correct answer: ${item.a}`;
+      }
+
         block.appendChild(note);
       });
       document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
     }
   </script>
 
+<hr style="margin: 40px 0;">
+
+<h2>⚂ Exercise 2. Am / Is / Are – Choose the correct form</h2>
+<p><strong>Choose the correct form of “to be” (am / is / are).</strong></p>
+
+<form id="quizForm2"></form>
+<button type="button" onclick="checkAnswers2()">Check Answers</button>
+<div class="result" id="result2"></div>
+
+<script>
+  const questions2 = [
+    { q: 'I ___ from Finland.', a: 'am', options: ['am', 'is', 'are'] },
+    { q: 'He ___ my brother.', a: 'is', options: ['am', 'is', 'are'] },
+    { q: 'They ___ at home.', a: 'are', options: ['am', 'is', 'are'] },
+    { q: '___ she happy?', a: 'Is', options: ['Am', 'Is', 'Are'] },
+    { q: 'We ___ students.', a: 'are', options: ['am', 'is', 'are'] },
+    { q: 'I ___ not tired.', a: 'am', options: ['am', 'is', 'are'] },
+    { q: 'My parents ___ at work.', a: 'are', options: ['am', 'is', 'are'] },
+    { q: 'It ___ cold today.', a: 'is', options: ['am', 'is', 'are'] },
+    { q: '___ you ready?', a: 'Are', options: ['Am', 'Is', 'Are'] },
+    { q: 'She ___ not a teacher.', a: 'is', options: ['am', 'is', 'are'] },
+  ];
+
+  const form2 = document.getElementById('quizForm2');
+
+  questions2.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-question';
+    div.id = `q2-${i+1}-block`;
+
+    const selectHTML = `
+      <select id="select2-${i}">
+        <option value="">-- Choose --</option>
+        ${item.options.map(opt => `<option value="${opt}">${opt}</option>`).join('')}
+      </select>
+    `;
+
+    const parts = item.q.split('___');
+    const sentenceHTML =
+      parts.length === 2
+        ? `${parts[0]} ${selectHTML} ${parts[1]}`
+        : `${item.q} ${selectHTML}`;
+
+    div.innerHTML = `<h3>${i+1}. ${sentenceHTML}</h3>`;
+    form2.appendChild(div);
+  });
+
+  function normalize2(str) {
+    return (str || '').trim().toLowerCase();
+  }
+
+  function checkAnswers2() {
+    let score = 0;
+
+    questions2.forEach((item, i) => {
+      const block = document.getElementById(`q2-${i+1}-block`);
+
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const note = document.createElement('div');
+      note.classList.add('correct-answer');
+
+      const selectedValue = document.getElementById(`select2-${i}`).value;
+
+      if (selectedValue === '') {
+        note.classList.add('incorrect');
+        note.innerText = '⚠️ Please choose an answer first!';
+      } else if (normalize2(selectedValue) === normalize2(item.a)) {
+        note.classList.add('correct');
+        note.innerText = `✅ Correct! Answer: ${item.a}`;
+        score++;
+      } else {
+        note.classList.add('incorrect');
+        note.innerText = `❌ Not quite. Correct answer: ${item.a}`;
+      }
+
+      block.appendChild(note);
+    });
+
+    document.getElementById('result2').innerText =
+      `You got ${score} out of ${questions2.length} correct.`;
+  }
+</script>
+ 
   <div id="footer-placeholder"></div>
 <script>
   fetch('/footer.html')
