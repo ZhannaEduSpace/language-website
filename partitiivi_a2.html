@@ -223,7 +223,7 @@
       { q: 'Pöydällä on vähän ___. (tuore leipä)', a: 'tuoretta leipää' },
       { q: 'Tässä on ___. (punainen omena)', a: 'punainen omena' },
       { q: 'Hän rakastaa ___. (kaunis musiikki)', a: 'kaunista musiikkia' },
-      { q: 'Se on ___. (kaunis kukka)', a: 'kaunis kukka' },
+      { q: 'Se on ___. (kaunis kukka)', a: 'kaunis kukka' }
     ];
 
     const form = document.getElementById('quizForm');
@@ -307,7 +307,7 @@
     { q: 'Minä kaipaan ___. (rakas ystävä)', a: 'rakasta ystävää' },
     { q: 'Tässä on ___. (iso huone)', a: 'iso huone' },
     { q: 'Hän katsoo ___. (kaunis järvi)', a: 'kaunista järveä' },
-    { q: 'Minä en ymmärrä ___. (vaikea asia)', a: 'vaikeaa asiaa' },
+    { q: 'Minä en ymmärrä ___. (vaikea asia)', a: 'vaikeaa asiaa' }
   ];
 
   const form2 = document.getElementById('quizForm2');
@@ -445,6 +445,88 @@
 
     document.getElementById('result3').innerText =
       `Sait ${score} oikein ${questions3.length}:stä.`;
+  }
+</script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 4. Kirjoita nämä sanaliitot oikeassa muodossa (partitiivi tai perusmuoto).</strong></p>
+<p>Esimerkiksi: Minä juon <em>kylmää vettä</em>. (kylmä vesi)</p>
+<p>Write the phrases in the correct form (partitive or basic form).</p>
+<p>Впишите словосочетания в правильной форме.</p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizForm4"></form>
+
+<button type="button" onclick="checkAnswers4()">Tarkista vastaukset</button>
+<div class="result" id="result4"></div>
+
+<script>
+  const questions4 = [
+    { q: 'Hän tarvitsee kilon ___. (ruskea riisi)', a: 'ruskeaa riisiä' },
+    { q: 'Kaupungissa ei ole ___. (iso puisto)', a: 'isoa puistoa' },
+    { q: 'Me autamme ___. (vanha naapuri)', a: 'vanhaa naapuria' },
+    { q: 'Elokuva on ___. (pitkä)', a: 'pitkä' },
+    { q: 'Kahvi on ___. (kuuma)', a: 'kuumaa' },
+    { q: 'Minä tapaan kolme ___. (mukava ihminen)', a: 'mukavaa ihmistä' },
+    { q: 'Minä en näe ___. (kaunis maisema)', a: 'kaunista maisemaa' },
+    { q: 'Me käytämme ___. (uusi tietokone)', a: 'uutta tietokonetta' },
+    { q: 'Minun koti on ___. (hiljainen paikka)', a: 'hiljainen paikka' },
+    { q: 'Minä otan paljon ___. (valkoinen sokeri)', a: 'valkoista sokeria' }
+  ];
+
+  const form4 = document.getElementById('quizForm4');
+
+  function normalize4(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, ' ');
+  }
+
+  questions4.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.id = `q4-${i+1}-block`;
+
+    const parts = item.q.split('___');
+    const sentenceHTML = `${parts[0]} <input type="text" id="input4-${i}" placeholder="Kirjoita vastaus"> ${parts[1] || ''}`;
+
+    div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+    form4.appendChild(div);
+  });
+
+  function checkAnswers4() {
+    let score = 0;
+
+    questions4.forEach((item, i) => {
+      const input = document.getElementById(`input4-${i}`);
+      const userAnswer = normalize4(input.value);
+      const correctAnswer = normalize4(item.a);
+
+      let feedback = document.querySelector(`#q4-${i+1}-block .correct-answer`);
+      if (feedback) feedback.remove();
+
+      const result = document.createElement('div');
+      result.classList.add('correct-answer');
+
+      if (userAnswer === '') {
+        result.classList.add('incorrect');
+        result.textContent = '⚠️ Kirjoita ensin vastaus!';
+      } else if (userAnswer === correctAnswer) {
+        result.classList.add('correct');
+        result.textContent = `✅ Oikein: ${item.a}`;
+        score++;
+      } else {
+        result.classList.add('incorrect');
+        result.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${item.a}`;
+      }
+
+      document.getElementById(`q4-${i+1}-block`).appendChild(result);
+    });
+
+    document.getElementById('result4').innerText =
+      `Sait ${score} oikein ${questions4.length}:stä.`;
   }
 </script>
 
