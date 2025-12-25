@@ -236,12 +236,14 @@
       const parts = item.q.split('___');
       let sentenceHTML = '';
 
-      if (parts.length === 2) {
-        sentenceHTML = `${parts[0]} <input type="text" id="input${i}"> ${parts[1]}`;
-      } else {
-        sentenceHTML = item.q.replace(item.a, `<input type="text" id="input${i}">`);
-      }
-
+     if (parts.length === 2) {
+  sentenceHTML = `${parts[0]} <input type="text" id="input${i}" placeholder="Kirjoita vastaus"> ${parts[1]}`;
+} else {
+  sentenceHTML = item.q.replace(
+    item.a,
+    `<input type="text" id="input${i}" placeholder="Kirjoita vastaus">`
+  );
+}
       div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
       form.appendChild(div);
     });
@@ -324,7 +326,7 @@
     div.id = `q2-${i+1}-block`;
 
     const parts = item.q.split('___');
-    const sentenceHTML = `${parts[0]} <input type="text" id="input2-${i}"> ${parts[1] || ''}`;
+    const sentenceHTML = `${parts[0]} <input type="text" id="input2-${i}" placeholder="Kirjoita vastaus"> ${parts[1] || ''}`;
 
     div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
     form2.appendChild(div);
