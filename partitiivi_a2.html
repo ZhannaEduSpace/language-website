@@ -200,7 +200,7 @@
 
   <div class="container">
   <h2>✏️ Partitiivi (A2)</h2>
-  <p><strong>Kirjoita nämä sanaliitot oikeassa muodossa (partitiivi tai perusmuoto).</strong> Esimerkiksi: Minä juon <em>kylmää vettä</em>. (kylmä vesi)</p>
+  <p><strong>Harjoitus 1. Kirjoita nämä sanaliitot oikeassa muodossa (partitiivi tai perusmuoto).</strong> Esimerkiksi: Minä juon <em>kylmää vettä</em>. (kylmä vesi)</p>
   <p> Write these adjective + noun phrases in the correct form (partitive or basic form). Example: Minä juon <em>kylmää vettä</em>. (kylmä vesi)</p>
   <p> Впишите данные словосочетания в правильной форме (партитив или основную форму). Пример: Minä juon <em>kylmää vettä</em>. (kylmä vesi)</p>
   <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
@@ -370,8 +370,6 @@
 
 <p><strong>Harjoitus 3. Kirjoita nämä sanaliitot oikeassa muodossa (partitiivi tai perusmuoto).</strong></p>
 <p>Esimerkiksi: Minä juon <em>kylmää vettä</em>. (kylmä vesi)</p>
-<p>Write the phrases in the correct form (partitive or basic form).</p>
-<p>Впишите словосочетания в правильной форме.</p>
 <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
 <form id="quizForm3"></form>
@@ -452,8 +450,6 @@
 
 <p><strong>Harjoitus 4. Kirjoita nämä sanaliitot oikeassa muodossa (partitiivi tai perusmuoto).</strong></p>
 <p>Esimerkiksi: Minä juon <em>kylmää vettä</em>. (kylmä vesi)</p>
-<p>Write the phrases in the correct form (partitive or basic form).</p>
-<p>Впишите словосочетания в правильной форме.</p>
 <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
 <form id="quizForm4"></form>
@@ -527,6 +523,86 @@
 
     document.getElementById('result4').innerText =
       `Sait ${score} oikein ${questions4.length}:stä.`;
+  }
+</script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 5. Kirjoita nämä sanaliitot oikeassa muodossa (partitiivi tai perusmuoto).</strong></p>
+<p>Esimerkiksi: Minä juon <em>kylmää vettä</em>. (kylmä vesi)</p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizForm5"></form>
+
+<button type="button" onclick="checkAnswers5()">Tarkista vastaukset</button>
+<div class="result" id="result5"></div>
+
+<script>
+  const questions5 = [
+    { q: 'Tässä on ___. (tyhjä lasi)', a: 'tyhjä lasi' },
+    { q: 'Kaupassa on paketti ___. (hyvä juusto)', a: 'hyvää juustoa' },
+    { q: 'Huoneessa ei ole ___. (vanha sohva)', a: 'vanhaa sohvaa' },
+    { q: 'Hän odottaa ___. (myöhäinen bussi)', a: 'myöhäistä bussia' },
+    { q: 'Auto on ___. (punainen)', a: 'punainen' },
+    { q: 'Riisi on ___. (valkoinen)', a: 'valkoista' },
+    { q: 'Hän ostaa kolme ___. (punainen omena)', a: 'punaista omenaa' },
+    { q: 'Meillä on ___. (lyhyt tauko)', a: 'lyhyt tauko' },
+    { q: 'Hän on ___. (nuori opiskelija)', a: 'nuori opiskelija' },
+    { q: 'Me ostamme metrin ___. (sininen kangas)', a: 'sinistä kangasta' }
+  ];
+
+  const form5 = document.getElementById('quizForm5');
+
+  function normalize5(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, ' ');
+  }
+
+  questions5.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.id = `q5-${i+1}-block`;
+
+    const parts = item.q.split('___');
+    const sentenceHTML = `${parts[0]} <input type="text" id="input5-${i}" placeholder="Kirjoita vastaus"> ${parts[1] || ''}`;
+
+    div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+    form5.appendChild(div);
+  });
+
+  function checkAnswers5() {
+    let score = 0;
+
+    questions5.forEach((item, i) => {
+      const input = document.getElementById(`input5-${i}`);
+      const userAnswer = normalize5(input.value);
+      const correctAnswer = normalize5(item.a);
+
+      let feedback = document.querySelector(`#q5-${i+1}-block .correct-answer`);
+      if (feedback) feedback.remove();
+
+      const result = document.createElement('div');
+      result.classList.add('correct-answer');
+
+      if (userAnswer === '') {
+        result.classList.add('incorrect');
+        result.textContent = '⚠️ Kirjoita ensin vastaus!';
+      } else if (userAnswer === correctAnswer) {
+        result.classList.add('correct');
+        result.textContent = `✅ Oikein: ${item.a}`;
+        score++;
+      } else {
+        result.classList.add('incorrect');
+        result.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${item.a}`;
+      }
+
+      document.getElementById(`q5-${i+1}-block`).appendChild(result);
+    });
+
+    document.getElementById('result5').innerText =
+      `Sait ${score} oikein ${questions5.length}:stä.`;
   }
 </script>
 
