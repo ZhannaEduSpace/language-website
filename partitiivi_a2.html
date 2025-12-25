@@ -606,6 +606,86 @@
   }
 </script>
 
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 6. Kirjoita nämä sanaliitot oikeassa muodossa (partitiivi tai perusmuoto).</strong></p>
+<p>Esimerkiksi: Minä juon <em>kylmää vettä</em>. (kylmä vesi)</p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizForm6"></form>
+
+<button type="button" onclick="checkAnswers6()">Tarkista vastaukset</button>
+<div class="result" id="result6"></div>
+
+<script>
+  const questions6 = [
+    { q: 'Minä syön palan ___. (tumma leipä)', a: 'tummaa leipää' },
+    { q: 'Meillä on neljä ___. (uusi tuoli)', a: 'uutta tuolia' },
+    { q: 'Hän käyttää ___ ruoanlaitossa. (karkea suola)', a: 'karkeaa suolaa' },
+    { q: 'Koira on ___. (ystävällinen)', a: 'ystävällinen' },
+    { q: 'Minä odotan ___. (pitkä loma)', a: 'pitkää lomaa' },
+    { q: 'Hänellä ei ole ___. (hyvä työ)', a: 'hyvää työtä' },
+    { q: 'Kaupassa on monta ___. (halpa tuote)', a: 'halpaa tuotetta' },
+    { q: 'Maito on ___. (lämmin)', a: 'lämmintä' },
+    { q: 'Minä rakastan ___. (surullinen musiikki)', a: 'surullista musiikkia' },
+    { q: 'Tämä ravintola on ___. (suosittu paikka)', a: 'suosittu paikka' }
+  ];
+
+  const form6 = document.getElementById('quizForm6');
+
+  function normalize6(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, ' ');
+  }
+
+  questions6.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.id = `q6-${i+1}-block`;
+
+    const parts = item.q.split('___');
+    const sentenceHTML = `${parts[0]} <input type="text" id="input6-${i}" placeholder="Kirjoita vastaus"> ${parts[1] || ''}`;
+
+    div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+    form6.appendChild(div);
+  });
+
+  function checkAnswers6() {
+    let score = 0;
+
+    questions6.forEach((item, i) => {
+      const input = document.getElementById(`input6-${i}`);
+      const userAnswer = normalize6(input.value);
+      const correctAnswer = normalize6(item.a);
+
+      let feedback = document.querySelector(`#q6-${i+1}-block .correct-answer`);
+      if (feedback) feedback.remove();
+
+      const result = document.createElement('div');
+      result.classList.add('correct-answer');
+
+      if (userAnswer === '') {
+        result.classList.add('incorrect');
+        result.textContent = '⚠️ Kirjoita ensin vastaus!';
+      } else if (userAnswer === correctAnswer) {
+        result.classList.add('correct');
+        result.textContent = `✅ Oikein: ${item.a}`;
+        score++;
+      } else {
+        result.classList.add('incorrect');
+        result.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${item.a}`;
+      }
+
+      document.getElementById(`q6-${i+1}-block`).appendChild(result);
+    });
+
+    document.getElementById('result6').innerText =
+      `Sait ${score} oikein ${questions6.length}:stä.`;
+  }
+</script>
+
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
