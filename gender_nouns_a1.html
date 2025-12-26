@@ -300,45 +300,34 @@
     });
 
   function checkAnswers() {
-
-  const anySelected = questions.some((_, i) =>
-    form.querySelector(`input[name=q${i+1}]:checked`)
-  );
-
-  if (!anySelected) {
-    document.getElementById('result').innerText =
-      '⚠️ Сначала выберите хотя бы один вариант.';
-    return; 
-  }
-
   let score = 0;
-
   questions.forEach((item, i) => {
     const name = `q${i+1}`;
     const selected = form.querySelector(`input[name=${name}]:checked`);
     const block = document.getElementById(`${name}-block`);
-
     const existing = block.querySelector('.correct-answer');
     if (existing) existing.remove();
-
     const note = document.createElement('div');
     note.classList.add('correct-answer');
 
-    if (selected && selected.value === item.a) {
-      note.classList.add('correct');
-      note.innerText = '✅ Правильно';
-      score++;
-    } else {
-      note.classList.add('incorrect');
-      note.innerText = `❌ Неправильно. Правильный ответ: ${item.a}`;
-    }
+      if (!selected) {
+  note.classList.add('incorrect');
+  note.innerText = '⚠️ Сначала выберите хотя бы один вариант.';
+} else if (selected.value === item.a) {
+  note.classList.add('correct');
+  note.innerText = ✅ Правильный ответ: ${item.a}`;
+  score++;
+} else {
+  note.classList.add('incorrect');
+  note.innerText = `❌ Правильный ответ: ${item.a}`;
+}
 
     block.appendChild(note);
   });
-
   document.getElementById('result').innerText =
     `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
 }
+
   </script>
   
     <hr style="margin: 40px 0;">
