@@ -315,13 +315,12 @@
   note.innerText = '⚠️ Сначала выберите хотя бы один вариант.';
 } else if (selected.value === item.a) {
   note.classList.add('correct');
-  note.innerText = ✅ Правильный ответ: ${item.a}`;
+  note.innerText = `✅ Правильный ответ: ${item.a}`;
   score++;
 } else {
   note.classList.add('incorrect');
   note.innerText = `❌ Правильный ответ: ${item.a}`;
 }
-
     block.appendChild(note);
   });
   document.getElementById('result').innerText =
