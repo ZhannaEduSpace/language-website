@@ -225,8 +225,85 @@
   
   <div id="side-menu-placeholder"></div>
 
+<div class="container">
+  <h3>🟦 Задание 1. Отметьте существительные мужского рода (A1)</h3>
+  <p>Отметьте <strong>все</strong> слова, которые являются <strong>существительными мужского рода</strong>.</p>
+
+  <div id="wordList2"></div>
+
+  <button type="button" onclick="checkMascNouns2()">Проверить</button>
+  <div id="feedbackWords2"></div>
+  <div id="feedbackSummary2" style="margin-top: 20px; font-weight: bold;"></div>
+
+  <script>
+    const words2 = [
+      { text: "день", isMascNoun: true },
+      { text: "ночь", isMascNoun: false },
+      { text: "тетрадь", isMascNoun: false },
+      { text: "дождь", isMascNoun: true },
+      { text: "площадь", isMascNoun: false },
+      { text: "рубль", isMascNoun: true },
+      { text: "любовь", isMascNoun: false },
+      { text: "дверь", isMascNoun: false },
+      { text: "стиль", isMascNoun: true },
+      { text: "календарь", isMascNoun: true } 
+    ];
+
+    const wordList2 = document.getElementById("wordList2");
+
+    words2.forEach((word, index) => {
+      const div = document.createElement("div");
+      div.style.marginBottom = "6px";
+
+      div.innerHTML = `
+        <label>
+          <input type="checkbox" id="word2-${index}">
+          <span class="word-item">${word.text}</span>
+          <span id="feedback2-${index}" style="margin-left: 10px;"></span>
+        </label>
+      `;
+      wordList2.appendChild(div);
+    });
+
+    function checkMascNouns2() {
+      const total = words2.length;
+
+      const anyChecked = words2.some((_, i) => document.getElementById(`word2-${i}`).checked);
+      if (!anyChecked) {
+        document.getElementById("feedbackSummary2").innerText =
+          "⚠️ Сначала отметьте хотя бы одно слово, а потом нажмите «Проверить».";
+        return;
+      }
+
+      let correct = 0;
+
+      words2.forEach((word, index) => {
+        const checkbox = document.getElementById(`word2-${index}`);
+        const feedback = document.getElementById(`feedback2-${index}`);
+        feedback.innerHTML = "";
+
+        const chosen = checkbox.checked;
+
+        const isCorrect = (word.isMascNoun && chosen) || (!word.isMascNoun && !chosen);
+
+        const icon = isCorrect ? "✅" : "❌";
+        const label = word.isMascNoun ? "м.р." : "не м.р.";
+
+        if (isCorrect) correct++;
+
+        feedback.innerHTML = `<span>${icon}</span> <span>${label}</span>`;
+      });
+
+      const percent = Math.round((correct / total) * 100);
+      document.getElementById("feedbackSummary2").innerText =
+        `Результат: ${correct} из ${total} (${percent}%)`;
+    }
+  </script>
+</div>
+
+  
   <div class="container">
-  <h2>📌 Род существительных (А1)</h2>
+  <h2>Задание 2. 📌 Род существительных (А1)</h2>
   <p><strong>Выберите правильный род для каждого слова.</strong><br>Только один правильный ответ.</p>
 
   <form id="quizForm"></form>
