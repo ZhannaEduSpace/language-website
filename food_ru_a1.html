@@ -194,6 +194,25 @@ header {
   .quiz-question h3 {
   margin: 10px 0 6px;
 }
+  
+/* Красивые компактные вопросы как в заданиях с цифрами */
+.quiz-question {
+  margin-bottom: 18px;         /* расстояние между вопросами */
+}
+
+.quiz-question h3 {
+  margin: 0 0 6px;             /* убрать огромные стандартные отступы h3 */
+  font-weight: 700;
+  font-size: 1.25em;
+}
+
+.quiz-question label {
+  display: flex;               /* чтобы кружок и текст были в одной линии */
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0;               /* маленькие отступы между вариантами */
+  font-weight: normal;         /* НЕ жирно */
+}
 
   </style>
   
