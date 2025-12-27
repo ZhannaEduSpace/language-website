@@ -221,7 +221,7 @@
 
   <div class="container">
   <h2>🔟 Numerot 1-10 (A1)</h2>
-  <p><strong>Kuuntele ja valitse oikea numero.</strong><br>
+  <p><strong>Harjoitus 1. Kuuntele ja valitse oikea numero.</strong><br>
  Listen and choose the correct number.<br>
  Прослушайте и выберите правильную цифру.</p>
 
@@ -341,6 +341,124 @@
 }
 
   </script>
+
+   <hr style="margin: 40px 0;">
+
+  <p><strong>Harjoitus 2. Laske ja valitse oikea vastaus. </strong><br>
+  Vain yksi vastaus on oikein.</p>
+
+  <form id="quizForm2"></form>
+  <button type="button" onclick="checkAnswers2()">Tarkista vastaukset</button>
+  <div class="result" id="result2"></div>
+
+  <script>
+    const questions2 = [
+      {
+        q: 'kymmenen + viisi = ',
+        a: 'viisitoista',
+        options: ['viisitoista', 'viisikymmentä', 'kuusikymmentä']
+      },
+      {
+        q: 'kahdeksan + kuusi = ',
+        a: 'neljätoista',
+        options: ['neljä', 'neljätoista', 'neljäkymmentä']
+      },
+      {
+        q: 'kaksikymmentä + kymmenen = ',
+        a: 'kolmekymmentä',
+        options: ['kolmekymmentä', 'kaksikymmentä', 'kuusikymmentä']
+      },
+      {
+        q: 'kolmetoista + seitsemän = ',
+        a: 'kaksikymmentä',
+        options: ['kaksikymmentä', 'kolmekymmentä', 'kolmetoista']
+      },
+      {
+        q: 'viisikymmentä + viisikymmentä = ',
+        a: 'sata',
+        options: ['kolmekymmentä', 'yhdeksänkymmentä', 'sata']
+      },
+      {
+        q: 'kaksikymmentä + viisitoista = ',
+        a: 'kolmekymmentäviisi',
+        options: ['kolmekymmentäyksi', 'kolmekymmentäneljä', 'kolmekymmentäviisi']
+      },
+      {
+        q: 'kolmekymmentä + kymmenen = ',
+        a: 'neljäkymmentä',
+        options: ['neljätoista', 'neljäkymmentä', 'neljäkymmentäneljä']
+      },
+      {
+        q: 'neljäkymmentä + kaksikymmentä = ',
+        a: 'kuusikymmentä',
+        options: ['kahdeksan', 'kuusikymmentä', 'kahdeksankymmentä']
+      },
+      {
+        q: 'viisikymmentä + kymmenen = ',
+        a: 'kuusikymmentä',
+        options: ['kuusikymmentä', 'kaksikymmentäseitsemän', 'kaksikymmentäviisi']
+      },
+      {
+        q: 'seitsemänkymmentä + kaksikymmentä = ',
+        a: 'yhdeksänkymmentä',
+        options: ['yhdeksänkymmentä', 'sata', 'seitsemänkymmentä']
+      }
+    ];
+
+    const form2 = document.getElementById('quizForm2');
+
+    questions2.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q2-${i+1}-block`;
+
+      div.innerHTML =
+        `<h3>${i+1}. ${item.q}</h3>` +
+        item.options.map(opt => `
+          <label>
+            <input type="radio" name="q2-${i+1}" value="${opt}">
+            ${opt}
+          </label><br>`).join('');
+
+      form2.appendChild(div);
+    });
+
+   function checkAnswers2() {
+  let score = 0;
+
+  questions2.forEach((item, i) => {
+    const name = `q2-${i+1}`;
+    const selected = form2.querySelector(`input[name="${name}"]:checked`);
+    const block = document.getElementById(`q2-${i+1}-block`);
+
+    const existing = block.querySelector('.correct-answer');
+    if (existing) existing.remove();
+
+    const note = document.createElement('div');
+    note.classList.add('correct-answer');
+
+    const selectedValue = selected ? selected.value : '';
+
+    if (selectedValue === '') {
+      note.classList.add('incorrect');
+      note.innerText = '⚠️ Valitse ensin vastaus!';
+    } else if (selectedValue === item.a) {
+      note.classList.add('correct');
+      note.innerText = `✅ Oikein! Vastaus: ${item.a}`;
+      score++;
+    } else {
+      note.classList.add('incorrect');
+      note.innerText = `❌ Ei ihan oikein. Oikea vastaus: ${item.a}`;
+    }
+
+    block.appendChild(note);
+  });
+
+  document.getElementById('result2').innerText =
+    `Sait ${score} oikein ${questions2.length}:stä.`;
+}
+  </script>
+</div>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
