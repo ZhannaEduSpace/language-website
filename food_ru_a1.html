@@ -208,7 +208,7 @@ header {
 
   <div class="container">
     <h2>🍽️ Еда и напитки (A1)</h2>
-  <p><strong> Напишите название еды или напитка. Первая буква дана как подсказка.</strong> Пример: 🥓 → <em><strong>p</strong>ekoni</em> </p>
+  <p><strong> Задание 1. Напишите название еды или напитка. Первая буква дана как подсказка.</strong> Пример: 🥓 → <em><strong>p</strong>ekoni</em> </p>
   
     
     <div class="container">
@@ -267,26 +267,148 @@ header {
       let old = block.querySelector(".correct, .incorrect");
       if (old) old.remove();
 
-      const msg = document.createElement("div");
-      if (userInput === correct) {
-        msg.className = "correct";
-        msg.textContent = `✅ Правильный ответ: ${q.answer}`;
-        score++;
-      } else {
-        msg.className = "incorrect";
-        msg.textContent = `❌ Правильный ответ: ${q.answer}`;
-      }
+     const msg = document.createElement("div");
+
+if (userInput === "") {
+  msg.className = "incorrect";
+  msg.textContent = "⚠️ Сначала введите ответ.";
+} else if (userInput === correct) {
+  msg.className = "correct";
+  msg.textContent = `✅ Правильно: ${q.answer}`;
+  score++;
+} else {
+  msg.className = "incorrect";
+  msg.textContent = `❌ Неправильно. Правильный ответ: ${q.answer}`;
+}
       block.appendChild(msg);
     });
 
     document.getElementById("result").innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
   }
 </script>
+
+<hr style="margin: 40px 0;">
+    
+
+  <p><strong> Выберите лишнее слово.. </strong></p>
+
+  <form id="quizForm2"></form>
+  <button type="button" onclick="checkAnswers2()">Проверить ответы</button>
+  <div class="result" id="result2"></div>
+
+  <script>
+    const questions2 = [
+      {
+        q: 'Какое слово лишнее?',
+        a: 'хлеб',
+        options: ['вода', 'сок', 'чай', 'хлеб']
+      },
+      {
+        q: 'Какое слово лишнее?',
+        a: 'кофе',
+        options: ['каша', 'кофе', 'салат', 'пицца']
+      },
+      {
+        q: 'Какое слово лишнее?',
+        a: 'чай',
+        options: ['чай', 'мясо', 'рыба', 'курица']
+      },
+      {
+        q: 'Какое слово лишнее?',
+        a: 'сыр',
+        options: ['яблоко', 'банан', 'сыр', 'груша']
+      },
+      {
+        q: 'Какое слово лишнее?',
+        a: 'арбуз',
+        options: ['молоко', 'йогурт', 'сыр', 'арбуз']
+      },
+      {
+        q: 'Какое слово лишнее?',
+        a: 'рыба',
+        options: ['рыба', 'торт', 'шоколад', 'конфета']
+      },
+      {
+        q: 'Какое слово лишнее?',
+        a: 'мороженое',
+        options: ['свёкла', 'морковь', 'картофель', 'мороженое']
+      },
+      {
+        q: 'Какое слово лишнее?',
+        a: 'макароны',
+        options: ['вода', 'макароны', 'какао', 'лимонад']
+      },
+      {
+        q: 'Какое слово лишнее?',
+        a: 'клубника',
+        options: ['яичница', 'пицца', 'клубника', 'салат']
+      },
+      {
+        q: 'Какое слово лишнее?',
+        a: 'maalari',
+        options: ['майонез', 'кутчуп', 'сметана', 'мандарин']
+      }
+    ];
+
+    const form2 = document.getElementById('quizForm2');
+
+    questions2.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q2-${i+1}-block`;
+
+      div.innerHTML =
+        `<h3>${i+1}. ${item.q}</h3>` +
+        item.options.map(opt => `
+          <label>
+            <input type="radio" name="q2-${i+1}" value="${opt}">
+            ${opt}
+          </label><br>`).join('');
+
+      form2.appendChild(div);
+    });
+
+    function checkAnswers2() {
+  let score = 0;
+
+  questions2.forEach((item, i) => {
+    const name = `q2-${i+1}`;
+    const selected = form2.querySelector(`input[name="${name}"]:checked`);
+    const block = document.getElementById(`q2-${i+1}-block`);
+
+    const existing = block.querySelector('.correct-answer');
+    if (existing) existing.remove();
+
+    const note = document.createElement('div');
+    note.classList.add('correct-answer');
+
+    const selectedValue = selected ? selected.value : '';
+
+    if (selectedValue === '') {
+      note.classList.add('incorrect');
+      note.innerText = '⚠️ Сначала выберите хотя бы один вариант.';
+    } else if (selectedValue === item.a) {
+      note.classList.add('correct');
+      note.innerText = `✅ Правильно: ${item.a}`;
+      score++;
+    } else {
+      note.classList.add('incorrect');
+      note.innerText = `❌ Неправильно. Правильный ответ: ${item.a}`;
+    }
+
+    block.appendChild(note);
+  });
+
+  document.getElementById('result2').innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
+}
+  </script>
+
      </div>
 
    <div class="container">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
+     
 <!-- HorizontalAd -->
 <ins class="adsbygoogle"
      style="display:block; margin-top:30px;"
