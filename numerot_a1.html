@@ -316,15 +316,18 @@
         const note = document.createElement('div');
         note.classList.add('correct-answer');
 
-        if (selected && selected.value === item.a) {
-          note.classList.add('correct');
-          score++;
-          note.innerText = `✅ Correct answer: ${item.a}`;
-        } else {
-          note.classList.add('incorrect');
-          note.innerText = `❌ Correct answer: ${item.a}`;
-        }
-
+        if (userInput === "") {
+        msg.classList.add("incorrect");
+        msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (userInput === correct) {
+        msg.classList.add("correct");
+        msg.textContent = `✅ Oikein: ${q.answer}`;
+        score++;
+      } else {
+        msg.classList.add("incorrect");
+        msg.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${q.answer}`;
+      }
+        
         block.appendChild(note);
       });
       document.getElementById('result').innerText = `Sait ${score} oikein ${questions.length}:stä.`;
