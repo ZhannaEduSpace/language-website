@@ -371,10 +371,11 @@ if (userInput === "") {
       div.innerHTML =
         `<h3>${i+1}. ${item.q}</h3>` +
         item.options.map(opt => `
-          <label>
-            <input type="radio" name="q2-${i+1}" value="${opt}">
-            ${opt}
-          </label><br>`).join('');
+  <label>
+    <input type="radio" name="q2-${i+1}" value="${opt}">
+    ${opt}
+  </label>`).join('');
+
 
       form2.appendChild(div);
     });
