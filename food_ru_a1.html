@@ -126,11 +126,19 @@ header {
     .question {
       margin-bottom: 20px;
     }
-    label {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 8px;
-    }
+
+.question label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.quiz-question label {
+  font-weight: normal;
+  display: inline-block;
+  margin: 4px 0;
+}
+
     input[type="text"] {
       padding: 8px 10px;
       font-size: 1em;
@@ -183,6 +191,10 @@ header {
   font-size: 2em; /* можешь уменьшить до 1.5em, если слишком крупно */
   margin-right: 10px;
 }
+  .quiz-question h3 {
+  margin: 10px 0 6px;
+}
+
   </style>
   
   <link rel="stylesheet" href="/side-menu.css">
@@ -210,8 +222,6 @@ header {
     <h2>🍽️ Еда и напитки (A1)</h2>
   <p><strong> Задание 1. Напишите название еды или напитка. Первая буква дана как подсказка.</strong> Пример: 🥓 → <em><strong>p</strong>ekoni</em> </p>
   
-    
-    <div class="container">
   <h2>Что это?</h2>
 
   <form id="quizForm"></form>
@@ -289,10 +299,10 @@ if (userInput === "") {
 
 <hr style="margin: 40px 0;">
     
-
-  <p><strong> Выберите лишнее слово.</strong></p>
+  <p><strong>Задание 2. Выберите лишнее слово.</strong></p>
 
   <form id="quizForm2"></form>
+    
   <button type="button" onclick="checkAnswers2()">Проверить ответы</button>
   <div class="result" id="result2"></div>
 
@@ -345,7 +355,7 @@ if (userInput === "") {
       },
       {
         q: 'Какое слово лишнее?',
-        a: 'maalari',
+        a: 'мандарин',
         options: ['майонез', 'кутчуп', 'сметана', 'мандарин']
       }
     ];
@@ -402,7 +412,6 @@ if (userInput === "") {
   document.getElementById('result2').innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
 }
   </script>
-
      </div>
 
    <div class="container">
