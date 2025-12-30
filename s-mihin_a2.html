@@ -226,16 +226,10 @@
       { base: "pallo", answer: "palloon" },
       { base: "vihreä", answer: "vihreään" },
       { base: "maa", answer: "maahan" },
-      { base: "kapea", answer: "kapeaan" },
       { base: "takuu", answer: "takuuseen" },
       { base: "pää", answer: "päähän" },
-      { base: "kirje", answer: "kirjeeseen" },
-      { base: "osoite", answer: "osoitteeseen" },
-      { base: "kala", answer: "kalaan" },
-      { base: "suu", answer: "suuhun" },
-      { base: "ravintola", answer: "ravintolaan" },
       { base: "Espoo", answer: "Espooseen" },
-      { base: "kappale", answer: "kappaleeseen" }
+      { base: "kirje", answer: "kirjeeseen" }
     ];
 
     const form = document.getElementById("quizForm");
@@ -265,7 +259,10 @@
         if (feedback) feedback.remove();
 
         const msg = document.createElement("div");
-        if (userInput === correct) {
+        if (userInput === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+        } else if (userInput === correct) {
           msg.className = "correct";
           msg.textContent = `✅ Oikein: ${q.answer}`;
           score++;
@@ -277,6 +274,82 @@
       });
 
       document.getElementById("result").innerText = `Sait ${score} oikein ${questions.length}:stä.`;
+    }
+  </script>
+
+    <div class="container">
+
+  <p><strong>Kirjoita sana muotoon “mihin?” (sisäpaikallissija).</strong> Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+  <form id="quizForm2"></form>
+
+  <button onclick="checkAnswers2()">Tarkista vastaukset</button>
+  <div class="result" id="result2"></div>
+
+  <script>
+    const questions2 = [
+      { base: "osoite", answer: "osoitteeseen" },
+      { base: "kala", answer: "kalaan" },
+      { base: "suu", answer: "suuhun" },
+      { base: "ravintola", answer: "ravintolaan" },
+      { base: "kapea", answer: "kapeaan" },
+      { base: "kappale", answer: "kappaleeseen" },
+      { base: "sininen", answer: "siniseen" },
+      { base: "huone", answer: "huoneeseen" },
+      { base: "video", answer: "videoon" },
+      { base: "Lontoo", answer: "Lontooseen" }
+    ];
+
+    const form2 = document.getElementById("quizForm2");
+
+    questions2.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q2-${index}`;
+      div.innerHTML = `
+        <label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input2-${index}" placeholder="Kirjoita sana">
+      `;
+      form2.appendChild(div);
+    });
+
+    function normalize2(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers2() {
+      let score = 0;
+
+      questions2.forEach((q, i) => {
+        const userInput = normalize2(
+          document.getElementById(`input2-${i}`).value
+        );
+        const correct = normalize2(q.answer);
+        const block = document.getElementById(`q2-${i}`);
+
+        let old = block.querySelector(".correct, .incorrect");
+        if (old) old.remove();
+
+        const msg = document.createElement("div");
+
+        if (userInput === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+        } else if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Oikein: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+        }
+
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result2").innerText =
+        `Sait ${score} oikein ${questions2.length}:stä.`;
     }
   </script>
 
