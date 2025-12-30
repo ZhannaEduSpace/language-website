@@ -211,7 +211,7 @@ header {
 
   <div class="container">
     <h2>🍽️ Food and Drinks (A1)</h2>
-  <p><strong>Write the name of the food or drink. The first letter is given as a hint.</strong> Example: 🥓 → <em><strong>b</strong>acon</em></p>
+  <p><strong>Task 1. Write the name of the food or drink. The first letter is given as a hint.</strong> Example: 🥓 → <em><strong>b</strong>acon</em></p>
  
     <div class="container">
   <h2>What is it?</h2>
@@ -271,20 +271,100 @@ header {
       if (old) old.remove();
 
       const msg = document.createElement("div");
-      if (userInput === correct) {
-        msg.className = "correct";
-        msg.textContent = `✅ Correct! Answer: ${q.answer}`;
-        score++;
-      } else {
-        msg.className = "incorrect";
-        msg.textContent = `❌ Correct answer: ${q.answer}`;
-      }
+      if (userInput === "") {
+  msg.className = "incorrect";
+  msg.textContent = "⚠️ Please write an answer first!";
+} else if (userInput === correct) {
+  msg.className = "correct";
+  msg.textContent = `✅ Correct! Answer:  ${q.answer}`;
+  score++;
+} else {
+  msg.className = "incorrect";
+  msg.textContent = `❌ Not quite. Correct answer: ${q.answer}`;
+}
       block.appendChild(msg);
     });
 
     document.getElementById("result").innerText = `You got ${score} out of ${questions.length} correct.`;
   }
 </script>
+
+    <hr style="margin: 40px 0;">
+
+   <div class="container">
+  <p><strong>Task 2. Choose the odd word out.</strong><br>Only one answer is correct in each question.</p>
+
+  <form id="quizForm2"></form>
+  <button type="button" onclick="checkAnswers2()">Check Answers</button>
+  <div class="result" id="result2"></div>
+
+  <script>
+    const questions2 = [
+      { q: 'Which word is different?', a: 'bread', options: ['water', 'juice', 'tea', 'bread'] },
+      { q: 'Which word is different?', a: 'coffee', options: ['porridge', 'coffee', 'salad', 'pizza'] },
+      { q: 'Which word is different?', a: 'tea', options: ['tea', 'meat', 'fish', 'chicken'] },
+      { q: 'Which word is different?', a: 'cheese', options: ['apple', 'banana', 'cheese', 'pear'] },
+      { q: 'Which word is different?', a: 'watermelon', options: ['milk', 'yogurt', 'cheese', 'watermelon'] },
+      { q: 'Which word is different?', a: 'fish', options: ['fish', 'cake', 'chocolate', 'candy'] },
+      { q: 'Which word is different?', a: 'ice cream', options: ['beetroot', 'carrot', 'potato', 'ice cream'] },
+      { q: 'Which word is different?', a: 'pasta', options: ['water', 'pasta', 'cocoa', 'lemonade'] },
+      { q: 'Which word is different?', a: 'strawberry', options: ['omelette', 'pizza', 'strawberry', 'salad'] },
+      { q: 'Which word is different?', a: 'mandarin', options: ['mayonnaise', 'ketchup', 'sour cream', 'mandarin'] },
+    ];
+
+    const form2 = document.getElementById('quizForm2');
+
+    questions2.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q2-${i+1}-block`;
+
+      div.innerHTML =
+        `<h3>${i+1}. ${item.q}</h3>` +
+        item.options.map(opt => `
+          <label>
+            <input type="radio" name="q2-${i+1}" value="${opt}">
+            ${opt}
+          </label><br>`).join('');
+
+      form2.appendChild(div);
+    });
+
+    function checkAnswers2() {
+      let score = 0;
+
+      questions2.forEach((item, i) => {
+        const name = `q2-${i+1}`;
+        const selected = form2.querySelector(`input[name="${name}"]:checked`);
+        const block = document.getElementById(`q2-${i+1}-block`);
+
+        const existing = block.querySelector('.correct-answer');
+        if (existing) existing.remove();
+
+        const note = document.createElement('div');
+        note.classList.add('correct-answer');
+
+        const selectedValue = selected ? selected.value : '';
+
+        if (selectedValue === '') {
+          note.classList.add('incorrect');
+          note.innerText = '⚠️ Please choose an answer first!';
+        } else if (selectedValue === item.a) {
+          note.classList.add('correct');
+          note.innerText = `✅ Correct! Answer: ${item.a}`;
+          score++;
+        } else {
+          note.classList.add('incorrect');
+          note.innerText = `❌ Not quite. Correct answer: ${item.a}`;
+        }
+
+        block.appendChild(note);
+      });
+
+      document.getElementById('result2').innerText =
+        `You got ${score} out of ${questions2.length} correct.`;
+    }
+  </script>
      </div>
 
    <div class="container">
