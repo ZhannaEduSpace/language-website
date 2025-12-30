@@ -183,6 +183,25 @@ header {
   font-size: 2em; /* можешь уменьшить до 1.5em, если слишком крупно */
   margin-right: 10px;
 }
+  /* Красивые компактные вопросы как в заданиях с цифрами */
+.quiz-question {
+  margin-bottom: 18px;         /* расстояние между вопросами */
+}
+
+.quiz-question h3 {
+  margin: 0 0 6px;             /* убрать огромные стандартные отступы h3 */
+  font-weight: 700;
+  font-size: 1.25em;
+}
+
+.quiz-question label {
+  display: flex;               /* чтобы кружок и текст были в одной линии */
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0;               /* маленькие отступы между вариантами */
+  font-weight: normal;         /* НЕ жирно */
+}
+
   </style>
 
   <link rel="stylesheet" href="/side-menu.css">
@@ -322,10 +341,10 @@ header {
       div.innerHTML =
         `<h3>${i+1}. ${item.q}</h3>` +
         item.options.map(opt => `
-          <label>
-            <input type="radio" name="q2-${i+1}" value="${opt}">
-            ${opt}
-          </label><br>`).join('');
+  <label>
+    <input type="radio" name="q2-${i+1}" value="${opt}">
+    ${opt}
+  </label>`).join('');
 
       form2.appendChild(div);
     });
