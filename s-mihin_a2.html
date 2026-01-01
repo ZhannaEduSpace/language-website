@@ -2,7 +2,7 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8">
-  <title>Mihin? — sisäpaikallissija</title>
+  <title>S-Mihin? — sisäpaikallissija</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
     <!-- Google tag (gtag.js) -->
@@ -208,7 +208,7 @@
   <div class="container">
   <h2>📍 Mihin? — sisäpaikallissija (A2)</h2>
 
-  <p><strong>Kirjoita sana muotoon “mihin?” (sisäpaikallissija).</strong> Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>Kirjoita sana muotoon “S-mihin?” (sisäpaikallissija).</strong> Esimerkiksi: <em>talo → taloon</em></p>
   <p> Write the word in the “to where?” form (inner location case). Example: <em>talo → taloon</em></p>
   <p> Напишите слово в форме “куда?” (внутренний падеж). Пример: <em>talo → taloon</em></p>
   <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
@@ -350,6 +350,80 @@
 
       document.getElementById("result2").innerText =
         `Sait ${score} oikein ${questions2.length}:stä.`;
+    }
+  </script>
+
+      <p><strong>Kirjoita sana muotoon “S-mihin?” (sisäpaikallissija).</strong></p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+  <form id="quizForm3"></form>
+
+  <button onclick="checkAnswers3()">Tarkista vastaukset</button>
+  <div class="result" id="result3"></div>
+
+  <script>
+    const questions3 = [
+      { base: "auto", answer: "autoon" },
+      { base: "kuu", answer: "kuuhun" },
+      { base: "söpö", answer: "söpöön" },
+      { base: "radio", answer: "radioon" },
+      { base: "sampoo", answer: "sampooseen" },
+      { base: "tavoite", answer: "tavoitteeseen" },
+      { base: "kahvi", answer: "kahviin" },
+      { base: "kova", answer: "kovaan" },
+      { base: "pilvi", answer: "pilveen" },
+      { base: "lipas", answer: "lippaaseen" }
+    ];
+
+    const form3 = document.getElementById("quizForm3");
+
+    questions3.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q3-${index}`;
+      div.innerHTML = `
+        <label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input3-${index}" placeholder="Kirjoita sana">
+      `;
+      form3.appendChild(div);
+    });
+
+    function normalize3(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers3() {
+      let score = 0;
+
+      questions3.forEach((q, i) => {
+        const userInput = normalize3(
+          document.getElementById(`input3-${i}`).value
+        );
+        const correct = normalize3(q.answer);
+        const block = document.getElementById(`q3-${i}`);
+
+        let old = block.querySelector(".correct, .incorrect");
+        if (old) old.remove();
+
+        const msg = document.createElement("div");
+
+        if (userInput === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+        } else if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Oikein: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+        }
+
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result3").innerText =
+        `Sait ${score} oikein ${questions3.length}:stä.`;
     }
   </script>
 
