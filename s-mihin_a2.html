@@ -206,9 +206,9 @@
   <div id="side-menu-placeholder"></div>
 
   <div class="container">
-  <h2>📍 Mihin? — sisäpaikallissija (A2)</h2>
+  <h2>📍 S-Mihin? — sisäpaikallissija (A2)</h2>
 
-  <p><strong>Kirjoita sana muotoon “S-mihin?” (sisäpaikallissija).</strong> Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>Harjoitus 1. Kirjoita sana muotoon “S-mihin?” (sisäpaikallissija).</strong> Esimerkiksi: <em>talo → taloon</em></p>
   <p> Write the word in the “to where?” form (inner location case). Example: <em>talo → taloon</em></p>
   <p> Напишите слово в форме “куда?” (внутренний падеж). Пример: <em>talo → taloon</em></p>
   <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
@@ -279,7 +279,7 @@
 
   <hr style="margin: 40px 0;">
 
-  <p><strong>Kirjoita sana muotoon “S-mihin?” (sisäpaikallissija).</strong> Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>Harjoitus 2. Kirjoita sana muotoon “S-mihin?” (sisäpaikallissija).</strong> Esimerkiksi: <em>talo → taloon</em></p>
   <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
   <form id="quizForm2"></form>
@@ -355,7 +355,7 @@
     
  <hr style="margin: 40px 0;">
     
-      <p><strong>Kirjoita sana muotoon “S-mihin?” (sisäpaikallissija).</strong></p>
+      <p><strong>Harjoitus 3. Kirjoita sana muotoon “S-mihin?” (sisäpaikallissija).</strong></p>
   <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
   <form id="quizForm3"></form>
@@ -431,7 +431,7 @@
 
      <hr style="margin: 40px 0;">
 
-  <p><strong>Kirjoita sana muotoon “S-mihin?” (sisäpaikallissija).</strong></p>
+  <p><strong>Harjoitus 4. Kirjoita sana muotoon “S-mihin?” (sisäpaikallissija).</strong></p>
   <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
   <form id="quizForm4"></form>
@@ -504,6 +504,83 @@
         `Sait ${score} oikein ${questions4.length}:stä.`;
     }
   </script>
+
+ <hr style="margin: 40px 0;">
+
+  <p><strong>Harjoitus 5. Kirjoita sana muotoon “S-mihin?” (sisäpaikallissija).</strong></p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+  <form id="quizForm5"></form>
+
+  <button onclick="checkAnswers5()">Tarkista vastaukset</button>
+  <div class="result" id="result5"></div>
+
+  <script>
+    const questions5 = [
+     { base: "työ", answer: "työhön" },
+      { base: "avain", answer: "avaimeen" },
+      { base: "Aasia", answer: "Aasiaan" },
+      { base: "toinen", answer: "toiseen" },
+      { base: "vesi", answer: "veteen" },
+      { base: "sitruuna", answer: "sitruunaan" },
+      { base: "palttoo", answer: "palttooseen" },
+      { base: "perhe", answer: "perheeseen" },
+      { base: "melu", answer: "meluun" },
+      { base: "keitin", answer: "keittimeen" }
+    ];
+
+    const form5 = document.getElementById("quizForm5");
+
+    questions5.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q5-${index}`;
+      div.innerHTML = `
+        <label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input5-${index}" placeholder="Kirjoita sana">
+      `;
+      form5.appendChild(div);
+    });
+
+    function normalize5(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers5() {
+      let score = 0;
+
+      questions5.forEach((q, i) => {
+        const userInput = normalize5(
+          document.getElementById(`input5-${i}`).value
+        );
+        const correct = normalize5(q.answer);
+        const block = document.getElementById(`q5-${i}`);
+
+        let old = block.querySelector(".correct, .incorrect");
+        if (old) old.remove();
+
+        const msg = document.createElement("div");
+
+        if (userInput === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+        } else if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Oikein: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+        }
+
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result5").innerText =
+        `Sait ${score} oikein ${questions5.length}:stä.`;
+    }
+  </script>
+
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
