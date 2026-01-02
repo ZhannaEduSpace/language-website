@@ -733,6 +733,82 @@
     }
   </script>
 
+     <hr style="margin: 40px 0;">
+
+  <p><strong>Harjoitus 8. Kirjoita sana muotoon “S-mihin?” (sisäpaikallissija).</strong></p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+  <form id="quizForm8"></form>
+
+  <button onclick="checkAnswers8()">Tarkista vastaukset</button>
+  <div class="result" id="result8"></div>
+
+  <script>
+    const questions8 = [
+      { base: "pankki", answer: "pankkiin" },
+       { base: "suuri", answer: "suureen" },
+       { base: "vastaus", answer: "vastaukseen" },
+       { base: "sää", answer: "säähän" },
+       { base: "iloinen", answer: "iloiseen" },
+       { base: "taivas", answer: "taivaaseen" },
+       { base: "kevyt", answer: "kevyeen" },
+       { base: "kirppis", answer: "kirppikseen" },
+       { base: "peruna", answer: "perunaan" },
+       { base: "virhe", answer: "virheeseen" }
+    ];
+
+    const form8 = document.getElementById("quizForm8");
+
+    questions8.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q8-${index}`;
+      div.innerHTML = `
+        <label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input8-${index}" placeholder="Kirjoita sana">
+      `;
+      form8.appendChild(div);
+    });
+
+    function normalize8(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers8() {
+      let score = 0;
+
+      questions8.forEach((q, i) => {
+        const userInput = normalize8(
+          document.getElementById(`input8-${i}`).value
+        );
+        const correct = normalize8(q.answer);
+        const block = document.getElementById(`q8-${i}`);
+
+        let old = block.querySelector(".correct, .incorrect");
+        if (old) old.remove();
+
+        const msg = document.createElement("div");
+
+        if (userInput === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+        } else if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Oikein: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+        }
+
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result8").innerText =
+        `Sait ${score} oikein ${questions8.length}:stä.`;
+    }
+  </script>
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
 <!-- HorizontalAd -->
