@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Genetiivin muodostus (A2)</title>
+  <title>Genetiivin muodostus (A1)</title>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
@@ -201,7 +201,7 @@
   <div id="side-menu-placeholder"></div>
 
   <div class="container">
-  <h2>✏️ Genetiivin muodostus (A2)</h2>
+  <h2>✏️ Genetiivin muodostus (A1)</h2>
 
     <p><strong>Harjoitus 1. Kirjoita nämä sanat genetiivissä.</strong> Esimerkiksi: opettaja → <em>opettajan</em></p>
   <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
@@ -276,13 +276,13 @@
       <p><strong>Harjoitus 2. Taivuta nämä pronominit genetiivissä.</strong></p>
   <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
-  <form id="quizForm3"></form>
+<form id="quizForm3"></form>
 
-  <button onclick="checkAnswers3()">Tarkista vastaukset</button>
-  <div class="result" id="result3"></div>
+<button type="button" onclick="checkAnswers3()">Tarkista vastaukset</button>
+<div class="result" id="result3"></div>
 
-  <script>
-    const questions3 = [
+<script>
+  const questions3 = [
       { base: "minä", answer: "minun" },
       { base: "sinä", answer: "sinun" },
       { base: "hän", answer: "hänen" },
@@ -291,56 +291,50 @@
       { base: "he", answer: "heidän" }
     ];
 
-    const form3 = document.getElementById("quizForm3");
+  const form3 = document.getElementById("quizForm3");
 
-    questions3.forEach((q, index) => {
-      const div = document.createElement("div");
-      div.className = "question";
-      div.id = `q3-${index}`;
-      div.innerHTML = `
-        <label>${index + 1}. ${q.base} →</label>
-        <input type="text" id="input3-${index}" placeholder="Kirjoita sana">
-      `;
-      form3.appendChild(div);
+  questions3.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q3-${index}`;
+    div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
+      <input type="text" id="input3-${index}" placeholder="Kirjoita sana">`;
+    form3.appendChild(div);
+  });
+
+  function checkAnswers3() {
+    let score = 0;
+
+    questions3.forEach((q, i) => {
+      const inputEl = document.getElementById(`input3-${i}`);
+      const userInput = normalize(inputEl.value);
+      const correct = normalize(q.answer);
+      const block = document.getElementById(`q3-${i}`);
+
+      let feedback = block.querySelector(".correct-answer");
+      if (feedback) feedback.remove();
+
+      const msg = document.createElement("div");
+      msg.classList.add("correct-answer");
+
+      if (userInput === "") {
+        msg.classList.add("incorrect");
+        msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (userInput === correct) {
+        msg.classList.add("correct");
+        msg.textContent = `✅ Oikein: ${q.answer}`;
+        score++;
+      } else {
+        msg.classList.add("incorrect");
+        msg.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${q.answer}`;
+      }
+
+      block.appendChild(msg);
     });
 
-    function normalize3(str) {
-      return str.trim().toLowerCase();
-    }
-
-    function checkAnswers3() {
-      let score = 0;
-
-      questions3.forEach((q, i) => {
-        const userInput = normalize3(
-          document.getElementById(`input3-${i}`).value
-        );
-        const correct = normalize3(q.answer);
-        const block = document.getElementById(`q3-${i}`);
-
-        let old = block.querySelector(".correct, .incorrect");
-        if (old) old.remove();
-
-        const msg = document.createElement("div");
-
-        if (userInput === "") {
-          msg.className = "incorrect";
-          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
-        } else if (userInput === correct) {
-          msg.className = "correct";
-          msg.textContent = `✅ Oikein: ${q.answer}`;
-          score++;
-        } else {
-          msg.className = "incorrect";
-          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
-        }
-
-        block.appendChild(msg);
-      });
-
-      document.getElementById("result3").innerText =
-        `Sait ${score} oikein ${questions3.length}:stä.`;
-    }
+    document.getElementById("result3").innerText =
+      `Sait ${score} oikein ${questions3.length}:stä.`;
+  }
   </script>
 
 <hr style="margin: 40px 0;">
