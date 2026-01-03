@@ -371,11 +371,11 @@
       const parts = item.q.split('___');
       let sentenceHTML = '';
 
-      if (parts.length === 2) {
-        sentenceHTML = `${parts[0]} <input type="text" id="input${i}"> ${parts[1]}`;
-      } else {
-        sentenceHTML = item.q.replace(item.a, `<input type="text" id="input${i}">`);
-      }
+     if (parts.length === 2) {
+  sentenceHTML = `${parts[0]} <input type="text" id="input${i}" placeholder="Kirjoita sana"> ${parts[1]}`;
+} else {
+  sentenceHTML = item.q.replace(item.a, `<input type="text" id="input${i}" placeholder="Kirjoita sana">`);
+}
 
       div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
       form.appendChild(div);
