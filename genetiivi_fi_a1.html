@@ -123,7 +123,7 @@
 
     .container {
       padding: 15px 40px;
-      max-width: 750px;
+      max-width: 850px;
       margin: auto;
     }
     h2 {
@@ -336,6 +336,76 @@
       `Sait ${score} oikein ${questions3.length}:stä.`;
   }
   </script>
+
+<hr style="margin: 40px 0;">
+
+    <p><strong>Harjoitus 3. Kirjoita nämä sanat genetiivissä.</strong> Esimerkiksi: opettaja → <em>opettajan</em></p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizForm4"></form>
+
+<button type="button" onclick="checkAnswers4()">Tarkista vastaukset</button>
+<div class="result" id="result4"></div>
+
+<script>
+  const questions4 = [
+    { base: "koira", answer: "koiran" },
+   { base: "työ", answer: "työn" },
+  { base: "huone", answer: "huoneen" },
+  { base: "kahvi", answer: "kahvin" },
+  { base: "kone", answer: "koneen" },
+  { base: "pankki", answer: "pankin" },
+  { base: "keitto", answer: "keiton" },
+  { base: "nakki", answer: "nakin" },
+  { base: "sohva", answer: "sohvan" },
+  { base: "pilvi", answer: "pilven" }
+  ];
+
+  const form4 = document.getElementById("quizForm4");
+
+  questions4.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q4-${index}`;
+    div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
+      <input type="text" id="input4-${index}" placeholder="Kirjoita sana">`;
+    form4.appendChild(div);
+  });
+
+  function checkAnswers4() {
+    let score = 0;
+
+    questions4.forEach((q, i) => {
+      const inputEl = document.getElementById(`input4-${i}`);
+      const userInput = normalize(inputEl.value);
+      const correct = normalize(q.answer);
+      const block = document.getElementById(`q4-${i}`);
+
+      let feedback = block.querySelector(".correct-answer");
+      if (feedback) feedback.remove();
+
+      const msg = document.createElement("div");
+      msg.classList.add("correct-answer");
+
+      if (userInput === "") {
+        msg.classList.add("incorrect");
+        msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (userInput === correct) {
+        msg.classList.add("correct");
+        msg.textContent = `✅ Oikein: ${q.answer}`;
+        score++;
+      } else {
+        msg.classList.add("incorrect");
+        msg.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${q.answer}`;
+      }
+
+      block.appendChild(msg);
+    });
+
+    document.getElementById("result4").innerText =
+      `Sait ${score} oikein ${questions4.length}:stä.`;
+  }
+</script>
 
 <hr style="margin: 40px 0;">
     
