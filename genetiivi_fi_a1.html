@@ -399,14 +399,17 @@
         const result = document.createElement('div');
         result.classList.add('correct-answer');
 
-        if (userAnswer === correctAnswer) {
-          result.classList.add('correct');
-          result.textContent = `✅ Oikein! Vastaus: ${item.a}`;
-          score++;
-        } else {
-          result.classList.add('incorrect');
-          result.textContent = `❌ Oikea vastaus: ${item.a}`;
-        }
+        if (userInput === "") {
+        msg.classList.add("incorrect");
+        msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (userInput === correct) {
+        msg.classList.add("correct");
+        msg.textContent = `✅ Oikein: ${q.answer}`;
+        score++;
+      } else {
+        msg.classList.add("incorrect");
+        msg.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${q.answer}`;
+      }
 
         document.getElementById(`q${i+1}-block`).appendChild(result);
       });
