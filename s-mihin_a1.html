@@ -514,70 +514,74 @@
   <div class="result" id="result5"></div>
 
   <script>
-    const questions5 = [
-     { base: "työ", answer: "työhön" },
-      { base: "avain", answer: "avaimeen" },
-      { base: "Aasia", answer: "Aasiaan" },
-      { base: "toinen", answer: "toiseen" },
-      { base: "vesi", answer: "veteen" },
-      { base: "sitruuna", answer: "sitruunaan" },
-      { base: "palttoo", answer: "palttooseen" },
-      { base: "perhe", answer: "perheeseen" },
-      { base: "melu", answer: "meluun" },
-      { base: "keitin", answer: "keittimeen" }
-    ];
+  const questions5 = [
+    { base: "iso talo", answer: "isoon taloon" },
+    { base: "vanha koulu", answer: "vanhaan kouluun" },
+    { base: "vanha perhe", answer: "vanhaan perheeseen" },
+    { base: "pitkä katu", answer: "pitkään katuun" },
+    { base: "hyvä työ", answer: "hyvään työhön" },
+    { base: "musta laukku", answer: "mustaan laukkuun" },
+    { base: "kova melu", answer: "kovaan meluun" },
+    { base: "kuuma tee", answer: "kuumaan teehen" },
+    { base: "outo kirja", answer: "outoon kirjaan" },
+    { base: "vihreä piha", answer: "vihreään pihaan" }
+  ];
 
-    const form5 = document.getElementById("quizForm5");
+  const form5 = document.getElementById("quizForm5");
 
-    questions5.forEach((q, index) => {
-      const div = document.createElement("div");
-      div.className = "question";
-      div.id = `q5-${index}`;
-      div.innerHTML = `
-        <label>${index + 1}. ${q.base} →</label>
-        <input type="text" id="input5-${index}" placeholder="Kirjoita sana">
-      `;
-      form5.appendChild(div);
+  questions5.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q5-${index}`;
+    div.innerHTML = `
+      <label>${index + 1}. ${q.base} →</label>
+      <input type="text" id="input5-${index}" placeholder="Kirjoita sana">
+    `;
+    form5.appendChild(div);
+  });
+
+  // нормализация: trim + lower + любые пробелы/таб/переносы -> один пробел
+  function normalize5(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkAnswers5() {
+    let score = 0;
+
+    questions5.forEach((q, i) => {
+      const userInput = normalize5(
+        document.getElementById(`input5-${i}`).value
+      );
+      const correct = normalize5(q.answer);
+      const block = document.getElementById(`q5-${i}`);
+
+      let old = block.querySelector(".correct, .incorrect");
+      if (old) old.remove();
+
+      const msg = document.createElement("div");
+
+      if (userInput === "") {
+        msg.className = "incorrect";
+        msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+      } else if (userInput === correct) {
+        msg.className = "correct";
+        msg.textContent = `✅ Oikein: ${q.answer}`;
+        score++;
+      } else {
+        msg.className = "incorrect";
+        msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+      }
+
+      block.appendChild(msg);
     });
 
-    function normalize5(str) {
-      return str.trim().toLowerCase();
-    }
-
-    function checkAnswers5() {
-      let score = 0;
-
-      questions5.forEach((q, i) => {
-        const userInput = normalize5(
-          document.getElementById(`input5-${i}`).value
-        );
-        const correct = normalize5(q.answer);
-        const block = document.getElementById(`q5-${i}`);
-
-        let old = block.querySelector(".correct, .incorrect");
-        if (old) old.remove();
-
-        const msg = document.createElement("div");
-
-        if (userInput === "") {
-          msg.className = "incorrect";
-          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
-        } else if (userInput === correct) {
-          msg.className = "correct";
-          msg.textContent = `✅ Oikein: ${q.answer}`;
-          score++;
-        } else {
-          msg.className = "incorrect";
-          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
-        }
-
-        block.appendChild(msg);
-      });
-
-      document.getElementById("result5").innerText =
-        `Sait ${score} oikein ${questions5.length}:stä.`;
-    }
-  </script>
+    document.getElementById("result5").innerText =
+      `Sait ${score} oikein ${questions5.length}:stä.`;
+  }
+</script>
     
     <hr style="margin: 40px 0;">
 
