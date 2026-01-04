@@ -484,6 +484,76 @@
 </script>
 
     <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 5. Kirjoita nämä sanat genetiivissä.</strong> Esimerkiksi: opettaja → <em>opettajan</em></p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizForm6"></form>
+
+<button type="button" onclick="checkAnswers6()">Tarkista vastaukset</button>
+<div class="result" id="result6"></div>
+
+<script>
+  const questions6 = [
+    { base: "hylly", answer: "hyllyn" },
+    { base: "vadelma", answer: "vadelman" },
+    { base: "kappale", answer: "kappaleen" },
+    { base: "paperi", answer: "paperin" },
+    { base: "ovi", answer: "oven" },
+    { base: "pullo", answer: "pullon" },
+    { base: "yö", answer: "yön" },
+    { base: "herne", answer: "herneen" },
+    { base: "taulu", answer: "taulun" },
+    { base: "lautanen", answer: "lautasen" }
+  ];
+
+  const form6 = document.getElementById("quizForm6");
+
+  questions6.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q6-${index}`;
+    div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
+      <input type="text" id="input6-${index}" placeholder="Kirjoita sana">`;
+    form6.appendChild(div);
+  });
+
+  function checkAnswers6() {
+    let score = 0;
+
+    questions6.forEach((q, i) => {
+      const inputEl = document.getElementById(`input6-${i}`);
+      const userInput = normalize(inputEl.value);
+      const correct = normalize(q.answer);
+      const block = document.getElementById(`q6-${i}`);
+
+      let feedback = block.querySelector(".correct-answer");
+      if (feedback) feedback.remove();
+
+      const msg = document.createElement("div");
+      msg.classList.add("correct-answer");
+
+      if (userInput === "") {
+        msg.classList.add("incorrect");
+        msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (userInput === correct) {
+        msg.classList.add("correct");
+        msg.textContent = `✅ Oikein: ${q.answer}`;
+        score++;
+      } else {
+        msg.classList.add("incorrect");
+        msg.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${q.answer}`;
+      }
+
+      block.appendChild(msg);
+    });
+
+    document.getElementById("result6").innerText =
+      `Sait ${score} oikein ${questions6.length}:stä.`;
+  }
+</script>
+
+    <hr style="margin: 40px 0;">
     
   <p><strong>Täydennä lause genetiivissä olevalla sanalla. Sana on sulkeissa.</strong><br>Esimerkiksi: Tämä on <em>opettajan</em> kirja. (opettaja)</p>
   <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
