@@ -505,7 +505,7 @@
 
  <hr style="margin: 40px 0;">
 
-  <p><strong>Harjoitus 5. Kirjoita sana muotoon “S-mihin?” (illatiivi).</strong>Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>Harjoitus 5. Kirjoita sanat muotoon “S-mihin?” (illatiivi).</strong> Esimerkiksi: <em>iso talo → isoon taloon</em></p>
   <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
   <form id="quizForm5"></form>
@@ -585,7 +585,7 @@
     
     <hr style="margin: 40px 0;">
 
-  <p><strong>Harjoitus 6. Kirjoita sana muotoon “S-mihin?” (illatiivi).</strong>Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>Harjoitus 6. Kirjoita sanat muotoon “S-mihin?” (illatiivi).</strong> Esimerkiksi: <em>iso talo → isoon taloon</em></p>
   <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
   <form id="quizForm6"></form>
@@ -594,70 +594,78 @@
   <div class="result" id="result6"></div>
 
   <script>
-    const questions6 = [
-      { base: "seinä", answer: "seinään" },
-      { base: "ruskea", answer: "ruskeaan" },
-      { base: "vuosi", answer: "vuoteen" },
-      { base: "yö", answer: "yöhön" },
-      { base: "pimeys", answer: "pimeyteen" },
-      { base: "ohut", answer: "ohueen" },
-      { base: "linna", answer: "linnaan" },
-      { base: "pidike", answer: "pidikkeeseen" },
-      { base: "pallo", answer: "palloon" },
-      { base: "suklaa", answer: "suklaaseen" }
-    ];
+  const questions6 = [
+    { base: "korkea seinä", answer: "korkeaan seinään" },
+    { base: "ruskea takki", answer: "ruskeaan takkiin" },
+    { base: "pitkä tie", answer: "pitkään tiehen" },
+    { base: "pimeä yö", answer: "pimeään yöhön" },
+    { base: "syvä kaivo", answer: "syvään kaivoon" },
+    { base: "oma perhe", answer: "omaan perheeseen" },
+    { base: "vanha linna", answer: "vanhaan linnaan" },
+    { base: "kylmä maa", answer: "kylmään maahan" },
+    { base: "pyöreä pallo", answer: "pyöreään palloon" },
+    { base: "makea suklaa", answer: "makeaan suklaaseen" }
+  ];
 
-    const form6 = document.getElementById("quizForm6");
+  const form6 = document.getElementById("quizForm6");
 
-    questions6.forEach((q, index) => {
-      const div = document.createElement("div");
-      div.className = "question";
-      div.id = `q6-${index}`;
-      div.innerHTML = `
-        <label>${index + 1}. ${q.base} →</label>
-        <input type="text" id="input6-${index}" placeholder="Kirjoita sana">
-      `;
-      form6.appendChild(div);
+  questions6.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q6-${index}`;
+    div.innerHTML = `
+      <label>${index + 1}. ${q.base} →</label>
+      <input type="text" id="input6-${index}" placeholder="Kirjoita sana">
+    `;
+    form6.appendChild(div);
+  });
+
+  // нормализация:
+  // - trim
+  // - lower case
+  // - любые пробелы (2–3 и больше) → один пробел
+  function normalize6(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkAnswers6() {
+    let score = 0;
+
+    questions6.forEach((q, i) => {
+      const userInput = normalize6(
+        document.getElementById(`input6-${i}`).value
+      );
+      const correct = normalize6(q.answer);
+      const block = document.getElementById(`q6-${i}`);
+
+      let old = block.querySelector(".correct, .incorrect");
+      if (old) old.remove();
+
+      const msg = document.createElement("div");
+
+      if (userInput === "") {
+        msg.className = "incorrect";
+        msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+      } else if (userInput === correct) {
+        msg.className = "correct";
+        msg.textContent = `✅ Oikein: ${q.answer}`;
+        score++;
+      } else {
+        msg.className = "incorrect";
+        msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+      }
+
+      block.appendChild(msg);
     });
 
-    function normalize6(str) {
-      return str.trim().toLowerCase();
-    }
+    document.getElementById("result6").innerText =
+      `Sait ${score} oikein ${questions6.length}:stä.`;
+  }
+</script>
 
-    function checkAnswers6() {
-      let score = 0;
-
-      questions6.forEach((q, i) => {
-        const userInput = normalize6(
-          document.getElementById(`input6-${i}`).value
-        );
-        const correct = normalize6(q.answer);
-        const block = document.getElementById(`q6-${i}`);
-
-        let old = block.querySelector(".correct, .incorrect");
-        if (old) old.remove();
-
-        const msg = document.createElement("div");
-
-        if (userInput === "") {
-          msg.className = "incorrect";
-          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
-        } else if (userInput === correct) {
-          msg.className = "correct";
-          msg.textContent = `✅ Oikein: ${q.answer}`;
-          score++;
-        } else {
-          msg.className = "incorrect";
-          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
-        }
-
-        block.appendChild(msg);
-      });
-
-      document.getElementById("result6").innerText =
-        `Sait ${score} oikein ${questions6.length}:stä.`;
-    }
-  </script>
   </div>
   
     <div id="footer-placeholder"></div>
