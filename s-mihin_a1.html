@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>S-Mihin? — Illatiivi (A1)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8TVEFE4L1Y');
+</script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.2;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+     header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;   /* ← добавляем */
+      z-index: 2000;        /* ← добавляем */
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      padding: 30px 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #1f4e79;
+    }
+
+    .question {
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .question label {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    input[type="text"] {
+      padding: 8px 12px;
+      font-size: 1em;
+      width: 40%;
+      max-width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .correct {
+      color: green;
+      margin-top: 4px;
+    }
+
+    .incorrect {
+      color: red;
+      margin-top: 4px;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 28px;
+      font-size: 1em;
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+  </style>
+  
+  <link rel="stylesheet" href="/side-menu.css">
+
+</head>
+<body>
+  
+ <header>
+    <a href="index.html" class="logo">LanguageEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">𑁔</a>
+        <div class="dropdown-content">
+          <a href="suomi.html"><strong>Suomi</strong></a>
+          <a href="finnish_grammar.html">Kielioppi</a>
+          <a href="finnish_vocabulary.html">Sanasto</a>
+          <a href="english.html"><strong>English</strong></a>
+          <a href="russian.html"><strong>Русский</strong></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div id="side-menu-placeholder"></div>
+
+  <div class="container">
+  <h2>📍 S-Mihin? — illatiivi (A1)</h2>
+
+  <p><strong>Harjoitus 1. Kirjoita sana muotoon “S-mihin?” (illatiivi).</strong> Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+  <form id="quizForm"></form>
+
+  <button onclick="checkAnswers()">Tarkista vastaukset</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const questions = [
+      { base: "museo", answer: "museoon" },
+      { base: "tyyny", answer: "tyynyyn" },
+      { base: "harmaa", answer: "harmaaseen" },
+      { base: "pallo", answer: "palloon" },
+      { base: "vihreä", answer: "vihreään" },
+      { base: "maa", answer: "maahan" },
+      { base: "takuu", answer: "takuuseen" },
+      { base: "pää", answer: "päähän" },
+      { base: "Espoo", answer: "Espooseen" },
+      { base: "kirje", answer: "kirjeeseen" }
+    ];
+
+    const form = document.getElementById("quizForm");
+
+    questions.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q${index}`;
+      div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input${index}" placeholder="Kirjoita sana">`;
+      form.appendChild(div);
+    });
+
+    function normalize(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers() {
+      let score = 0;
+
+      questions.forEach((q, i) => {
+        const userInput = normalize(document.getElementById(`input${i}`).value);
+        const correct = normalize(q.answer);
+        const block = document.getElementById(`q${i}`);
+
+        let feedback = block.querySelector(".correct") || block.querySelector(".incorrect");
+        if (feedback) feedback.remove();
+
+        const msg = document.createElement("div");
+        if (userInput === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+        } else if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Oikein: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+        }
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result").innerText = `Sait ${score} oikein ${questions.length}:stä.`;
+    }
+  </script>
+
+  <hr style="margin: 40px 0;">
+
+  <p><strong>Harjoitus 2. Kirjoita sana muotoon “S-mihin?” (illatiivi).</strong> Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+  <form id="quizForm2"></form>
+
+  <button onclick="checkAnswers2()">Tarkista vastaukset</button>
+  <div class="result" id="result2"></div>
+
+  <script>
+    const questions2 = [
+      { base: "osoite", answer: "osoitteeseen" },
+      { base: "kala", answer: "kalaan" },
+      { base: "suu", answer: "suuhun" },
+      { base: "ravintola", answer: "ravintolaan" },
+      { base: "kapea", answer: "kapeaan" },
+      { base: "kappale", answer: "kappaleeseen" },
+      { base: "sininen", answer: "siniseen" },
+      { base: "huone", answer: "huoneeseen" },
+      { base: "video", answer: "videoon" },
+      { base: "Lontoo", answer: "Lontooseen" }
+    ];
+
+    const form2 = document.getElementById("quizForm2");
+
+    questions2.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q2-${index}`;
+      div.innerHTML = `
+        <label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input2-${index}" placeholder="Kirjoita sana">
+      `;
+      form2.appendChild(div);
+    });
+
+    function normalize2(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers2() {
+      let score = 0;
+
+      questions2.forEach((q, i) => {
+        const userInput = normalize2(
+          document.getElementById(`input2-${i}`).value
+        );
+        const correct = normalize2(q.answer);
+        const block = document.getElementById(`q2-${i}`);
+
+        let old = block.querySelector(".correct, .incorrect");
+        if (old) old.remove();
+
+        const msg = document.createElement("div");
+
+        if (userInput === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+        } else if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Oikein: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+        }
+
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result2").innerText =
+        `Sait ${score} oikein ${questions2.length}:stä.`;
+    }
+  </script>
+    
+ <hr style="margin: 40px 0;">
+    
+      <p><strong>Harjoitus 3. Kirjoita sana muotoon “S-mihin?” (illatiivi).</strong>Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+  <form id="quizForm3"></form>
+
+  <button onclick="checkAnswers3()">Tarkista vastaukset</button>
+  <div class="result" id="result3"></div>
+
+  <script>
+    const questions3 = [
+      { base: "auto", answer: "autoon" },
+      { base: "kuu", answer: "kuuhun" },
+      { base: "söpö", answer: "söpöön" },
+      { base: "radio", answer: "radioon" },
+      { base: "sampoo", answer: "sampooseen" },
+      { base: "tavoite", answer: "tavoitteeseen" },
+      { base: "kahvi", answer: "kahviin" },
+      { base: "kova", answer: "kovaan" },
+      { base: "pilvi", answer: "pilveen" },
+      { base: "lipas", answer: "lippaaseen" }
+    ];
+
+    const form3 = document.getElementById("quizForm3");
+
+    questions3.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q3-${index}`;
+      div.innerHTML = `
+        <label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input3-${index}" placeholder="Kirjoita sana">
+      `;
+      form3.appendChild(div);
+    });
+
+    function normalize3(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers3() {
+      let score = 0;
+
+      questions3.forEach((q, i) => {
+        const userInput = normalize3(
+          document.getElementById(`input3-${i}`).value
+        );
+        const correct = normalize3(q.answer);
+        const block = document.getElementById(`q3-${i}`);
+
+        let old = block.querySelector(".correct, .incorrect");
+        if (old) old.remove();
+
+        const msg = document.createElement("div");
+
+        if (userInput === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+        } else if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Oikein: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+        }
+
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result3").innerText =
+        `Sait ${score} oikein ${questions3.length}:stä.`;
+    }
+  </script>
+
+     <hr style="margin: 40px 0;">
+
+  <p><strong>Harjoitus 4. Kirjoita sana muotoon “S-mihin?” (illatiivi).</strong>Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+  <form id="quizForm4"></form>
+
+  <button onclick="checkAnswers4()">Tarkista vastaukset</button>
+  <div class="result" id="result4"></div>
+
+  <script>
+    const questions4 = [
+     { base: "Italia", answer: "Italiaan" },
+     { base: "hylly", answer: "hyllyyn" },
+      { base: "maali", answer: "maaliin" },
+      { base: "hakkuu", answer: "hakkuuseen" },
+      { base: "ystävyys", answer: "ystävyyteen" },
+      { base: "joki", answer: "jokeen" },
+      { base: "tiede", answer: "tieteeseen" },
+      { base: "puhelin", answer: "puhelimeen" },
+      { base: "puuro", answer: "puuroon" },
+      { base: "veri", answer: "vereen" }
+    ];
+
+    const form4 = document.getElementById("quizForm4");
+
+    questions4.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q4-${index}`;
+      div.innerHTML = `
+        <label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input4-${index}" placeholder="Kirjoita sana">
+      `;
+      form4.appendChild(div);
+    });
+
+    function normalize4(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers4() {
+      let score = 0;
+
+      questions4.forEach((q, i) => {
+        const userInput = normalize4(
+          document.getElementById(`input4-${i}`).value
+        );
+        const correct = normalize4(q.answer);
+        const block = document.getElementById(`q4-${i}`);
+
+        let old = block.querySelector(".correct, .incorrect");
+        if (old) old.remove();
+
+        const msg = document.createElement("div");
+
+        if (userInput === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+        } else if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Oikein: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+        }
+
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result4").innerText =
+        `Sait ${score} oikein ${questions4.length}:stä.`;
+    }
+  </script>
+
+ <hr style="margin: 40px 0;">
+
+  <p><strong>Harjoitus 5. Kirjoita sana muotoon “S-mihin?” (illatiivi).</strong>Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+  <form id="quizForm5"></form>
+
+  <button onclick="checkAnswers5()">Tarkista vastaukset</button>
+  <div class="result" id="result5"></div>
+
+  <script>
+    const questions5 = [
+     { base: "työ", answer: "työhön" },
+      { base: "avain", answer: "avaimeen" },
+      { base: "Aasia", answer: "Aasiaan" },
+      { base: "toinen", answer: "toiseen" },
+      { base: "vesi", answer: "veteen" },
+      { base: "sitruuna", answer: "sitruunaan" },
+      { base: "palttoo", answer: "palttooseen" },
+      { base: "perhe", answer: "perheeseen" },
+      { base: "melu", answer: "meluun" },
+      { base: "keitin", answer: "keittimeen" }
+    ];
+
+    const form5 = document.getElementById("quizForm5");
+
+    questions5.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q5-${index}`;
+      div.innerHTML = `
+        <label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input5-${index}" placeholder="Kirjoita sana">
+      `;
+      form5.appendChild(div);
+    });
+
+    function normalize5(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers5() {
+      let score = 0;
+
+      questions5.forEach((q, i) => {
+        const userInput = normalize5(
+          document.getElementById(`input5-${i}`).value
+        );
+        const correct = normalize5(q.answer);
+        const block = document.getElementById(`q5-${i}`);
+
+        let old = block.querySelector(".correct, .incorrect");
+        if (old) old.remove();
+
+        const msg = document.createElement("div");
+
+        if (userInput === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+        } else if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Oikein: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+        }
+
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result5").innerText =
+        `Sait ${score} oikein ${questions5.length}:stä.`;
+    }
+  </script>
+    
+    <hr style="margin: 40px 0;">
+
+  <p><strong>Harjoitus 6. Kirjoita sana muotoon “S-mihin?” (illatiivi).</strong>Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+  <form id="quizForm6"></form>
+
+  <button onclick="checkAnswers6()">Tarkista vastaukset</button>
+  <div class="result" id="result6"></div>
+
+  <script>
+    const questions6 = [
+      { base: "seinä", answer: "seinään" },
+      { base: "ruskea", answer: "ruskeaan" },
+      { base: "vuosi", answer: "vuoteen" },
+      { base: "yö", answer: "yöhön" },
+      { base: "pimeys", answer: "pimeyteen" },
+      { base: "ohut", answer: "ohueen" },
+      { base: "linna", answer: "linnaan" },
+      { base: "pidike", answer: "pidikkeeseen" },
+      { base: "pallo", answer: "palloon" },
+      { base: "suklaa", answer: "suklaaseen" }
+    ];
+
+    const form6 = document.getElementById("quizForm6");
+
+    questions6.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q6-${index}`;
+      div.innerHTML = `
+        <label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input6-${index}" placeholder="Kirjoita sana">
+      `;
+      form6.appendChild(div);
+    });
+
+    function normalize6(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers6() {
+      let score = 0;
+
+      questions6.forEach((q, i) => {
+        const userInput = normalize6(
+          document.getElementById(`input6-${i}`).value
+        );
+        const correct = normalize6(q.answer);
+        const block = document.getElementById(`q6-${i}`);
+
+        let old = block.querySelector(".correct, .incorrect");
+        if (old) old.remove();
+
+        const msg = document.createElement("div");
+
+        if (userInput === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+        } else if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Oikein: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+        }
+
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result6").innerText =
+        `Sait ${score} oikein ${questions6.length}:stä.`;
+    }
+  </script>
+
+  <hr style="margin: 40px 0;">
+
+  <p><strong>Harjoitus 7. Kirjoita sana muotoon “mihin?” (illatiivi).</strong>Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+  <form id="quizForm7"></form>
+
+  <button onclick="checkAnswers7()">Tarkista vastaukset</button>
+  <div class="result" id="result7"></div>
+
+  <script>
+    const questions7 = [
+     { base: "yliopisto", answer: "yliopistoon" },
+      { base: "vastuu", answer: "vastuuseen" },
+      { base: "tie", answer: "tiehen" },
+      { base: "uusi", answer: "uuteen" },
+      { base: "posti", answer: "postiin" },
+      { base: "tavallinen", answer: "tavalliseen" },
+      { base: "kysymys", answer: "kysymykseen" },
+      { base: "lehti", answer: "lehteen" },
+      { base: "väsynyt", answer: "väsyneeseen" },
+      { base: "koe", answer: "kokeeseen" }
+    ];
+
+    const form7 = document.getElementById("quizForm7");
+
+    questions7.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q7-${index}`;
+      div.innerHTML = `
+        <label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input7-${index}" placeholder="Kirjoita sana">
+      `;
+      form7.appendChild(div);
+    });
+
+    function normalize7(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers7() {
+      let score = 0;
+
+      questions7.forEach((q, i) => {
+        const userInput = normalize7(
+          document.getElementById(`input7-${i}`).value
+        );
+        const correct = normalize7(q.answer);
+        const block = document.getElementById(`q7-${i}`);
+
+        let old = block.querySelector(".correct, .incorrect");
+        if (old) old.remove();
+
+        const msg = document.createElement("div");
+
+        if (userInput === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+        } else if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Oikein: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+        }
+
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result7").innerText =
+        `Sait ${score} oikein ${questions7.length}:stä.`;
+    }
+  </script>
+
+     <hr style="margin: 40px 0;">
+
+  <p><strong>Harjoitus 8. Kirjoita sana muotoon “S-mihin?” (illatiivi).</strong>Esimerkiksi: <em>talo → taloon</em></p>
+  <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+  <form id="quizForm8"></form>
+
+  <button onclick="checkAnswers8()">Tarkista vastaukset</button>
+  <div class="result" id="result8"></div>
+
+  <script>
+    const questions8 = [
+      { base: "pankki", answer: "pankkiin" },
+       { base: "suuri", answer: "suureen" },
+       { base: "vastaus", answer: "vastaukseen" },
+       { base: "sää", answer: "säähän" },
+       { base: "iloinen", answer: "iloiseen" },
+       { base: "taivas", answer: "taivaaseen" },
+       { base: "kevyt", answer: "kevyeen" },
+       { base: "kirppis", answer: "kirppikseen" },
+       { base: "peruna", answer: "perunaan" },
+       { base: "virhe", answer: "virheeseen" }
+    ];
+
+    const form8 = document.getElementById("quizForm8");
+
+    questions8.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q8-${index}`;
+      div.innerHTML = `
+        <label>${index + 1}. ${q.base} →</label>
+        <input type="text" id="input8-${index}" placeholder="Kirjoita sana">
+      `;
+      form8.appendChild(div);
+    });
+
+    function normalize8(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers8() {
+      let score = 0;
+
+      questions8.forEach((q, i) => {
+        const userInput = normalize8(
+          document.getElementById(`input8-${i}`).value
+        );
+        const correct = normalize8(q.answer);
+        const block = document.getElementById(`q8-${i}`);
+
+        let old = block.querySelector(".correct, .incorrect");
+        if (old) old.remove();
+
+        const msg = document.createElement("div");
+
+        if (userInput === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Kirjoita ensin vastaus.";
+        } else if (userInput === correct) {
+          msg.className = "correct";
+          msg.textContent = `✅ Oikein: ${q.answer}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
+        }
+
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result8").innerText =
+        `Sait ${score} oikein ${questions8.length}:stä.`;
+    }
+  </script>
+  </div>
+  
+    <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+
+  <script>
+  fetch('/side-menu-fi.html')
+    .then(r => r.text())
+    .then(html => document.getElementById('side-menu-placeholder').innerHTML = html);
+</script>
+
+</body>
+</html>
