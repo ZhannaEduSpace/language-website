@@ -256,7 +256,10 @@
         if (feedback) feedback.remove();
 
         const msg = document.createElement("div");
-        if (userInput === correct) {
+                if (userInput === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+        } else if (userInput === correct) {
           msg.className = "correct";
           msg.textContent = `✅ Oikein: ${q.answer}`;
           score++;
@@ -264,6 +267,7 @@
           msg.className = "incorrect";
           msg.textContent = `❌ Väärin. Oikea vastaus: ${q.answer}`;
         }
+
         block.appendChild(msg);
       });
 
