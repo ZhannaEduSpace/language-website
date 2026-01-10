@@ -314,7 +314,10 @@
         const note = document.createElement('div');
         note.classList.add('correct-answer');
 
-        if (selected && selected.value === item.a) {
+        if (!selected) {
+          note.classList.add('incorrect');
+          note.innerText = '⚠️ Valitse ensin vastaus!';
+        } else if (selected.value === item.a) {
           note.classList.add('correct');
           score++;
           note.innerText = `✅ Oikein! Vastaus: ${item.a}`;
