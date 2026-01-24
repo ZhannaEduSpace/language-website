@@ -268,14 +268,17 @@
         const result = document.createElement('div');
         result.classList.add('correct-answer');
 
-        if (userAnswer === correctAnswer) {
-          result.classList.add('correct');
-          result.textContent = `✅ Правильный ответ: ${item.a}`;
-          score++;
-        } else {
-          result.classList.add('incorrect');
-          result.textContent = `❌ Правильный ответ: ${item.a}`;
-        }
+       if (userAnswer === '') {
+  result.classList.add('incorrect');
+  result.textContent = '⚠️ Сначала напишите ответ.';
+} else if (userAnswer === correctAnswer) {
+  result.classList.add('correct');
+  result.textContent = `✅ Правильный ответ: ${item.a}`;
+  score++;
+} else {
+  result.classList.add('incorrect');
+  result.textContent = `❌ Неправильно. Правильный ответ: ${item.a}`;
+}
 
         document.getElementById(`q${i+1}-block`).appendChild(result);
       });
