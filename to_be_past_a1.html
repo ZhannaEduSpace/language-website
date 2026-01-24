@@ -192,6 +192,15 @@
     overflow-y: visible !important;
   }
 }
+    @media (max-width: 600px) {
+  .question {
+    flex-wrap: wrap;
+  }
+  .question .correct-answer {
+    white-space: normal;
+    width: 100%;
+  }
+}
     .small-input {
   width: 70px;
   max-width: 120px;
@@ -201,6 +210,23 @@
   border: 1px solid #ccc;
   margin: 0 6px;
 }
+    /* ===== Задание 5: расстояние между строками + ответ справа ===== */
+.question {
+  margin-bottom: 14px;         /* расстояние между строками */
+  display: flex;               /* ставим элементы в одну линию */
+  align-items: center;
+  gap: 12px;
+}
+
+.question > label {
+  flex: 1;                     /* текст + инпут занимают всё место */
+}
+
+.question .correct-answer {
+  margin-top: 0;               /* убираем "съезд вниз" */
+  white-space: nowrap;         /* чтобы на десктопе не ломалось */
+}
+
   </style>
 
   <link rel="stylesheet" href="/side-menu.css">
