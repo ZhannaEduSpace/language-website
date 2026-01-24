@@ -212,19 +212,18 @@
 }
     /* ===== Задание 5: расстояние между строками + ответ справа ===== */
 .question {
-  margin-bottom: 14px;         /* расстояние между строками */
-  display: flex;               /* ставим элементы в одну линию */
+  margin-bottom: 14px;
+  display: flex;
   align-items: center;
   gap: 12px;
-}
-
-.question > label {
-  flex: 1;                     /* текст + инпут занимают всё место */
+  justify-content: flex-start;
+  flex-wrap: wrap; /* чтобы на узких экранах нормально переносилось */
 }
 
 .question .correct-answer {
-  margin-top: 0;               /* убираем "съезд вниз" */
-  white-space: nowrap;         /* чтобы на десктопе не ломалось */
+  margin-top: 0;
+  display: inline-block;   /* чтобы не вело себя как огромный блок */
+  white-space: nowrap;     /* на десктопе в одну строку */
 }
 
   </style>
