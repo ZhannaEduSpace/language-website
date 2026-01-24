@@ -192,6 +192,15 @@
     overflow-y: visible !important;
   }
 }
+    .small-input {
+  width: 70px;
+  max-width: 120px;
+  padding: 6px 8px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin: 0 6px;
+}
   </style>
 
   <link rel="stylesheet" href="/side-menu.css">
@@ -651,6 +660,86 @@
 
       document.getElementById('result4').innerText =
         `Вы правильно ответили на ${score} из ${questions4.length} вопросов.`;
+    }
+  </script>
+
+   <hr style="margin: 40px 0;">
+
+  <p><strong>Задание 5. Впишите пропущенную форму: был / была / было / были.</strong></p>
+    <p><strong>Обратите внимание:</strong> Напишите слово <strong>без ударения</strong>.<br>
+  Пример: Вчера́ <em>было</em> хо́лодно.
+</p>
+
+
+  <form id="quizForm5"></form>
+  <button type="button" onclick="checkAnswers5()">Проверить ответы</button>
+  <div class="result" id="result5"></div>
+
+  <script>
+    const questions5 = [
+     { q: 'Мари́я ___ ра́да.', a: 'была' },
+     { q: 'Они́ ___ в оте́ле.', a: 'были' },
+     { q: 'Свет ___ сла́бый.', a: 'был' },
+     { q: 'Э́то ___ хоро́шая иде́я.', a: 'была' },
+     { q: 'На у́лице ___ прохла́дно.', a: 'было' },
+     { q: 'Ма́ма ___ занята́.', a: 'была' },
+     { q: 'В го́роде ___ мно́го люде́й.', a: 'было' },
+     { q: 'Слова́ ___ просты́е.', a: 'были' },
+     { q: 'Пого́да ___ хоро́шая.', a: 'была' },
+     { q: 'Вчера́ ___ шторм.', a: 'был' }
+    ];
+
+    const form5 = document.getElementById("quizForm5");
+
+    questions5.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.id = `q5-${index}-block`;
+
+      div.innerHTML = `
+        <label>${index + 1}. ${item.q.replace('___', `<input type="text" id="input5-${index}" class="small-input" placeholder="...">`)}</label>
+      `;
+
+      form5.appendChild(div);
+    });
+
+    function normalize5(str) {
+      return str.trim().toLowerCase().replace(/\s+/g, " ");
+    }
+
+    function checkAnswers5() {
+      let score = 0;
+
+      questions5.forEach((item, i) => {
+        const input = document.getElementById(`input5-${i}`);
+        const userAnswer = normalize5(input.value);
+        const correctAnswer = normalize5(item.a);
+
+        const block = document.getElementById(`q5-${i}-block`);
+
+        let old = block.querySelector(".correct-answer");
+        if (old) old.remove();
+
+        const msg = document.createElement("div");
+        msg.classList.add("correct-answer");
+
+        if (userAnswer === "") {
+          msg.classList.add("incorrect");
+          msg.textContent = "⚠️ Сначала введите ответ.";
+        } else if (userAnswer === correctAnswer) {
+          msg.classList.add("correct");
+          msg.textContent = `✅ Правильно: ${item.a}`;
+          score++;
+        } else {
+          msg.classList.add("incorrect");
+          msg.textContent = `❌ Неправильно. Правильный ответ: ${item.a}`;
+        }
+
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result5").innerText =
+        `Вы правильно ответили на ${score} из ${questions5.length} вопросов.`;
     }
   </script>
 
