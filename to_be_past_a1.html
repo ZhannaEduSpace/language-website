@@ -316,8 +316,120 @@
       });
       document.getElementById('result').innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
     }
-  </script>
+     </script>
 
+     <hr style="margin: 40px 0;">
+
+  <p><strong>Задание 2. Выберите правильную форму.</strong><br>Только один правильный ответ.</p>
+
+  <form id="quizForm2"></form>
+  <button type="button" onclick="checkAnswers2()">Проверить ответы</button>
+  <div class="result" id="result2"></div>
+
+  <script>
+    const questions2 = [
+      {
+        q: '1. Вчера́ ___ дождь.',
+        a: 'был',
+        options: ['был', 'была́', 'бы́ли']
+      },
+       {
+        q: '2. Молоко ___ на столе.',
+        a: 'было',
+        options: ['был/была', 'было', 'бы́ли']
+      },
+       {
+        q: '3. Мы никогда не ___ в Мексике.',
+        a: 'были',
+        options: ['был', 'была́', 'были']
+      },
+       {
+        q: '4. Окно ___ закрыто.',
+        a: 'был',
+        options: ['был', 'была́', 'бы́ли']
+      },
+       {
+        q: '5. Она вчера́ ___ дома.',
+        a: 'была́',
+        options: ['был', 'была́', 'бы́ли']
+      },
+       {
+        q: '6. Мой брат ___ в Испании в прошлом году.',
+        a: 'был',
+        options: ['была́', 'бы́ли', 'был']
+      },
+       {
+        q: '7. Они ___ в библиотеке.',
+        a: 'бы́ли',
+        options: ['был/была', 'была́', 'бы́ли']
+      },
+       {
+        q: '8. Стол ___ в комнате.',
+        a: 'был',
+        options: ['был', 'была́', 'бы́ли']
+      },
+       {
+        q: '9. В холодильнике ___ фрукты.',
+        a: 'бы́ли',
+        options: ['был', 'бы́ли', 'была']
+      },
+       {
+        q: '10. Летом ___ тепло.',
+        a: 'было',
+        options: ['был/была', 'было', 'бы́ли']
+      }
+    ];
+
+    const form2 = document.getElementById('quizForm2');
+
+    questions2.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q2-${i+1}-block`;
+      div.innerHTML =
+        `<h3>${item.q}</h3>` +
+        item.options.map(opt => `
+          <label>
+            <input type="radio" name="q2-${i+1}" value="${opt}">
+            ${opt}
+          </label><br>`).join('');
+      form2.appendChild(div);
+    });
+
+    function checkAnswers2() {
+      let score = 0;
+
+      questions2.forEach((item, i) => {
+        const name = `q2-${i+1}`;
+        const selected = form2.querySelector(`input[name="${name}"]:checked`);
+        const block = document.getElementById(`q2-${i+1}-block`);
+
+        const existing = block.querySelector('.correct-answer');
+        if (existing) existing.remove();
+
+        const note = document.createElement('div');
+        note.classList.add('correct-answer');
+
+        if (!selected) {
+          note.classList.add('incorrect');
+          note.innerText = '⚠️ Сначала выберите вариант.';
+        } else if (selected.value === item.a) {
+          note.classList.add('correct');
+          note.innerText = `✅ Правильно: ${item.a}`;
+          score++;
+        } else {
+          note.classList.add('incorrect');
+          note.innerText = `❌ Правильный ответ: ${item.a}`;
+        }
+
+        block.appendChild(note);
+      });
+
+      document.getElementById('result2').innerText =
+        `Вы правильно ответили на ${score} из ${questions2.length} вопросов.`;
+    }
+  </script>
+ 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
 <!-- HorizontalAd -->
