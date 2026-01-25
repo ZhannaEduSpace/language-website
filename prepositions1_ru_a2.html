@@ -287,6 +287,85 @@
     }
   </script>
 
+    <p>Вста́вьте пра́вильный предло́г: <em>в</em> и́ли <em>на</em>.</p>
+
+  <form id="quizForm2"></form>
+
+  <button type="button" onclick="checkAnswers2()">Проверить ответы</button>
+  <div class="result" id="result2"></div>
+
+  <script>
+    const questions2 = [
+      { q: 'Я живу́ ___ Москве́.', a: 'в' },
+      { q: 'Она́ была́ ___ ле́кции у́тром.', a: 'на' },
+      { q: 'Де́ти игра́ют ___ ко́мнате.', a: 'в' },
+      { q: 'Он ждёт меня́ ___ у́лице.', a: 'на' },
+      { q: 'Я ча́сто быва́ю ___ библиоте́ке.', a: 'в' },
+      { q: 'Я роди́лся ___ 1998 году́.', a: 'в' },
+      { q: 'Лю́ди стоя́ли ___ вокза́ле.', a: 'на' },
+      { q: 'Де́ти бы́ли ___ экску́рсии.', a: 'на' },
+      { q: 'Она́ прие́дет ___ ма́е.', a: 'в' },
+      { q: 'Он сиде́л ___ скаме́йке в па́рке.', a: 'на' },
+    ];
+
+    const form2 = document.getElementById('quizForm2');
+
+    questions2.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'question';
+      div.id = `q2-${i+1}-block`;
+
+      const parts = item.q.split('___');
+      let sentenceHTML = '';
+
+      if (parts.length === 2) {
+        sentenceHTML = `${parts[0]} <input type="text" id="input2-${i}"> ${parts[1]}`;
+      } else {
+        sentenceHTML = item.q.replace(item.a, `<input type="text" id="input2-${i}">`);
+      }
+
+      div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+      form2.appendChild(div);
+    });
+
+    function normalize2(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers2() {
+      let score = 0;
+
+      questions2.forEach((item, i) => {
+        const input = document.getElementById(`input2-${i}`);
+        const userAnswer = normalize2(input.value);
+        const correctAnswer = normalize2(item.a);
+
+        let feedback = document.querySelector(`#q2-${i+1}-block .correct-answer`);
+        if (feedback) feedback.remove();
+
+        const result = document.createElement('div');
+        result.classList.add('correct-answer');
+
+        if (userAnswer === '') {
+          result.classList.add('incorrect');
+          result.textContent = '⚠️ Сначала напишите ответ.';
+        } else if (userAnswer === correctAnswer) {
+          result.classList.add('correct');
+          result.textContent = `✅ Правильный ответ: ${item.a}`;
+          score++;
+        } else {
+          result.classList.add('incorrect');
+          result.textContent = `❌ Неправильно. Правильный ответ: ${item.a}`;
+        }
+
+        document.getElementById(`q2-${i+1}-block`).appendChild(result);
+      });
+
+      document.getElementById('result2').innerText =
+        `Вы правильно ответили на ${score} из ${questions2.length} вопросов.`;
+    }
+  </script>
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
 <!-- HorizontalAd -->
