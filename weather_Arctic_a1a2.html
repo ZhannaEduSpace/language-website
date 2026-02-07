@@ -246,7 +246,7 @@
         options: ['дождь', 'град', 'со́лнце', 'снег']
       },
       {
-        q: 'Как называ́ется си́льный ве́тер и снег, когда́ почти́ ничего́ не ви́дно?',
+        q: 'Как называ́ется си́льный ве́тер и снег, когда́ вокру́г почти́ ничего́ не ви́дно?',
         a: 'мете́ль',
         options: ['со́лнце', 'жара́', 'тума́н', 'мете́ль']
       },
@@ -314,7 +314,84 @@
       document.getElementById('result').innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
     }
   </script>
-    
+
+    <hr style="margin: 40px 0;">
+
+  <p><strong> Задание 2. ✅ Правда или ложь?</strong> Прочитайте утверждение и выберите: правда или неправда.<br>
+  В каждом вопросе только один правильный вариант.</p>
+
+  <form id="quizForm2"></form>
+  <button type="button" onclick="checkAnswers2()">Проверить ответы</button>
+  <div class="result" id="result2"></div>
+
+  <script>
+    const questions2 = [
+      { q: '1. В А́рктике зимо́й обы́чно хо́лодно.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
+      { q: '2. Зимо́й в А́рктике ча́сто идёт снег.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
+      { q: '3. Лёд — э́то замёрзшая вода́.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
+      { q: '4. Когда́ на у́лице тепло́, снег та́ет.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
+      { q: '5. В А́рктике зимо́й всегда́ жа́рко.', a: 'Ложь', options: ['Пра́вда', 'Ложь'] },
+      { q: '6. Поля́рная но́чь — э́то когда́ со́лнце до́лго не появля́ется.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
+      { q: '7. Поля́рный день — э́то когда́ со́лнце бы́стро сади́тся ка́ждый ве́чер.', a: 'Ложь', options: ['Пра́вда', 'Ложь'] },
+      { q: '8. В А́рктике зимо́й лю́ди надева́ют тёплую оде́жду.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
+      { q: '9. Мете́ль — э́то си́льный ве́тер и снег, когда́ пло́хо ви́дно всё вокру́г.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
+      { q: '10. В А́рктике зимо́й дни всегда́ длинне́е, чем ле́том.', a: 'Ложь', options: ['Пра́вда', 'Ложь'] }
+    ];
+
+    const form2 = document.getElementById('quizForm2');
+
+    questions2.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.id = `q2-${i+1}-block`;
+
+      div.innerHTML =
+        `<h3>${item.q}</h3>` +
+        item.options.map(opt => `
+          <label>
+            <input type="radio" name="q2-${i+1}" value="${opt}">
+            ${opt}
+          </label><br>`).join('');
+
+      form2.appendChild(div);
+    });
+
+    function checkAnswers2() {
+      let score = 0;
+
+      questions2.forEach((item, i) => {
+        const name = `q2-${i+1}`;
+        const selected = form2.querySelector(`input[name="${name}"]:checked`);
+        const block = document.getElementById(`q2-${i+1}-block`);
+
+        const existing = block.querySelector('.correct-answer');
+        if (existing) existing.remove();
+
+        const note = document.createElement('div');
+        note.classList.add('correct-answer');
+
+        const selectedValue = selected ? selected.value : '';
+
+        if (selectedValue === '') {
+          note.classList.add('incorrect');
+          note.innerText = '⚠️ Сначала выберите вариант.';
+        } else if (selectedValue === item.a) {
+          note.classList.add('correct');
+          note.innerText = '✅ Правильно';
+          score++;
+        } else {
+          note.classList.add('incorrect');
+          note.innerText = '❌ Неправильно';
+        }
+
+        block.appendChild(note);
+      });
+
+      document.getElementById('result2').innerText =
+        `Вы правильно ответили на ${score} из ${questions2.length} вопросов.`;
+    }
+  </script>
+
  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
 <!-- HorizontalAd -->
