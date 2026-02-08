@@ -300,13 +300,16 @@
         const note = document.createElement('div');
         note.classList.add('correct-answer');
 
-        if (selected && selected.value === item.a) {
+         if (selectedValue === '') {
+          note.classList.add('incorrect');
+          note.innerText = '⚠️ Сначала выберите вариант.';
+        } else if (selectedValue === item.a) {
           note.classList.add('correct');
+          note.innerText = '✅ Правильно';
           score++;
-          note.innerText = `✅ Правильный ответ: ${item.a}`;
         } else {
           note.classList.add('incorrect');
-          note.innerText = `❌ Правильный ответ: ${item.a}`;
+          note.innerText = '❌ Неправильно';
         }
 
         block.appendChild(note);
@@ -328,7 +331,7 @@
     const questions2 = [
       { q: '1. В А́рктике зимо́й обы́чно хо́лодно.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
       { q: '2. Зимо́й в А́рктике ча́сто идёт снег.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
-      { q: '3. Лёд — э́то замёрзшая вода́.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
+      { q: '3. Лёд и снег — э́то замёрзшая вода́.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
       { q: '4. Когда́ на у́лице тепло́, снег та́ет.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
       { q: '5. В А́рктике зимо́й всегда́ жа́рко.', a: 'Ложь', options: ['Пра́вда', 'Ложь'] },
       { q: '6. Поля́рная но́чь — э́то когда́ со́лнце до́лго не появля́ется.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
