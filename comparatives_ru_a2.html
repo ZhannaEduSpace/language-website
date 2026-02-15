@@ -143,7 +143,7 @@
     input[type="text"] {
       padding: 8px 12px;
       font-size: 1em;
-      width: 40%;
+      width: 140px;
       max-width: 300px;
       border: 1px solid #ccc;
       border-radius: 6px;
@@ -229,9 +229,9 @@
     const questions = [
       { base: "холодно", answer: "холоднее" },
       { base: "тёплый", answer: "теплее" },
-      { base: "громко", answer: "громче" },
+      { base: "сильный", answer: "сильнее" },
       { base: "высокий", answer: "выше" },
-      { base: "тихо", answer: "тише" },
+      { base: "сухо", answer: "суше" },
       { base: "дешёвый", answer: "дешевле" },
       { base: "хорошо", answer: "лучше" },
       { base: "плохой", answer: "хуже" },
@@ -359,6 +359,91 @@
       `Вы правильно ответили на ${score} из ${questions2.length} вопросов.`;
   }
 </script>
+    
+      <hr style="margin: 40px 0;">
+    
+  <p><strong>Задание 3. Впишите слово в сравнительной степени.</strong><br>
+  В предложении пропущено слово. В скобках дано слово, от которого нужно образовать сравнительную степень.<br>
+  Пример: Он бегает <em>быстрее</em>, чем я. (быстро)</p>
+
+  <!-- Мини-стили только для этого задания (чтобы поле было короче) -->
+  <style>
+    .question3 { margin: 14px 0; }
+    .question3 label { display: block; }
+    .input-small { width: 120px; max-width: 60%; }
+  </style>
+
+  <form id="quizForm3"></form>
+
+  <button type="button" onclick="checkAnswers3()">Проверить ответы</button>
+  <div class="result" id="result3"></div>
+
+  <script>
+    const questions3 = [
+      { q: "Он спит ___, чем я. (долго)", a: "дольше" },
+      { q: "Сегодня на улице ___, чем вчера. (тепло)", a: "теплее" },
+      { q: "Этот дом ___, чем тот. (высокий)", a: "выше" },
+      { q: "Говори ___, пожалуйста. (тихо)", a: "тише" },
+      { q: "Музыка звучит ___, чем раньше. (громко)", a: "громче" },
+      { q: "Моя машина едет ___, чем автобус. (медленно)", a: "медленнее" },
+      { q: "Я встаю ___, чем обычно. (рано)", a: "раньше" },
+      { q: "С этим приложением работать ___. (удобно)", a: "удобнее" },
+      { q: "Здесь ___, чем в центре города. (спокойно)", a: "спокойнее" },
+      { q: "Эта задача ___, чем прошлaя. (легко)", a: "легче" }
+    ];
+
+    const form3 = document.getElementById("quizForm3");
+
+    questions3.forEach((item, i) => {
+      const div = document.createElement("div");
+      div.className = "question3";
+      div.id = `q3-${i}`;
+
+      const parts = item.q.split("___");
+      const sentenceHTML = (parts.length === 2)
+        ? `${parts[0]} <input class="input-small" type="text" id="input3-${i}" placeholder="Ответ"> ${parts[1]}`
+        : `${item.q} <input class="input-small" type="text" id="input3-${i}" placeholder="Ответ">`;
+
+      div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+      form3.appendChild(div);
+    });
+
+    function normalize3(str) {
+      return str.trim().toLowerCase();
+    }
+
+    function checkAnswers3() {
+      let score = 0;
+
+      questions3.forEach((item, i) => {
+        const userAnswer = normalize3(document.getElementById(`input3-${i}`).value);
+        const correctAnswer = normalize3(item.a);
+        const block = document.getElementById(`q3-${i}`);
+
+        let old = block.querySelector(".correct, .incorrect");
+        if (old) old.remove();
+
+        const msg = document.createElement("div");
+
+        if (userAnswer === "") {
+          msg.className = "incorrect";
+          msg.textContent = "⚠️ Сначала введите ответ.";
+        } else if (userAnswer === correctAnswer) {
+          msg.className = "correct";
+          msg.textContent = `✅ Правильно: ${item.a}`;
+          score++;
+        } else {
+          msg.className = "incorrect";
+          msg.textContent = `❌ Неправильно. Правильный ответ: ${item.a}`;
+        }
+
+        block.appendChild(msg);
+      });
+
+      document.getElementById("result3").innerText =
+        `Вы правильно ответили на ${score} из ${questions3.length} вопросов.`;
+    }
+  </script>
 
   </div>
   
