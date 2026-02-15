@@ -401,8 +401,8 @@
 
       const parts = item.q.split("___");
       const sentenceHTML = (parts.length === 2)
-        ? `${parts[0]} <input class="input-small" type="text" id="input3-${i}" placeholder="Ответ"> ${parts[1]}`
-        : `${item.q} <input class="input-small" type="text" id="input3-${i}" placeholder="Ответ">`;
+        ? `${parts[0]} <input class="input-small" type="text" id="input3-${i}" placeholder="Напишите ответ"> ${parts[1]}`
+        : `${item.q} <input class="input-small" type="text" id="input3-${i}" placeholder="Напишите ответ">`;
 
       div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
       form3.appendChild(div);
