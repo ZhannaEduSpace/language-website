@@ -324,14 +324,17 @@
     const note = document.createElement('div');
     note.classList.add('correct-answer');
 
-    if (selected && selected.value === item.a) {
-      note.classList.add('correct');
-      note.innerText = `✅ Правильно! Правильный ответ: ${item.a}`;
-      score++;
-    } else {
-      note.classList.add('incorrect');
-      note.innerText = `❌ Неправильно. Правильный ответ: ${item.a}`;
-    }
+     if (!selected) {
+  note.classList.add('incorrect');
+  note.innerText = '⚠️ Сначала выберите хотя бы один вариант.';
+} else if (selected.value === item.a) {
+  note.classList.add('correct');
+  note.innerText = `✅ Правильный ответ: ${item.a}`;
+  score++;
+} else {
+  note.classList.add('incorrect');
+  note.innerText = `❌ Правильный ответ: ${item.a}`;
+}
 
     block.appendChild(note);
   });
