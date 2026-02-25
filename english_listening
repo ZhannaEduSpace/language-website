@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasks by Level / Задания по уровням</title>
+
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8TVEFE4L1Y');
+</script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+  
+  <style>
+     nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+nav a:visited {
+  color: white;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      line-height: 1.4;
+      color: #333;
+    }
+
+    header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333 !important;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+    
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 10px 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #1f4e79;
+      margin-bottom: 40px;
+    }
+
+    .columns {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .column h3 {
+      text-align: center;
+      color: #1f4e79;
+    }
+
+    .btn {
+      padding: 15px;
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .a1a2 { background-color: #2e7d32; }         /* Dark green */
+    .b1b2 { background-color: #03045e; }       /* Blue */
+    .c1 { background-color: #ae2012; }       /* Dark red */
+  </style>
+</head>
+<body>
+  
+ <header>
+    <a href="index.html" class="logo">LanguageEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">𑁔</a>
+        <div class="dropdown-content">
+          <a href="english.html"><strong>English</strong></a>
+          <a href="english_grammar.html">Grammar</a>
+          <a href="english_vocabulary.html">Vocabulary</a>
+          <a href="english_listening.html">Listening</a>
+          <a href="russian.html"><strong>Русский</strong></a>
+          <a href="suomi.html"><strong>Suomi</strong></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Tasks by Level / Задания по уровням</h2>
+    <div class="columns">
+      <div class="column">
+        <h3>A1–A2</h3>
+        <a class="btn a1a2" href="anna_en_a1a2.html">Anna and Max (A1-A2)</a>
+      </div>
+
+      <div class="column">
+        <h3>B1–B2</h3>
+      </div>
+
+      <div class="column">
+        <h3>C1</h3>
+      </div>
+    </div>
+  </div>
+  
+    <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+</body>
+</html>
