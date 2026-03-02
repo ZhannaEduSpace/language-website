@@ -267,14 +267,17 @@ header {
       if (old) old.remove();
 
       const msg = document.createElement("div");
-      if (userInput === correct) {
-        msg.className = "correct";
-        msg.textContent = `✅ Correct! Answer: ${q.answer}`;
-        score++;
-      } else {
-        msg.className = "incorrect";
-        msg.textContent = `❌ Correct answer: ${q.answer}`;
-      }
+      if (userInput === "") {
+  msg.className = "incorrect";
+  msg.textContent = "⚠️ Please write an answer first!";
+} else if (userInput === correct) {
+  msg.className = "correct";
+  msg.textContent = `✅ Correct! Answer:  ${q.answer}`;
+  score++;
+} else {
+  msg.className = "incorrect";
+  msg.textContent = `❌ Not quite. Correct answer: ${q.answer}`;
+}
       block.appendChild(msg);
     });
 
