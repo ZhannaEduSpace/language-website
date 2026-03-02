@@ -267,14 +267,17 @@
         if (existing) existing.remove();
         const note = document.createElement('div');
         note.classList.add('correct-answer');
-        if (selected && selected.value === item.a) {
-          note.classList.add('correct');
-          score++;
-          note.innerText = `Correct! Answer: ${item.a}`;
-        } else {
-          note.classList.add('incorrect');
-          note.innerText = `Correct answer: ${item.a}`;
-        }
+       if (!selected) {
+  note.classList.add('incorrect');
+  note.innerText = '⚠️ Сначала выберите ответ.';
+} else if (selected.value === item.a) {
+  note.classList.add('correct');
+  note.innerText = `✅ Правильно: ${item.a}`;
+  score++;
+} else {
+  note.classList.add('incorrect');
+  note.innerText = `❌ Правильный ответ: ${item.a}`;
+}
         block.appendChild(note);
       });
       document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
