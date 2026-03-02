@@ -263,13 +263,16 @@
         if (existing) existing.remove();
         const note = document.createElement('div');
         note.classList.add('correct-answer');
-        if (selected && selected.value === item.a) {
+         if (selectedValue === '') {
+          note.classList.add('incorrect');
+          note.innerText = '⚠️ Please choose an answer first!';
+        } else if (selectedValue === item.a) {
           note.classList.add('correct');
+          note.innerText = `✅ Correct! Answer: ${item.a}`;
           score++;
-          note.innerText = `Correct! Answer: ${item.a}`;
         } else {
           note.classList.add('incorrect');
-          note.innerText = `Correct answer: ${item.a}`;
+          note.innerText = `❌ Not quite. Correct answer: ${item.a}`;
         }
         block.appendChild(note);
       });
