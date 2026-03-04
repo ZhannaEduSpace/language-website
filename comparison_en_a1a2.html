@@ -278,23 +278,29 @@
         const msgComp  = document.createElement("div");
         const msgSuper = document.createElement("div");
 
-        if (inputComp === correctComp) {
-          msgComp.className = "correct";
-          msgComp.textContent = `✅ Correct comparative: ${q.comp}`;
-          score++;
-        } else {
-          msgComp.className = "incorrect";
-          msgComp.textContent = `❌ Correct comparative: ${q.comp}`;
-        }
+       if (inputComp === "") {
+  msgComp.className = "incorrect";
+  msgComp.textContent = "⚠️ Please write the comparative form!";
+} else if (inputComp === correctComp) {
+  msgComp.className = "correct";
+  msgComp.textContent = `✅ Correct comparative: ${q.comp}`;
+  score++;
+} else {
+  msgComp.className = "incorrect";
+  msgComp.textContent = `❌ Correct comparative: ${q.comp}`;
+}
 
-        if (inputSuper === correctSuper) {
-          msgSuper.className = "correct";
-          msgSuper.textContent = `✅ Correct superlative: ${q.super}`;
-          score++;
-        } else {
-          msgSuper.className = "incorrect";
-          msgSuper.textContent = `❌ Correct superlative: ${q.super}`;
-        }
+        if (inputSuper === "") {
+  msgSuper.className = "incorrect";
+  msgSuper.textContent = "⚠️ Please write the superlative form!";
+} else if (inputSuper === correctSuper) {
+  msgSuper.className = "correct";
+  msgSuper.textContent = `✅ Correct superlative: ${q.super}`;
+  score++;
+} else {
+  msgSuper.className = "incorrect";
+  msgSuper.textContent = `❌ Correct superlative: ${q.super}`;
+}
 
         feedbackComp.appendChild(msgComp);
         feedbackSuper.appendChild(msgSuper);
