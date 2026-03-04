@@ -273,14 +273,17 @@
       const note = document.createElement("div");
       note.classList.add("correct-answer");
 
-      if (user === correct) {
-        score++;
-        note.classList.add("correct");
-        note.textContent = `✅ Correct: ${item.answer}`;
-      } else {
-        note.classList.add("incorrect");
-        note.textContent = `❌ Correct answer: ${item.answer}`;
-      }
+      if (user === '') {
+  note.classList.add("incorrect");
+  note.textContent = "⚠️ Please write an answer first!";
+} else if (user === correct) {
+  score++;
+  note.classList.add("correct");
+  note.textContent = `✅ Correct: ${item.answer}`;
+} else {
+  note.classList.add("incorrect");
+  note.textContent = `❌ Correct answer: ${item.answer}`;
+}
 
       block.appendChild(note);
     });
