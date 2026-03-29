@@ -294,14 +294,15 @@
 
     <hr style="margin: 40px 0;">
 
-     Harjoitus 1. Täydennä lause valitsemalla oikea muoto: joka tai jotka.</strong><br>Esimerkiksi: Tässä on kirja, <em>joka</em> on todella mielenkiintoinen.</p>
+<p><strong>Harjoitus 2. Täydennä lause valitsemalla oikea muoto: joka tai jotka.</strong><br>Esimerkiksi: Tässä on kirja, <em>joka</em> on todella mielenkiintoinen.</p>
   <p>👉 <strong>joka / jota / jonka</strong></p>
+
 <form id="quizForm2"></form>
 
 <button type="button" onclick="checkAnswers2()">Tarkista vastaukset</button>
 <div class="result" id="result2"></div>
 
-<script>  
+<script>
   const questions2 = [
       { q: 'Minulla on auto, ___ käytän joka päivä.', a: 'jota' },
       { q: 'Hän tapasi miehen, ___ nimi on Matti.', a: 'jonka' },
@@ -315,48 +316,60 @@
       { q: 'Elokuva, ___ en katsonut, oli todella suosittu.', a: 'jota' },
   ];
 
-  const form2 = document.getElementById("quizForm2");
+  const form2 = document.getElementById('quizForm2');
 
-  questions2.forEach((q, index) => {
-    const div = document.createElement("div");
-    div.className = "question";
-    div.id = `q2-${index}`;
-    div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
-      <input type="text" id="input2-${index}" placeholder="Kirjoita sana">`;
+  questions2.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.id = `q2-${i+1}-block`;
+
+    const parts = item.q.split('___');
+    let sentenceHTML = '';
+
+    if (parts.length === 2) {
+      sentenceHTML = `${parts[0]} <input type="text" id="input2-${i}" placeholder="Kirjoita sana"> ${parts[1]}`;
+    } else {
+      sentenceHTML = item.q.replace(item.a, `<input type="text" id="input2-${i}" placeholder="Kirjoita sana">`);
+    }
+
+    div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
     form2.appendChild(div);
   });
+
+  function normalize2(str) {
+    return str.trim().toLowerCase();
+  }
 
   function checkAnswers2() {
     let score = 0;
 
-    questions2.forEach((q, i) => {
-      const inputEl = document.getElementById(`input2-${i}`);
-      const userInput = normalize(inputEl.value);
-      const correct = normalize(q.answer);
-      const block = document.getElementById(`q2-${i}`);
+    questions2.forEach((item, i) => {
+      const input = document.getElementById(`input2-${i}`);
+      const userAnswer = normalize2(input.value);
+      const correctAnswer = normalize2(item.a);
 
-      let feedback = block.querySelector(".correct-answer");
-      if (feedback) feedback.remove();
+      const old = document.querySelector(`#q2-${i + 1}-block .correct-answer`);
+      if (old) old.remove();
 
-      const msg = document.createElement("div");
-      msg.classList.add("correct-answer");
+      const msg = document.createElement('div');
+      msg.classList.add('correct-answer');
 
-      if (userInput === "") {
+      if (userAnswer === "") {
         msg.classList.add("incorrect");
         msg.textContent = "⚠️ Kirjoita ensin vastaus!";
-      } else if (userInput === correct) {
+      } else if (userAnswer === correctAnswer) {
         msg.classList.add("correct");
-        msg.textContent = `✅ Oikein: ${q.answer}`;
+        msg.textContent = `✅ Oikein: ${item.a}`;
         score++;
       } else {
         msg.classList.add("incorrect");
-        msg.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${q.answer}`;
+        msg.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${item.a}`;
       }
 
-      block.appendChild(msg);
+      document.getElementById(`q2-${i + 1}-block`).appendChild(msg);
     });
 
-    document.getElementById("result2").innerText =
+    document.getElementById('result2').innerText =
       `Sait ${score} oikein ${questions2.length}:stä.`;
   }
 </script>
