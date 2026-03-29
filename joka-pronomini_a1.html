@@ -211,7 +211,7 @@
   <h2>✏️ Joka-pronomini (A2)</h2>
 
  <p><strong>Harjoitus 1. Täydennä lause valitsemalla oikea muoto: joka tai jotka.</strong><br>Esimerkiksi: Tässä on kirja, <em>joka</em> on todella mielenkiintoinen.</p>
-  <p>👉 <strong>joka</strong> tai <strong>jotka</strong></p>
+  <p>👉 <strong>joka / jotka</strong></p>
 
   <form id="quizForm"></form>
 
@@ -293,6 +293,73 @@
 </script>
 
     <hr style="margin: 40px 0;">
+
+     Harjoitus 1. Täydennä lause valitsemalla oikea muoto: joka tai jotka.</strong><br>Esimerkiksi: Tässä on kirja, <em>joka</em> on todella mielenkiintoinen.</p>
+  <p>👉 <strong>joka / jota / jonka</strong></p>
+<form id="quizForm2"></form>
+
+<button type="button" onclick="checkAnswers2()">Tarkista vastaukset</button>
+<div class="result" id="result2"></div>
+
+<script>  
+  const questions2 = [
+      { q: 'Minulla on auto, ___ käytän joka päivä.', a: 'jota' },
+      { q: 'Hän tapasi miehen, ___ nimi on Matti.', a: 'jonka' },
+      { q: 'Talo, ___ emme ostaneet, on edelleen myynnissä.', a: 'jota' },
+      { q: 'Näen elokuvan, ___ on todella hyvä.', a: 'joka' },
+      { q: 'Tapasin naisen, ___ koira on hyvin ystävällinen.', a: 'jonka' },
+      { q: 'Hän osti puhelimen, ___ on kallis.', a: 'joka' },
+      { q: 'Me katsomme sarjaa, ___ kaikki suosittelevat.', a: 'jota' },
+      { q: 'Tunnen henkilön, ___ veli asuu Suomessa.', a: 'jonka' },
+      { q: 'Tämä on paikka, ___ rakastan.', a: 'jota' },
+      { q: 'Elokuva, ___ en katsonut, oli todella suosittu.', a: 'jota' },
+  ];
+
+  const form2 = document.getElementById("quizForm2");
+
+  questions2.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q2-${index}`;
+    div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
+      <input type="text" id="input2-${index}" placeholder="Kirjoita sana">`;
+    form2.appendChild(div);
+  });
+
+  function checkAnswers2() {
+    let score = 0;
+
+    questions2.forEach((q, i) => {
+      const inputEl = document.getElementById(`input2-${i}`);
+      const userInput = normalize(inputEl.value);
+      const correct = normalize(q.answer);
+      const block = document.getElementById(`q2-${i}`);
+
+      let feedback = block.querySelector(".correct-answer");
+      if (feedback) feedback.remove();
+
+      const msg = document.createElement("div");
+      msg.classList.add("correct-answer");
+
+      if (userInput === "") {
+        msg.classList.add("incorrect");
+        msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (userInput === correct) {
+        msg.classList.add("correct");
+        msg.textContent = `✅ Oikein: ${q.answer}`;
+        score++;
+      } else {
+        msg.classList.add("incorrect");
+        msg.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${q.answer}`;
+      }
+
+      block.appendChild(msg);
+    });
+
+    document.getElementById("result2").innerText =
+      `Sait ${score} oikein ${questions2.length}:stä.`;
+  }
+</script>
 
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
