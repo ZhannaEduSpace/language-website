@@ -374,6 +374,86 @@
   }
 </script>
 
+    <p><strong>Harjoitus 3. Täydennä lause valitsemalla oikea muoto: joka tai jotka.</strong><br>Esimerkiksi: Tässä on kirja, <em>joka</em> on todella mielenkiintoinen.</p>
+<p>👉 <strong>joka / jotka</strong></p>
+
+<form id="quizForm3"></form>
+
+<button type="button" onclick="checkAnswers3()">Tarkista vastaukset</button>
+<div class="result" id="result3"></div>
+
+<script>
+  const questions3 = [
+    { q: 'Minulla on kirja, ___ on pöydällä.', a: 'joka' },
+    { q: 'Tapasin ihmiset, ___ auttoivat minua.', a: 'jotka' },
+    { q: 'Näen talon, ___ on vanha.', a: 'joka' },
+    { q: 'Hän osti kengät, ___ ovat mustat.', a: 'jotka' },
+    { q: 'Tämä on elokuva, ___ on erittäin suosittu.', a: 'joka' },
+    { q: 'Meillä on ystävät, ___ asuvat Suomessa.', a: 'jotka' },
+    { q: 'Muistan ne päivät, ___ olivat vaikeita.', a: 'jotka' },
+    { q: 'Tässä on koira, ___ juoksee nopeasti.', a: 'joka' },
+    { q: 'Löysin avaimet, ___ olivat kadonneet.', a: 'jotka' },
+    { q: 'Hän puhui asiasta, ___ oli tärkeä.', a: 'joka' },
+  ];
+
+  const form3 = document.getElementById('quizForm3');
+
+  questions3.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.id = `q3-${i+1}-block`;
+
+    const parts = item.q.split('___');
+    let sentenceHTML = '';
+
+    if (parts.length === 2) {
+      sentenceHTML = `${parts[0]} <input type="text" id="input3-${i}" placeholder="Kirjoita sana"> ${parts[1]}`;
+    } else {
+      sentenceHTML = item.q.replace(item.a, `<input type="text" id="input3-${i}" placeholder="Kirjoita sana">`);
+    }
+
+    div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+    form3.appendChild(div);
+  });
+
+  function normalize3(str) {
+    return str.trim().toLowerCase();
+  }
+
+  function checkAnswers3() {
+    let score = 0;
+
+    questions3.forEach((item, i) => {
+      const input = document.getElementById(`input3-${i}`);
+      const userAnswer = normalize3(input.value);
+      const correctAnswer = normalize3(item.a);
+
+      const old = document.querySelector(`#q3-${i + 1}-block .correct-answer`);
+      if (old) old.remove();
+
+      const msg = document.createElement('div');
+      msg.classList.add('correct-answer');
+
+      if (userAnswer === "") {
+        msg.classList.add("incorrect");
+        msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      } else if (userAnswer === correctAnswer) {
+        msg.classList.add("correct");
+        msg.textContent = `✅ Oikein: ${item.a}`;
+        score++;
+      } else {
+        msg.classList.add("incorrect");
+        msg.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${item.a}`;
+      }
+
+      document.getElementById(`q3-${i + 1}-block`).appendChild(msg);
+    });
+
+    document.getElementById('result3').innerText =
+      `Sait ${score} oikein ${questions3.length}:stä.`;
+  }
+</script>
+
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
 <!-- HorizontalAd -->
