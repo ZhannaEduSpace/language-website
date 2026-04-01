@@ -292,15 +292,17 @@
         const note = document.createElement('div');
         note.classList.add('correct-answer');
 
-        if (selected && selected.value === item.a) {
-          note.classList.add('correct');
-          score++;
-          note.innerText = `✅ Правильный ответ: ${item.a}`;
-        } else {
-          note.classList.add('incorrect');
-          note.innerText = `❌ Правильный ответ: ${item.a}`;
-        }
-
+       if (userAnswer === '') {
+        result.classList.add('incorrect');
+        result.textContent = '⚠️ Kirjoita ensin vastaus!';
+      } else if (userAnswer === correctAnswer) {
+        result.classList.add('correct');
+        result.textContent = `✅ Oikein: ${item.a}`;
+        score++;
+      } else {
+        result.classList.add('incorrect');
+        result.textContent = `❌ Ei ihan oikein. Oikea vastaus: ${item.a}`;
+      }
         block.appendChild(note);
       });
       document.getElementById('result').innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
