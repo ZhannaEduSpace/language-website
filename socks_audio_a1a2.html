@@ -296,16 +296,16 @@
         const resultText = document.createElement('div');
         resultText.classList.add('correct-answer');
 
-        if (!selected) {
-  note.classList.add('incorrect');
-  note.innerText = '⚠️ Сначала выберите хотя бы один вариант.';
-} else if (selected.value === item.a) {
-  note.classList.add('correct');
-  note.innerText = `✅ Правильный ответ: ${item.a}`;
+       if (!selected) {
+  resultText.classList.add('incorrect');
+  resultText.innerText = '⚠️ Сначала выберите хотя бы один вариант.';
+} else if (selected.value === value.correct) {
+  resultText.classList.add('correct');
+  resultText.innerText = `✅ Правильный ответ: ${value.text}`;
   score++;
 } else {
-  note.classList.add('incorrect');
-  note.innerText = `❌ Правильный ответ: ${item.a}`;
+  resultText.classList.add('incorrect');
+  resultText.innerText = `❌ Правильный ответ: ${value.text}`;
 }
 
         block.appendChild(resultText);
