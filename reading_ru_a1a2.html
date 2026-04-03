@@ -294,14 +294,17 @@
         const resultText = document.createElement('div');
         resultText.classList.add('correct-answer');
 
-        if (selected && selected.value === value.correct) {
-          resultText.classList.add('correct');
-          resultText.innerText = `✅ Правильно! Правильный ответ: ${value.text}`;
-          score++;
-        } else {
-          resultText.classList.add('incorrect');
-          resultText.innerText = `❌ Неправильно. Правильный ответ: ${value.text}`;
-        }
+       if (!selected) {
+  resultText.classList.add('incorrect');
+  resultText.innerText = '⚠️ Сначала выберите хотя бы один вариант.';
+} else if (selected.value === value.correct) {
+  resultText.classList.add('correct');
+  resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+  score++;
+} else {
+  resultText.classList.add('incorrect');
+  resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+}
 
         block.appendChild(resultText);
       }
