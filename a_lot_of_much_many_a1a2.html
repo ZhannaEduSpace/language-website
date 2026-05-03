@@ -198,7 +198,7 @@
   <div id="side-menu-placeholder"></div>
 
   <div class="container">
-  <h2>💡 How Many or How Much (A1-A2)</h2>
+  <h2>💡 A lot of / Much / Many (A1-A2)</h2>
   <p>Complete the questions with <strong>How many</strong> or <strong>How much</strong>.<br>
  Example: How many books do you have?</p>
 
@@ -265,17 +265,17 @@
         const result = document.createElement('div');
         result.classList.add('correct-answer');
 
-         if (userAnswer === '') {
-        result.classList.add('incorrect');
-        result.textContent = '⚠️ Please choose an answer first!';
-      } else if (userAnswer === correctAnswer) {
-        result.classList.add('correct');
-        result.textContent = `✅ Correct! Answer: ${item.a}`;
-        score++;
-      } else {
-        result.classList.add('incorrect');
-        result.textContent = `❌ Not quite. Correct answer: ${item.a}`;
-      }
+        if (userAnswer === '') {
+  result.classList.add('incorrect');
+  result.textContent = '⚠️ Please enter an answer first!';
+} else if (correctAnswers.includes(userAnswer)) {
+  result.classList.add('correct');
+  result.textContent = `✅ Correct! Answer: ${item.a[0]}`;
+  score++;
+} else {
+  result.classList.add('incorrect');
+  result.textContent = `❌ Not quite. Correct answer: ${item.a.join(' / ')}`;
+}
 
         document.getElementById(`q${i+1}-block`).appendChild(result);
       });
