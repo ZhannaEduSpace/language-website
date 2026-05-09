@@ -1022,17 +1022,27 @@
 
   const headerMixed = document.createElement("div");
   headerMixed.className = "case-grid case-header";
+
+  /* ✅ Последняя колонка чуть шире */
+  headerMixed.style.gridTemplateColumns = "1fr 1.2fr 1.2fr 1.6fr";
+
   headerMixed.innerHTML = `
     <div>Perusmuoto</div>
     <div>Partitiivi</div>
     <div>Genetiivi</div>
     <div>S-Mihin? (-Vn / -hVn / -seen)</div>
   `;
+
   formMixed.appendChild(headerMixed);
 
   questionsMixed.forEach((q, index) => {
     const div = document.createElement("div");
+
     div.className = "case-grid case-row";
+
+    /* ✅ И тут тоже */
+    div.style.gridTemplateColumns = "1fr 1.2fr 1.2fr 1.6fr";
+
     div.id = `qmixed-${index}`;
 
     div.innerHTML = `
