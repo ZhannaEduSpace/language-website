@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Harjoitus: Partitiivi (yksikössä ja monikossa) (A2)</title>
+  <meta name="description" content="Partitiivi A2: harjoituksia suomen kielessä verkossa. Kirjoita sanat partitiivissa yksikössä ja monikossa (esim. kahvia – kahveja) ja tarkista vastaukset. Ilmaiseksi.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8TVEFE4L1Y');
+</script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.2;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+     header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;   /* ← добавляем */
+      z-index: 2000;        /* ← добавляем */
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ▼▼▼ Добавленные стили для дропдауна ▼▼▼ */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ▲▲▲ Конец блока dropdown ▲▲▲ */
+
+    .container {
+      padding: 30px 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #1f4e79;
+    }
+
+    .question {
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .question label {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    input[type="text"] {
+      padding: 8px 12px;
+      font-size: 1em;
+      width: 40%;
+      max-width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .correct {
+      color: green;
+      margin-top: 4px;
+    }
+
+    .incorrect {
+      color: red;
+      margin-top: 4px;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 28px;
+      font-size: 1em;
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+  </style>
+
+  <link rel="stylesheet" href="/side-menu.css">
+
+</head>
+<body>
+  
+ <header>
+    <a href="index.html" class="logo">LanguageEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">𑁔</a>
+        <div class="dropdown-content">
+          <a href="suomi.html"><strong>Suomi</strong></a>
+          <a href="finnish_grammar.html">Kielioppi</a>
+          <a href="finnish_vocabulary.html">Sanasto</a>
+          <a href="english.html"><strong>English</strong></a>
+          <a href="russian.html"><strong>Русский</strong></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div id="side-menu-placeholder"></div>
+
+  <div class="container">
+ <h2>💡 Sanatyypit: e-sanat (A2)</h2>
+
+<p><strong>Harjoitus 1. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p>Esimerkiksi: <em>perhe → perhettä, perheen, perheessä</em></p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizFormE"></form>
+
+<button type="button" onclick="checkAnswersE()">Tarkista vastaukset</button>
+<div class="result" id="resultE"></div>
+
+<script>
+  const questionsE = [
+    { base: "perhe", partitive: "perhettä", genitive: "perheen", inessive: "perheessä" },
+    { base: "vene", partitive: "venettä", genitive: "veneen", inessive: "veneessä" },
+    { base: "huone", partitive: "huonetta", genitive: "huoneen", inessive: "huoneessa" },
+    { base: "kone", partitive: "konetta", genitive: "koneen", inessive: "koneessa" },
+    { base: "kirje", partitive: "kirjettä", genitive: "kirjeen", inessive: "kirjeessä" }
+  ];
+
+  const formE = document.getElementById("quizFormE");
+
+  const headerE = document.createElement("div");
+  headerE.className = "case-grid case-header";
+  headerE.innerHTML = `
+    <div>Perusmuoto</div>
+    <div>Partitiivi</div>
+    <div>Genetiivi</div>
+    <div>Missä?</div>
+  `;
+  formE.appendChild(headerE);
+
+  questionsE.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "case-grid case-row";
+    div.id = `qe-${index}`;
+
+    div.innerHTML = `
+      <div class="base-word">${index + 1}. ${q.base}</div>
+
+      <div class="input-block">
+        <input type="text" id="inputE-${index}_partitive" placeholder="Partitiivi">
+        <div id="feedbackE-${index}_partitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputE-${index}_genitive" placeholder="Genetiivi">
+        <div id="feedbackE-${index}_genitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputE-${index}_inessive" placeholder="Missä?">
+        <div id="feedbackE-${index}_inessive"></div>
+      </div>
+    `;
+
+    formE.appendChild(div);
+  });
+
+  function normalizeE(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkOneE(inputId, feedbackId, userAnswer, correctAnswer, label) {
+    const feedback = document.getElementById(feedbackId);
+    feedback.innerHTML = "";
+
+    const msg = document.createElement("div");
+
+    if (userAnswer === "") {
+      msg.className = "incorrect";
+      msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      feedback.appendChild(msg);
+      return 0;
+    } else if (userAnswer === correctAnswer) {
+      msg.className = "correct";
+      msg.textContent = `✅ Oikein: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 1;
+    } else {
+      msg.className = "incorrect";
+      msg.textContent = `❌ ${label} väärin. Oikea: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 0;
+    }
+  }
+
+  function checkAnswersE() {
+    let score = 0;
+
+    questionsE.forEach((q, i) => {
+      const inputPartitive = normalizeE(document.getElementById(`inputE-${i}_partitive`).value);
+      const inputGenitive = normalizeE(document.getElementById(`inputE-${i}_genitive`).value);
+      const inputInessive = normalizeE(document.getElementById(`inputE-${i}_inessive`).value);
+
+      score += checkOneE(
+        `inputE-${i}_partitive`,
+        `feedbackE-${i}_partitive`,
+        inputPartitive,
+        normalizeE(q.partitive),
+        "Partitiivi"
+      );
+
+      score += checkOneE(
+        `inputE-${i}_genitive`,
+        `feedbackE-${i}_genitive`,
+        inputGenitive,
+        normalizeE(q.genitive),
+        "Genetiivi"
+      );
+
+      score += checkOneE(
+        `inputE-${i}_inessive`,
+        `feedbackE-${i}_inessive`,
+        inputInessive,
+        normalizeE(q.inessive),
+        "Missä?"
+      );
+    });
+
+    const total = questionsE.length * 3;
+    document.getElementById("resultE").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
+
+<style>
+  .case-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1.2fr 1.2fr;
+    gap: 12px;
+    align-items: start;
+    margin-bottom: 14px;
+  }
+
+  .case-header {
+    font-weight: bold;
+    color: #1f4e79;
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+
+  .case-row {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .base-word {
+    font-weight: bold;
+    padding-top: 7px;
+  }
+
+  .input-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .case-grid input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 7px 9px;
+  }
+
+  @media (max-width: 700px) {
+    .case-grid {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+
+    .case-header {
+      display: none;
+    }
+
+    .base-word {
+      margin-top: 12px;
+      font-size: 1.1em;
+    }
+  }
+</style>
+  </div>
+  
+    <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+
+  <script>
+  fetch('/side-menu-fi.html')
+    .then(r => r.text())
+    .then(html => document.getElementById('side-menu-placeholder').innerHTML = html);
+</script>
+
+</body>
+</html>
