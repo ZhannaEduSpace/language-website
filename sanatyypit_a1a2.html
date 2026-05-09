@@ -258,7 +258,7 @@
       </div>
 
       <div class="input-block">
-        <input type="text" id="inputE-${index}_inessive" placeholder="Missä?">
+        <input type="text" id="inputE-${index}_inessive" placeholder="S-Missä? (-ssa/-ssä)">
         <div id="feedbackE-${index}_inessive"></div>
       </div>
     `;
@@ -489,7 +489,7 @@
 
       score += checkOneNen(`feedbackNen-${i}_partitive`, inputPartitive, normalizeNen(q.partitive), "Partitiivi");
       score += checkOneNen(`feedbackNen-${i}_genitive`, inputGenitive, normalizeNen(q.genitive), "Genetiivi");
-      score += checkOneNen(`feedbackNen-${i}_inessive`, inputInessive, normalizeNen(q.inessive), "Missä?");
+      score += checkOneNen(`feedbackNen-${i}_inessive`, inputInessive, normalizeNen(q.inessive), "S-Missä? (-ssa/-ssä)");
     });
 
     const total = questionsNen.length * 3;
