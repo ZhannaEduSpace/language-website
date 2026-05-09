@@ -871,6 +871,131 @@
     document.getElementById("resultIE2").innerText = `Sait ${score} oikein ${total}:stä.`;
   }
 </script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 6. Sanatyyppi: -si-sanat. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p>Esimerkiksi: <em>uusi → uutta, uuden, uudessa</em></p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizFormSi"></form>
+
+<button type="button" onclick="checkAnswersSi()">Tarkista vastaukset</button>
+<div class="result" id="resultSi"></div>
+
+<script>
+  const questionsSi = [
+    { base: "käsi", partitive: "kättä", genitive: "käden", inessive: "kädessä" },
+    { base: "vesi", partitive: "vettä", genitive: "veden", inessive: "vedessä" },
+    { base: "susi", partitive: "sutta", genitive: "suden", inessive: "sudessa" },
+    { base: "viisi", partitive: "viittä", genitive: "viiden", inessive: "viidessä" },
+    { base: "vuosi", partitive: "vuotta", genitive: "vuoden", inessive: "vuodessa" }
+  ];
+
+  const formSi = document.getElementById("quizFormSi");
+
+  const headerSi = document.createElement("div");
+  headerSi.className = "case-grid case-header";
+  headerSi.innerHTML = `
+    <div>Perusmuoto</div>
+    <div>Partitiivi</div>
+    <div>Genetiivi</div>
+    <div>S-Missä? (-ssa/-ssä)</div>
+  `;
+  formSi.appendChild(headerSi);
+
+  questionsSi.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "case-grid case-row";
+    div.id = `qsi-${index}`;
+
+    div.innerHTML = `
+      <div class="base-word">${index + 1}. ${q.base}</div>
+
+      <div class="input-block">
+        <input type="text" id="inputSi-${index}_partitive" placeholder="Partitiivi">
+        <div id="feedbackSi-${index}_partitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputSi-${index}_genitive" placeholder="Genetiivi">
+        <div id="feedbackSi-${index}_genitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputSi-${index}_inessive" placeholder="S-Missä? (-ssa/-ssä)">
+        <div id="feedbackSi-${index}_inessive"></div>
+      </div>
+    `;
+
+    formSi.appendChild(div);
+  });
+
+  function normalizeSi(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkOneSi(feedbackId, userAnswer, correctAnswer, label) {
+    const feedback = document.getElementById(feedbackId);
+    feedback.innerHTML = "";
+
+    const msg = document.createElement("div");
+
+    if (userAnswer === "") {
+      msg.className = "incorrect";
+      msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      feedback.appendChild(msg);
+      return 0;
+    } else if (userAnswer === correctAnswer) {
+      msg.className = "correct";
+      msg.textContent = `✅ Oikein: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 1;
+    } else {
+      msg.className = "incorrect";
+      msg.textContent = `❌ ${label} väärin. Oikea: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 0;
+    }
+  }
+
+  function checkAnswersSi() {
+    let score = 0;
+
+    questionsSi.forEach((q, i) => {
+      const inputPartitive = normalizeSi(document.getElementById(`inputSi-${i}_partitive`).value);
+      const inputGenitive = normalizeSi(document.getElementById(`inputSi-${i}_genitive`).value);
+      const inputInessive = normalizeSi(document.getElementById(`inputSi-${i}_inessive`).value);
+
+      score += checkOneSi(
+        `feedbackSi-${i}_partitive`,
+        inputPartitive,
+        normalizeSi(q.partitive),
+        "Partitiivi"
+      );
+
+      score += checkOneSi(
+        `feedbackSi-${i}_genitive`,
+        inputGenitive,
+        normalizeSi(q.genitive),
+        "Genetiivi"
+      );
+
+      score += checkOneSi(
+        `feedbackSi-${i}_inessive`,
+        inputInessive,
+        normalizeSi(q.inessive),
+        "S-Missä? (-ssa/-ssä)"
+      );
+    });
+
+    const total = questionsSi.length * 3;
+    document.getElementById("resultSi").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
     
   </div>
   
