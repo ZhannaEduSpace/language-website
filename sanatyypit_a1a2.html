@@ -624,7 +624,7 @@
 
     <hr style="margin: 40px 0;">
 
-<p><strong>Harjoitus 4. Sanatyyppi: i → e -sanat. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p><strong>Harjoitus 4. Sanatyyppi: i → e -sanat (partitiivi -tä/-ta). Kirjoita sanat oikeassa muodossa.</strong></p>
 <p>Esimerkiksi: <em>kieli → kieltä, kielen, kielessä</em></p>
 <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
@@ -744,6 +744,131 @@
 
     const total = questionsIE.length * 3;
     document.getElementById("resultIE").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 5. Sanatyyppi: i → e -sanat. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p>Esimerkiksi: <em>ovi → ovea, oven, ovessa</em></p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizFormIE2"></form>
+
+<button type="button" onclick="checkAnswersIE2()">Tarkista vastaukset</button>
+<div class="result" id="resultIE2"></div>
+
+<script>
+  const questionsIE2 = [
+    { base: "tähti", partitive: "tähteä", genitive: "tähden", inessive: "tähdessä" },
+    { base: "nimi", partitive: "nimeä", genitive: "nimen", inessive: "nimessä" },
+    { base: "talvi", partitive: "talvea", genitive: "talven", inessive: "talvessa" },
+    { base: "pilvi", partitive: "pilveä", genitive: "pilven", inessive: "pilvessä" },
+    { base: "järvi", partitive: "järveä", genitive: "järven", inessive: "järvessä" }
+  ];
+
+  const formIE2 = document.getElementById("quizFormIE2");
+
+  const headerIE2 = document.createElement("div");
+  headerIE2.className = "case-grid case-header";
+  headerIE2.innerHTML = `
+    <div>Perusmuoto</div>
+    <div>Partitiivi</div>
+    <div>Genetiivi</div>
+    <div>S-Missä? (-ssa/-ssä)</div>
+  `;
+  formIE2.appendChild(headerIE2);
+
+  questionsIE2.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "case-grid case-row";
+    div.id = `qie2-${index}`;
+
+    div.innerHTML = `
+      <div class="base-word">${index + 1}. ${q.base}</div>
+
+      <div class="input-block">
+        <input type="text" id="inputIE2-${index}_partitive" placeholder="Partitiivi">
+        <div id="feedbackIE2-${index}_partitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputIE2-${index}_genitive" placeholder="Genetiivi">
+        <div id="feedbackIE2-${index}_genitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputIE2-${index}_inessive" placeholder="S-Missä? (-ssa/-ssä)">
+        <div id="feedbackIE2-${index}_inessive"></div>
+      </div>
+    `;
+
+    formIE2.appendChild(div);
+  });
+
+  function normalizeIE2(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkOneIE2(feedbackId, userAnswer, correctAnswer, label) {
+    const feedback = document.getElementById(feedbackId);
+    feedback.innerHTML = "";
+
+    const msg = document.createElement("div");
+
+    if (userAnswer === "") {
+      msg.className = "incorrect";
+      msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      feedback.appendChild(msg);
+      return 0;
+    } else if (userAnswer === correctAnswer) {
+      msg.className = "correct";
+      msg.textContent = `✅ Oikein: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 1;
+    } else {
+      msg.className = "incorrect";
+      msg.textContent = `❌ ${label} väärin. Oikea: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 0;
+    }
+  }
+
+  function checkAnswersIE2() {
+    let score = 0;
+
+    questionsIE2.forEach((q, i) => {
+      const inputPartitive = normalizeIE2(document.getElementById(`inputIE2-${i}_partitive`).value);
+      const inputGenitive = normalizeIE2(document.getElementById(`inputIE2-${i}_genitive`).value);
+      const inputInessive = normalizeIE2(document.getElementById(`inputIE2-${i}_inessive`).value);
+
+      score += checkOneIE2(
+        `feedbackIE2-${i}_partitive`,
+        inputPartitive,
+        normalizeIE2(q.partitive),
+        "Partitiivi"
+      );
+
+      score += checkOneIE2(
+        `feedbackIE2-${i}_genitive`,
+        inputGenitive,
+        normalizeIE2(q.genitive),
+        "Genetiivi"
+      );
+
+      score += checkOneIE2(
+        `feedbackIE2-${i}_inessive`,
+        inputInessive,
+        normalizeIE2(q.inessive),
+        "S-Missä? (-ssa/-ssä)"
+      );
+    });
+
+    const total = questionsIE2.length * 3;
+    document.getElementById("resultIE2").innerText = `Sait ${score} oikein ${total}:stä.`;
   }
 </script>
     
