@@ -265,16 +265,16 @@
         result.classList.add('correct-answer');
 
         if (userAnswer === '') {
-        result.classList.add('incorrect');
-        result.textContent = '⚠️ Please enter an answer first!';
-      } else if (correctAnswers.includes(userAnswer)) {
-        result.classList.add('correct');
-        result.textContent = `✅ Correct! Answer: ${item.a[0]}`;
-        score++;
-      } else {
-        result.classList.add('incorrect');
-        result.textContent = `❌ Not quite. Correct answer: ${item.a.join(' / ')}`;
-      }
+  result.classList.add('incorrect');
+  result.textContent = '⚠️ Please enter an answer first!';
+} else if (userAnswer === correctAnswer) {
+  result.classList.add('correct');
+  result.textContent = `✅ Correct! Answer: ${item.a}`;
+  score++;
+} else {
+  result.classList.add('incorrect');
+  result.textContent = `❌ Not quite. Correct answer: ${item.a}`;
+}
 
         document.getElementById(`q${i+1}-block`).appendChild(result);
       });
