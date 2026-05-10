@@ -1914,57 +1914,56 @@
     { base: "vihannes", partitive: "vihannesta", genitive: "vihanneksen", illative: "vihannekseen" }
   ];
 
-  const formMixed = document.getElementById("quizFormMixed");
+  const formMix2 = document.getElementById("quizFormMix2");
 
-  const headerMixed = document.createElement("div");
- headerMixed.className = "case-grid case-header mixed-grid";
+  const headerMix2 = document.createElement("div");
+  headerMix2.className = "case-grid case-header mixed-grid";
 
-  headerMixed.innerHTML = `
+  headerMix2.innerHTML = `
     <div>Perusmuoto</div>
     <div>Partitiivi</div>
     <div>Genetiivi</div>
     <div>S-Mihin? (-Vn / -hVn / -seen)</div>
   `;
 
-  formMixed.appendChild(headerMixed);
+  formMix2.appendChild(headerMix2);
 
-  questionsMixed.forEach((q, index) => {
+  questionsMix2.forEach((q, index) => {
     const div = document.createElement("div");
 
     div.className = "case-grid case-row mixed-grid";
-
-    div.id = `qmixed-${index}`;
+    div.id = `qmix2-${index}`;
 
     div.innerHTML = `
       <div class="base-word">${index + 1}. ${q.base}</div>
 
       <div class="input-block">
-        <input type="text" id="inputMixed-${index}_partitive" placeholder="Partitiivi">
-        <div id="feedbackMixed-${index}_partitive"></div>
+        <input type="text" id="inputMix2-${index}_partitive" placeholder="Partitiivi">
+        <div id="feedbackMix2-${index}_partitive"></div>
       </div>
 
       <div class="input-block">
-        <input type="text" id="inputMixed-${index}_genitive" placeholder="Genetiivi">
-        <div id="feedbackMixed-${index}_genitive"></div>
+        <input type="text" id="inputMix2-${index}_genitive" placeholder="Genetiivi">
+        <div id="feedbackMix2-${index}_genitive"></div>
       </div>
 
       <div class="input-block">
-        <input type="text" id="inputMixed-${index}_illative" placeholder="S-Mihin? (-Vn / -hVn / -seen)">
-        <div id="feedbackMixed-${index}_illative"></div>
+        <input type="text" id="inputMix2-${index}_illative" placeholder="S-Mihin? (-Vn / -hVn / -seen)">
+        <div id="feedbackMix2-${index}_illative"></div>
       </div>
     `;
 
-    formMixed.appendChild(div);
+    formMix2.appendChild(div);
   });
 
-  function normalizeMixed(str) {
+  function normalizeMix2(str) {
     return str
       .trim()
       .toLowerCase()
       .replace(/\s+/g, " ");
   }
 
-  function checkOneMixed(feedbackId, userAnswer, correctAnswer, label) {
+  function checkOneMix2(feedbackId, userAnswer, correctAnswer, label) {
     const feedback = document.getElementById(feedbackId);
     feedback.innerHTML = "";
 
@@ -1988,38 +1987,38 @@
     }
   }
 
-  function checkAnswersMixed() {
+  function checkAnswersMix2() {
     let score = 0;
 
-    questionsMixed.forEach((q, i) => {
-      const inputPartitive = normalizeMixed(document.getElementById(`inputMixed-${i}_partitive`).value);
-      const inputGenitive = normalizeMixed(document.getElementById(`inputMixed-${i}_genitive`).value);
-      const inputIllative = normalizeMixed(document.getElementById(`inputMixed-${i}_illative`).value);
+    questionsMix2.forEach((q, i) => {
+      const inputPartitive = normalizeMix2(document.getElementById(`inputMix2-${i}_partitive`).value);
+      const inputGenitive = normalizeMix2(document.getElementById(`inputMix2-${i}_genitive`).value);
+      const inputIllative = normalizeMix2(document.getElementById(`inputMix2-${i}_illative`).value);
 
-      score += checkOneMixed(
-        `feedbackMixed-${i}_partitive`,
+      score += checkOneMix2(
+        `feedbackMix2-${i}_partitive`,
         inputPartitive,
-        normalizeMixed(q.partitive),
+        normalizeMix2(q.partitive),
         "Partitiivi"
       );
 
-      score += checkOneMixed(
-        `feedbackMixed-${i}_genitive`,
+      score += checkOneMix2(
+        `feedbackMix2-${i}_genitive`,
         inputGenitive,
-        normalizeMixed(q.genitive),
+        normalizeMix2(q.genitive),
         "Genetiivi"
       );
 
-      score += checkOneMixed(
-        `feedbackMixed-${i}_illative`,
+      score += checkOneMix2(
+        `feedbackMix2-${i}_illative`,
         inputIllative,
-        normalizeMixed(q.illative),
+        normalizeMix2(q.illative),
         "S-Mihin? (-Vn / -hVn / -seen)"
       );
     });
 
-    const total = questionsMixed.length * 3;
-    document.getElementById("resultMixed").innerText = `Sait ${score} oikein ${total}:stä.`;
+    const total = questionsMix2.length * 3;
+    document.getElementById("resultMix2").innerText = `Sait ${score} oikein ${total}:stä.`;
   }
 </script>
     
