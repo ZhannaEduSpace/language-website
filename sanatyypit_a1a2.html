@@ -1269,7 +1269,7 @@
 
     <hr style="margin: 40px 0;">
 
-<p><strong>Harjoitus 9. Sanatyyppi: -as/-äs/-is → aa/ää/ii. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p><strong>Harjoitus 9. Sanatyyppi: -as/-äs/-is → aa/ää/ii -sanat. Kirjoita sanat oikeassa muodossa.</strong></p>
 <p>Esimerkiksi: <em>taivas → taivasta, taivaan, taivaassa</em></p>
 <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
@@ -1389,6 +1389,131 @@
 
     const total = questionsAs.length * 3;
     document.getElementById("resultAs").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 10. Sanatyyppi: -in → ime -sanat. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p>Esimerkiksi: <em>avain → avainta, avaimen, avaimessa</em></p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizFormIn"></form>
+
+<button type="button" onclick="checkAnswersIn()">Tarkista vastaukset</button>
+<div class="result" id="resultIn"></div>
+
+<script>
+  const questionsIn = [
+    { base: "puhelin", partitive: "puhelinta", genitive: "puhelimen", inessive: "puhelimessa" },
+    { base: "soitin", partitive: "soitinta", genitive: "soittimen", inessive: "soittimessa" },
+    { base: "keitin", partitive: "keitintä", genitive: "keittimen", inessive: "keittimessä" },
+    { base: "eläin", partitive: "eläintä", genitive: "eläimen", inessive: "eläimessä" },
+    { base: "pakastin", partitive: "pakastinta", genitive: "pakastimen", inessive: "pakastimessa" }
+  ];
+
+  const formIn = document.getElementById("quizFormIn");
+
+  const headerIn = document.createElement("div");
+  headerIn.className = "case-grid case-header";
+  headerIn.innerHTML = `
+    <div>Perusmuoto</div>
+    <div>Partitiivi</div>
+    <div>Genetiivi</div>
+    <div>S-Missä? (-ssa/-ssä)</div>
+  `;
+  formIn.appendChild(headerIn);
+
+  questionsIn.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "case-grid case-row";
+    div.id = `qin-${index}`;
+
+    div.innerHTML = `
+      <div class="base-word">${index + 1}. ${q.base}</div>
+
+      <div class="input-block">
+        <input type="text" id="inputIn-${index}_partitive" placeholder="Partitiivi">
+        <div id="feedbackIn-${index}_partitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputIn-${index}_genitive" placeholder="Genetiivi">
+        <div id="feedbackIn-${index}_genitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputIn-${index}_inessive" placeholder="S-Missä? (-ssa/-ssä)">
+        <div id="feedbackIn-${index}_inessive"></div>
+      </div>
+    `;
+
+    formIn.appendChild(div);
+  });
+
+  function normalizeIn(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkOneIn(feedbackId, userAnswer, correctAnswer, label) {
+    const feedback = document.getElementById(feedbackId);
+    feedback.innerHTML = "";
+
+    const msg = document.createElement("div");
+
+    if (userAnswer === "") {
+      msg.className = "incorrect";
+      msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      feedback.appendChild(msg);
+      return 0;
+    } else if (userAnswer === correctAnswer) {
+      msg.className = "correct";
+      msg.textContent = `✅ Oikein: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 1;
+    } else {
+      msg.className = "incorrect";
+      msg.textContent = `❌ ${label} väärin. Oikea: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 0;
+    }
+  }
+
+  function checkAnswersIn() {
+    let score = 0;
+
+    questionsIn.forEach((q, i) => {
+      const inputPartitive = normalizeIn(document.getElementById(`inputIn-${i}_partitive`).value);
+      const inputGenitive = normalizeIn(document.getElementById(`inputIn-${i}_genitive`).value);
+      const inputInessive = normalizeIn(document.getElementById(`inputIn-${i}_inessive`).value);
+
+      score += checkOneIn(
+        `feedbackIn-${i}_partitive`,
+        inputPartitive,
+        normalizeIn(q.partitive),
+        "Partitiivi"
+      );
+
+      score += checkOneIn(
+        `feedbackIn-${i}_genitive`,
+        inputGenitive,
+        normalizeIn(q.genitive),
+        "Genetiivi"
+      );
+
+      score += checkOneIn(
+        `feedbackIn-${i}_inessive`,
+        inputInessive,
+        normalizeIn(q.inessive),
+        "S-Missä? (-ssa/-ssä)"
+      );
+    });
+
+    const total = questionsIn.length * 3;
+    document.getElementById("resultIn").innerText = `Sait ${score} oikein ${total}:stä.`;
   }
 </script>
     
