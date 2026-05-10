@@ -2021,6 +2021,137 @@
     document.getElementById("resultMix2").innerText = `Sait ${score} oikein ${total}:stä.`;
   }
 </script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 15. Sekalaiset sanatyypit: -in → ime ja -nut/-nyt → nee. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p>Esimerkiksi: <em>avain → avainta, avaimen, avaimeen</em></p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizFormMix3"></form>
+
+<button type="button" onclick="checkAnswersMix3()">Tarkista vastaukset</button>
+<div class="result" id="resultMix3"></div>
+
+<script>
+  const questionsMix3 = [
+    { base: "tulostin", partitive: "tulostinta", genitive: "tulostimen", illative: "tulostimeen" },
+    { base: "lämmitin", partitive: "lämmitintä", genitive: "lämmittimen", illative: "lämmittimeen" },
+    { base: "rakastunut", partitive: "rakastunutta", genitive: "rakastuneen", illative: "rakastuneeseen" },
+    { base: "kadonnut", partitive: "kadonnutta", genitive: "kadonneen", illative: "kadonneeseen" },
+    { base: "sytytin", partitive: "sytytintä", genitive: "sytyttimen", illative: "sytyttimeen" },
+    { base: "oppinut", partitive: "oppinutta", genitive: "oppineen", illative: "oppineeseen" },
+    { base: "leimasin", partitive: "leimasinta", genitive: "leimasimen", illative: "leimasimeen" },
+    { base: "mennyt", partitive: "mennyttä", genitive: "menneen", illative: "menneeseen" }
+  ];
+
+  const formMix3 = document.getElementById("quizFormMix3");
+
+  const headerMix3 = document.createElement("div");
+  headerMix3.className = "case-grid case-header mixed-grid";
+
+  headerMix3.innerHTML = `
+    <div>Perusmuoto</div>
+    <div>Partitiivi</div>
+    <div>Genetiivi</div>
+    <div>S-Mihin? (-Vn / -hVn / -seen)</div>
+  `;
+
+  formMix3.appendChild(headerMix3);
+
+  questionsMix3.forEach((q, index) => {
+    const div = document.createElement("div");
+
+    div.className = "case-grid case-row mixed-grid";
+    div.id = `qmix3-${index}`;
+
+    div.innerHTML = `
+      <div class="base-word">${index + 1}. ${q.base}</div>
+
+      <div class="input-block">
+        <input type="text" id="inputMix3-${index}_partitive" placeholder="Partitiivi">
+        <div id="feedbackMix3-${index}_partitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputMix3-${index}_genitive" placeholder="Genetiivi">
+        <div id="feedbackMix3-${index}_genitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputMix3-${index}_illative" placeholder="S-Mihin? (-Vn / -hVn / -seen)">
+        <div id="feedbackMix3-${index}_illative"></div>
+      </div>
+    `;
+
+    formMix3.appendChild(div);
+  });
+
+  function normalizeMix3(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkOneMix3(feedbackId, userAnswer, correctAnswer, label) {
+    const feedback = document.getElementById(feedbackId);
+    feedback.innerHTML = "";
+
+    const msg = document.createElement("div");
+
+    if (userAnswer === "") {
+      msg.className = "incorrect";
+      msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      feedback.appendChild(msg);
+      return 0;
+    } else if (userAnswer === correctAnswer) {
+      msg.className = "correct";
+      msg.textContent = `✅ Oikein: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 1;
+    } else {
+      msg.className = "incorrect";
+      msg.textContent = `❌ ${label} väärin. Oikea: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 0;
+    }
+  }
+
+  function checkAnswersMix3() {
+    let score = 0;
+
+    questionsMix3.forEach((q, i) => {
+      const inputPartitive = normalizeMix3(document.getElementById(`inputMix3-${i}_partitive`).value);
+      const inputGenitive = normalizeMix3(document.getElementById(`inputMix3-${i}_genitive`).value);
+      const inputIllative = normalizeMix3(document.getElementById(`inputMix3-${i}_illative`).value);
+
+      score += checkOneMix3(
+        `feedbackMix3-${i}_partitive`,
+        inputPartitive,
+        normalizeMix3(q.partitive),
+        "Partitiivi"
+      );
+
+      score += checkOneMix3(
+        `feedbackMix3-${i}_genitive`,
+        inputGenitive,
+        normalizeMix3(q.genitive),
+        "Genetiivi"
+      );
+
+      score += checkOneMix3(
+        `feedbackMix3-${i}_illative`,
+        inputIllative,
+        normalizeMix3(q.illative),
+        "S-Mihin? (-Vn / -hVn / -seen)"
+      );
+    });
+
+    const total = questionsMix3.length * 3;
+    document.getElementById("resultMix3").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
     
   </div>
   
