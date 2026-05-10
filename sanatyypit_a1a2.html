@@ -1141,6 +1141,131 @@
     document.getElementById("resultMixed").innerText = `Sait ${score} oikein ${total}:stä.`;
   }
 </script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 8. Sanatyyppi: -us, -ys, -os, -ös, -es → kse -sanat. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p>Esimerkiksi: <em>vastaus → vastausta, vastauksen, vastauksessa</em></p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizFormUs"></form>
+
+<button type="button" onclick="checkAnswersUs()">Tarkista vastaukset</button>
+<div class="result" id="resultUs"></div>
+
+<script>
+  const questionsUs = [
+    { base: "merkitys", partitive: "merkitystä", genitive: "merkityksen", inessive: "merkityksessä" },
+    { base: "tarjous", partitive: "tarjousta", genitive: "tarjouksen", inessive: "tarjouksessa" },
+    { base: "kerros", partitive: "kerrosta", genitive: "kerroksen", inessive: "kerroksessa" },
+    { base: "näytös", partitive: "näytöstä", genitive: "näytöksen", inessive: "näytöksessä" },
+    { base: "juures", partitive: "juuresta", genitive: "juureksen", inessive: "juureksessa" }
+  ];
+
+  const formUs = document.getElementById("quizFormUs");
+
+  const headerUs = document.createElement("div");
+  headerUs.className = "case-grid case-header";
+  headerUs.innerHTML = `
+    <div>Perusmuoto</div>
+    <div>Partitiivi</div>
+    <div>Genetiivi</div>
+    <div>S-Missä? (-ssa/-ssä)</div>
+  `;
+  formUs.appendChild(headerUs);
+
+  questionsUs.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "case-grid case-row";
+    div.id = `qus-${index}`;
+
+    div.innerHTML = `
+      <div class="base-word">${index + 1}. ${q.base}</div>
+
+      <div class="input-block">
+        <input type="text" id="inputUs-${index}_partitive" placeholder="Partitiivi">
+        <div id="feedbackUs-${index}_partitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputUs-${index}_genitive" placeholder="Genetiivi">
+        <div id="feedbackUs-${index}_genitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputUs-${index}_inessive" placeholder="S-Missä? (-ssa/-ssä)">
+        <div id="feedbackUs-${index}_inessive"></div>
+      </div>
+    `;
+
+    formUs.appendChild(div);
+  });
+
+  function normalizeUs(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkOneUs(feedbackId, userAnswer, correctAnswer, label) {
+    const feedback = document.getElementById(feedbackId);
+    feedback.innerHTML = "";
+
+    const msg = document.createElement("div");
+
+    if (userAnswer === "") {
+      msg.className = "incorrect";
+      msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      feedback.appendChild(msg);
+      return 0;
+    } else if (userAnswer === correctAnswer) {
+      msg.className = "correct";
+      msg.textContent = `✅ Oikein: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 1;
+    } else {
+      msg.className = "incorrect";
+      msg.textContent = `❌ ${label} väärin. Oikea: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 0;
+    }
+  }
+
+  function checkAnswersUs() {
+    let score = 0;
+
+    questionsUs.forEach((q, i) => {
+      const inputPartitive = normalizeUs(document.getElementById(`inputUs-${i}_partitive`).value);
+      const inputGenitive = normalizeUs(document.getElementById(`inputUs-${i}_genitive`).value);
+      const inputInessive = normalizeUs(document.getElementById(`inputUs-${i}_inessive`).value);
+
+      score += checkOneUs(
+        `feedbackUs-${i}_partitive`,
+        inputPartitive,
+        normalizeUs(q.partitive),
+        "Partitiivi"
+      );
+
+      score += checkOneUs(
+        `feedbackUs-${i}_genitive`,
+        inputGenitive,
+        normalizeUs(q.genitive),
+        "Genetiivi"
+      );
+
+      score += checkOneUs(
+        `feedbackUs-${i}_inessive`,
+        inputInessive,
+        normalizeUs(q.inessive),
+        "S-Missä? (-ssa/-ssä)"
+      );
+    });
+
+    const total = questionsUs.length * 3;
+    document.getElementById("resultUs").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
     
   </div>
   
