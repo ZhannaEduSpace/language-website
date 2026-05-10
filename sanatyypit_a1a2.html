@@ -1516,6 +1516,130 @@
     document.getElementById("resultIn").innerText = `Sait ${score} oikein ${total}:stä.`;
   }
 </script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 11. Sanatyyppi: -ut/-yt → ue/ye -sanat. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p>Esimerkiksi: <em>kevyt → kevyttä, kevyen, kevyessä</em></p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizFormUt"></form>
+
+<button type="button" onclick="checkAnswersUt()">Tarkista vastaukset</button>
+<div class="result" id="resultUt"></div>
+
+<script>
+  const questionsUt = [
+    { base: "lyhyt", partitive: "lyhyttä", genitive: "lyhyen", inessive: "lyhyessä" },
+    { base: "ohut", partitive: "ohutta", genitive: "ohuen", inessive: "ohuessa" },
+    { base: "ehyt", partitive: "ehyttä", genitive: "ehyen", inessive: "ehyessä" },
+    { base: "olut", partitive: "olutta", genitive: "oluen", inessive: "oluessa" }
+  ];
+
+  const formUt = document.getElementById("quizFormUt");
+
+  const headerUt = document.createElement("div");
+  headerUt.className = "case-grid case-header";
+  headerUt.innerHTML = `
+    <div>Perusmuoto</div>
+    <div>Partitiivi</div>
+    <div>Genetiivi</div>
+    <div>S-Missä? (-ssa/-ssä)</div>
+  `;
+  formUt.appendChild(headerUt);
+
+  questionsUt.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "case-grid case-row";
+    div.id = `qut-${index}`;
+
+    div.innerHTML = `
+      <div class="base-word">${index + 1}. ${q.base}</div>
+
+      <div class="input-block">
+        <input type="text" id="inputUt-${index}_partitive" placeholder="Partitiivi">
+        <div id="feedbackUt-${index}_partitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputUt-${index}_genitive" placeholder="Genetiivi">
+        <div id="feedbackUt-${index}_genitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputUt-${index}_inessive" placeholder="S-Missä? (-ssa/-ssä)">
+        <div id="feedbackUt-${index}_inessive"></div>
+      </div>
+    `;
+
+    formUt.appendChild(div);
+  });
+
+  function normalizeUt(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkOneUt(feedbackId, userAnswer, correctAnswer, label) {
+    const feedback = document.getElementById(feedbackId);
+    feedback.innerHTML = "";
+
+    const msg = document.createElement("div");
+
+    if (userAnswer === "") {
+      msg.className = "incorrect";
+      msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      feedback.appendChild(msg);
+      return 0;
+    } else if (userAnswer === correctAnswer) {
+      msg.className = "correct";
+      msg.textContent = `✅ Oikein: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 1;
+    } else {
+      msg.className = "incorrect";
+      msg.textContent = `❌ ${label} väärin. Oikea: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 0;
+    }
+  }
+
+  function checkAnswersUt() {
+    let score = 0;
+
+    questionsUt.forEach((q, i) => {
+      const inputPartitive = normalizeUt(document.getElementById(`inputUt-${i}_partitive`).value);
+      const inputGenitive = normalizeUt(document.getElementById(`inputUt-${i}_genitive`).value);
+      const inputInessive = normalizeUt(document.getElementById(`inputUt-${i}_inessive`).value);
+
+      score += checkOneUt(
+        `feedbackUt-${i}_partitive`,
+        inputPartitive,
+        normalizeUt(q.partitive),
+        "Partitiivi"
+      );
+
+      score += checkOneUt(
+        `feedbackUt-${i}_genitive`,
+        inputGenitive,
+        normalizeUt(q.genitive),
+        "Genetiivi"
+      );
+
+      score += checkOneUt(
+        `feedbackUt-${i}_inessive`,
+        inputInessive,
+        normalizeUt(q.inessive),
+        "S-Missä? (-ssa/-ssä)"
+      );
+    });
+
+    const total = questionsUt.length * 3;
+    document.getElementById("resultUt").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
     
   </div>
   
