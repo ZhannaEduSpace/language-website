@@ -1266,6 +1266,131 @@
     document.getElementById("resultUs").innerText = `Sait ${score} oikein ${total}:stä.`;
   }
 </script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 9. Sanatyyppi: -as/-äs/-is → aa/ää/ii. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p>Esimerkiksi: <em>taivas → taivasta, taivaan, taivaassa</em></p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizFormAs"></form>
+
+<button type="button" onclick="checkAnswersAs()">Tarkista vastaukset</button>
+<div class="result" id="resultAs"></div>
+
+<script>
+  const questionsAs = [
+    { base: "pensas", partitive: "pensasta", genitive: "pensaan", inessive: "pensaassa" },
+    { base: "valmis", partitive: "valmista", genitive: "valmiin", inessive: "valmiissa" },
+    { base: "lounas", partitive: "lounasta", genitive: "lounaan", inessive: "lounaassa" },
+    { base: "kaunis", partitive: "kaunista", genitive: "kauniin", inessive: "kauniissa" },
+    { base: "sairas", partitive: "sairasta", genitive: "sairaan", inessive: "sairaassa" }
+  ];
+
+  const formAs = document.getElementById("quizFormAs");
+
+  const headerAs = document.createElement("div");
+  headerAs.className = "case-grid case-header";
+  headerAs.innerHTML = `
+    <div>Perusmuoto</div>
+    <div>Partitiivi</div>
+    <div>Genetiivi</div>
+    <div>S-Missä? (-ssa/-ssä)</div>
+  `;
+  formAs.appendChild(headerAs);
+
+  questionsAs.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "case-grid case-row";
+    div.id = `qas-${index}`;
+
+    div.innerHTML = `
+      <div class="base-word">${index + 1}. ${q.base}</div>
+
+      <div class="input-block">
+        <input type="text" id="inputAs-${index}_partitive" placeholder="Partitiivi">
+        <div id="feedbackAs-${index}_partitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputAs-${index}_genitive" placeholder="Genetiivi">
+        <div id="feedbackAs-${index}_genitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputAs-${index}_inessive" placeholder="S-Missä? (-ssa/-ssä)">
+        <div id="feedbackAs-${index}_inessive"></div>
+      </div>
+    `;
+
+    formAs.appendChild(div);
+  });
+
+  function normalizeAs(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkOneAs(feedbackId, userAnswer, correctAnswer, label) {
+    const feedback = document.getElementById(feedbackId);
+    feedback.innerHTML = "";
+
+    const msg = document.createElement("div");
+
+    if (userAnswer === "") {
+      msg.className = "incorrect";
+      msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      feedback.appendChild(msg);
+      return 0;
+    } else if (userAnswer === correctAnswer) {
+      msg.className = "correct";
+      msg.textContent = `✅ Oikein: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 1;
+    } else {
+      msg.className = "incorrect";
+      msg.textContent = `❌ ${label} väärin. Oikea: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 0;
+    }
+  }
+
+  function checkAnswersAs() {
+    let score = 0;
+
+    questionsAs.forEach((q, i) => {
+      const inputPartitive = normalizeAs(document.getElementById(`inputAs-${i}_partitive`).value);
+      const inputGenitive = normalizeAs(document.getElementById(`inputAs-${i}_genitive`).value);
+      const inputInessive = normalizeAs(document.getElementById(`inputAs-${i}_inessive`).value);
+
+      score += checkOneAs(
+        `feedbackAs-${i}_partitive`,
+        inputPartitive,
+        normalizeAs(q.partitive),
+        "Partitiivi"
+      );
+
+      score += checkOneAs(
+        `feedbackAs-${i}_genitive`,
+        inputGenitive,
+        normalizeAs(q.genitive),
+        "Genetiivi"
+      );
+
+      score += checkOneAs(
+        `feedbackAs-${i}_inessive`,
+        inputInessive,
+        normalizeAs(q.inessive),
+        "S-Missä? (-ssa/-ssä)"
+      );
+    });
+
+    const total = questionsAs.length * 3;
+    document.getElementById("resultAs").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
     
   </div>
   
