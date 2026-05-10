@@ -1890,6 +1890,151 @@
     document.getElementById("resultUus").innerText = `Sait ${score} oikein ${total}:stä.`;
   }
 </script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 14. Sekalaiset sanatyypit: -us/-ys/-os/-ös/-es → kse ja -as/-äs/-is → aa/ää/ii. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p>Esimerkiksi: <em>vastaus → vastausta, vastauksen, vastaukseen</em></p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizFormMix2"></form>
+
+<button type="button" onclick="checkAnswersMix2()">Tarkista vastaukset</button>
+<div class="result" id="resultMix2"></div>
+
+<script>
+  const questionsMix2 = [
+    { base: "avaus", partitive: "avausta", genitive: "avauksen", illative: "avaukseen" },
+    { base: "rikas", partitive: "rikasta", genitive: "rikkaan", illative: "rikkaaseen" },
+    { base: "menestys", partitive: "menestystä", genitive: "menestyksen", illative: "menestykseen" },
+    { base: "kaunis", partitive: "kaunista", genitive: "kauniin", illative: "kauniiseen" },
+    { base: "opetus", partitive: "opetusta", genitive: "opetuksen", illative: "opetukseen" },
+    { base: "päätös", partitive: "päätöstä", genitive: "päätöksen", illative: "päätökseen" },
+    { base: "lounas", partitive: "lounasta", genitive: "lounaan", illative: "lounaaseen" },
+    { base: "vihannes", partitive: "vihannesta", genitive: "vihanneksen", illative: "vihannekseen" }
+  ];
+
+  const formMix2 = document.getElementById("quizFormMix2");
+
+  const headerMix2 = document.createElement("div");
+  headerMix2.className = "case-grid-wide case-header";
+  headerMix2.innerHTML = `
+    <div>Perusmuoto</div>
+    <div>Partitiivi</div>
+    <div>Genetiivi</div>
+    <div>Mihin? (-Vn / -seen / -siin)</div>
+  `;
+  formMix2.appendChild(headerMix2);
+
+  questionsMix2.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "case-grid-wide case-row";
+    div.id = `qmix2-${index}`;
+
+    div.innerHTML = `
+      <div class="base-word">${index + 1}. ${q.base}</div>
+
+      <div class="input-block">
+        <input type="text" id="inputMix2-${index}_partitive" placeholder="Partitiivi">
+        <div id="feedbackMix2-${index}_partitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputMix2-${index}_genitive" placeholder="Genetiivi">
+        <div id="feedbackMix2-${index}_genitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputMix2-${index}_illative" placeholder="Mihin?">
+        <div id="feedbackMix2-${index}_illative"></div>
+      </div>
+    `;
+
+    formMix2.appendChild(div);
+  });
+
+  function normalizeMix2(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkOneMix2(feedbackId, userAnswer, correctAnswer, label) {
+    const feedback = document.getElementById(feedbackId);
+    feedback.innerHTML = "";
+
+    const msg = document.createElement("div");
+
+    if (userAnswer === "") {
+      msg.className = "incorrect";
+      msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      feedback.appendChild(msg);
+      return 0;
+    } else if (userAnswer === correctAnswer) {
+      msg.className = "correct";
+      msg.textContent = `✅ Oikein: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 1;
+    } else {
+      msg.className = "incorrect";
+      msg.textContent = `❌ ${label} väärin. Oikea: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 0;
+    }
+  }
+
+  function checkAnswersMix2() {
+    let score = 0;
+
+    questionsMix2.forEach((q, i) => {
+      const inputPartitive = normalizeMix2(document.getElementById(`inputMix2-${i}_partitive`).value);
+      const inputGenitive = normalizeMix2(document.getElementById(`inputMix2-${i}_genitive`).value);
+      const inputIllative = normalizeMix2(document.getElementById(`inputMix2-${i}_illative`).value);
+
+      score += checkOneMix2(
+        `feedbackMix2-${i}_partitive`,
+        inputPartitive,
+        normalizeMix2(q.partitive),
+        "Partitiivi"
+      );
+
+      score += checkOneMix2(
+        `feedbackMix2-${i}_genitive`,
+        inputGenitive,
+        normalizeMix2(q.genitive),
+        "Genetiivi"
+      );
+
+      score += checkOneMix2(
+        `feedbackMix2-${i}_illative`,
+        inputIllative,
+        normalizeMix2(q.illative),
+        "Mihin?"
+      );
+    });
+
+    const total = questionsMix2.length * 3;
+    document.getElementById("resultMix2").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
+
+<style>
+  .case-grid-wide {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr 1.15fr 1.45fr;
+    gap: 12px;
+    align-items: start;
+    margin-bottom: 14px;
+  }
+
+  @media (max-width: 700px) {
+    .case-grid-wide {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+  }
+</style>
     
   </div>
   
