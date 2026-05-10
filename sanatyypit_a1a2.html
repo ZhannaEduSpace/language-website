@@ -371,6 +371,10 @@
     box-sizing: border-box;
     padding: 7px 9px;
   }
+  
+  .mixed-grid {
+  grid-template-columns: 1fr 1.2fr 1.2fr 1.6fr;
+}
 
   @media (max-width: 700px) {
     .case-grid {
@@ -1064,7 +1068,7 @@
       </div>
 
       <div class="input-block">
-        <input type="text" id="inputMixed-${index}_illative" placeholder="S-Mihin?">
+        <input type="text" id="inputMixed-${index}_illative" placeholder="S-Mihin? (-Vn / -hVn / -seen)">
         <div id="feedbackMixed-${index}_illative"></div>
       </div>
     `;
