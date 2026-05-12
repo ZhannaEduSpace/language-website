@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Language Task: little / a little / few / a few (A1-A2)</title>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8TVEFE4L1Y');
+</script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+     header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 2000;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .dropbtn,
+    .dropdown-content a {
+    text-decoration: none;
+    }
+
+   .dropbtn:hover,
+   .dropdown-content a:hover {
+   text-decoration: none;
+   }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .container {
+      padding: 10px 40px;
+      max-width: 750px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 1.8em;
+    }
+    p {
+      font-size: 1.1em;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    .question span {
+      display: inline-block;
+      min-width: 60%;
+    }
+    input[type="text"] {
+      padding: 8px 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 130px;
+      max-width: 90%;
+    }
+    .correct-answer {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .result {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 30px;
+    }
+    button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #163d5c;
+    }
+  </style>
+
+  <link rel="stylesheet" href="/side-menu.css">
+
+</head>
+<body>
+
+   <header>
+    <a href="index.html" class="logo">LanguageEduSpace</a>
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">𑁔</a>
+        <div class="dropdown-content">
+          <a href="english.html"><strong>English</strong></a>
+          <a href="english_grammar.html">Grammar</a>
+          <a href="english_vocabulary.html">Vocabulary</a>
+          <a href="english_listening.html">Listening</a>
+          <a href="russian.html"><strong>Русский</strong></a>
+          <a href="suomi.html"><strong>Suomi</strong></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div id="side-menu-placeholder"></div>
+
+  <div class="container">
+  <h2>💡 Little / A little / Few / A few (A1-A2)</h2>
+
+<p>Exercise 1. Complete the sentences with <strong>little</strong>, <strong>a little</strong>, <strong>few</strong> or <strong>a few</strong>.<br>
+ Example: We still have <em>a few</em> eggs for breakfast.</p>
+
+
+<form id="quizForm2"></form>
+
+<button type="button" onclick="checkAnswers2()">Check Answers</button>
+<div class="result" id="result2"></div>
+
+<script>
+  const questions2 = [
+    { q: 'There is ___ juice in the fridge. You can have some.', a: ['a little'] },
+    { q: 'I have ___ friends at school. I’m happy there.', a: ['a few'] },
+    { q: 'We have ___ bread. We need to buy more.', a: ['little'] },
+    { q: 'There are ___ apples on the table. Take one.', a: ['a few'] },
+    { q: 'She has ___ money. She can’t buy the bag.', a: ['little'] },
+    { q: 'I speak ___ English. I can talk to tourists.', a: ['a little'] },
+    { q: 'There is ___ water left. Please buy a bottle.', a: ['little'] },
+    { q: 'There are ___ people in the shop today. It’s very quiet.', a: ['few'] },
+    { q: 'I have ___ time now. We can talk.', a: ['a little'] },
+    { q: 'TThere is ___ rice left. We can eat it for dinner.', a: ['a little'] },
+    { q: 'We have ___ bananas left, so we need to buy more.', a: ['few'] },
+    { q: 'We have ___ oranges. Let’s make juice.', a: ['a few'] }
+  ];
+
+  const form2 = document.getElementById('quizForm2');
+
+  questions2.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.id = `q2-${i+1}-block`;
+
+    const parts = item.q.split('___');
+    let sentenceHTML = '';
+
+    if (parts.length === 2) {
+      sentenceHTML = `${parts[0]} <input type="text" id="input2-${i}"> ${parts[1]}`;
+    }
+
+    div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+    form2.appendChild(div);
+  });
+
+  function checkAnswers2() {
+    let score = 0;
+
+    questions2.forEach((item, i) => {
+      const input = document.getElementById(`input2-${i}`);
+      const userAnswer = normalize(input.value);
+      const correctAnswers = item.a.map(answer => normalize(answer));
+
+      let feedback = document.querySelector(`#q2-${i+1}-block .correct-answer`);
+      if (feedback) feedback.remove();
+
+      const result = document.createElement('div');
+      result.classList.add('correct-answer');
+
+      if (userAnswer === '') {
+        result.classList.add('incorrect');
+        result.textContent = '⚠️ Please enter an answer first!';
+      } else if (correctAnswers.includes(userAnswer)) {
+        result.classList.add('correct');
+        result.textContent = `✅ Correct! Answer: ${item.a[0]}`;
+        score++;
+      } else {
+        result.classList.add('incorrect');
+        result.textContent = `❌ Not quite. Correct answer: ${item.a.join(' / ')}`;
+      }
+
+      document.getElementById(`q2-${i+1}-block`).appendChild(result);
+    });
+
+    document.getElementById('result2').innerText = `You got ${score} out of ${questions2.length} correct.`;
+  }
+</script>
+    
+      <hr style="margin: 40px 0;">
+
+  <p>Exercise 2. Complete the sentences with <strong>little</strong>, <strong>a little</strong>, <strong>few</strong> or <strong>a few</strong>.<br>
+ Example: We still have <em>a few</em> eggs for breakfast.</p>
+
+
+  <form id="quizForm"></form>
+
+  <button type="button" onclick="checkAnswers()">Check Answers</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const questions = [
+      { q: 'Anna has ___ free time because she works a lot.', a: ['little'] },
+      { q: 'I have ___ friends in my new school, so I often feel lonely.', a: ['few'] },
+      { q: 'There is ___ soup left in the pot. Would you like some?', a: ['a little'] },
+      { q: 'I know ___ words in Italian, like “pizza” and “ciao”.', a: ['a few'] },
+      { q: 'There is ___ cheese in the fridge. We can make sandwiches.', a: ['a little'] },
+      { q: 'I have ___ pencils in my bag. You can take one.', a: ['a few'] },
+      { q: 'My dad drinks ___ coffee because he doesn’t like it very much.', a: ['little'] },
+      { q: 'She has ___ dresses for the party. She can choose one.', a: ['a few'] },
+      { q: 'There is ___ snow in winter in this country. It is usually warm.', a: ['little'] },
+      { q: 'I know ___ English, so I can answer simple questions.', a: ['a little'] },
+      { q: 'There is ___ tea in the cup. You can drink it.', a: ['a little'] },
+      { q: 'There are ___ cars on the road early in the morning because people are sleeping.', a: ['few'] }
+    ];
+
+    const form = document.getElementById('quizForm');
+
+    questions.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'question';
+      div.id = `q${i+1}-block`;
+
+      const parts = item.q.split('___');
+      let sentenceHTML = '';
+
+      if (parts.length === 2) {
+        sentenceHTML = `${parts[0]} <input type="text" id="input${i}"> ${parts[1]}`;
+      } else {
+        sentenceHTML = item.q.replace(item.a[0], `<input type="text" id="input${i}">`);
+      }
+
+      div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+      form.appendChild(div);
+    });
+
+    function normalize(str) {
+      return str
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ');
+    }
+
+    function checkAnswers() {
+      let score = 0;
+
+      questions.forEach((item, i) => {
+        const input = document.getElementById(`input${i}`);
+        const userAnswer = normalize(input.value);
+        const correctAnswers = item.a.map(answer => normalize(answer));
+
+        let feedback = document.querySelector(`#q${i+1}-block .correct-answer`);
+        if (feedback) feedback.remove();
+
+        const result = document.createElement('div');
+        result.classList.add('correct-answer');
+
+        if (userAnswer === '') {
+  result.classList.add('incorrect');
+  result.textContent = '⚠️ Please enter an answer first!';
+} else if (correctAnswers.includes(userAnswer)) {
+  result.classList.add('correct');
+  result.textContent = `✅ Correct! Answer: ${item.a[0]}`;
+  score++;
+} else {
+  result.classList.add('incorrect');
+  result.textContent = `❌ Not quite. Correct answer: ${item.a.join(' / ')}`;
+}
+
+        document.getElementById(`q${i+1}-block`).appendChild(result);
+      });
+
+      document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
+    }
+  </script>
+
+      <hr style="margin: 40px 0;">
+
+<p>Exercise 3. Complete the sentences with <strong>little</strong>, <strong>a little</strong>, <strong>few</strong> or <strong>a few</strong>.<br>
+ Example: We still have <em>a few</em> eggs for breakfast.</p>
+
+<form id="quizForm3"></form>
+
+<button type="button" onclick="checkAnswers3()">Check Answers</button>
+<div class="result" id="result3"></div>
+
+<script>
+  const questions3 = [
+    { q: 'We still have ___ coffee left. There’s enough for two more cups.', a: ['a little'] },
+    { q: 'Sarah has ___ close friends, so she never feels lonely.', a: ['a few'] },
+    { q: 'The village gets ___ rain in summer. The fields become very dry.', a: ['little'] },
+    { q: 'I have ___ money with me. I can buy us both lunch.', a: ['a little] },
+    { q: 'Unfortunately, he has ___ patience with customers. He gets angry very quickly.', a: ['little'] },
+    { q: 'Luckily, we still have ___ chairs available for your guests.', a: ['a few'] },
+    { q: 'I need to hurry — I have ___ time before the lesson starts.', a: ['little'] },
+    { q: 'He knows ___ words in Spanish, but he can’t really hold a conversation.', a: ['a few'] },
+    { q: 'There are ___ good programmes on TV tonight, so let’s watch a film instead.', a: ['few'] },
+    { q: 'My grandfather has ___ energy these days, so he rests a lot.', a: ['little'] },
+    { q: 'The hotel was surprisingly quiet because ___ tourists visit this town in November.', a: ['few'] },
+    { q: 'We’ve got ___ sandwiches left if anyone is still hungry.', a: ['a few'] }
+  ];
+
+  const form3 = document.getElementById('quizForm3');
+
+  questions3.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.id = `q3-${i+1}-block`;
+
+    const parts = item.q.split('___');
+    let sentenceHTML = '';
+
+    if (parts.length === 2) {
+      sentenceHTML = `${parts[0]} <input type="text" id="input3-${i}"> ${parts[1]}`;
+    }
+
+    div.innerHTML = `<label>${i + 1}. ${sentenceHTML}</label>`;
+    form3.appendChild(div);
+  });
+
+  function checkAnswers3() {
+    let score = 0;
+
+    questions3.forEach((item, i) => {
+      const input = document.getElementById(`input3-${i}`);
+      const userAnswer = normalize(input.value);
+      const correctAnswers = item.a.map(answer => normalize(answer));
+
+      let feedback = document.querySelector(`#q3-${i+1}-block .correct-answer`);
+      if (feedback) feedback.remove();
+
+      const result = document.createElement('div');
+      result.classList.add('correct-answer');
+
+      if (userAnswer === '') {
+        result.classList.add('incorrect');
+        result.textContent = '⚠️ Please enter an answer first!';
+      } else if (correctAnswers.includes(userAnswer)) {
+        result.classList.add('correct');
+        result.textContent = `✅ Correct! Answer: ${item.a.join(' / ')}`;
+        score++;
+      } else {
+        result.classList.add('incorrect');
+        result.textContent = `❌ Not quite. Correct answer: ${item.a.join(' / ')}`;
+      }
+
+      document.getElementById(`q3-${i+1}-block`).appendChild(result);
+    });
+
+    document.getElementById('result3').innerText = `You got ${score} out of ${questions3.length} correct.`;
+  }
+</script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+<!-- HorizontalAd -->
+<ins class="adsbygoogle"
+     style="display:block; margin-top:30px;"
+     data-ad-client="ca-pub-6488869290074237"
+     data-ad-slot="5202889392"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  </div>
+  
+  <div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
+    });
+</script>
+
+  <script>
+  fetch('/side-menu-en.html')
+    .then(r => r.text())
+    .then(html => document.getElementById('side-menu-placeholder').innerHTML = html);
+</script>
+
+</body>
+</html>
