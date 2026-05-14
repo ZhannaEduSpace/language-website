@@ -209,7 +209,118 @@
   <div class="container">
  <h2>💡 Sanatyypit (A2)</h2>
 
-<p><strong>Harjoitus 1. Sanatyyppi: -as/-äs/-is → aa/ää/ii -sanat. Kirjoita sanat oikeassa muodossa.</strong></p>
+    <p><strong>Harjoitus 1. </strong>Kirjoita sanat oikeassa muodossa <strong>(-e, -nen, i → i, i → e (P + -tä/-ta), i → e, -si sanat).</strong></p>
+<p>Esimerkiksi: <em>mökki → mökkiä, mökin, mökkiin</em></p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizFormA1Review"></form>
+
+<button type="button" onclick="checkAnswersA1Review()">Tarkista vastaukset</button>
+<div class="result" id="resultA1Review"></div>
+
+<script>
+  const questionsA1Review = [
+    { base: "koe", partitive: "koetta", genitive: "kokeen", illative: "kokeeseen" },
+    { base: "nainen", partitive: "naista", genitive: "naisen", illative: "naiseen" },
+    { base: "posti", partitive: "postia", genitive: "postin", illative: "postiin" },
+    { base: "sieni", partitive: "sientä", genitive: "sienen", illative: "sieneen" },
+    { base: "joki", partitive: "jokea", genitive: "joen", illative: "jokeen" },
+    { base: "täysi", partitive: "täyttä", genitive: "täyden", illative: "täyteen" }
+  ];
+
+  const formA1Review = document.getElementById("quizFormA1Review");
+
+  const headerA1Review = document.createElement("div");
+  headerA1Review.className = "case-grid case-header mixed-grid";
+
+  headerA1Review.innerHTML = `
+    <div>Perusmuoto</div>
+    <div>Partitiivi</div>
+    <div>Genetiivi</div>
+    <div>S-Mihin? (-Vn / -hVn / -seen)</div>
+  `;
+
+  formA1Review.appendChild(headerA1Review);
+
+  questionsA1Review.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "case-grid case-row mixed-grid";
+    div.id = `qa1review-${index}`;
+
+    div.innerHTML = `
+      <div class="base-word">${index + 1}. ${q.base}</div>
+
+      <div class="input-block">
+        <input type="text" id="inputA1Review-${index}_partitive" placeholder="Partitiivi">
+        <div id="feedbackA1Review-${index}_partitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputA1Review-${index}_genitive" placeholder="Genetiivi">
+        <div id="feedbackA1Review-${index}_genitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputA1Review-${index}_illative" placeholder="S-Mihin? (-Vn / -hVn / -seen)">
+        <div id="feedbackA1Review-${index}_illative"></div>
+      </div>
+    `;
+
+    formA1Review.appendChild(div);
+  });
+
+  function normalizeA1Review(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkOneA1Review(feedbackId, userAnswer, correctAnswer, label) {
+    const feedback = document.getElementById(feedbackId);
+    feedback.innerHTML = "";
+
+    const msg = document.createElement("div");
+
+    if (userAnswer === "") {
+      msg.className = "incorrect";
+      msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      feedback.appendChild(msg);
+      return 0;
+    } else if (userAnswer === correctAnswer) {
+      msg.className = "correct";
+      msg.textContent = `✅ Oikein: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 1;
+    } else {
+      msg.className = "incorrect";
+      msg.textContent = `❌ ${label} väärin. Oikea: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 0;
+    }
+  }
+
+  function checkAnswersA1Review() {
+    let score = 0;
+
+    questionsA1Review.forEach((q, i) => {
+      const inputPartitive = normalizeA1Review(document.getElementById(`inputA1Review-${i}_partitive`).value);
+      const inputGenitive = normalizeA1Review(document.getElementById(`inputA1Review-${i}_genitive`).value);
+      const inputIllative = normalizeA1Review(document.getElementById(`inputA1Review-${i}_illative`).value);
+
+      score += checkOneA1Review(`feedbackA1Review-${i}_partitive`, inputPartitive, normalizeA1Review(q.partitive), "Partitiivi");
+      score += checkOneA1Review(`feedbackA1Review-${i}_genitive`, inputGenitive, normalizeA1Review(q.genitive), "Genetiivi");
+      score += checkOneA1Review(`feedbackA1Review-${i}_illative`, inputIllative, normalizeA1Review(q.illative), "S-Mihin?");
+    });
+
+    const total = questionsA1Review.length * 3;
+    document.getElementById("resultA1Review").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
+
+<hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 2.</strong> Sanatyyppi: <strong>-as/-äs/-is → aa/ää/ii.</strong> Kirjoita sanat oikeassa muodossa.</p>
 <p>Esimerkiksi: <em>taivas → taivasta, taivaan, taivaassa</em></p>
 <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
@@ -406,7 +517,7 @@
 
     <hr style="margin: 40px 0;">
 
-<p><strong>Harjoitus 2. Sanatyyppi: -in → ime -sanat. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p><strong>Harjoitus 3.</strong> Sanatyyppi: <strong>-in → ime.</strong> Kirjoita sanat oikeassa muodossa.</p>
 <p>Esimerkiksi: <em>avain → avainta, avaimen, avaimessa</em></p>
 <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
@@ -531,7 +642,7 @@
 
     <hr style="margin: 40px 0;">
 
-<p><strong>Harjoitus 3. Sanatyyppi: -ut/-yt → ue/ye -sanat. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p><strong>Harjoitus 4.</strong> Sanatyyppi: <strong>-ut/-yt → ue/ye.</strong> Kirjoita sanat oikeassa muodossa.</p>
 <p>Esimerkiksi: <em>kevyt → kevyttä, kevyen, kevyessä</em></p>
 <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
@@ -655,7 +766,7 @@
 
 <hr style="margin: 40px 0;">
 
-<p><strong>Harjoitus 4. Sanatyyppi: -nut/-nyt → nee -sanat. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p><strong>Harjoitus 5.</strong> Sanatyyppi: <strong>-nut/-nyt → nee.</strong> Kirjoita sanat oikeassa muodossa.</p>
 <p>Esimerkiksi: <em>kadonnut → kadonnutta, kadonneen, kadonneessa</em></p>
 <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
@@ -780,7 +891,7 @@
 
     <hr style="margin: 40px 0;">
 
-<p><strong>Harjoitus 5. Sanatyyppi: vokaali + -us/-ys → ude/yde -sanat. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p><strong>Harjoitus 6.</strong> Sanatyyppi: <strong>vokaali + -us/-ys → ude/yde.</strong> Kirjoita sanat oikeassa muodossa.</p>
 <p>Esimerkiksi: <em>pituus → pituutta, pituuden, pituudessa</em></p>
 <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
@@ -905,7 +1016,7 @@
 
     <hr style="margin: 40px 0;">
 
-<p><strong>Harjoitus 6. Sekalaiset sanatyypit: -us/-ys/-os/-ös/-es → kse ja -as/-äs/-is → aa/ää/ii. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p><strong>Harjoitus 7.</strong> Sekalaiset sanatyypit: <strong>-us/-ys/-os/-ös/-es → kse</strong> ja <strong>-as/-äs/-is → aa/ää/ii</strong>. Kirjoita sanat oikeassa muodossa.</p>
 <p>Esimerkiksi: <em>vastaus → vastausta, vastauksen, vastaukseen</em></p>
 <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
@@ -1036,7 +1147,7 @@
 
     <hr style="margin: 40px 0;">
 
-<p><strong>Harjoitus 7. Sekalaiset sanatyypit: -in → ime ja -nut/-nyt → nee. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p><strong>Harjoitus 8.</strong> Sekalaiset sanatyypit: <strong>-in → ime</strong> ja <strong>-nut/-nyt → nee.</strong> Kirjoita sanat oikeassa muodossa.</p>
 <p>Esimerkiksi: <em>avain → avainta, avaimen, avaimeen</em></p>
 <p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
 
