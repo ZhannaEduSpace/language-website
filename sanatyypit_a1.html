@@ -1267,6 +1267,229 @@
   }
 </script>
 
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 9. Eri sanatyypit: -si ja -us/-ys/-os/-ös/-es → kse. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p>Esimerkiksi: <em>vastaus → vastausta, vastauksen, vastaukseen</em></p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizFormMixed2"></form>
+
+<button type="button" onclick="checkAnswersMixed2()">Tarkista vastaukset</button>
+<div class="result" id="resultMixed2"></div>
+
+<script>
+  const questionsMixed2 = [
+    { base: "kausi", partitive: "kautta", genitive: "kauden", illative: "kauteen" },
+    { base: "eines", partitive: "einestä", genitive: "eineksen", illative: "einekseen" },
+    { base: "ostos", partitive: "ostosta", genitive: "ostoksen", illative: "ostokseen" },
+    { base: "kuusi (6)", partitive: "kuutta", genitive: "kuuden", illative: "kuuteen" },
+    { base: "rakennus", partitive: "rakennusta", genitive: "rakennuksen", illative: "rakennukseen" },
+    { base: "kokemus", partitive: "kokemusta", genitive: "kokemuksen", illative: "kokemukseen" }
+  ];
+
+  const formMixed2 = document.getElementById("quizFormMixed2");
+
+  const headerMixed2 = document.createElement("div");
+  headerMixed2.className = "case-grid case-header mixed-grid";
+
+  headerMixed2.innerHTML = `
+    <div>Perusmuoto</div>
+    <div>Partitiivi</div>
+    <div>Genetiivi</div>
+    <div>S-Mihin? (-Vn / -hVn / -seen)</div>
+  `;
+
+  formMixed2.appendChild(headerMixed2);
+
+  questionsMixed2.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "case-grid case-row mixed-grid";
+    div.id = `qmixed2-${index}`;
+
+    div.innerHTML = `
+      <div class="base-word">${index + 1}. ${q.base}</div>
+
+      <div class="input-block">
+        <input type="text" id="inputMixed2-${index}_partitive" placeholder="Partitiivi">
+        <div id="feedbackMixed2-${index}_partitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputMixed2-${index}_genitive" placeholder="Genetiivi">
+        <div id="feedbackMixed2-${index}_genitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputMixed2-${index}_illative" placeholder="S-Mihin? (-Vn / -hVn / -seen)">
+        <div id="feedbackMixed2-${index}_illative"></div>
+      </div>
+    `;
+
+    formMixed2.appendChild(div);
+  });
+
+  function normalizeMixed2(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkOneMixed2(feedbackId, userAnswer, correctAnswer, label) {
+    const feedback = document.getElementById(feedbackId);
+    feedback.innerHTML = "";
+
+    const msg = document.createElement("div");
+
+    if (userAnswer === "") {
+      msg.className = "incorrect";
+      msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      feedback.appendChild(msg);
+      return 0;
+    } else if (userAnswer === correctAnswer) {
+      msg.className = "correct";
+      msg.textContent = `✅ Oikein: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 1;
+    } else {
+      msg.className = "incorrect";
+      msg.textContent = `❌ ${label} väärin. Oikea: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 0;
+    }
+  }
+
+  function checkAnswersMixed2() {
+    let score = 0;
+
+    questionsMixed2.forEach((q, i) => {
+      const inputPartitive = normalizeMixed2(document.getElementById(`inputMixed2-${i}_partitive`).value);
+      const inputGenitive = normalizeMixed2(document.getElementById(`inputMixed2-${i}_genitive`).value);
+      const inputIllative = normalizeMixed2(document.getElementById(`inputMixed2-${i}_illative`).value);
+
+      score += checkOneMixed2(`feedbackMixed2-${i}_partitive`, inputPartitive, normalizeMixed2(q.partitive), "Partitiivi");
+      score += checkOneMixed2(`feedbackMixed2-${i}_genitive`, inputGenitive, normalizeMixed2(q.genitive), "Genetiivi");
+      score += checkOneMixed2(`feedbackMixed2-${i}_illative`, inputIllative, normalizeMixed2(q.illative), "S-Mihin?");
+    });
+
+    const total = questionsMixed2.length * 3;
+    document.getElementById("resultMixed2").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Harjoitus 10. Eri sanatyypit: i → i, i → e (P + -tä/-ta), i → e. Kirjoita sanat oikeassa muodossa.</strong></p>
+<p>Esimerkiksi: <em>mökki → mökkiä, mökin, mökkiin</em></p>
+<p><strong>⚠️ Huom!:</strong> Käytä suomalaisia kirjaimia (ä, ö)</p>
+
+<form id="quizFormMixed3"></form>
+
+<button type="button" onclick="checkAnswersMixed3()">Tarkista vastaukset</button>
+<div class="result" id="resultMixed3"></div>
+
+<script>
+  const questionsMixed3 = [
+    { base: "puoli", partitive: "puolta", genitive: "puolen", illative: "puoleen" },
+    { base: "kivi", partitive: "kiveä", genitive: "kiven", illative: "kiveen" },
+    { base: "orkesteri", partitive: "orkesteria", genitive: "orkesterin", illative: "orkesteriin" },
+    { base: "ääni", partitive: "ääntä", genitive: "äänen", illative: "ääneen" },
+    { base: "torni", partitive: "tornia", genitive: "tornin", illative: "torniin" },
+    { base: "lehti", partitive: "lehteä", genitive: "lehden", illative: "lehteen" }
+  ];
+
+  const formMixed3 = document.getElementById("quizFormMixed3");
+
+  const headerMixed3 = document.createElement("div");
+  headerMixed3.className = "case-grid case-header mixed-grid";
+
+  headerMixed3.innerHTML = `
+    <div>Perusmuoto</div>
+    <div>Partitiivi</div>
+    <div>Genetiivi</div>
+    <div>S-Mihin? (-Vn / -hVn / -seen)</div>
+  `;
+
+  formMixed3.appendChild(headerMixed3);
+
+  questionsMixed3.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "case-grid case-row mixed-grid";
+    div.id = `qmixed3-${index}`;
+
+    div.innerHTML = `
+      <div class="base-word">${index + 1}. ${q.base}</div>
+
+      <div class="input-block">
+        <input type="text" id="inputMixed3-${index}_partitive" placeholder="Partitiivi">
+        <div id="feedbackMixed3-${index}_partitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputMixed3-${index}_genitive" placeholder="Genetiivi">
+        <div id="feedbackMixed3-${index}_genitive"></div>
+      </div>
+
+      <div class="input-block">
+        <input type="text" id="inputMixed3-${index}_illative" placeholder="S-Mihin? (-Vn / -hVn / -seen)">
+        <div id="feedbackMixed3-${index}_illative"></div>
+      </div>
+    `;
+
+    formMixed3.appendChild(div);
+  });
+
+  function normalizeMixed3(str) {
+    return str
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function checkOneMixed3(feedbackId, userAnswer, correctAnswer, label) {
+    const feedback = document.getElementById(feedbackId);
+    feedback.innerHTML = "";
+
+    const msg = document.createElement("div");
+
+    if (userAnswer === "") {
+      msg.className = "incorrect";
+      msg.textContent = "⚠️ Kirjoita ensin vastaus!";
+      feedback.appendChild(msg);
+      return 0;
+    } else if (userAnswer === correctAnswer) {
+      msg.className = "correct";
+      msg.textContent = `✅ Oikein: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 1;
+    } else {
+      msg.className = "incorrect";
+      msg.textContent = `❌ ${label} väärin. Oikea: ${correctAnswer}`;
+      feedback.appendChild(msg);
+      return 0;
+    }
+  }
+
+  function checkAnswersMixed3() {
+    let score = 0;
+
+    questionsMixed3.forEach((q, i) => {
+      const inputPartitive = normalizeMixed3(document.getElementById(`inputMixed3-${i}_partitive`).value);
+      const inputGenitive = normalizeMixed3(document.getElementById(`inputMixed3-${i}_genitive`).value);
+      const inputIllative = normalizeMixed3(document.getElementById(`inputMixed3-${i}_illative`).value);
+
+      score += checkOneMixed3(`feedbackMixed3-${i}_partitive`, inputPartitive, normalizeMixed3(q.partitive), "Partitiivi");
+      score += checkOneMixed3(`feedbackMixed3-${i}_genitive`, inputGenitive, normalizeMixed3(q.genitive), "Genetiivi");
+      score += checkOneMixed3(`feedbackMixed3-${i}_illative`, inputIllative, normalizeMixed3(q.illative), "S-Mihin?");
+    });
+
+    const total = questionsMixed3.length * 3;
+    document.getElementById("resultMixed3").innerText = `Sait ${score} oikein ${total}:stä.`;
+  }
+</script>
+    
+
        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
 <!-- HorizontalAd -->
