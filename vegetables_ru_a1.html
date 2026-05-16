@@ -488,28 +488,30 @@
   });
 
   function checkChoice3(index, selected) {
-    const feedback = document.getElementById(`feedback3-${index}`);
-    const correct = questions3[index].answer;
+  const feedback = document.getElementById(`feedback3-${index}`);
+  const correct = questions3[index].answer;
 
-    if (!selected) {
-  msg.className = "incorrect";
-  msg.textContent = "⚠️ Сначала выберите хотя бы один вариант.";
-} else if (selected.value === q.answer) {
-  msg.className = "correct";
-  msg.textContent = `✅ Правильно: ${q.answer}`;
-  score++;
-} else {
-  msg.className = "incorrect";
-  msg.textContent = `❌ Неправильно. Правильный ответ: ${q.answer}`;
-}
+  if (selected === correct) {
+    feedback.className = "correct";
+    feedback.textContent = `✅ Правильно: ${correct}`;
 
-      if (!answered3[index]) {
-        answered3[index] = true;
-      }
+    if (!answered3[index]) {
+      score3++;
+      answered3[index] = true;
     }
 
-    document.getElementById("result3").innerText = `Правильно: ${score3} из ${questions3.length}.`;
+  } else {
+    feedback.className = "incorrect";
+    feedback.textContent = `❌ Неправильно. Правильный ответ: ${correct}`;
+
+    if (!answered3[index]) {
+      answered3[index] = true;
+    }
   }
+
+  document.getElementById("result3").innerText =
+    `Правильно: ${score3} из ${questions3.length}.`;
+}
 </script>
 
   </div>
