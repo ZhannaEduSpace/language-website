@@ -245,7 +245,7 @@
 
   <div class="container">
   <h2>🍆 Овощи (A1)</h2>
- <p><strong>Вы́берите пра́вильное сло́во.</strong><br>
+ <p><strong>Задание 1. Вы́берите пра́вильное сло́во.</strong><br>
   В ка́ждом вопро́се то́лько оди́н пра́вильный отве́т.</p>
 
   <form id="quizForm"></form>
@@ -330,6 +330,82 @@
       document.getElementById('result').innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
     }
   </script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Задание 2. Напишите название овоща. Первая буква дана как подсказка.</strong><br>
+Пример: 🥕 → <em><strong>м</strong>орковь</em></p>
+
+<h2>Что это?</h2>
+
+<form id="quizForm2"></form>
+
+<button type="button" onclick="checkAnswers2()">Проверить ответы</button>
+<div class="result" id="result2"></div>
+
+<script>
+  const questions2 = [
+    { emoji: '<span class="emoji">🥦</span>', answer: "брокколи" },
+    { emoji: '<span class="emoji">🧅</span>', answer: "лук" },
+    { emoji: '<span class="emoji">🍅</span>', answer: "помидор" },
+    { emoji: '<span class="emoji">🥒</span>', answer: "огурец" },
+    { emoji: '<span class="emoji">🌽</span>', answer: "кукуруза" },
+    { emoji: '<span class="emoji">🍆</span>', answer: "баклажан" },
+    { emoji: '<span class="emoji">🧄</span>', answer: "чеснок" }
+  ];
+
+  const form2 = document.getElementById("quizForm2");
+
+  questions2.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q2-${index}`;
+
+    const placeholder = q.answer.charAt(0) + "...";
+
+    div.innerHTML = `
+      <label>${q.emoji} → <input type="text" id="input2-${index}" placeholder="${placeholder}"></label>
+    `;
+
+    form2.appendChild(div);
+  });
+
+  function normalize2(str) {
+    return str.trim().toLowerCase();
+  }
+
+  function checkAnswers2() {
+    let score = 0;
+
+    questions2.forEach((q, i) => {
+      const userInput = normalize2(document.getElementById(`input2-${i}`).value);
+      const correct = normalize2(q.answer);
+      const block = document.getElementById(`q2-${i}`);
+
+      let old = block.querySelector(".correct, .incorrect");
+      if (old) old.remove();
+
+      const msg = document.createElement("div");
+
+      if (userInput === "") {
+        msg.className = "incorrect";
+        msg.textContent = "⚠️ Сначала введите ответ.";
+      } else if (userInput === correct) {
+        msg.className = "correct";
+        msg.textContent = `✅ Правильно: ${q.answer}`;
+        score++;
+      } else {
+        msg.className = "incorrect";
+        msg.textContent = `❌ Неправильно. Правильный ответ: ${q.answer}`;
+      }
+
+      block.appendChild(msg);
+    });
+
+    document.getElementById("result2").innerText =
+      `Вы правильно ответили на ${score} из ${questions2.length} вопросов.`;
+  }
+</script>
 
   </div>
   
