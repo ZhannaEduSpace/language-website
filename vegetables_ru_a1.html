@@ -191,6 +191,27 @@
     overflow-y: visible !important;
   }
 }
+    .options-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+}
+
+.options-row label {
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .options-row {
+    display: block;
+  }
+
+  .options-row label {
+    display: block;
+    margin-bottom: 8px;
+  }
+}
   </style>
   
   <link rel="stylesheet" href="/side-menu.css">
@@ -272,9 +293,12 @@
       const div = document.createElement('div');
       div.className = 'quiz-question';
       div.id = `q${i+1}-block`;
-      div.innerHTML = `<h3>${i+1}. ${item.q}</h3>` +
-        item.options.map(opt => `
-          <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+     div.innerHTML = `<h3>${i+1}. ${item.q}</h3>
+  <div class="options-row">
+    ${item.options.map(opt => `
+      <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label>
+    `).join('')}
+  </div>`;
       form.appendChild(div);
     });
 
