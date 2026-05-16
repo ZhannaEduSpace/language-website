@@ -212,6 +212,31 @@
     margin-bottom: 8px;
   }
 }
+    .vegetable-question {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+.vegetable-question label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.vegetable-question input[type="text"] {
+  font-size: 1em;
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 200px;
+  max-width: 90%;
+  margin-left: 8px;
+}
+
+.vegetable-question .emoji {
+  font-size: 2em;
+  margin-right: 10px;
+}
   </style>
   
   <link rel="stylesheet" href="/side-menu.css">
@@ -358,13 +383,13 @@
 
   questions2.forEach((q, index) => {
     const div = document.createElement("div");
-    div.className = "question";
+    div.className = "vegetable-question";
     div.id = `q2-${index}`;
 
     const placeholder = q.answer.charAt(0) + "...";
 
     div.innerHTML = `
-      <label>${q.emoji} → <input type="text" id="input2-${index}" placeholder="${placeholder}"></label>
+      <label><span class="emoji">${q.emoji}</span> → <input type="text" id="input2-${index}" placeholder="${placeholder}"></label>
     `;
 
     form2.appendChild(div);
