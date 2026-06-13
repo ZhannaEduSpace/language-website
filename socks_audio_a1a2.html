@@ -484,6 +484,99 @@
   }
   </script>
 
+    <hr style="margin: 40px 0;">
+    
+ <p><strong>🎧 Задание 4. Летняя одежда (аудирование) (A1–A2)</strong></p>
+<p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+<audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/summer_clothes_ru_a1a2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm4">
+  <div class="question" id="q12-block">
+    <p>1. Како́е вре́мя го́да лю́бит Макси́м?</p>
+    <label><input type="radio" name="q12" value="A"> Зи́му</label><br>
+    <label><input type="radio" name="q12" value="B"> Ле́то</label><br>
+    <label><input type="radio" name="q12" value="C"> О́сень</label><br>
+  </div>
+
+  <div class="question" id="q13-block">
+    <p>2. Ско́лько футбо́лок есть у Макси́ма?</p>
+    <label><input type="radio" name="q13" value="A"> Две</label><br>
+    <label><input type="radio" name="q13" value="B"> Три</label><br>
+    <label><input type="radio" name="q13" value="C"> Четы́ре</label><br>
+  </div>
+
+  <div class="question" id="q14-block">
+    <p>3. Како́го цве́та люби́мая футбо́лка Макси́ма?</p>
+    <label><input type="radio" name="q14" value="A"> Зелёная</label><br>
+    <label><input type="radio" name="q14" value="B"> Бе́лая</label><br>
+    <label><input type="radio" name="q14" value="C"> Си́няя</label><br>
+  </div>
+
+  <div class="question" id="q15-block">
+    <p>4. Что Макси́м обы́чно надева́ет, когда́ гуля́ет в па́рке?</p>
+    <label><input type="radio" name="q15" value="A"> Ку́ртку и боти́нки</label><br>
+    <label><input type="radio" name="q15" value="B"> Шо́рты и кроссо́вки</label><br>
+    <label><input type="radio" name="q15" value="C"> Пла́тье и санда́лии</label><br>
+  </div>
+
+  <div class="question" id="q16-block">
+    <p>5. Почему́ Макси́м не лю́бит носи́ть ку́ртки ле́том?</p>
+    <label><input type="radio" name="q16" value="A"> Они́ ста́рые</label><br>
+    <label><input type="radio" name="q16" value="B"> Они́ дороги́е</label><br>
+    <label><input type="radio" name="q16" value="C"> Ему́ жа́рко</label><br>
+  </div>
+
+  <button type="button" onclick="checkAnswers4()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result4"></div>
+
+<script>
+  const answers4 = {
+    q12: { correct: "B", text: "Ле́то" },
+    q13: { correct: "B", text: "Три" },
+    q14: { correct: "A", text: "Зелёная" },
+    q15: { correct: "B", text: "Шо́рты и кроссо́вки" },
+    q16: { correct: "C", text: "Ему́ жа́рко" }
+  };
+
+  function checkAnswers4() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers4)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText = '⚠️ Сначала выберите вариант ответа.';
+      } else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result4').innerText =
+      `Вы правильно ответили на ${score} из 5 вопросов.`;
+  }
+</script>
+
+
      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
 <!-- HorizontalAd -->
