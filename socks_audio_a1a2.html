@@ -318,8 +318,93 @@
     </script>
     
 <hr style="margin: 40px 0;">
+
+   html
+<p><strong> 🎧 Задание 2. Женская одежда (аудирование) (A1–A2)</strong></p>
+<p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+<audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/dress_skirt_ru_a1a2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm3">
+  <div class="question" id="q8-block">
+    <p>1. Кто така́я Мари́я?</p>
+    <label><input type="radio" name="q8" value="A"> Сестра́ Ли́зы</label><br>
+    <label><input type="radio" name="q8" value="B"> Подру́га Ли́зы</label><br>
+    <label><input type="radio" name="q8" value="C"> Учи́тельница Ли́зы</label><br>
+  </div>
+
+  <div class="question" id="q9-block">
+    <p>2. Что лю́бят носи́ть Ли́за и Мари́я?</p>
+    <label><input type="radio" name="q9" value="A"> Ю́бки и пла́тья</label><br>
+    <label><input type="radio" name="q9" value="B"> Брю́ки и ку́ртки</label><br>
+    <label><input type="radio" name="q9" value="C"> Футбо́лки и шо́рты</label><br>
+  </div>
+
+  <div class="question" id="q10-block">
+    <p>3. Како́го цве́та ю́бка Лизы?</p>
+    <label><input type="radio" name="q10" value="A"> Кра́сная</label><br>
+    <label><input type="radio" name="q10" value="B"> Бе́лая</label><br>
+    <label><input type="radio" name="q10" value="C"> Си́няя</label><br>
+  </div>
+
+  <div class="question" id="q11-block">
+    <p>4. Что Ли́за наде́ла сего́дня?</p>
+    <label><input type="radio" name="q11" value="A"> Ю́бку</label><br>
+    <label><input type="radio" name="q11" value="B"> Пла́тье</label><br>
+    <label><input type="radio" name="q11" value="C"> Ку́ртку</label><br>
+  </div>
+
+  <button type="button" onclick="checkAnswers3()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result3"></div>
+
+<script>
+  const answers3 = {
+    q8: { correct: "B", text: "Подру́га Ли́зы" },
+    q9: { correct: "A", text: "Ю́бки и пла́тья" },
+    q10: { correct: "C", text: "Си́няя" },
+    q11: { correct: "A", text: "Ю́бку" }
+  };
+
+  function checkAnswers3() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers3)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText = '⚠️ Сначала выберите вариант ответа.';
+      } else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result3').innerText =
+      `Вы правильно ответили на ${score} из 4 вопросов.`;
+  }
+</script>
+
+<hr style="margin: 40px 0;">
   
-      <p><strong> Задание 2. Удобная одежда (аудирование) (A1–A2)</strong></p>
+      <p><strong> Задание 3. Удобная одежда (аудирование) (A1–A2)</strong></p>
 <p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
 
 <audio controls controlsList="nodownload noplaybackrate">
