@@ -576,6 +576,90 @@
   }
 </script>
 
+      <hr style="margin: 40px 0;">
+  
+<p><strong>🎧 Задание 5 Покупка одежды (аудирование) (A1–A2)</strong></p>
+<p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+<audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/shopping_for_clothes_ru_a1a2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm5">
+  <div class="question" id="q17-block">
+    <p>1. Что де́вушка хоте́ла купи́ть в магази́не?</p>
+    <label><input type="radio" name="q17" value="A"> Ке́пку</label><br>
+    <label><input type="radio" name="q17" value="B"> Ку́ртку</label><br>
+    <label><input type="radio" name="q17" value="C"> Футбо́лку</label><br>
+  </div>
+
+  <div class="question" id="q18-block">
+    <p>2. Каку́ю футбо́лку она́ купи́ла?</p>
+    <label><input type="radio" name="q18" value="A"> Бе́лую</label><br>
+    <label><input type="radio" name="q18" value="B"> Ро́зовую</label><br>
+    <label><input type="radio" name="q18" value="C"> Си́нюю</label><br>
+  </div>
+
+  <div class="question" id="q19-block">
+    <p>3. Что ещё уви́дела де́вушка в магази́не?</p>
+    <label><input type="radio" name="q19" value="A"> Пла́тье</label><br>
+    <label><input type="radio" name="q19" value="B"> Кроссо́вки</label><br>
+    <label><input type="radio" name="q19" value="C"> Ке́пку</label><br>
+  </div>
+
+  <div class="question" id="q20-block">
+    <p>4. Почему́ она́ купи́ла ке́пку?</p>
+    <label><input type="radio" name="q20" value="A"> Потому́ что она́ была́ дешёвой</label><br>
+    <label><input type="radio" name="q20" value="B"> Потому́ что она́ ей о́чень понра́вилась</label><br>
+    <label><input type="radio" name="q20" value="C"> Потому́ что ста́рая ке́пка была́ ма́ленькой</label><br>
+  </div>
+
+  <button type="button" onclick="checkAnswers5()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result5"></div>
+
+<script>
+  const answers5 = {
+    q17: { correct: "C", text: "Футбо́лку" },
+    q18: { correct: "B", text: "Ро́зовую" },
+    q19: { correct: "C", text: "Ке́пку" },
+    q20: { correct: "B", text: "Потому́ что она́ ей о́чень понра́вилась" }
+  };
+
+  function checkAnswers5() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers5)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText = '⚠️ Сначала выберите вариант ответа.';
+      } else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result5').innerText =
+      `Вы правильно ответили на ${score} из 4 вопросов.`;
+  }
+</script>
+
 
      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
