@@ -663,7 +663,7 @@
        <hr style="margin: 40px 0;">
 
 
-<p><strong>🎧 Зимняя одежда (аудирование) (A1–A2)</strong></p>
+<p><strong>🎧 Задание 6. Зимняя одежда (аудирование) (A1–A2)</strong></p>
 <p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
 
 <audio controls controlsList="nodownload noplaybackrate">
@@ -752,6 +752,90 @@
       `Вы правильно ответили на ${score} из 5 вопросов.`;
   }
 </script>
+
+   
+<h2>🎧 Задание 7. Туфли (A1–A2)</h2>
+<p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+<audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/shoes_ru_a1a2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm7">
+  <div class="question" id="q26-block">
+    <p>1. Какое платье надела Катя на дискотеку?</p>
+    <label><input type="radio" name="q26" value="A"> Красное</label><br>
+    <label><input type="radio" name="q26" value="B"> Синее</label><br>
+    <label><input type="radio" name="q26" value="C"> Белое</label><br>
+  </div>
+
+  <div class="question" id="q27-block">
+    <p>2. Сколько пар туфель было у Кати?</p>
+    <label><input type="radio" name="q27" value="A"> Три</label><br>
+    <label><input type="radio" name="q27" value="B"> Четыре</label><br>
+    <label><input type="radio" name="q27" value="C"> Пять</label><br>
+  </div>
+
+  <div class="question" id="q28-block">
+    <p>3. Как долго Катя танцевала в туфлях?</p>
+    <label><input type="radio" name="q28" value="A"> Полчаса</label><br>
+    <label><input type="radio" name="q28" value="B"> Один час</label><br>
+    <label><input type="radio" name="q28" value="C"> Весь вечер</label><br>
+  </div>
+
+  <div class="question" id="q29-block">
+    <p>4. Почему Катя сняла туфли?</p>
+    <label><input type="radio" name="q29" value="A"> Потому что она купила новые туфли</label><br>
+    <label><input type="radio" name="q29" value="B"> Потому что они были грязными</label><br>
+    <label><input type="radio" name="q29" value="C"> Потому что её ноги устали</label><br>
+  </div>
+
+  <button type="button" onclick="checkAnswers7()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result7"></div>
+
+<script>
+  const answers7 = {
+    q26: { correct: "B", text: "Синее" },
+    q27: { correct: "A", text: "Три" },
+    q28: { correct: "B", text: "Один час" },
+    q29: { correct: "C", text: "Потому что её ноги устали" }
+  };
+
+  function checkAnswers7() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers7)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText = '⚠️ Сначала выберите вариант ответа.';
+      } else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result7').innerText =
+      `Вы правильно ответили на ${score} из 4 вопросов.`;
+  }
+</script>
+
 
 
      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
