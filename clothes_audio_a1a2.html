@@ -660,6 +660,99 @@
   }
 </script>
 
+       <hr style="margin: 40px 0;">
+
+
+<p><strong>🎧 Зимняя одежда (аудирование) (A1–A2)</strong></p>
+<p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+<audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/winterclothes_ru_a1a2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm6">
+  <div class="question" id="q21-block">
+    <p>1. Что То́мас знал о зиме́ в Яку́тске?</p>
+    <label><input type="radio" name="q21" value="A"> Что там обы́чно тепло́</label><br>
+    <label><input type="radio" name="q21" value="B"> Что там ча́сто идёт дождь</label><br>
+    <label><input type="radio" name="q21" value="C"> Что там о́чень хо́лодно</label><br>
+  </div>
+
+  <div class="question" id="q22-block">
+    <p>2. Почему То́мас реши́л наде́ть всю зи́мнюю оде́жду?</p>
+    <label><input type="radio" name="q22" value="A"> Потому что собира́лся на пра́здник</label><br>
+    <label><input type="radio" name="q22" value="B"> Потому что уви́дел температу́ру на у́лице</label><br>
+    <label><input type="radio" name="q22" value="C"> Потому что купи́л но́вую ку́ртку</label><br>
+  </div>
+
+  <div class="question" id="q23-block">
+    <p>3. Что То́мас наде́л на руки?</p>
+    <label><input type="radio" name="q23" value="A"> Носки́ и ботинки́</label><br>
+    <label><input type="radio" name="q23" value="B"> Две шапки</label><br>
+    <label><input type="radio" name="q23" value="C"> Перча́тки и рукави́цы</label><br>
+  </div>
+
+  <div class="question" id="q24-block">
+    <p>4. Ско́лько пар носко́в в конце́ концо́в было на То́масе?</p>
+    <label><input type="radio" name="q24" value="A"> Одна́ па́ра</label><br>
+    <label><input type="radio" name="q24" value="B"> Две па́ры</label><br>
+    <label><input type="radio" name="q24" value="C"> Три па́ры</label><br>
+  </div>
+
+  <div class="question" id="q25-block">
+    <p>5. Что сде́лали друзья, когда́ уви́дели То́маса?</p>
+    <label><input type="radio" name="q25" value="A"> Засмея́лись</label><br>
+    <label><input type="radio" name="q25" value="B"> Ушли́ домо́й</label><br>
+    <label><input type="radio" name="q25" value="C"> Испуга́лись</label><br>
+  </div>
+
+  <button type="button" onclick="checkAnswers6()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result6"></div>
+
+<script>
+  const answers6 = {
+    q21: { correct: "C", text: "Что там о́чень хо́лодно" },
+    q22: { correct: "B", text: "Потому что уви́дел температу́ру на у́лице" },
+    q23: { correct: "C", text: "Перча́тки и рукави́цы" },
+    q24: { correct: "A", text: "Одна́ па́ра" },
+    q25: { correct: "A", text: "Засмея́лись" }
+  };
+
+  function checkAnswers6() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers6)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText = '⚠️ Сначала выберите вариант ответа.';
+      } else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result6').innerText =
+      `Вы правильно ответили на ${score} из 5 вопросов.`;
+  }
+</script>
+
 
      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
@@ -673,6 +766,7 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
 
   </div>
   
