@@ -754,7 +754,7 @@
 </script>
 
    
-<h2>🎧 Задание 7. Туфли (A1–A2)</h2>
+<p><strong>🎧 Задание 7. Туфли (A1–A2)</strong></p>
 <p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
 
 <audio controls controlsList="nodownload noplaybackrate">
@@ -837,6 +837,95 @@
 </script>
 
 
+<p><strong>🎧 Задание 8 (аудирование) (A1–A2)</strong></p>
+<p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+<audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/birthday_clothes_ru_a1a2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm8">
+  <div class="question" id="q30-block">
+    <p>1. Почему́ Оля до́лго выбира́ла что наде́ть?</p>
+    <label><input type="radio" name="q30" value="A"> Ей было сло́жно выбрать между пла́тьем и юбкой</label><br>
+    <label><input type="radio" name="q30" value="B"> Ей о́чень не хотелось идти на пра́здник</label><br>
+    <label><input type="radio" name="q30" value="C"> Она́ хотела выглядеть красиво</label><br>
+  </div>
+
+  <div class="question" id="q31-block">
+    <p>2. Что наде́ла Оля?</p>
+    <label><input type="radio" name="q31" value="A"> Бе́лое пла́тье и зелёные ту́фли</label><br>
+    <label><input type="radio" name="q31" value="B"> Зелёное пла́тье и бе́лые ту́фли</label><br>
+    <label><input type="radio" name="q31" value="C"> Зелёное пла́тье и зелёные ту́фли</label><br>
+  </div>
+
+  <div class="question" id="q32-block">
+    <p>3. Почему́ Оля и Аня удивились?</p>
+    <label><input type="radio" name="q32" value="A"> Они наде́ли одина́ковую оде́жду</label><br>
+    <label><input type="radio" name="q32" value="B"> Оля забыла свои ту́фли</label><br>
+    <label><input type="radio" name="q32" value="C"> Они наде́ли ра́зные пла́тья</label><br>
+  </div>
+
+  <div class="question" id="q33-block">
+    <p>4. Как де́вушки отреагировали на эту ситуа́цию?</p>
+    <label><input type="radio" name="q33" value="A"> Снача́ла они смеялись, а пото́м смутились</label><br>
+    <label><input type="radio" name="q33" value="B"> Снача́ла они смутились, а пото́м расстроились</label><br>
+    <label><input type="radio" name="q33" value="C"> Снача́ла им было немного нело́вко, но пото́м они засмеялись</label><br>
+  </div>
+
+  <div class="question" id="q34-block">
+    <p>5. Что спра́шивали го́сти весь ве́чер?</p>
+    <label><input type="radio" name="q34" value="A"> Мно́го ли у них бра́тьев и сестёр</label><br>
+    <label><input type="radio" name="q34" value="B"> Где они купили ту́фли</label><br>
+    <label><input type="radio" name="q34" value="C"> Не ро́дственники ли они</label><br>
+  </div>
+
+  <button type="button" onclick="checkAnswers8()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result8"></div>
+
+<script>
+  const answers8 = {
+    q30: { correct: "C", text: "Она́ хоте́ла выглядеть красиво" },
+    q31: { correct: "B", text: "Зелёное пла́тье и бе́лые туфли" },
+    q32: { correct: "A", text: "Они наде́ли одина́ковую оде́жду" },
+    q33: { correct: "C", text: "Снача́ла им было немно́го нело́вко, но пото́м они засмеялись" },
+    q34: { correct: "C", text: "Не ро́дственники ли они" }
+  };
+
+  function checkAnswers8() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers8)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText = '⚠️ Сначала выберите вариант ответа.';
+      } else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result8').innerText =
+      `Вы правильно ответили на ${score} из 5 вопросов.`;
+  }
+</script>
 
      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
