@@ -837,7 +837,7 @@
 </script>
 
 
-<p><strong>🎧 Задание 8 (аудирование) (A1–A2)</strong></p>
+<p><strong>🎧 Задание 8. Праздничная одежда(A1–A2)</strong></p>
 <p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
 
 <audio controls controlsList="nodownload noplaybackrate">
@@ -940,6 +940,95 @@
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
+<p><strong>🎧 Задание 9. Школьная фотосессия (A1–A2)</strong></p>
+<p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+<audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/photo_shoot_clothes_ru_a1a2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm9">
+  <div class="question" id="q35-block">
+    <p>1. Когда́ в шко́ле бу́дут де́лать фотогра́фии для шко́льного альбо́ма?</p>
+    <label><input type="radio" name="q35" value="A"> Че́рез не́сколько дней</label><br>
+    <label><input type="radio" name="q35" value="B"> Че́рез не́сколько неде́ль</label><br>
+    <label><input type="radio" name="q35" value="C"> Че́рез не́сколько ме́сяцев</label><br>
+  </div>
+
+  <div class="question" id="q36-block">
+    <p>2. Почему́ Ива́н так до́лго выбира́л оде́жду?</p>
+    <label><input type="radio" name="q36" value="A"> Он не знал, полу́чится ли у него́ пойти́ в шко́лу</label><br>
+    <label><input type="radio" name="q36" value="B"> Он хоте́л купи́ть но́вую оде́жду</label><br>
+    <label><input type="radio" name="q36" value="C"> Он хоте́л хорошо́ вы́глядеть на фотогра́фии</label><br>
+  </div>
+
+  <div class="question" id="q37-block">
+    <p>3. Ско́лько вариа́нтов оде́жды приме́рил Ива́н пе́ред тем, как сде́лать вы́бор?</p>
+    <label><input type="radio" name="q37" value="A"> Два</label><br>
+    <label><input type="radio" name="q37" value="B"> Три</label><br>
+    <label><input type="radio" name="q37" value="C"> Четы́ре</label><br>
+  </div>
+
+  <div class="question" id="q38-block">
+    <p>4. Что Ива́н вы́брал в конце́?</p>
+    <label><input type="radio" name="q38" value="A"> Све́тлую руба́шку и тёмные брю́ки</label><br>
+    <label><input type="radio" name="q38" value="B"> Тёмную руба́шку и све́тлые брю́ки</label><br>
+    <label><input type="radio" name="q38" value="C"> Све́тлую руба́шку и све́тлые брю́ки</label><br>
+  </div>
+
+  <div class="question" id="q39-block">
+    <p>5. Что произошло́ во вре́мя фотогра́фии?</p>
+    <label><input type="radio" name="q39" value="A"> Ива́н закры́л лицо́ рука́ми</label><br>
+    <label><input type="radio" name="q39" value="B"> Ива́н закры́л глаза́</label><br>
+    <label><input type="radio" name="q39" value="C"> Ива́н отверну́лся от ка́меры</label><br>
+  </div>
+
+  <button type="button" onclick="checkAnswers9()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result9"></div>
+
+<script>
+  const answers9 = {
+    q35: { correct: "A", text: "Че́рез не́сколько дней" },
+    q36: { correct: "C", text: "Он хоте́л хорошо́ вы́глядеть на фотогра́фии" },
+    q37: { correct: "B", text: "Три" },
+    q38: { correct: "A", text: "Све́тлую руба́шку и тёмные брю́ки" },
+    q39: { correct: "B", text: "Ива́н закры́л глаза́" }
+  };
+
+  function checkAnswers9() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers9)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText = '⚠️ Сначала выберите вариант ответа.';
+      } else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result9').innerText =
+      `Вы правильно ответили на ${score} из 5 вопросов.`;
+  }
+</script>
 
   </div>
   
