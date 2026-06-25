@@ -927,19 +927,6 @@
   }
 </script>
 
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
-     crossorigin="anonymous"></script>
-<!-- HorizontalAd -->
-<ins class="adsbygoogle"
-     style="display:block; margin-top:30px;"
-     data-ad-client="ca-pub-6488869290074237"
-     data-ad-slot="5202889392"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
 <p><strong>🎧 Задание 9. Школьная фотосессия (A1–A2)</strong></p>
 <p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
 
@@ -1030,6 +1017,110 @@
   }
 </script>
 
+p><strong>🎧 Задание 10. Чемодан для отпуска (A1–A2)</strong></p>
+<p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+<audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/vacation_clothes_ru_a1a2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm10">
+  <div class="question" id="q40-block">
+    <p>1. Почему Ма́ша начала́ собира́ть чемода́н вечером?</p>
+    <label><input type="radio" name="q40" value="A"> Она́ не хотела делать это в последний момент</label><br>
+    <label><input type="radio" name="q40" value="B"> Она́ собира́лась уехать в тот же вечер</label><br>
+    <label><input type="radio" name="q40" value="C"> Она́ не любит собира́ть вещи зара́нее</label><br>
+  </div>
+
+  <div class="question" id="q41-block">
+    <p>2. Зачем Ма́ша положила в чемода́н шляпу?</p>
+    <label><input type="radio" name="q41" value="A"> Она́ хотела сделать пода́рок ма́ме во время поездки</label><br>
+    <label><input type="radio" name="q41" value="B"> Она́ собира́лась пойти с ма́мой в рестора́н</label><br>
+    <label><input type="radio" name="q41" value="C"> Она́ ожида́ла очень тёплую и солнечную погоду</label><br>
+  </div>
+
+  <div class="question" id="q42-block">
+    <p>3. Почему Ма́ша решила взять куртку и ботинки?</p>
+    <label><input type="radio" name="q42" value="A"> Она́ узна́ла, что не все дни будут солнечными</label><br>
+    <label><input type="radio" name="q42" value="B"> Она́ хотела заняться спортом во время поездки</label><br>
+    <label><input type="radio" name="q42" value="C"> Она́ собира́лась поехать в горы</label><br>
+  </div>
+
+  <div class="question" id="q43-block">
+    <p>4. О чём ма́ма напомнила Ма́ше?</p>
+    <label><input type="radio" name="q43" value="A"> О том, что во время поездки можно будет пла́вать</label><br>
+    <label><input type="radio" name="q43" value="B"> О том, что нужно купить новый чемода́н, если вещей много</label><br>
+    <label><input type="radio" name="q43" value="C"> О том, что нужно взять зонт</label><br>
+  </div>
+
+  <div class="question" id="q44-block">
+    <p>5. Почему Ма́ша подумала о втором чемода́не?</p>
+    <label><input type="radio" name="q44" value="A"> Она́ собира́лась купить много сувениров</label><br>
+    <label><input type="radio" name="q44" value="B"> Один чемода́н был сломан</label><br>
+    <label><input type="radio" name="q44" value="C"> Все её вещи не помеща́лись в один чемода́н</label><br>
+  </div>
+
+  <button type="button" onclick="checkAnswers10()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result10"></div>
+
+<script>
+  const answers10 = {
+    q40: { correct: "A", text: "Она́ не хотела делать это в последний момент" },
+    q41: { correct: "C", text: "Она́ ожида́ла очень тёплую и солнечную погоду" },
+    q42: { correct: "A", text: "Она́ узна́ла, что не все дни будут солнечными" },
+    q43: { correct: "A", text: "О том, что во время поездки можно будет пла́вать" },
+    q44: { correct: "C", text: "Все её вещи не помеща́лись в один чемода́н" }
+  };
+
+  function checkAnswers10() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers10)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText = '⚠️ Сначала выберите вариант ответа.';
+      } else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result10').innerText =
+      `Вы правильно ответили на ${score} из 5 вопросов.`;
+  }
+</script>
+
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+<!-- HorizontalAd -->
+<ins class="adsbygoogle"
+     style="display:block; margin-top:30px;"
+     data-ad-client="ca-pub-6488869290074237"
+     data-ad-slot="5202889392"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+    
   </div>
   
     <div id="footer-placeholder"></div>
