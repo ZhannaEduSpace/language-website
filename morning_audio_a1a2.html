@@ -407,6 +407,95 @@
   }
 </script>
 
+    <p><strong>Задание 3. Вечер (аудирование) (A1–A2)</strong></p>
+<p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+<audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/evening_ru_a1a2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm3">
+  <div class="question" id="q3_1-block">
+    <p>1. Во ско́лько она́ зака́нчивает рабо́тать?</p>
+    <label><input type="radio" name="q3_1" value="A"> В 4:00.</label><br>
+    <label><input type="radio" name="q3_1" value="B"> В 5:00.</label><br>
+    <label><input type="radio" name="q3_1" value="C"> В 6:00.</label><br>
+  </div>
+
+  <div class="question" id="q3_2-block">
+    <p>2. Что она́ де́лает по́сле того́, как отдыха́ет и пьёт чай?</p>
+    <label><input type="radio" name="q3_2" value="A"> Встреча́ется с друзья́ми у метро́.</label><br>
+    <label><input type="radio" name="q3_2" value="B"> Гуля́ет одна́ в па́рке.</label><br>
+    <label><input type="radio" name="q3_2" value="C"> Встреча́ется с подру́гой в па́рке.</label><br>
+  </div>
+
+  <div class="question" id="q3_3-block">
+    <p>3. Во ско́лько закрыва́ется кафе́?</p>
+    <label><input type="radio" name="q3_3" value="A"> В 8:00.</label><br>
+    <label><input type="radio" name="q3_3" value="B"> В 9:00.</label><br>
+    <label><input type="radio" name="q3_3" value="C"> В 10:00.</label><br>
+  </div>
+
+  <div class="question" id="q3_4-block">
+    <p>4. Что она́ де́лает по́сле кафе?</p>
+    <label><input type="radio" name="q3_4" value="A"> Возвраща́ется домо́й, принима́ет душ и чита́ет кни́гу.</label><br>
+    <label><input type="radio" name="q3_4" value="B"> Возвраща́ется домо́й, пьёт чай и смо́трит фи́льм.</label><br>
+    <label><input type="radio" name="q3_4" value="C"> Идёт гуля́ть в парк, а пото́м чита́ет кни́гу.</label><br>
+  </div>
+
+  <div class="question" id="q3_5-block">
+    <p>5. Во ско́лько она́ обы́чно ложи́тся спать?</p>
+    <label><input type="radio" name="q3_5" value="A"> В 10:00.</label><br>
+    <label><input type="radio" name="q3_5" value="B"> В 11:00.</label><br>
+    <label><input type="radio" name="q3_5" value="C"> В 12:00.</label><br>
+  </div>
+
+  <button type="button" onclick="checkAnswers3()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result3"></div>
+
+<script>
+  const answers3 = {
+    q3_1: { correct: "B", text: "В 5:00" },
+    q3_2: { correct: "C", text: "Встреча́ется с подру́гой в па́рке" },
+    q3_3: { correct: "B", text: "В 9:00" },
+    q3_4: { correct: "A", text: "Возвраща́ется домо́й, принима́ет душ и чита́ет кни́гу" },
+    q3_5: { correct: "B", text: "В 11:00" }
+  };
+
+  function checkAnswers3() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers3)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText = '⚠️ Сначала выберите вариант ответа.';
+      } else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result3').innerText = `Вы правильно ответили на ${score} из 5 вопросов.`;
+  }
+</script>
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
     
