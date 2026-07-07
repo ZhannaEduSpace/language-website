@@ -496,6 +496,95 @@
   }
 </script>
 
+    <p><strong>Задание 4. Суббота (аудирование) (A1–A2)</strong></p>
+<p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+<audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/weekend_ru_a1a2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm4">
+  <div class="question" id="q4_1-block">
+    <p>1. Во ско́лько он просыпа́ется в суббо́ту?</p>
+    <label><input type="radio" name="q4_1" value="A"> О́коло 8:00.</label><br>
+    <label><input type="radio" name="q4_1" value="B"> О́коло 9:00.</label><br>
+    <label><input type="radio" name="q4_1" value="C"> О́коло 10:00.</label><br>
+  </div>
+
+  <div class="question" id="q4_2-block">
+    <p>2. Что он де́лает по́сле за́втрака?</p>
+    <label><input type="radio" name="q4_2" value="A"> Немно́го отдыха́ет в кварти́ре.</label><br>
+    <label><input type="radio" name="q4_2" value="B"> Немно́го занима́ется спо́ртом в кварти́ре.</label><br>
+    <label><input type="radio" name="q4_2" value="C"> Немно́го прибира́ется.</label><br>
+  </div>
+
+  <div class="question" id="q4_3-block">
+    <p>3. Что он обы́чно де́лает с бра́том днём?</p>
+    <label><input type="radio" name="q4_3" value="A"> Занима́ется спо́ртом и́ли прогу́ливается по це́нтру.</label><br>
+    <label><input type="radio" name="q4_3" value="B"> Хо́дит в магази́н и́ли гуля́ет по пло́щади в це́нтре.</label><br>
+    <label><input type="radio" name="q4_3" value="C"> Гуля́ет о́коло спортза́ла.</label><br>
+  </div>
+
+  <div class="question" id="q4_4-block">
+    <p>4. До скольки́ рабо́тает спортза́л?</p>
+    <label><input type="radio" name="q4_4" value="A"> До 4:00.</label><br>
+    <label><input type="radio" name="q4_4" value="B"> До 5:00.</label><br>
+    <label><input type="radio" name="q4_4" value="C"> До 6:00.</label><br>
+  </div>
+
+  <div class="question" id="q4_5-block">
+    <p>5. Что он покупа́ет по́сле прогу́лки?</p>
+    <label><input type="radio" name="q4_5" value="A"> Проду́кты на неде́лю.</label><br>
+    <label><input type="radio" name="q4_5" value="B"> У́жин для роди́телей.</label><br>
+    <label><input type="radio" name="q4_5" value="C"> Ве́щи для спортза́ла.</label><br>
+  </div>
+
+  <button type="button" onclick="checkAnswers4()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result4"></div>
+
+<script>
+  const answers4 = {
+    q4_1: { correct: "B", text: "О́коло 9:00." },
+    q4_2: { correct: "C", text: "Немно́го прибира́ется." },
+    q4_3: { correct: "A", text: "Занима́ется спо́ртом и́ли прогу́ливается по це́нтру." },
+    q4_4: { correct: "C", text: "До 6:00." },
+    q4_5: { correct: "A", text: "Проду́кты на неде́лю." }
+  };
+
+  function checkAnswers4() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers4)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText = '⚠️ Сначала выберите вариант ответа.';
+      } else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result4').innerText = `Вы правильно ответили на ${score} из 5 вопросов.`;
+  }
+</script>
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
     
