@@ -680,6 +680,95 @@
   }
 </script>
 
+    <p><strong>Задание 6. Две сестры (аудирование) (A1–A2)</strong></p>
+<p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+<audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/different_schedules_ru_a1a2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm6">
+  <div class="question" id="q6_1-block">
+    <p>1. Во сколько встаёт девушка, которая рассказывает о себе?</p>
+    <label><input type="radio" name="q6_1" value="A"> в 7:00</label><br>
+    <label><input type="radio" name="q6_1" value="B"> в 8:00</label><br>
+    <label><input type="radio" name="q6_1" value="C"> в 8:30</label><br>
+  </div>
+
+  <div class="question" id="q6_2-block">
+    <p>2. Во сколько встаёт её сестра?</p>
+    <label><input type="radio" name="q6_2" value="A"> в 7:00</label><br>
+    <label><input type="radio" name="q6_2" value="B"> в 8:00</label><br>
+    <label><input type="radio" name="q6_2" value="C"> в 10:00</label><br>
+  </div>
+
+  <div class="question" id="q6_3-block">
+    <p>3. Где днём работает девушка, которая рассказывает?</p>
+    <label><input type="radio" name="q6_3" value="A"> в офисе</label><br>
+    <label><input type="radio" name="q6_3" value="B"> в университете</label><br>
+    <label><input type="radio" name="q6_3" value="C"> в кафе рядом с университетом</label><br>
+  </div>
+
+  <div class="question" id="q6_4-block">
+    <p>4. Что делает сестра днём?</p>
+    <label><input type="radio" name="q6_4" value="A"> работает в офисе</label><br>
+    <label><input type="radio" name="q6_4" value="B"> готовит ужин и смотрит сериал</label><br>
+    <label><input type="radio" name="q6_4" value="C"> учится и обедает рядом с университетом</label><br>
+  </div>
+
+  <div class="question" id="q6_5-block">
+    <p>5. Что они делают вместе вечером?</p>
+    <label><input type="radio" name="q6_5" value="A"> ужинают и разговаривают</label><br>
+    <label><input type="radio" name="q6_5" value="B"> идут в магазин</label><br>
+    <label><input type="radio" name="q6_5" value="C"> читают или смотрят сериал</label><br>
+  </div>
+
+  <button type="button" onclick="checkAnswers6()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result6"></div>
+
+<script>
+  const answers6 = {
+    q6_1: { correct: "A", text: "в 7:00" },
+    q6_2: { correct: "B", text: "в 8:00" },
+    q6_3: { correct: "A", text: "в офисе" },
+    q6_4: { correct: "C", text: "учится и обедает рядом с университетом" },
+    q6_5: { correct: "A", text: "ужинают и разговаривают" }
+  };
+
+  function checkAnswers6() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers6)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText = '⚠️ Сначала выберите вариант ответа.';
+      } else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result6').innerText = `Вы правильно ответили на ${score} из 5 вопросов.`;
+  }
+</script>
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
     
