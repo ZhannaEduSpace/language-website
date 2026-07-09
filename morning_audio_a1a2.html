@@ -955,6 +955,97 @@
   }
 </script>
 
+     <hr style="margin: 40px 0;">
+
+    <p><strong>Задание 9. Понедельник (аудирование) (A1–A2)</strong></p>
+<p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+<audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/busy_day_ru_a1a2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm10">
+  <div class="question" id="q10_1-block">
+    <p>1. Во сколько она встаёт по понедельникам?</p>
+    <label><input type="radio" name="q10_1" value="A"> в полпятого</label><br>
+    <label><input type="radio" name="q10_1" value="B"> в полшестого</label><br>
+    <label><input type="radio" name="q10_1" value="C"> в полседьмого</label><br>
+  </div>
+
+  <div class="question" id="q10_2-block">
+    <p>2. Во сколько она выходит из дома?</p>
+    <label><input type="radio" name="q10_2" value="A"> в 7:00</label><br>
+    <label><input type="radio" name="q10_2" value="B"> в 7:15</label><br>
+    <label><input type="radio" name="q10_2" value="C"> в 7:30</label><br>
+  </div>
+
+  <div class="question" id="q10_3-block">
+    <p>3. Почему она приходит на работу до начала рабочего дня?</p>
+    <label><input type="radio" name="q10_3" value="A"> она не любит опаздывать</label><br>
+    <label><input type="radio" name="q10_3" value="B"> она любит приходить заранее</label><br>
+    <label><input type="radio" name="q10_3" value="C"> она любит приходить позже</label><br>
+  </div>
+
+  <div class="question" id="q10_4-block">
+    <p>4. Чем она занимается после обеда?</p>
+    <label><input type="radio" name="q10_4" value="A"> удаляет письма</label><br>
+    <label><input type="radio" name="q10_4" value="B"> работает с письмами и документами</label><br>
+    <label><input type="radio" name="q10_4" value="C"> идёт на встречу в кафе</label><br>
+  </div>
+
+  <div class="question" id="q10_5-block">
+    <p>5. Во сколько она старается лечь спать в такие дни?</p>
+    <label><input type="radio" name="q10_5" value="A"> в 22:00</label><br>
+    <label><input type="radio" name="q10_5" value="B"> в 22:20</label><br>
+    <label><input type="radio" name="q10_5" value="C"> в 22:30</label><br>
+  </div>
+
+  <button type="button" onclick="checkAnswers10()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result10"></div>
+
+<script>
+  const answers10 = {
+    q10_1: { correct: "C", text: "в полседьмого" },
+    q10_2: { correct: "B", text: "в 7:15" },
+    q10_3: { correct: "B", text: "она любит приходить заранее" },
+    q10_4: { correct: "B", text: "работает с письмами и документами" },
+    q10_5: { correct: "C", text: "в 22:30" }
+  };
+
+  function checkAnswers10() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers10)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText = '⚠️ Сначала выберите вариант ответа.';
+      } else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result10').innerText = `Вы правильно ответили на ${score} из 5 вопросов.`;
+  }
+</script>
+
       <hr style="margin: 40px 0;">
 
     <p><strong>Задание 10. После школы (аудирование) (A1–A2)</strong></p>
