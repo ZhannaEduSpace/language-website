@@ -866,6 +866,97 @@
 
       <hr style="margin: 40px 0;">
 
+    <p><strong>Задание 8. На рынке (аудирование) (A1–A2)</strong></p>
+<p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+<audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/saturday_ru_a1a2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm9">
+  <div class="question" id="q9_1-block">
+    <p>1. Когда ей больше нравится ходить на рынок?</p>
+    <label><input type="radio" name="q9_1" value="A"> утром</label><br>
+    <label><input type="radio" name="q9_1" value="B"> днём</label><br>
+    <label><input type="radio" name="q9_1" value="C"> вечером</label><br>
+  </div>
+
+  <div class="question" id="q9_2-block">
+    <p>2. До скольки работает рынок?</p>
+    <label><input type="radio" name="q9_2" value="A"> до 12:00</label><br>
+    <label><input type="radio" name="q9_2" value="B"> до 14:00</label><br>
+    <label><input type="radio" name="q9_2" value="C"> до 16:00</label><br>
+  </div>
+
+  <div class="question" id="q9_3-block">
+    <p>3. Что она чаще всего покупает из овощей?</p>
+    <label><input type="radio" name="q9_3" value="A"> огурцы</label><br>
+    <label><input type="radio" name="q9_3" value="B"> помидоры</label><br>
+    <label><input type="radio" name="q9_3" value="C"> картошку</label><br>
+  </div>
+
+  <div class="question" id="q9_4-block">
+    <p>4. Кого она иногда видит на рынке?</p>
+    <label><input type="radio" name="q9_4" value="A"> соседку</label><br>
+    <label><input type="radio" name="q9_4" value="B"> коллегу</label><br>
+    <label><input type="radio" name="q9_4" value="C"> много разных людей</label><br>
+  </div>
+
+  <div class="question" id="q9_5-block">
+    <p>5. Как она проводит время после рынка?</p>
+    <label><input type="radio" name="q9_5" value="A"> спокойно дома</label><br>
+    <label><input type="radio" name="q9_5" value="B"> в кафе рядом с рынком</label><br>
+    <label><input type="radio" name="q9_5" value="C"> на прогулке с соседкой</label><br>
+  </div>
+
+  <button type="button" onclick="checkAnswers9()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result9"></div>
+
+<script>
+  const answers9 = {
+    q9_1: { correct: "A", text: "утром" },
+    q9_2: { correct: "B", text: "до 14:00" },
+    q9_3: { correct: "B", text: "помидоры" },
+    q9_4: { correct: "A", text: "соседку" },
+    q9_5: { correct: "A", text: "спокойно дома" }
+  };
+
+  function checkAnswers9() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers9)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText = '⚠️ Сначала выберите вариант ответа.';
+      } else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result9').innerText = `Вы правильно ответили на ${score} из 5 вопросов.`;
+  }
+</script>
+
+      <hr style="margin: 40px 0;">
+
     <p><strong>Задание 10. После школы (аудирование) (A1–A2)</strong></p>
 <p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
 
