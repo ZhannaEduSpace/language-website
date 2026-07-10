@@ -241,7 +241,9 @@
   <div id="side-menu-placeholder"></div>
 
   <div class="container">
-  <h2>🍲 Рассказ про поход в ресторан (аудирование) (B1–B2)</h2>
+  <h2>🍲 Еда вне дома (аудирование) (B1–B2)</h2>
+
+       <p><strong>Задание 1. Рассказ про поход в ресторан (аудирование) (B1–B2)</strong></p>
   <p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
 
   <audio controls controlsList="nodownload noplaybackrate">
@@ -313,6 +315,95 @@
       document.getElementById('result').innerText = `Вы правильно ответили на ${score} из 3 вопросов.`;
     }
   </script>
+
+   <p><strong>Задание 2. Обед в кафе (аудирование) (A1–A2)</strong></p>
+<p class="instruction">Послушайте аудиозапись и ответьте на вопросы.</p>
+
+<audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/cafe_ru_b1b2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm2">
+  <div class="question" id="q2_1-block">
+    <p>1. Когда Артемий и его друг пошли в кафе?</p>
+    <label><input type="radio" name="q2_1" value="A"> В рабочий день.</label><br>
+    <label><input type="radio" name="q2_1" value="B"> В выходной день.</label><br>
+    <label><input type="radio" name="q2_1" value="C"> В воскресенье.</label><br>
+  </div>
+
+  <div class="question" id="q2_2-block">
+    <p>2. Почему Артемий не заказал блюдо с курицей?</p>
+    <label><input type="radio" name="q2_2" value="A"> Он решил не есть мясо.</label><br>
+    <label><input type="radio" name="q2_2" value="B"> Этого блюда больше не было.</label><br>
+    <label><input type="radio" name="q2_2" value="C"> Друг посоветовал ему выбрать рыбу.</label><br>
+  </div>
+
+  <div class="question" id="q2_3-block">
+    <p>3. Кто помог Артемию выбрать другое основное блюдо?</p>
+    <label><input type="radio" name="q2_3" value="A"> Его друг.</label><br>
+    <label><input type="radio" name="q2_3" value="B"> Повар.</label><br>
+    <label><input type="radio" name="q2_3" value="C"> Официант.</label><br>
+  </div>
+
+  <div class="question" id="q2_4-block">
+    <p>4. Почему после рыбы Артемий решил взять пирог?</p>
+    <label><input type="radio" name="q2_4" value="A"> Он всё ещё хотел есть.</label><br>
+    <label><input type="radio" name="q2_4" value="B"> Рыба ему не понравилась.</label><br>
+    <label><input type="radio" name="q2_4" value="C"> Он хотел угостить друга.</label><br>
+  </div>
+
+  <div class="question" id="q2_5-block">
+    <p>5. Как Артемий оценил этот обед?</p>
+    <label><input type="radio" name="q2_5" value="A"> Еда была хорошей, хотя цена оказалась выше ожидаемой.</label><br>
+    <label><input type="radio" name="q2_5" value="B"> Обед был недорогим, но обслуживание ему не понравилось.</label><br>
+    <label><input type="radio" name="q2_5" value="C"> Он остался недоволен и не захотел возвращаться.</label><br>
+  </div>
+
+  <button type="button" onclick="checkAnswers2()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result2"></div>
+
+<script>
+  const answers2 = {
+    q2_1: { correct: "B", text: "В выходной день" },
+    q2_2: { correct: "B", text: "Этого блюда больше не было" },
+    q2_3: { correct: "C", text: "Официант" },
+    q2_4: { correct: "A", text: "Он всё ещё хотел есть" },
+    q2_5: { correct: "A", text: "Еда была хорошей, хотя цена оказалась выше ожидаемой" }
+  };
+
+  function checkAnswers2() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers2)) {
+      const block = document.getElementById(`${key}-block`);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const existing = block.querySelector('.correct-answer');
+      if (existing) existing.remove();
+
+      const resultText = document.createElement('div');
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText = '⚠️ Сначала выберите вариант ответа.';
+      } else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText = `✅ Правильный ответ: ${value.text}`;
+        score++;
+      } else {
+        resultText.classList.add('incorrect');
+        resultText.innerText = `❌ Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result2').innerText = `Вы правильно ответили на ${score} из 5 вопросов.`;
+  }
+</script>
 
      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
