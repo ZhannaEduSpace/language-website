@@ -288,7 +288,7 @@
       const div = document.createElement('div');
       div.className = 'quiz-question';
       div.id = `q${i+1}-block`;
-      div.innerHTML = `<h3>${i+1}. ${item.q}</h3>` +
+      div.innerHTML = `<p>${i+1}. ${item.q}</p>` +
         item.options.map(opt => `
           <label><input type="radio" name="q${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
       form.appendChild(div);
@@ -296,22 +296,28 @@
 
    function checkAnswers() {
   let score = 0;
+
   questions.forEach((item, i) => {
     const name = `q${i+1}`;
-    const selected = form.querySelector(`input[name=${name}]:checked`);
+    const selected = form.querySelector(`input[name="${name}"]:checked`);
     const block = document.getElementById(`${name}-block`);
     const existing = block.querySelector('.correct-answer');
+
     if (existing) existing.remove();
+
     const note = document.createElement('div');
     note.classList.add('correct-answer');
 
-    if (selected && selected.value === item.a) {
+    if (!selected) {
+      note.classList.add('incorrect');
+      note.innerText = '⚠️ Сначала выберите вариант ответа.';
+    } else if (selected.value === item.a) {
       note.classList.add('correct');
-      note.innerText = `✅ Правильно! Правильный ответ: ${item.a}`;
+      note.innerText = `✅ Правильный ответ: ${item.a}`;
       score++;
     } else {
       note.classList.add('incorrect');
-      note.innerText = `❌ Неправильно. Правильный ответ: ${item.a}`;
+      note.innerText = `❌ Правильный ответ: ${item.a}`;
     }
 
     block.appendChild(note);
