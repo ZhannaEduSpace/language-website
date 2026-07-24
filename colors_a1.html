@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Russian language task: Colors (A1)</title> 
+<title>Russian Vocabulary Tasks (A1–A2)</title>
 
    <!-- ✅ ДОБАВЛЕН viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -135,6 +135,13 @@
     .incorrect {
       color: red;
     }
+    .missed {
+  color: orange;
+}
+.task2-question label {
+  display: block;
+  margin-bottom: 5px;
+}
     .feedback-label {
       font-weight: bold;
       margin-left: 6px;
@@ -229,9 +236,10 @@
   <div id="side-menu-placeholder"></div>
 
   <div class="container">
-  <h2>🎨 Colors in Russian (A1)</h2>
-  <p><strong>Test your Russian vocabulary.</strong><br>
-  Choose the correct Russian word for each color.</p>
+  <h2>📚 Russian Vocabulary Tasks (A1–A2)</h2>
+    
+  <p><strong>Task 1. Colors in Russian.</strong><br>
+Choose the correct Russian word for each color.</p>
 
   <form id="quizForm"></form>
   <button type="button" onclick="checkAnswers()">Check Answers</button>
@@ -315,6 +323,132 @@
       document.getElementById('result').innerText = `You got ${score} out of ${questions.length} correct.`;
     }
   </script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Task 2. Animals in Russian.</strong><br>
+Choose the correct animals for each category.</p>
+<p>In each question, <em>three animals are correct and three are not</em>.</p>
+
+<form id="quizForm2"></form>
+<button type="button" onclick="checkAnswers2()">Check Answers</button>
+<div class="result" id="result2"></div>
+
+<script>
+  const questions2 = [
+    {
+      q: "Which of these animals live in the forest?",
+      options: ['коро́ва', 'медве́дь', 'аку́ла', 'волк', 'соба́ка', 'лиса́'],
+      correct: ['медве́дь', 'волк', 'лиса́']
+    },
+    {
+      q: "Which of these animals are birds?",
+      options: ['у́тка', 'ко́шка', 'го́лубь', 'лягу́шка', 'воробе́й', 'коро́ва'],
+      correct: ['у́тка', 'го́лубь', 'воробе́й']
+    },
+    {
+      q: "Which of these animals live on a farm?",
+      options: ['тигр', 'овца́', 'слон', 'ку́рица', 'медве́дь', 'коро́ва'],
+      correct: ['овца́', 'ку́рица', 'коро́ва']
+    },
+    {
+      q: "Which of these animals can fly?",
+      options: ['му́ха', 'лиса́', 'у́тка', 'ры́ба', 'воробе́й', 'соба́ка'],
+      correct: ['му́ха', 'у́тка', 'воробе́й']
+    },
+    {
+      q: "Which of these animals are wild?",
+      options: ['волк', 'овца́', 'ку́рица', 'медве́дь', 'ко́шка', 'тигр'],
+      correct: ['волк', 'медве́дь', 'тигр']
+    },
+    {
+      q: "Which of these animals are pets?",
+      options: ['медве́дь', 'соба́ка', 'волк', 'коро́ва', 'попуга́й', 'ко́шка'],
+      correct: ['соба́ка', 'попуга́й', 'ко́шка']
+    },
+    {
+      q: "Which of these animals live in water?",
+      options: ['коза́', 'ры́ба', 'тигр', 'аку́ла', 'дельфи́н', 'ку́рица'],
+      correct: ['ры́ба', 'аку́ла', 'дельфи́н']
+    },
+    {
+      q: "Which of these animals live in the Arctic?",
+      options: ['крокоди́л', 'бе́лый медве́дь', 'тюле́нь', 'морж', 'верблю́д', 'лиса́'],
+      correct: ['бе́лый медве́дь', 'тюле́нь', 'морж']
+    }
+  ];
+
+  const form2 = document.getElementById("quizForm2");
+
+  questions2.forEach((item, i) => {
+    const div = document.createElement("div");
+    div.className = "quiz-question task2-question";
+    div.id = `q2_${i+1}-block`;
+    div.innerHTML = `<h3>${i+1}. ${item.q}</h3><p><em>Three correct, three incorrect.</em></p>` +
+      item.options.map(opt => `
+        <label><input type="checkbox" name="q2_${i+1}" value="${opt}"> ${opt}</label>`).join('');
+    form2.appendChild(div);
+  });
+
+  function checkAnswers2() {
+    let totalCorrect = 0;
+    const maxScore = questions2.length * 3;
+
+    questions2.forEach((item, i) => {
+      const name = `q2_${i+1}`;
+      const selected = Array.from(form2.querySelectorAll(`input[name="${name}"]:checked`)).map(el => el.value);
+      const block = document.getElementById(`${name}-block`);
+
+      block.querySelectorAll('.correct-answer, .feedback-label').forEach(el => el.remove());
+
+      const correctSet = new Set(item.correct);
+      const selectedSet = new Set(selected);
+
+      item.options.forEach(opt => {
+        const label = Array.from(block.querySelectorAll('label')).find(l => l.textContent.trim() === opt);
+        if (!label) return;
+
+        const tag = document.createElement('span');
+        tag.classList.add('feedback-label');
+
+        if (selectedSet.has(opt) && correctSet.has(opt)) {
+          tag.classList.add('correct');
+          tag.innerText = ' ✔';
+          totalCorrect++;
+        } else if (selectedSet.has(opt) && !correctSet.has(opt)) {
+          tag.classList.add('incorrect');
+          tag.innerText = ' ✘';
+        } else if (!selectedSet.has(opt) && correctSet.has(opt)) {
+          tag.classList.add('missed');
+          tag.innerText = ' ⭐ missed';
+        }
+
+        label.appendChild(tag);
+      });
+
+      const answerNote = document.createElement('div');
+      answerNote.classList.add('correct-answer');
+      answerNote.innerText = `Correct answers: ${item.correct.join(', ')}`;
+      block.appendChild(answerNote);
+    });
+
+    document.getElementById('result2').innerText = `You got ${totalCorrect} out of ${maxScore} correct.`;
+  }
+</script>
+    
+
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+     crossorigin="anonymous"></script>
+<!-- HorizontalAd -->
+<ins class="adsbygoogle"
+     style="display:block; margin-top:30px;"
+     data-ad-client="ca-pub-6488869290074237"
+     data-ad-slot="5202889392"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
   </div>
   
   <div id="footer-placeholder"></div>
