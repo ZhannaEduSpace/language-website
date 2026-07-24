@@ -360,6 +360,78 @@
   }
 </script>
 
+    <hr style="margin: 40px 0;">
+
+<p><strong>Задание 3. Опишите картинку (A1–A2)</strong></p>
+<p><strong>Посмотрите на картинку и выберите: правда или ложь.</strong></p>
+
+<img src="images/geography_task3.png" 
+     alt="Картинка для задания по географии" 
+     style="width: 100%; max-width: 700px; display: block; margin: 25px auto; border-radius: 8px;">
+
+<form id="quizForm3"></form>
+<button type="button" onclick="checkAnswers3()">Проверить ответы</button>
+<div class="result" id="result3"></div>
+
+<script>
+  const questions3 = [
+    { q: 'На карти́нке есть одна́ гора́.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
+    { q: 'На верши́не горы́ лежи́т снег.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
+    { q: 'На карти́нке есть мо́ре.', a: 'Ложь', options: ['Пра́вда', 'Ложь'] },
+    { q: 'На карти́нке течёт река́.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
+    { q: 'В не́бе три о́блака.', a: 'Ложь', options: ['Пра́вда', 'Ложь'] },
+    { q: 'На карти́нке нет ле́са.', a: 'Ложь', options: ['Пра́вда', 'Ложь'] },
+    { q: 'Че́рез ре́ку прохо́дит мост.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
+    { q: 'Ря́дом с реко́й стои́т дом.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] },
+    { q: 'На карти́нке ночь.', a: 'Ложь', options: ['Пра́вда', 'Ложь'] },
+    { q: 'В не́бе све́тит со́лнце.', a: 'Пра́вда', options: ['Пра́вда', 'Ложь'] }
+  ];
+
+  const form3 = document.getElementById('quizForm3');
+
+  questions3.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-question';
+    div.id = `q3_${i+1}-block`;
+    div.innerHTML = `<p>${i+1}. ${item.q}</p>` +
+      item.options.map(opt => `
+        <label><input type="radio" name="q3_${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+    form3.appendChild(div);
+  });
+
+  function checkAnswers3() {
+    let score = 0;
+
+    questions3.forEach((item, i) => {
+      const name = `q3_${i+1}`;
+      const selected = form3.querySelector(`input[name="${name}"]:checked`);
+      const block = document.getElementById(`${name}-block`);
+      const existing = block.querySelector('.correct-answer');
+
+      if (existing) existing.remove();
+
+      const note = document.createElement('div');
+      note.classList.add('correct-answer');
+
+      if (!selected) {
+        note.classList.add('incorrect');
+        note.innerText = '⚠️ Сначала выберите хотя бы один вариант.';
+      } else if (selected.value === item.a) {
+        note.classList.add('correct');
+        note.innerText = `✅ Правильный ответ: ${item.a}`;
+        score++;
+      } else {
+        note.classList.add('incorrect');
+        note.innerText = `❌ Правильный ответ: ${item.a}`;
+      }
+
+      block.appendChild(note);
+    });
+
+    document.getElementById('result3').innerText = `Вы правильно ответили на ${score} из ${questions3.length} вопросов.`;
+  }
+</script>
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
 <!-- HorizontalAd -->
