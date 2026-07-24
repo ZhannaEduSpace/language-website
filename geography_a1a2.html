@@ -229,7 +229,8 @@
 
   <div class="container">
   <h2>🌍 География (A1–A2)</h2>
-  <p><strong>Выберите правильное слово.</strong><br>
+    
+  <p><strong>Задание 2. Выберите правильное слово.</strong><br>
   В каждом вопросе только один правильный ответ.</p>
 
   <form id="quizForm"></form>
@@ -243,11 +244,9 @@
       { q: 'Как называ́ется край земли́ у воды́?', a: 'бе́рег', options: ['река́', 'бе́рег', 'пусты́ня', 'гора́'] },
       { q: 'Как называ́ется направле́ние, где нахо́дится А́рктика?', a: 'се́вер', options: ['юг', 'за́пад', 'се́вер', 'восто́к'] },
       { q: 'Что нахо́дится ме́жду двумя́ гора́ми?', a: 'доли́на', options: ['по́ле', 'мост', 'доли́на', 'бе́рег'] },
-      { q: 'Как называ́ется ме́сто, где течёт вода́ и мо́жно уви́деть корабли́?', a: 'река́', options: ['пусты́ня', 'доро́га', 'река́', 'о́зеро'] },
-      { q: 'Как называ́ется высо́кая часть земли́?', a: 'гора́', options: ['мо́ре', 'гора́', 'бе́рег', 'о́стров'] },
+      { q: 'Как называ́ется ме́сто, где течёт вода́ и мо́жно уви́деть корабли́?', a: 'река́', options: ['пусты́ня', 'доро́га', 'река́', 'лу́жа'] },
       { q: 'Где обы́чно нет дере́вьев, мно́го песка́ и о́чень жа́рко?', a: 'пусты́ня', options: ['пусты́ня', 'по́ле', 'лес', 'о́зеро'] },
       { q: 'Е́сли смотре́ть на ка́рту, то направле́ние «вверх» — э́то куда́?', a: 'на се́вер', options: ['на юг', 'на восто́к', 'на се́вер', 'на за́пад'] },
-      { q: 'Как называ́ется мно́го воды́, но э́то не мо́ре?', a: 'о́зеро', options: ['о́зеро', 'о́стров', 'не́бо', 'по́ле'] },
       { q: 'Где растёт мно́го дере́вьев и живу́т ди́кие живо́тные?', a: 'лес', options: ['о́зеро', 'пусты́ня', 'лес', 'доли́на'] },
       { q: 'Что соединя́ет два бе́рега?', a: 'мост', options: ['мост', 'о́стров', 'гора́', 'мо́ре'] }
     ];
@@ -292,6 +291,74 @@
       document.getElementById('result').innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
     }
   </script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Задание 2. Выберите правильное слово.</strong></p>
+В каждом вопросе только один правильный ответ.</p>
+
+<form id="quizForm2"></form>
+<button type="button" onclick="checkAnswers2()">Проверить ответы</button>
+<div class="result" id="result2"></div>
+
+<script>
+  const questions2 = [
+    { q: 'Что не состои́т из воды́?', a: 'гора́', options: ['мо́ре', 'река́', 'о́зеро', 'гора́'] },
+    { q: 'Что нахо́дится не в не́бе?', a: 'о́стров', options: ['со́лнце', 'о́блако', 'звезда́', 'о́стров'] },
+    { q: 'Где вода́ обы́чно солёная?', a: 'в мо́ре', options: ['в реке́', 'в мо́ре', 'в о́зере', 'в водопа́де'] },
+    { q: 'Что мо́жет па́дать с не́ба?', a: 'дождь', options: ['дождь', 'река́', 'мо́ре', 'о́стров'] },
+    { q: 'Что обы́чно бе́лое и холо́дное?', a: 'снег', options: ['песо́к', 'снег', 'лес', 'со́лнце'] },
+    { q: 'Где земля́ покры́та траво́й, но почти́ нет дере́вьев?', a: 'по́ле', options: ['по́ле', 'мо́ре', 'о́зеро', 'го́род'] },
+    { q: 'Где мо́жно уви́деть бе́рег и во́лны?', a: 'у мо́ря', options: ['у мо́ря', 'в лесу́', 'в гора́х', 'в по́ле'] },
+    { q: 'Что обы́чно нахо́дится вокру́г о́зера?', a: 'бе́рег', options: ['бе́рег', 'не́бо', 'океа́н', 'о́блако'] },
+    { q: 'Что мо́жет течь с горы́ вниз?', a: 'река́', options: ['река́', 'о́стров', 'пусты́ня', 'по́ле'] },
+    { q: 'Что обы́чно вы́ше други́х объе́ктов?', a: 'гора́', options: ['гора́', 'река́', 'о́зеро', 'пляж'] }
+  ];
+
+  const form2 = document.getElementById('quizForm2');
+
+  questions2.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-question';
+    div.id = `q2_${i+1}-block`;
+    div.innerHTML = `<h3>${i+1}. ${item.q}</h3>` +
+      item.options.map(opt => `
+        <label><input type="radio" name="q2_${i+1}" value="${opt}"> ${opt}</label><br>`).join('');
+    form2.appendChild(div);
+  });
+
+  function checkAnswers2() {
+    let score = 0;
+
+    questions2.forEach((item, i) => {
+      const name = `q2_${i+1}`;
+      const selected = form2.querySelector(`input[name="${name}"]:checked`);
+      const block = document.getElementById(`${name}-block`);
+      const existing = block.querySelector('.correct-answer');
+
+      if (existing) existing.remove();
+
+      const note = document.createElement('div');
+      note.classList.add('correct-answer');
+
+      if (!selected) {
+        note.classList.add('incorrect');
+        note.innerText = '⚠️ Сначала выберите хотя бы один вариант.';
+      } else if (selected.value === item.a) {
+        note.classList.add('correct');
+        note.innerText = `✅ Правильный ответ: ${item.a}`;
+        score++;
+      } else {
+        note.classList.add('incorrect');
+        note.innerText = `❌ Правильный ответ: ${item.a}`;
+      }
+
+      block.appendChild(note);
+    });
+
+    document.getElementById('result2').innerText = `Вы правильно ответили на ${score} из ${questions2.length} вопросов.`;
+  }
+</script>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
