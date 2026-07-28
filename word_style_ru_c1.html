@@ -237,8 +237,10 @@
   <div id="side-menu-placeholder"></div>
 
   <div class="container">
-  <h3>🎓 Определите стиль слова (C1)</h3>
-  <p>Отметьте стиль каждого слова: <strong>книжное</strong>, <strong>нейтральное</strong> или <strong>разговорное</strong>.</p>
+  <h3>🎓 Стилистическая окраска слов (C1)</h3>
+ <p><strong>Задание 1. Определите стиль слова.</strong></p>
+<p>Отметьте стиль каждого слова: <strong>книжное</strong>, <strong>нейтральное</strong> или <strong>разговорное</strong>.</p>
+
 
   <div id="styleQuiz"></div>
 
@@ -247,7 +249,7 @@
 
   <script>
     const words = [
-      { word: "ремонти́ровать", style: "нейтра́льное" },
+      { word: "ниспрове́ргнуть", style: "книжное" },
       { word: "дры́хнуть", style: "разгово́рное" },
       { word: "каню́чить", style: "разгово́рное" },
       { word: "прекрати́ть", style: "нейтра́льное" },
@@ -302,6 +304,75 @@
       document.getElementById("styleResult").innerText = `Результат: ${correct} из ${words.length} (${percent}%)`;
     }
   </script>
+
+<hr style="margin: 40px 0;">
+
+<p><strong>Задание 2. Определите стиль слова.</strong></p>
+<p>Отметьте стиль каждого слова: <strong>книжное</strong>, <strong>нейтральное</strong> или <strong>разговорное</strong>.</p>
+
+<div id="styleQuiz2"></div>
+
+<button type="button" onclick="checkStyles2()">Проверить</button>
+<div id="styleResult2" style="margin-top: 20px; font-weight: bold;"></div>
+
+<script>
+  const words2 = [
+    { word: "ремонти́ровать", style: "нейтральное" },
+    { word: "раззя́ва", style: "разговорное" },
+    { word: "воспря́нуть", style: "книжное" },
+    { word: "наблюда́ть", style: "нейтральное" },
+    { word: "ны́тик", style: "разговорное" },
+    { word: "воссла́вить", style: "книжное" },
+    { word: "окно́", style: "нейтральное" },
+    { word: "ули́знуть", style: "разговорное" },
+    { word: "сверше́ние", style: "книжное" },
+    { word: "возвраща́ться", style: "нейтральное" },
+    { word: "сболтну́ть", style: "разговорное" },
+    { word: "возвести́ть", style: "книжное" }
+  ];
+
+  const container2 = document.getElementById("styleQuiz2");
+
+  words2.forEach((item, index) => {
+    const block = document.createElement("div");
+    block.style.marginBottom = "15px";
+
+    block.innerHTML = `
+      <label><strong>${index + 1}. ${item.word}</strong></label><br>
+      <label><input type="radio" name="q2_${index}" value="кни́жное"> кни́жное</label>
+      <label><input type="radio" name="q2_${index}" value="нейтра́льное" style="margin-left: 10px;"> нейтра́льное</label>
+      <label><input type="radio" name="q2_${index}" value="разгово́рное" style="margin-left: 10px;"> разгово́рное</label>
+      <div id="feedback2-${index}" class="correct-answer"></div>
+    `;
+
+    container2.appendChild(block);
+  });
+
+  function checkStyles2() {
+    let correct = 0;
+
+    words2.forEach((item, index) => {
+      const selected = document.querySelector(`input[name="q2_${index}"]:checked`);
+      const feedback = document.getElementById(`feedback2-${index}`);
+      feedback.innerHTML = "";
+
+      if (!selected) {
+        feedback.className = "correct-answer incorrect";
+        feedback.innerText = "⚠️ Сначала выберите хотя бы один вариант.";
+      } else if (selected.value === item.style) {
+        feedback.className = "correct-answer correct";
+        feedback.innerText = `✅ Правильный ответ: ${item.style}`;
+        correct++;
+      } else {
+        feedback.className = "correct-answer incorrect";
+        feedback.innerText = `❌ Правильный ответ: ${item.style}`;
+      }
+    });
+
+    document.getElementById("styleResult2").innerText = `Вы правильно ответили на ${correct} из ${words2.length}.`;
+  }
+</script>
+    
 </div>
   </div>
   
