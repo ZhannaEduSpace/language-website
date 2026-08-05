@@ -219,7 +219,9 @@ header {
 
  <div class="container">
   <h2>🖼️ Prepositions of Place (A2)</h2>
-  <p><strong>Look at the picture. Fill in the blanks with the correct preposition.</strong></p>
+   
+  <p><strong>Task 1. Prepositions of Place.</strong></p>
+<p><strong>Look at the picture. Fill in the blanks with the correct preposition.</strong></p>
 
   <!-- картинка -->
   <img src="images/prepositions-place.png" alt="Изображение для задания" style="max-width: 100%; height: auto; margin-bottom: 20px;">
@@ -317,7 +319,121 @@ header {
   }
 </script>
 
+<hr style="margin: 40px 0;">
 
+<p><strong>Task 2. Prepositions of Place.</strong></p>
+<p><strong>Look at the picture. Fill in the blanks with the correct preposition.</strong></p>
+
+<img src="images/prepositions-place-2.png" 
+     alt="Image for prepositions task 2" 
+     style="max-width: 100%; height: auto; margin-bottom: 20px;">
+
+<form id="quizForm2">
+  <p>1. The bird is <select id="q2_1">
+    <option value="">—</option>
+    <option value="in">in</option>
+    <option value="under">under</option>
+  </select> the tree.</p>
+
+  <p>2. The bicycle is <select id="q2_2">
+    <option value="">—</option>
+    <option value="next to">next to</option>
+    <option value="behind">behind</option>
+  </select> the tree.</p>
+
+  <p>3. The kite is <select id="q2_3">
+    <option value="">—</option>
+    <option value="above">above</option>
+    <option value="under">under</option>
+  </select> the bench.</p>
+
+  <p>4. The basket is <select id="q2_4">
+    <option value="">—</option>
+    <option value="on">on</option>
+    <option value="under">under</option>
+  </select> the bench.</p>
+
+  <p>5. The cat is <select id="q2_5">
+    <option value="">—</option>
+    <option value="under">under</option>
+    <option value="on">on</option>
+  </select> the bench.</p>
+
+  <p>6. The ball is <select id="q2_6">
+    <option value="">—</option>
+    <option value="in front of">in front of</option>
+    <option value="behind">behind</option>
+  </select> the bench.</p>
+
+  <p>7. The dog is <select id="q2_7">
+    <option value="">—</option>
+    <option value="next to">next to</option>
+    <option value="in">in</option>
+  </select> the pond.</p>
+
+  <p>8. The duck is <select id="q2_8">
+    <option value="">—</option>
+    <option value="behind">behind</option>
+    <option value="on">on</option>
+  </select> the bush.</p>
+
+  <p>9. The water lily is <select id="q2_9">
+    <option value="">—</option>
+    <option value="in">in</option>
+    <option value="between">between</option>
+  </select> the pond.</p>
+
+  <p>10. The bench is <select id="q2_10">
+    <option value="">—</option>
+    <option value="between">between</option>
+    <option value="above">above</option>
+  </select> the bicycle and the dog.</p>
+
+  <br>
+  <button type="button" onclick="checkAnswers2()">Check Answers</button>
+</form>
+
+<div class="result" id="result2"></div>
+
+<script>
+  const answers2 = {
+    q2_1: "in",
+    q2_2: "next to",
+    q2_3: "above",
+    q2_4: "on",
+    q2_5: "under",
+    q2_6: "in front of",
+    q2_7: "next to",
+    q2_8: "behind",
+    q2_9: "in",
+    q2_10: "between"
+  };
+
+  function checkAnswers2() {
+    let score = 0;
+    const total = Object.keys(answers2).length;
+
+    document.querySelectorAll('.feedback2').forEach(n => n.remove());
+
+    Object.entries(answers2).forEach(([id, correct]) => {
+      const sel = document.getElementById(id);
+      if (!sel) return;
+
+      const val = (sel.value || '').trim();
+
+      const fb = document.createElement('span');
+      fb.className = 'feedback2 ' + (val === correct ? 'correct' : 'incorrect');
+      fb.textContent = (val === correct) ? ' ✅' : ' ❌';
+      sel.insertAdjacentElement('afterend', fb);
+
+      if (val === correct) score++;
+    });
+
+    document.getElementById('result2').textContent =
+      `You got ${score} out of ${total} correct.`;
+  }
+</script>
+  
    <div class="container">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
      crossorigin="anonymous"></script>
