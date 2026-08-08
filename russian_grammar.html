@@ -180,6 +180,35 @@ nav a:hover {
     .a1a2 { background-color: #2e7d32; }         /* Dark green */
     .b1b2 { background-color: #03045e; }       /* Blue */
     .c1 { background-color: #ae2012; }       /* Dark red */
+
+    @media (max-width: 600px) {
+
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px 15px 50px;
+  }
+
+  .columns {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  h2 {
+    font-size: 1.6em;
+    margin-bottom: 25px;
+  }
+
+  .column {
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+    
   </style>
 
   <link rel="stylesheet" href="/side-menu.css">
