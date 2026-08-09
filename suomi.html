@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="fi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,13 +31,15 @@
       color: #333;
     }
      header {
-      background-color: #1f4e79;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  background-color: #1f4e79;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2000;
+}
 
     .logo {
       color: white;
@@ -116,11 +118,15 @@
     }
     /* ▲▲▲ Конец блока dropdown ▲▲▲ */
 
-    .container {
-      padding: 10px 40px;
-      max-width: 1200px;
-      margin: auto;
-    }
+    :root {
+  --side-menu-width: 312px;
+}
+
+.container {
+  margin-left: calc(var(--side-menu-width) + 15px);
+  margin-right: 70px;
+  padding: 25px 0 50px;
+}
 
     h2 {
       text-align: center;
@@ -172,7 +178,40 @@
   border-bottom: 1px solid #cfdceb;
 }
 
+@media (max-width: 600px) {
+
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px 15px 50px;
+  }
+
+  h2 {
+    font-size: 1.6em;
+    margin-bottom: 25px;
+  }
+
+  h3 {
+    font-size: 1.2em;
+  }
+
+  .button-grid {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .button-grid a {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+}
+    
   </style>
+
+<link rel="stylesheet" href="/side-menu.css">
+  
 </head>
 <body>
   
@@ -190,15 +229,18 @@
         </div>
       </div>
     </nav>
-  </header>
+</header>
+
+<div id="side-menu-placeholder"></div>
+
+<div class="container">
 
   <div class="update-note">
-  Sivustoa päivitetään päivittäin. Palaa uusien tehtävien pariin.
-</div>
+    Sivustoa päivitetään päivittäin. Palaa uusien tehtävien pariin.
+  </div>
 
-  <div class="container">
-    <h2>Suomen kieli</h2>
-    <h3>Valitse osio / Choose a Section</h3>
+  <h2>Suomen kieli</h2>
+  <h3>Valitse osio / Choose a Section</h3>
 
     <div class="button-grid">
       <a class="grammar" href="finnish_grammar.html">Kielioppi / Grammar</a>
@@ -216,5 +258,14 @@
       eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
     });
 </script>
+
+<script>
+  fetch('/side-menu-fi.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('side-menu-placeholder').innerHTML = html;
+    });
+</script>
+  
 </body>
 </html>
