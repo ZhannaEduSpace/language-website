@@ -40,13 +40,15 @@ nav a:hover {
     }
 
     header {
-      background-color: #1f4e79;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  background-color: #1f4e79;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2000;
+}
 
     .logo {
       color: white;
@@ -125,11 +127,15 @@ nav a:hover {
     }
     /* ▲▲▲ Конец блока dropdown ▲▲▲ */
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 10px 20px;
-    }
+    :root {
+  --side-menu-width: 312px;
+}
+
+.container {
+  margin-left: calc(var(--side-menu-width) + 15px);
+  margin-right: 70px;
+  padding: 25px 0 50px;
+}
 
     h2 {
       text-align: center;
@@ -138,19 +144,18 @@ nav a:hover {
     }
 
     .columns {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  align-items: start;
+}
 
     .column {
-      flex: 1;
-      min-width: 250px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
     .column h3 {
       text-align: center;
@@ -158,13 +163,16 @@ nav a:hover {
     }
 
     .btn {
-      padding: 15px;
-      border-radius: 10px;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      font-size: 16px;
-    }
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
 
     .a1 { background-color: #2f9434; }         /* Dark green */
     .a2 { background-color: #236326; }         /* Dark green */
@@ -173,7 +181,39 @@ nav a:hover {
     .b2 { background-color: #03045e; }       /* Blue */
     .b1b2 { background-color: #03045e; }       /* Blue */
     .c1 { background-color: #ae2012; }       /* Dark red */
+
+@media (max-width: 600px) {
+
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px 15px 50px;
+  }
+
+  .columns {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  h2 {
+    font-size: 1.6em;
+    margin-bottom: 25px;
+  }
+
+  .column {
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+    
   </style>
+
+<link rel="stylesheet" href="/side-menu.css">
+  
 </head>
 <body>
   
@@ -193,6 +233,8 @@ nav a:hover {
       </div>
     </nav>
   </header>
+
+  <div id="side-menu-placeholder"></div>
 
   <div class="container">
     <h2>Задания по уровням / Tasks by Level</h2>
@@ -236,5 +278,14 @@ nav a:hover {
       eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
     });
 </script>
+
+<script>
+  fetch('/side-menu-en.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('side-menu-placeholder').innerHTML = html;
+    });
+</script>
+  
 </body>
 </html>
