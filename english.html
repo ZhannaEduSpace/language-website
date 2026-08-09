@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,14 +28,16 @@
       color: #333;
     }
 
-    header {
-      background-color: #1f4e79;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  header {
+  background-color: #1f4e79;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2000;
+}
 
     .logo {
       color: white;
@@ -114,12 +116,15 @@
     }
     /* ▲▲▲ Конец блока dropdown ▲▲▲ */
 
-    .container {
-      padding: 10px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+  :root {
+  --side-menu-width: 312px;
+}
 
+.container {
+  margin-left: calc(var(--side-menu-width) + 15px);
+  margin-right: 70px;
+  padding: 25px 0 50px;
+}
     h2 {
       text-align: center;
       margin-bottom: 30px;
@@ -173,8 +178,40 @@
   font-size: 0.95em;
   border-bottom: 1px solid #cfdceb;
 }
-    
+
+@media (max-width: 600px) {
+
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px 15px 50px;
+  }
+
+  h2 {
+    font-size: 1.6em;
+    margin-bottom: 25px;
+  }
+
+  h3 {
+    font-size: 1.2em;
+  }
+
+  .button-grid {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .button-grid a {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+}    
   </style>
+
+<link rel="stylesheet" href="/side-menu.css">
+  
 </head>
 <body>
 
@@ -182,7 +219,7 @@
     <a href="index.html" class="logo">LanguageEduSpace</a>
     <nav>
       <div class="dropdown">
-        <a href="#" class="dropbtn" onclick="event.preventDefault()">𑁔</a>
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">☰</a>
         <div class="dropdown-content">
           <a href="english.html"><strong>English</strong></a>
           <a href="english_grammar.html">Grammar</a>
@@ -194,12 +231,13 @@
       </div>
     </nav>
   </header>
+  
+  <div class="container">
 
 <div class="update-note">
   The site is updated daily. Come back for new tasks.
 </div>
-  
-  <div class="container">
+    
     <h2>English Language</h2>
     <h3>Choose a Section / Выберите раздел</h3>
 
@@ -221,5 +259,14 @@
       eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
     });
 </script>
+
+<script>
+  fetch('/side-menu-en.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('side-menu-placeholder').innerHTML = html;
+    });
+</script>
+  
 </body>
 </html>
