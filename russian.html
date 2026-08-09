@@ -17,9 +17,6 @@
 
   gtag('config', 'G-8TVEFE4L1Y');
 </script>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
-     crossorigin="anonymous"></script>
   
   <style>
    body {
@@ -32,14 +29,15 @@
       color: #333;
     }
      header {
-      background-color: #1f4e79;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
+  background-color: #1f4e79;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2000;
+}
     .logo {
       color: white;
       text-decoration: none;
@@ -117,12 +115,15 @@
     }
     /* ▲▲▲ Конец блока dropdown ▲▲▲ */
 
-    .container {
-      padding: 10px 40px;
-      max-width: 1000px;
-      margin: auto;
-    }
+    :root {
+  --side-menu-width: 312px;
+}
 
+.container {
+  margin-left: calc(var(--side-menu-width) + 15px);
+  margin-right: 70px;
+  padding: 25px 0 50px;
+}
     h2 {
       text-align: center;
       margin-bottom: 30px;
@@ -193,7 +194,40 @@
       height: 100%;
       border: none;
     }
+
+@media (max-width: 600px) {
+
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px 15px 50px;
+  }
+
+  h2 {
+    font-size: 1.6em;
+    margin-bottom: 25px;
+  }
+
+  h3 {
+    font-size: 1.2em;
+  }
+
+  .button-grid {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .button-grid a {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+}
   </style>
+
+  <link rel="stylesheet" href="/side-menu.css">
+  
 </head>
 <body>
   
@@ -219,43 +253,58 @@
     </nav>
   </header>
 
-<div class="update-note">
-  Сайт обновляется ежедневно. Возвращайтесь за новыми заданиями и материалами.
-</div>
+  <div id="side-menu-placeholder"></div>
 
-  <div class="container">
-     <div class="section-heading">
-    <h2>Русский язык</h2>
-    <h3>Выберите раздел / Choose a Section</h3>
-       <div class="section-heading">Задания / Tasks</div>
+<div class="container">
 
-    <div class="button-grid" style="margin-top: 15px;">
-      <a class="vocab" href="russian_vocabulary.html">Словарный запас / Vocabulary</a>
-      <a class="grammar" href="russian_grammar.html">Грамматика / Grammar</a>
-      <a class="reading" href="russian_reading.html">Чтение / Reading</a>
-      <a class="listening" href="russian_listening.html">Аудирование / Listening</a>
-      <a class="mixed" href="russian_mixed_tasks.html">Смешанные задания / Mixed Tasks</a>
-      <a class="video" href="russian_video.html">Видео / Video</a>
-    </div>
-
-    <div class="section-heading">Специальные темы (Задания) / Special Topics (Tasks)</div>
-
-    <div class="button-grid" style="margin-top: 15px;">
-      <a class="special" href="russian_arctic.html">Арктика / The Arctic</a>
-    </div>
-
-        <div class="section-heading">Аудиокниги / Audiobooks</div>
-       <div class="button-grid" style="margin-top: 15px;">
-       <a class="audio1" href="audiobook-dmitriy.html">Личный дневник Дмитрия (A2)</a>
-
-    </div>
-       
-   <hr style="margin: 40px 0;">
-       
-        <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/Oj33-qtEYFQ" allowfullscreen></iframe>
+  <div class="update-note">
+    Сайт обновляется ежедневно. Возвращайтесь за новыми заданиями и материалами.
   </div>
-    </div>
+
+  <h2>Русский язык</h2>
+  <h3>Выберите раздел / Choose a Section</h3>
+
+  <div class="section-heading">
+    Задания / Tasks
+  </div>
+
+  <div class="button-grid" style="margin-top: 15px;">
+    <a class="vocab" href="russian_vocabulary.html">Словарный запас / Vocabulary</a>
+    <a class="grammar" href="russian_grammar.html">Грамматика / Grammar</a>
+    <a class="reading" href="russian_reading.html">Чтение / Reading</a>
+    <a class="listening" href="russian_listening.html">Аудирование / Listening</a>
+    <a class="mixed" href="russian_mixed_tasks.html">Смешанные задания / Mixed Tasks</a>
+    <a class="video" href="russian_video.html">Видео / Video</a>
+  </div>
+
+  <div class="section-heading">
+    Специальные темы (Задания) / Special Topics (Tasks)
+  </div>
+
+  <div class="button-grid" style="margin-top: 15px;">
+    <a class="special" href="russian_arctic.html">Арктика / The Arctic</a>
+  </div>
+
+  <div class="section-heading">
+    Аудиокниги / Audiobooks
+  </div>
+
+  <div class="button-grid" style="margin-top: 15px;">
+    <a class="audio1" href="audiobook-dmitriy.html">
+      Личный дневник Дмитрия (A2)
+    </a>
+  </div>
+
+  <hr style="margin: 40px 0;">
+
+  <div class="video-container">
+    <iframe
+      src="https://www.youtube.com/embed/Oj33-qtEYFQ"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+</div>
   
     <div id="footer-placeholder"></div>
 <script>
@@ -266,5 +315,14 @@
       eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
     });
 </script>
+
+  <script>
+  fetch('/side-menu-ru.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('side-menu-placeholder').innerHTML = html;
+    });
+</script>
+  
 </body>
 </html>
