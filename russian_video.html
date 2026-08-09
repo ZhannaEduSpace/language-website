@@ -17,9 +17,6 @@
 
   gtag('config', 'G-8TVEFE4L1Y');
 </script>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
-     crossorigin="anonymous"></script>
   
   <style>
     body {
@@ -32,13 +29,15 @@
     }
 
     header {
-      background-color: #1f4e79;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  background-color: #1f4e79;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2000;
+}
 
     .logo {
       color: white;
@@ -117,11 +116,15 @@
     }
     /* ▲▲▲ Конец блока dropdown ▲▲▲ */
 
-    .container {
-      padding: 10px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+    :root {
+  --side-menu-width: 312px;
+}
+
+.container {
+  margin-left: calc(var(--side-menu-width) + 15px);
+  margin-right: 70px;
+  padding: 25px 0 50px;
+}
 
     h2 {
       text-align: center;
@@ -162,7 +165,37 @@
       font-size: 1.4em;
       color: #1f4e79;
     }
+
+    @media (max-width: 600px) {
+
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px 15px 50px;
+  }
+
+  h2 {
+    font-size: 1.6em;
+    margin-bottom: 25px;
+  }
+
+  .button-grid {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .button-grid a {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+}
+    
   </style>
+
+<link rel="stylesheet" href="/side-menu.css">
+  
 </head>
 <body>
   
@@ -187,7 +220,8 @@
       </div>
     </nav>
   </header>
-
+  
+<div id="side-menu-placeholder"></div>
 
   <div class="container">
     <h2>Выберите тему / Choose a Topic</h2>
@@ -222,5 +256,14 @@
       eval(Array.from(document.getElementById('footer-placeholder').getElementsByTagName("script")).map(s => s.innerHTML).join(";"));
     });
 </script>
+
+  <script>
+  fetch('/side-menu-ru.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('side-menu-placeholder').innerHTML = html;
+    });
+</script>
+  
 </body>
 </html>
