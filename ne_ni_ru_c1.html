@@ -119,14 +119,12 @@
       display: block;
     }
 
-    /* Новая область страницы с учётом бокового меню */
     .container {
       margin-left: calc(var(--side-menu-width) + 15px);
       margin-right: 70px;
       padding: 25px 0 50px;
     }
 
-    /* Само задание по центру оставшегося пространства */
     .quiz-content {
       max-width: 850px;
       margin: 0 auto;
@@ -147,18 +145,25 @@
     }
 
     .quiz-question p {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       font-size: 1.05em;
     }
 
-    .options {
-      display: flex;
-      gap: 25px;
-      margin-left: 5px;
+    .answer-input {
+      width: 55px;
+      padding: 6px 8px;
+      margin: 0 5px;
+      font-size: 1em;
+      text-align: center;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      box-sizing: border-box;
+      background-color: white;
     }
 
-    .options label {
-      cursor: pointer;
+    .answer-input:focus {
+      outline: 2px solid #1f4e79;
+      outline-offset: 1px;
     }
 
     .correct-answer {
@@ -214,18 +219,14 @@
 
       .quiz-question p,
       .instruction,
-      label,
       .correct-answer {
         font-size: 1.15em;
       }
 
-      input[type="radio"] {
-        transform: scale(1.4);
-        margin-right: 7px;
-      }
-
-      .options {
-        gap: 30px;
+      .answer-input {
+        width: 60px;
+        font-size: 1.05em;
+        padding: 7px 8px;
       }
 
       button {
@@ -274,8 +275,7 @@
       <h2>✏️ НЕ и НИ в русском языке</h2>
 
       <p class="instruction">
-        <strong>Задание 1. Выберите правильный вариант: НЕ или НИ.</strong><br>
-        Только один ответ правильный.
+        <strong>Задание 1. Впишите НЕ или НИ.</strong><br>
         Например: Я <em>не</em> видел его вчера.
       </p>
 
@@ -284,7 +284,6 @@
       <button type="button" onclick="checkAnswers()">Проверить ответы</button>
 
       <div class="result" id="result"></div>
-
 
       <script>
         const questions = [
@@ -337,36 +336,48 @@
           block.className = 'quiz-question';
           block.id = `q${i + 1}-block`;
 
+          const input = `
+            <input
+              type="text"
+              id="input${i + 1}"
+              class="answer-input"
+              maxlength="2"
+              autocomplete="off"
+              spellcheck="false"
+              aria-label="Введите не или ни"
+            >
+          `;
+
+          const sentence = item.q.replace('___', input);
+
           block.innerHTML = `
-            <p><strong>${i + 1}.</strong> ${item.q}</p>
-
-            <div class="options">
-              <label>
-                <input type="radio" name="q${i + 1}" value="не">
-                не
-              </label>
-
-              <label>
-                <input type="radio" name="q${i + 1}" value="ни">
-                ни
-              </label>
-            </div>
+            <p><strong>${i + 1}.</strong> ${sentence}</p>
           `;
 
           form.appendChild(block);
         });
 
+        function normalizeAnswer(value) {
+          return value
+            .trim()
+            .toLowerCase();
+        }
 
         function checkAnswers() {
           let score = 0;
 
           questions.forEach((item, i) => {
-            const name = `q${i + 1}`;
-            const selected =
-              form.querySelector(`input[name="${name}"]:checked`);
+            const input =
+              document.getElementById(`input${i + 1}`);
 
             const block =
-              document.getElementById(`${name}-block`);
+              document.getElementById(`q${i + 1}-block`);
+
+            const userAnswer =
+              normalizeAnswer(input.value);
+
+            const correctAnswer =
+              item.a;
 
             const oldMessage =
               block.querySelector('.correct-answer');
@@ -380,23 +391,23 @@
 
             message.classList.add('correct-answer');
 
-            if (!selected) {
+            if (userAnswer === '') {
               message.classList.add('incorrect');
               message.textContent =
                 '⚠️ Сначала напишите ответ.';
             }
 
-            else if (selected.value === item.a) {
+            else if (userAnswer === correctAnswer) {
               message.classList.add('correct');
               message.textContent =
-                `✅ Правильный ответ: ${item.a}`;
+                `✅ Правильно: ${correctAnswer}`;
               score++;
             }
 
             else {
               message.classList.add('incorrect');
               message.textContent =
-                `❌ Правильный ответ: ${item.a}`;
+                `❌ Правильный ответ: ${correctAnswer}`;
             }
 
             block.appendChild(message);
@@ -406,7 +417,6 @@
             `Вы правильно выполнили ${score} из ${questions.length} заданий.`;
         }
       </script>
-
 
       <!-- HorizontalAd -->
       <ins class="adsbygoogle"
@@ -422,7 +432,6 @@
 
     </div>
   </div>
-
 
   <div id="footer-placeholder"></div>
 
@@ -443,7 +452,6 @@
         );
       });
   </script>
-
 
   <script>
     fetch('/side-menu-ru.html')
