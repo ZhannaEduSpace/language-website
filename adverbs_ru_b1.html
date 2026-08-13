@@ -217,11 +217,9 @@
   <div class="container">
   <h2>📘 Наречия от прилагательных (B1)</h2>
 
-  <p><strong>Образуйте наречие от прилагательного.</strong><br>
-  Напишите ответ в поле. (Используйте букву ё, где это необходимо).<br>
-  Например: <em>аккуратный → аккуратно</em></p>
- 
-
+  <p><strong>Задание 2. Образуйте наречие от прилагательного.</strong></p>
+<p>Напишите ответ в поле. <strong>Важно: используйте букву ё, где она необходима.</strong><br>
+Например: <em>аккуратный → аккуратно</em></p>
 
   <form id="quizForm"></form>
 
@@ -239,12 +237,7 @@
       { base: "тихий", answer: "тихо" },
       { base: "холодный", answer: "холодно" },
       { base: "медленный", answer: "медленно" },
-      { base: "лёгкий", answer: "легко" },
-      { base: "плохой", answer: "плохо" },
-      { base: "активный", answer: "активно" },
-      { base: "ясный", answer: "ясно" },
-      { base: "ранний", answer: "рано" },
-      { base: "дружелюбный", answer: "дружелюбно" }
+      { base: "лёгкий", answer: "легко" }
     ];
 
     const form = document.getElementById("quizForm");
@@ -291,6 +284,78 @@
       document.getElementById("result").innerText = `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
     }
   </script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Задание 2. Образуйте наречие от прилагательного.</strong></p>
+<p>Напишите ответ в поле. <strong>Важно: используйте букву ё, где она необходима.</strong><br>
+Например: <em>аккуратный → аккуратно</em></p>
+
+<form id="quizForm2"></form>
+
+<button onclick="checkAnswers2()">Проверить ответы</button>
+<div class="result" id="result2"></div>
+
+<script>
+  const questions2 = [
+    { base: "плохой", answer: "плохо" },
+    { base: "активный", answer: "активно" },
+    { base: "ясный", answer: "ясно" },
+    { base: "ранний", answer: "рано" },
+    { base: "дружелюбный", answer: "дружелюбно" },
+    { base: "опасный", answer: "опасно" },
+    { base: "трудный", answer: "трудно" },
+    { base: "редкий", answer: "редко" },
+    { base: "сухой", answer: "сухо" },
+    { base: "быстрый", answer: "быстро" }
+  ];
+
+  const form2 = document.getElementById("quizForm2");
+
+  questions2.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q2_${index}`;
+    div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
+      <input type="text" id="input2_${index}" placeholder="Напишите ответ">`;
+    form2.appendChild(div);
+  });
+
+  function normalize2(str) {
+    return str.trim().toLowerCase();
+  }
+
+  function checkAnswers2() {
+    let score = 0;
+
+    questions2.forEach((q, i) => {
+      const userInput = normalize2(document.getElementById(`input2_${i}`).value);
+      const correct = normalize2(q.answer);
+      const block = document.getElementById(`q2_${i}`);
+
+      let feedback = block.querySelector(".correct") || block.querySelector(".incorrect");
+      if (feedback) feedback.remove();
+
+      const msg = document.createElement("div");
+
+      if (!userInput) {
+        msg.className = "incorrect";
+        msg.textContent = "⚠️ Сначала напишите ответ.";
+      } else if (userInput === correct) {
+        msg.className = "correct";
+        msg.textContent = `✅ Правильно: ${q.answer}`;
+        score++;
+      } else {
+        msg.className = "incorrect";
+        msg.textContent = `❌ Неправильно. Правильный ответ: ${q.answer}`;
+      }
+
+      block.appendChild(msg);
+    });
+
+    document.getElementById("result2").innerText = `Вы правильно ответили на ${score} из ${questions2.length} вопросов.`;
+  }
+</script>
   
     <div id="footer-placeholder"></div>
 <script>
