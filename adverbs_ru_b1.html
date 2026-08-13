@@ -274,14 +274,17 @@
         if (feedback) feedback.remove();
 
         const msg = document.createElement("div");
-        if (userInput === correct) {
-          msg.className = "correct";
-          msg.textContent = `✅ Правильно: ${q.answer}`;
-          score++;
-        } else {
-          msg.className = "incorrect";
-          msg.textContent = `❌ Неправильно. Правильный ответ: ${q.answer}`;
-        }
+       if (!userInput) {
+  msg.className = "incorrect";
+  msg.textContent = "⚠️ Сначала напишите ответ.";
+} else if (userInput === correct) {
+  msg.className = "correct";
+  msg.textContent = `✅ Правильно: ${q.answer}`;
+  score++;
+} else {
+  msg.className = "incorrect";
+  msg.textContent = `❌ Неправильно. Правильный ответ: ${q.answer}`;
+}
         block.appendChild(msg);
       });
 
