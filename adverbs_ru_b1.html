@@ -500,6 +500,78 @@
     document.getElementById("result4").innerText = `Вы правильно ответили на ${score} из ${questions4.length} вопросов.`;
   }
 </script>
+
+    <hr style="margin: 40px 0;">
+
+<p><strong>Задание 5. Образуйте наречие от прилагательного.</strong></p>
+<p>Напишите ответ в поле. <strong>Важно: используйте букву ё, где она необходима.</strong><br>
+Например: <em>быстрый → быстро</em></p>
+
+<form id="quizForm5"></form>
+
+<button onclick="checkAnswers5()">Проверить ответы</button>
+<div class="result" id="result5"></div>
+
+<script>
+  const questions5 = [
+    { base: "крайний", answer: "крайне" },
+    { base: "тёплый", answer: "тепло" },
+    { base: "пустой", answer: "пусто" },
+    { base: "внешний", answer: "внешне" },
+    { base: "положительный", answer: "положительно" },
+    { base: "раздражающий", answer: "раздражающе" },
+    { base: "надёжный", answer: "надёжно" },
+    { base: "близкий", answer: "близко" },
+    { base: "понятный", answer: "понятно" },
+    { base: "внутренний", answer: "внутренне" }
+  ];
+
+  const form5 = document.getElementById("quizForm5");
+
+  questions5.forEach((q, index) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = `q5_${index}`;
+    div.innerHTML = `<label>${index + 1}. ${q.base} →</label>
+      <input type="text" id="input5_${index}" placeholder="Напишите ответ">`;
+    form5.appendChild(div);
+  });
+
+  function normalize5(str) {
+    return str.trim().toLowerCase();
+  }
+
+  function checkAnswers5() {
+    let score = 0;
+
+    questions5.forEach((q, i) => {
+      const userInput = normalize5(document.getElementById(`input5_${i}`).value);
+      const correct = normalize5(q.answer);
+      const block = document.getElementById(`q5_${i}`);
+
+      let feedback = block.querySelector(".correct") || block.querySelector(".incorrect");
+      if (feedback) feedback.remove();
+
+      const msg = document.createElement("div");
+
+      if (!userInput) {
+        msg.className = "incorrect";
+        msg.textContent = "⚠️ Сначала напишите ответ.";
+      } else if (userInput === correct) {
+        msg.className = "correct";
+        msg.textContent = `✅ Правильно: ${q.answer}`;
+        score++;
+      } else {
+        msg.className = "incorrect";
+        msg.textContent = `❌ Неправильно. Правильный ответ: ${q.answer}`;
+      }
+
+      block.appendChild(msg);
+    });
+
+    document.getElementById("result5").innerText = `Вы правильно ответили на ${score} из ${questions5.length} вопросов.`;
+  }
+</script>
   
     <div id="footer-placeholder"></div>
 <script>
