@@ -200,6 +200,24 @@
       background-color: #163d5c;
     }
 
+.choice-options {
+  display: flex;
+  gap: 28px;
+  margin-top: 10px;
+}
+
+.choice-options label {
+  cursor: pointer;
+}
+
+.blank-line {
+  display: inline-block;
+  width: 140px;
+  border-bottom: 2px solid #555;
+  margin: 0 5px;
+  vertical-align: middle;
+}
+    
     @media (max-width: 600px) {
       .container {
         margin-left: 0;
@@ -237,6 +255,22 @@
       .result {
         font-size: 1.3em;
       }
+      .choice-options {
+  gap: 30px;
+}
+
+.choice-options label {
+  font-size: 1.15em;
+}
+
+.choice-options input[type="radio"] {
+  transform: scale(1.4);
+  margin-right: 7px;
+}
+
+.blank-line {
+  width: 120px;
+}
     }
   </style>
 </head>
@@ -417,6 +451,135 @@
             `Вы правильно выполнили ${score} из ${questions.length} заданий.`;
         }
       </script>
+
+      <hr style="margin: 45px 0;">
+
+<p class="instruction">
+  <strong>Задание 2. Выберите правильную конструкцию.</strong>
+</p>
+
+<form id="quizForm2"></form>
+
+<button type="button" onclick="checkAnswers2()">Проверить ответы</button>
+
+<div class="result" id="result2"></div>
+
+<script>
+  const questions2 = [
+    {
+      before: 'Это был',
+      after: ', как наш бывший преподаватель.',
+      options: ['не кто иной', 'никто иной'],
+      a: 'не кто иной'
+    },
+    {
+      before: '',
+      after: 'не смог бы выполнить эту работу так быстро.',
+      options: ['не кто иной', 'никто иной'],
+      a: 'никто иной'
+    },
+    {
+      before: 'Решение принял',
+      after: ', как директор компании.',
+      options: ['не кто иной', 'никто иной'],
+      a: 'не кто иной'
+    },
+    {
+      before: '',
+      after: 'не интересовало его в тот момент.',
+      options: ['не что иное', 'ничто иное'],
+      a: 'ничто иное'
+    },
+    {
+      before: 'Это было',
+      after: ', как попытка выиграть время.',
+      options: ['не что иное', 'ничто иное'],
+      a: 'не что иное'
+    }
+  ];
+
+  const form2 = document.getElementById('quizForm2');
+
+  questions2.forEach((item, i) => {
+    const block = document.createElement('div');
+    block.className = 'quiz-question';
+    block.id = `q2-${i + 1}-block`;
+
+    block.innerHTML = `
+      <p>
+        <strong>${i + 1}.</strong>
+        ${item.before}
+        <span class="blank-line"></span>
+        ${item.after}
+      </p>
+
+      <div class="choice-options">
+        ${item.options.map(option => `
+          <label>
+            <input
+              type="radio"
+              name="q2-${i + 1}"
+              value="${option}"
+            >
+            ${option}
+          </label>
+        `).join('')}
+      </div>
+    `;
+
+    form2.appendChild(block);
+  });
+
+  function checkAnswers2() {
+    let score = 0;
+
+    questions2.forEach((item, i) => {
+      const name = `q2-${i + 1}`;
+
+      const selected =
+        form2.querySelector(`input[name="${name}"]:checked`);
+
+      const block =
+        document.getElementById(`${name}-block`);
+
+      const oldMessage =
+        block.querySelector('.correct-answer');
+
+      if (oldMessage) {
+        oldMessage.remove();
+      }
+
+      const message =
+        document.createElement('div');
+
+      message.classList.add('correct-answer');
+
+      if (!selected) {
+        message.classList.add('incorrect');
+        message.textContent =
+          '⚠️ Сначала выберите вариант.';
+      }
+
+      else if (selected.value === item.a) {
+        message.classList.add('correct');
+        message.textContent =
+          `✅ Правильно: ${item.a}`;
+        score++;
+      }
+
+      else {
+        message.classList.add('incorrect');
+        message.textContent =
+          `❌ Правильный ответ: ${item.a}`;
+      }
+
+      block.appendChild(message);
+    });
+
+    document.getElementById('result2').textContent =
+      `Вы правильно выполнили ${score} из ${questions2.length} заданий.`;
+  }
+</script>
 
       <!-- HorizontalAd -->
       <ins class="adsbygoogle"
