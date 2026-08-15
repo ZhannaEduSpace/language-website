@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Предлоги и падежное управление в русском языке – упражнения C1 | LanguageEduSpace</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8TVEFE4L1Y');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
+    crossorigin="anonymous"></script>
+
+  <link rel="icon" type="image/png" href="/images/favicon-ru.png">
+  <link rel="apple-touch-icon" href="/images/favicon-ru.png">
+
+  <link rel="stylesheet" href="/side-menu.css">
+
+  <style>
+    :root {
+      --side-menu-width: 312px;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.4;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #1f4e79;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 2000;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #1f4e79;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: none;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown-content a {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+      text-decoration: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Центрирование относительно свободной области справа от меню */
+    .container {
+      margin-left: calc(var(--side-menu-width) + 15px);
+      margin-right: 70px;
+      padding: 25px 0 50px;
+    }
+
+    .quiz-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 25px;
+      color: #1f4e79;
+    }
+
+    .instruction {
+      margin-bottom: 30px;
+    }
+
+    .quiz-question {
+      margin-bottom: 30px;
+    }
+
+    .quiz-question p {
+      margin-bottom: 12px;
+      font-size: 1.05em;
+    }
+
+    /* На компьютере варианты стоят в ряд */
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 35px;
+      margin-left: 5px;
+    }
+
+    .options label {
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .correct-answer {
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 13px 28px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 6px;
+      background-color: #1f4e79;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #163d5c;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 20px 15px 50px;
+      }
+
+      .quiz-content {
+        max-width: none;
+        margin: 0;
+      }
+
+      h2 {
+        font-size: 1.6em;
+        margin-bottom: 25px;
+      }
+
+      .quiz-question p,
+      .instruction,
+      .correct-answer {
+        font-size: 1.15em;
+      }
+
+      /* На телефоне варианты становятся столбиком */
+      .options {
+        flex-direction: column;
+        gap: 12px;
+        margin-left: 5px;
+      }
+
+      .options label {
+        font-size: 1.15em;
+      }
+
+      input[type="radio"] {
+        transform: scale(1.4);
+        margin-right: 8px;
+      }
+
+      button {
+        font-size: 1.2em;
+        padding: 15px 30px;
+      }
+
+      .result {
+        font-size: 1.3em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="logo">LanguageEduSpace</a>
+
+    <nav>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" onclick="event.preventDefault()">𑁔</a>
+
+        <div class="dropdown-content">
+          <a href="russian.html"><strong>Русский язык</strong></a>
+          <a href="russian_vocabulary.html">Словарный запас</a>
+          <a href="russian_grammar.html">Грамматика</a>
+          <a href="russian_reading.html">Чтение</a>
+          <a href="russian_listening.html">Аудирование</a>
+          <a href="russian_video.html">Видео</a>
+          <a href="russian_mixed_tasks.html">Смешанные задания</a>
+          <a href="russian_arctic.html">Арктика</a>
+          <a href="audiobook-dmitriy.html">Аудиокнига</a>
+          <a href="english.html"><strong>English</strong></a>
+          <a href="suomi.html"><strong>Suomi</strong></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div id="side-menu-placeholder"></div>
+
+  <div class="container">
+    <div class="quiz-content">
+
+      <h2>✏️ Предлоги и падежное управление (C1)</h2>
+
+      <p class="instruction">
+        <strong>Задание 1. Выберите правильную форму слова.</strong><br>
+        Только один вариант правильный.
+      </p>
+
+      <form id="quizForm"></form>
+
+      <button type="button" onclick="checkAnswers()">Проверить ответы</button>
+
+      <div class="result" id="result"></div>
+
+      <script>
+        const questions = [
+          {
+            q: 'Согласно новому ___, сотрудники обязаны заранее уведомлять об отсутствии.',
+            options: ['регламент', 'регламентом', 'регламенту'],
+            a: 'регламенту'
+          },
+          {
+            q: 'Благодаря своевременной ___ удалось избежать серьёзных последствий.',
+            options: ['поддержке', 'поддержку', 'поддержки'],
+            a: 'поддержке'
+          },
+          {
+            q: 'Вопреки первоначальным ___ проект был завершён раньше срока.',
+            options: ['прогнозов', 'прогнозам', 'прогнозами'],
+            a: 'прогнозам'
+          },
+          {
+            q: 'Во избежание возможных ___ организаторы изменили расписание.',
+            options: ['задержкам', 'задержек', 'задержками'],
+            a: 'задержек'
+          },
+          {
+            q: 'Вследствие резкого ___ погодных условий рейс был отменён.',
+            options: ['ухудшению', 'ухудшением', 'ухудшения'],
+            a: 'ухудшения'
+          },
+          {
+            q: 'Независимо от окончательного ___ комиссии решение вступит в силу в понедельник.',
+            options: ['решению', 'решения', 'решением'],
+            a: 'решения'
+          },
+          {
+            q: 'Несмотря на неблагоприятную ___, участники продолжили экспедицию.',
+            options: ['погоду', 'погода', 'погоде'],
+            a: 'погоду'
+          },
+          {
+            q: 'В соответствии с установленными ___ документы необходимо подать до конца месяца.',
+            options: ['требования', 'требованиям', 'требованиями'],
+            a: 'требованиями'
+          },
+          {
+            q: 'В связи с техническими ___ доступ к системе временно ограничен.',
+            options: ['работ', 'работам', 'работами'],
+            a: 'работами'
+          },
+          {
+            q: 'По ___ курса все участники получат сертификаты.',
+            options: ['окончанию', 'окончании', 'окончанием'],
+            a: 'окончании'
+          }
+        ];
+
+        const form = document.getElementById('quizForm');
+
+        questions.forEach((item, i) => {
+          const block = document.createElement('div');
+          block.className = 'quiz-question';
+          block.id = `q${i + 1}-block`;
+
+          block.innerHTML = `
+            <p><strong>${i + 1}.</strong> ${item.q}</p>
+
+            <div class="options">
+              ${item.options.map(option => `
+                <label>
+                  <input
+                    type="radio"
+                    name="q${i + 1}"
+                    value="${option}"
+                  >
+                  ${option}
+                </label>
+              `).join('')}
+            </div>
+          `;
+
+          form.appendChild(block);
+        });
+
+        function checkAnswers() {
+          let score = 0;
+
+          questions.forEach((item, i) => {
+            const name = `q${i + 1}`;
+
+            const selected =
+              form.querySelector(`input[name="${name}"]:checked`);
+
+            const block =
+              document.getElementById(`${name}-block`);
+
+            const oldMessage =
+              block.querySelector('.correct-answer');
+
+            if (oldMessage) {
+              oldMessage.remove();
+            }
+
+            const message =
+              document.createElement('div');
+
+            message.classList.add('correct-answer');
+
+            if (!selected) {
+              message.classList.add('incorrect');
+              message.textContent =
+                '⚠️ Сначала выберите вариант.';
+            }
+
+            else if (selected.value === item.a) {
+              message.classList.add('correct');
+              message.textContent =
+                `✅ Правильно: ${item.a}`;
+              score++;
+            }
+
+            else {
+              message.classList.add('incorrect');
+              message.textContent =
+                `❌ Правильный ответ: ${item.a}`;
+            }
+
+            block.appendChild(message);
+          });
+
+          document.getElementById('result').textContent =
+            `Вы правильно выполнили ${score} из ${questions.length} заданий.`;
+        }
+      </script>
+
+
+      <!-- HorizontalAd -->
+      <ins class="adsbygoogle"
+           style="display:block; margin-top:40px;"
+           data-ad-client="ca-pub-6488869290074237"
+           data-ad-slot="5202889392"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
+    </div>
+  </div>
+
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    fetch('/footer.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+
+        eval(
+          Array.from(
+            document
+              .getElementById('footer-placeholder')
+              .getElementsByTagName("script")
+          )
+          .map(s => s.innerHTML)
+          .join(";")
+        );
+      });
+  </script>
+
+
+  <script>
+    fetch('/side-menu-ru.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('side-menu-placeholder').innerHTML = html;
+      });
+  </script>
+
+</body>
+</html>
