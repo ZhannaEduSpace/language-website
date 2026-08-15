@@ -215,7 +215,9 @@
   width: 140px;
   border-bottom: 2px solid #555;
   margin: 0 5px;
-  vertical-align: middle;
+  vertical-align: baseline;
+  position: relative;
+  top: 4px;
 }
     
     @media (max-width: 600px) {
@@ -385,8 +387,7 @@
           const sentence = item.q.replace('___', input);
 
           block.innerHTML = `
-            <p><strong>${i + 1}.</strong> ${sentence}</p>
-          `;
+  <p><strong>${i + 1}.</strong> ${item.before} <span class="blank-line"></span>${item.after}</p>
 
           form.appendChild(block);
         });
