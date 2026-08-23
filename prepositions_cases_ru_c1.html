@@ -131,11 +131,12 @@
       margin: 0 auto;
     }
 
-    h2 {
-      margin-top: 0;
-      margin-bottom: 25px;
-      color: #1f4e79;
-    }
+    h1 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #1f4e79;
+  font-size: 1.8em;
+}
 
     .instruction {
       margin-bottom: 30px;
@@ -209,10 +210,10 @@
         margin: 0;
       }
 
-      h2 {
-        font-size: 1.6em;
-        margin-bottom: 25px;
-      }
+      h1 {
+  font-size: 1.6em;
+  margin-bottom: 25px;
+}
 
       .quiz-question p,
       .instruction,
@@ -279,7 +280,7 @@
   <div class="container">
     <div class="quiz-content">
 
-      <h2>✏️ Предлоги и падежное управление (C1)</h2>
+      <h1>✏️ Предлоги и падежное управление (C1)</h1>
 
       <p class="instruction">
         <strong>Задание 1. Выберите правильную форму слова.</strong><br>
@@ -424,7 +425,152 @@
         }
       </script>
 
+<hr style="margin: 45px 0;">
 
+<p class="instruction">
+  <strong>Задание 2. Выберите правильную форму слова.</strong><br>
+  Только один вариант правильный.
+</p>
+
+<form id="quizForm2"></form>
+
+<button type="button" onclick="checkAnswers2()">Проверить ответы</button>
+
+<div class="result" id="result2"></div>
+
+<script>
+  const questions2 = [
+    {
+      q: 'Согласно _______ руководства отчёт необходимо предоставить до пятницы.',
+      options: ['распоряжение', 'распоряжению', 'распоряжением'],
+      a: 'распоряжению'
+    },
+    {
+      q: 'Компания пошла навстречу _______ клиентов и продлила срок подачи заявок.',
+      options: ['просьб', 'просьбам', 'просьбами'],
+      a: 'просьбам'
+    },
+    {
+      q: 'Вопреки _______ коллег он решил продолжить работу над проектом.',
+      options: ['советов', 'советам', 'советами'],
+      a: 'советам'
+    },
+    {
+      q: 'Ввиду _______ дороги автобус временно изменил маршрут.',
+      options: ['ремонта', 'ремонту', 'ремонтом'],
+      a: 'ремонта'
+    },
+    {
+      q: 'Вследствие _______ оборудования производство пришлось остановить.',
+      options: ['поломке', 'поломки', 'поломкой'],
+      a: 'поломки'
+    },
+    {
+      q: 'В соответствии с _______ суда компания выплатила компенсацию.',
+      options: ['решению', 'решения', 'решением'],
+      a: 'решением'
+    },
+    {
+      q: 'Несмотря на _______, автор отказался менять содержание статьи.',
+      options: ['критика', 'критике', 'критику'],
+      a: 'критику'
+    },
+    {
+      q: 'В связи с _______ моста движение на этом участке ограничено.',
+      options: ['ремонтом', 'ремонта', 'ремонту'],
+      a: 'ремонтом'
+    },
+    {
+      q: 'По _______ поезда на конечную станцию пассажиров попросили покинуть вагоны.',
+      options: ['прибытию', 'прибытии', 'прибытием'],
+      a: 'прибытии'
+    },
+    {
+      q: 'По _______ срока договор автоматически прекращает действие.',
+      options: ['истечению', 'истечении', 'истечением'],
+      a: 'истечении'
+    }
+  ];
+
+  const form2 = document.getElementById('quizForm2');
+
+  questions2.forEach((item, i) => {
+    const block = document.createElement('div');
+    block.className = 'quiz-question';
+    block.id = `q2-${i + 1}-block`;
+
+    block.innerHTML = `
+      <p><strong>${i + 1}.</strong> ${item.q}</p>
+
+      <div class="options">
+        ${item.options.map(option => `
+          <label>
+            <input
+              type="radio"
+              name="q2-${i + 1}"
+              value="${option}"
+            >
+            ${option}
+          </label>
+        `).join('')}
+      </div>
+    `;
+
+    form2.appendChild(block);
+  });
+
+  function checkAnswers2() {
+    let score = 0;
+
+    questions2.forEach((item, i) => {
+      const name = `q2-${i + 1}`;
+
+      const selected =
+        form2.querySelector(`input[name="${name}"]:checked`);
+
+      const block =
+        document.getElementById(`${name}-block`);
+
+      const oldMessage =
+        block.querySelector('.correct-answer');
+
+      if (oldMessage) {
+        oldMessage.remove();
+      }
+
+      const message =
+        document.createElement('div');
+
+      message.classList.add('correct-answer');
+
+      if (!selected) {
+        message.classList.add('incorrect');
+        message.textContent =
+          '⚠️ Сначала выберите вариант.';
+      }
+
+      else if (selected.value === item.a) {
+        message.classList.add('correct');
+        message.textContent =
+          `✅ Правильно: ${item.a}`;
+        score++;
+      }
+
+      else {
+        message.classList.add('incorrect');
+        message.textContent =
+          `❌ Правильный ответ: ${item.a}`;
+      }
+
+      block.appendChild(message);
+    });
+
+    document.getElementById('result2').textContent =
+      `Вы правильно выполнили ${score} из ${questions2.length} заданий.`;
+  }
+</script>
+
+      
       <!-- HorizontalAd -->
       <ins class="adsbygoogle"
            style="display:block; margin-top:40px;"
