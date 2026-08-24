@@ -553,6 +553,236 @@
         }
       </script>
 
+      <hr style="margin: 45px 0;">
+
+<p class="instruction">
+  <strong>Задание 2. Поставьте двоеточие.</strong><br>
+  <em>Поставьте двоеточие там, где оно необходимо. Другие знаки препинания не требуются.</em>
+</p>
+
+<form id="quizForm2"></form>
+
+<button type="button" onclick="checkAnswers2()">Проверить ответы</button>
+
+<div class="result" id="result2"></div>
+
+<script>
+  const questions2 = [
+    {
+      words: [
+        'Я',
+        'хочу',
+        'подчеркнуть',
+        'главное',
+        'дальнейшее',
+        'обсуждение',
+        'должно',
+        'опираться',
+        'на',
+        'проверенные',
+        'данные'
+      ],
+      colonsAfter: [3],
+      correct:
+        'Я хочу подчеркнуть главное: дальнейшее обсуждение должно опираться на проверенные данные.'
+    },
+    {
+      words: [
+        'У',
+        'комиссии',
+        'осталось',
+        'одно',
+        'требование',
+        'документы',
+        'необходимо',
+        'предоставить',
+        'в',
+        'оригинале'
+      ],
+      colonsAfter: [4],
+      correct:
+        'У комиссии осталось одно требование: документы необходимо предоставить в оригинале.'
+    },
+    {
+      words: [
+        'Причина',
+        'отказа',
+        'была',
+        'проста',
+        'заявление',
+        'поступило',
+        'после',
+        'установленного',
+        'срока'
+      ],
+      colonsAfter: [3],
+      correct:
+        'Причина отказа была проста: заявление поступило после установленного срока.'
+    },
+    {
+      words: [
+        'Вывод',
+        'исследования',
+        'оказался',
+        'однозначным',
+        'выбранный',
+        'метод',
+        'требует',
+        'дополнительной',
+        'проверки'
+      ],
+      colonsAfter: [3],
+      correct:
+        'Вывод исследования оказался однозначным: выбранный метод требует дополнительной проверки.'
+    },
+    {
+      words: [
+        'Нас',
+        'беспокоило',
+        'только',
+        'одно',
+        'оборудование',
+        'работало',
+        'на',
+        'пределе',
+        'допустимой',
+        'нагрузки'
+      ],
+      colonsAfter: [3],
+      correct:
+        'Нас беспокоило только одно: оборудование работало на пределе допустимой нагрузки.'
+    }
+  ];
+
+  const form2 = document.getElementById('quizForm2');
+
+  questions2.forEach((item, questionIndex) => {
+    const block = document.createElement('div');
+    block.className = 'quiz-question';
+    block.id = `q2-${questionIndex + 1}-block`;
+
+    const sentence = item.words.map((word, wordIndex) => {
+      const isLast =
+        wordIndex === item.words.length - 1;
+
+      if (isLast) {
+        return `
+          <span class="last-word">${word}.</span>
+        `;
+      }
+
+      return `
+        <span class="word-unit">
+          <span>${word}</span>
+          <input
+            type="text"
+            class="punct-input"
+            id="punct2-${questionIndex}-${wordIndex}"
+            maxlength="1"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Знак после слова ${word}"
+          >
+        </span>
+      `;
+    }).join(' ');
+
+    block.innerHTML = `
+      <p class="punctuation-sentence">
+        <strong>${questionIndex + 1}.</strong>
+        ${sentence}
+      </p>
+    `;
+
+    form2.appendChild(block);
+  });
+
+  function checkAnswers2() {
+    let score = 0;
+
+    questions2.forEach((item, questionIndex) => {
+      const block =
+        document.getElementById(
+          `q2-${questionIndex + 1}-block`
+        );
+
+      const oldMessage =
+        block.querySelector('.correct-answer');
+
+      if (oldMessage) {
+        oldMessage.remove();
+      }
+
+      const inputs =
+        block.querySelectorAll('.punct-input');
+
+      inputs.forEach(input => {
+        input.classList.remove(
+          'input-correct',
+          'input-incorrect'
+        );
+      });
+
+      const hasAnyAnswer =
+        Array.from(inputs).some(input =>
+          input.value.trim() !== ''
+        );
+
+      const message =
+        document.createElement('div');
+
+      message.classList.add('correct-answer');
+
+      if (!hasAnyAnswer) {
+        message.classList.add('incorrect');
+        message.textContent =
+          '⚠️ Сначала поставьте двоеточие.';
+
+        block.appendChild(message);
+        return;
+      }
+
+      let sentenceCorrect = true;
+
+      inputs.forEach((input, wordIndex) => {
+        const expected =
+          item.colonsAfter.includes(wordIndex)
+            ? ':'
+            : '';
+
+        const actual =
+          input.value.trim();
+
+        if (actual !== expected) {
+          sentenceCorrect = false;
+          input.classList.add('input-incorrect');
+        }
+
+        else if (actual === ':') {
+          input.classList.add('input-correct');
+        }
+      });
+
+      if (sentenceCorrect) {
+        message.classList.add('correct');
+        message.textContent =
+          '✅ Правильно.';
+        score++;
+      }
+
+      else {
+        message.classList.add('incorrect');
+        message.textContent =
+          `❌ Знаки препинания расставлены неверно. Правильный вариант: ${item.correct}`;
+      }
+
+      block.appendChild(message);
+    });
+
+    document.getElementById('result2').textContent =
+      `Вы правильно выполнили ${score} из ${questions2.length} предложений.`;
+  }
+</script>
 
       <!-- HorizontalAd -->
       <ins class="adsbygoogle"
