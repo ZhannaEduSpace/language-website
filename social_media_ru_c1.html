@@ -330,6 +330,171 @@
     }
   </script>
 
+    <hr style="margin: 40px 0;">
+
+<h2>Задание 2. Социальные сети: пространство общения или витрина жизни?</h2>
+<p class="instruction">
+  Правда или ложь? Определите, соответствуют ли утверждения содержанию аудиозаписи.
+</p>
+
+    <audio controls controlsList="nodownload noplaybackrate">
+  <source src="audio/social_media_ru_c1-2.mp3" type="audio/mpeg">
+  Ваш браузер не поддерживает аудиоэлемент.
+</audio>
+
+<form id="quizForm2">
+
+  <div class="question" id="tf2-q1-block">
+    <p>1. По мнению автора, участие в социальных сетях не обязательно предполагает публикацию собственного контента.</p>
+
+    <label>
+      <input type="radio" name="tf2-q1" value="true">
+      Правда
+    </label><br>
+
+    <label>
+      <input type="radio" name="tf2-q1" value="false">
+      Ложь
+    </label>
+  </div>
+
+  <div class="question" id="tf2-q2-block">
+    <p>2. Автор считает, что проблема возникает не из-за самого желания делиться впечатлениями, а когда человек начинает воспринимать происходящее с точки зрения предполагаемой аудитории.</p>
+
+    <label>
+      <input type="radio" name="tf2-q2" value="true">
+      Правда
+    </label><br>
+
+    <label>
+      <input type="radio" name="tf2-q2" value="false">
+      Ложь
+    </label>
+  </div>
+
+  <div class="question" id="tf2-q3-block">
+    <p>3. В тексте утверждается, что пользователи социальных сетей почти всегда сознательно создают ложное представление о своей жизни.</p>
+
+    <label>
+      <input type="radio" name="tf2-q3" value="true">
+      Правда
+    </label><br>
+
+    <label>
+      <input type="radio" name="tf2-q3" value="false">
+      Ложь
+    </label>
+  </div>
+
+  <div class="question" id="tf2-q4-block">
+    <p>4. Система рекомендаций может создавать у пользователя впечатление, что привычные ему взгляды распространены шире, чем это есть на самом деле.</p>
+
+    <label>
+      <input type="radio" name="tf2-q4" value="true">
+      Правда
+    </label><br>
+
+    <label>
+      <input type="radio" name="tf2-q4" value="false">
+      Ложь
+    </label>
+  </div>
+
+  <div class="question" id="tf2-q5-block">
+    <p>5. Автор полагает, что из-за алгоритмов пользователь полностью утрачивает возможность самостоятельно выбирать интересующий его контент.</p>
+
+    <label>
+      <input type="radio" name="tf2-q5" value="true">
+      Правда
+    </label><br>
+
+    <label>
+      <input type="radio" name="tf2-q5" value="false">
+      Ложь
+    </label>
+  </div>
+
+  <button type="button" onclick="checkAnswers2()">Проверить ответы</button>
+
+</form>
+
+<div class="result" id="result2"></div>
+
+<script>
+  const answers2 = {
+    'tf2-q1': {
+      correct: 'true',
+      text: 'Правда'
+    },
+    'tf2-q2': {
+      correct: 'true',
+      text: 'Правда'
+    },
+    'tf2-q3': {
+      correct: 'false',
+      text: 'Ложь'
+    },
+    'tf2-q4': {
+      correct: 'true',
+      text: 'Правда'
+    },
+    'tf2-q5': {
+      correct: 'false',
+      text: 'Ложь'
+    }
+  };
+
+  function checkAnswers2() {
+    let score = 0;
+
+    for (const [key, value] of Object.entries(answers2)) {
+      const block =
+        document.getElementById(`${key}-block`);
+
+      const selected =
+        document.querySelector(
+          `input[name="${key}"]:checked`
+        );
+
+      const existing =
+        block.querySelector('.correct-answer');
+
+      if (existing) {
+        existing.remove();
+      }
+
+      const resultText =
+        document.createElement('div');
+
+      resultText.classList.add('correct-answer');
+
+      if (!selected) {
+        resultText.classList.add('incorrect');
+        resultText.innerText =
+          '⚠️ Сначала выберите вариант.';
+      }
+
+      else if (selected.value === value.correct) {
+        resultText.classList.add('correct');
+        resultText.innerText =
+          `✅ Правильно! Ответ: ${value.text}`;
+        score++;
+      }
+
+      else {
+        resultText.classList.add('incorrect');
+        resultText.innerText =
+          `❌ Неправильно. Правильный ответ: ${value.text}`;
+      }
+
+      block.appendChild(resultText);
+    }
+
+    document.getElementById('result2').innerText =
+      `Вы правильно ответили на ${score} из 5 вопросов.`;
+  }
+</script>
+
   </div>
   
     <div id="footer-placeholder"></div>
