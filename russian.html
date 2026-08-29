@@ -174,13 +174,52 @@
       color: #1f4e79;
     }
     
-    .update-note {
-  background-color: #e9f2fb;      /* мягкий светло-синий */
-  color: #1f4e79;                 /* тот же цвет, что в шапке */
-  text-align: center;
-  padding: 10px 15px;
-  font-size: 0.95em;
-  border-bottom: 1px solid #cfdceb;
+  .hero {
+  min-height: 285px;
+  border-radius: 16px;
+  padding: 42px 48px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(248, 249, 250, 0.92) 0%,
+      rgba(248, 249, 250, 0.72) 42%,
+      rgba(248, 249, 250, 0.12) 75%
+    ),
+    url("/images/russian-hero.png") center / cover no-repeat;
+
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  color: #173f68;
+  font-size: 2.2em;
+  line-height: 1.15;
+}
+
+.hero-text {
+  margin: 0 0 20px;
+  max-width: 520px;
+  color: #354657;
+  font-size: 1.08em;
+  line-height: 1.5;
+}
+
+.hero-note {
+  align-self: flex-start;
+  background-color: rgba(255, 255, 255, 0.82);
+  color: #1f4e79;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  border: 1px solid rgba(31, 78, 121, 0.15);
 }
     .video-container {
       position: relative;
@@ -226,6 +265,30 @@
     box-sizing: border-box;
     font-size: 16px;
   }
+  .hero {
+  min-height: 260px;
+  padding: 30px 24px;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      rgba(248, 249, 250, 0.88),
+      rgba(248, 249, 250, 0.68)
+    ),
+    url("/images/russian-hero.png") center / cover no-repeat;
+}
+
+.hero h1 {
+  font-size: 1.8em;
+}
+
+.hero-text {
+  font-size: 1em;
+}
+
+.hero-note {
+  font-size: 0.85em;
+}
 }
   </style>
 
@@ -260,12 +323,20 @@
 
 <div class="container">
 
-  <div class="update-note">
-    Сайт обновляется ежедневно. Возвращайтесь за новыми заданиями и материалами.
+  <section class="hero">
+
+  <h1>Русский язык</h1>
+
+  <p class="hero-text">
+    Интерактивные упражнения по грамматике, лексике,
+    чтению и аудированию для уровней A1–C1.
+  </p>
+
+  <div class="hero-note">
+    ✦ Новые задания добавляются регулярно
   </div>
 
-  <h2>Русский язык</h2>
-  <h3>Выберите раздел</h3>
+</section>
 
   <div class="section-heading">
     Задания
