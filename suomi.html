@@ -181,6 +181,54 @@
   border-bottom: 1px solid #cfdceb;
 }
 
+    .hero {
+  min-height: 285px;
+  border-radius: 16px;
+  padding: 42px 48px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 35px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(248, 249, 250, 0.92) 0%,
+      rgba(248, 249, 250, 0.72) 42%,
+      rgba(248, 249, 250, 0.12) 75%
+    ),
+    url("/images/finnish-hero.png") center / cover no-repeat;
+
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  color: #173f68;
+  font-size: 2.2em;
+  line-height: 1.15;
+}
+
+.hero-text {
+  margin: 0 0 20px;
+  max-width: 520px;
+  color: #354657;
+  font-size: 1.08em;
+  line-height: 1.5;
+}
+
+.hero-note {
+  align-self: flex-start;
+  background-color: rgba(255, 255, 255, 0.82);
+  color: #1f4e79;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  border: 1px solid rgba(31, 78, 121, 0.15);
+}
+
 @media (max-width: 600px) {
 
   .container {
@@ -208,6 +256,30 @@
     min-width: 0;
     box-sizing: border-box;
     font-size: 16px;
+  }
+    .hero {
+    min-height: 260px;
+    padding: 30px 24px;
+    border-radius: 12px;
+
+    background:
+      linear-gradient(
+        rgba(248, 249, 250, 0.88),
+        rgba(248, 249, 250, 0.68)
+      ),
+      url("/images/finnish-hero.png") center / cover no-repeat;
+  }
+
+  .hero h1 {
+    font-size: 1.8em;
+  }
+
+  .hero-text {
+    font-size: 1em;
+  }
+
+  .hero-note {
+    font-size: 0.85em;
   }
 }
     
@@ -238,18 +310,23 @@
 
 <div class="container">
 
-  <div class="update-note">
-    Sivustoa päivitetään päivittäin. Palaa uusien tehtävien pariin.
-  </div>
+   <section class="hero">
+    <h1>Suomen kieli</h1>
 
-  <h2>Suomen kieli</h2>
-  <h3>Valitse osio</h3>
+    <p class="hero-text">
+      Interaktiivisia harjoituksia sanastosta ja kieliopista
+      suomen kielen opiskelijoille.
+    </p>
 
-    <div class="button-grid">
-      <a class="grammar" href="finnish_grammar.html">Kielioppi</a>
-      <a class="vocab" href="finnish_vocabulary.html">Sanasto</a>
-      
+    <div class="hero-note">
+      ✦ Uusia tehtäviä lisätään säännöllisesti
     </div>
+  </section>
+
+  <div class="button-grid">
+    <a class="grammar" href="finnish_grammar.html">Kielioppi</a>
+    <a class="vocab" href="finnish_vocabulary.html">Sanasto</a>
+  </div>
   </div>
   
     <div id="footer-placeholder"></div>
