@@ -189,7 +189,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 35px;
 
   background:
     linear-gradient(
@@ -227,6 +226,89 @@
   border-radius: 20px;
   font-size: 0.9em;
   border: 1px solid rgba(31, 78, 121, 0.15);
+}
+    .task-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 780px;
+  margin: 30px auto 0;
+}
+
+.task-card {
+  position: relative;
+  min-height: 155px;
+  padding: 22px 18px 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: white;
+  border: 1px solid #dde4ea;
+  border-radius: 12px;
+
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.09);
+}
+
+.task-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 14px;
+  right: 14px;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  background-color: var(--card-color);
+}
+
+.task-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+  background-color: var(--icon-bg);
+}
+
+.task-title {
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 1.02em;
+  color: var(--card-color);
+}
+
+.task-description {
+  font-size: 0.88em;
+  line-height: 1.35;
+  color: #66727d;
+}
+
+.card-grammar {
+  --card-color: #2495ad;
+  --icon-bg: #e5f5f7;
+}
+
+.card-vocab {
+  --card-color: #17689b;
+  --icon-bg: #e7f1f8;
 }
 
 @media (max-width: 600px) {
@@ -281,6 +363,14 @@
   .hero-note {
     font-size: 0.85em;
   }
+  .task-grid {
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.task-card {
+  min-height: 125px;
+}
 }
     
   </style>
@@ -323,10 +413,25 @@
     </div>
   </section>
 
-  <div class="button-grid">
-    <a class="grammar" href="finnish_grammar.html">Kielioppi</a>
-    <a class="vocab" href="finnish_vocabulary.html">Sanasto</a>
-  </div>
+ <div class="task-grid">
+
+  <a class="task-card card-grammar" href="finnish_grammar.html">
+    <div class="task-icon">✏️</div>
+    <div class="task-title">Kielioppi</div>
+    <div class="task-description">
+      Kielioppisääntöjä ja interaktiivisia harjoituksia
+    </div>
+  </a>
+
+  <a class="task-card card-vocab" href="finnish_vocabulary.html">
+    <div class="task-icon">📚</div>
+    <div class="task-title">Sanasto</div>
+    <div class="task-description">
+      Sanoja ja temaattisia sanastoharjoituksia
+    </div>
+  </a>
+
+</div>
   </div>
   
     <div id="footer-placeholder"></div>
