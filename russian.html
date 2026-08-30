@@ -340,6 +340,90 @@
   --icon-bg: #fdeaea;
 }
 
+    .extra-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 38px;
+}
+
+.extra-heading {
+  margin-bottom: 14px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #1f4e79;
+}
+
+.extra-card {
+  min-height: 92px;
+  padding: 16px 18px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  background-color: white;
+  border: 1px solid #dde4ea;
+  border-radius: 12px;
+
+  text-decoration: none;
+  color: #333;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.extra-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.08);
+}
+
+.extra-icon {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  font-size: 25px;
+}
+
+.extra-icon-arctic {
+  background-color: #e7f1f8;
+}
+
+.extra-icon-audio {
+  background-color: #e9f5e9;
+}
+
+.extra-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.extra-title {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #173f68;
+}
+
+.extra-description {
+  font-size: 0.88em;
+  line-height: 1.4;
+  color: #66727d;
+}
+
+.extra-arrow {
+  flex: 0 0 auto;
+  margin-left: 5px;
+  font-size: 1.8em;
+  color: #7a8792;
+}
+
 @media (max-width: 600px) {
 
   .container {
@@ -399,6 +483,18 @@
 
 .task-card {
   min-height: 125px;
+}
+  .extra-grid {
+  grid-template-columns: 1fr;
+  gap: 25px;
+}
+
+.extra-heading {
+  font-size: 1.3em;
+}
+
+.extra-card {
+  min-height: 90px;
 }
 }
   </style>
@@ -505,23 +601,66 @@
 
 </div>
 
-  <div class="section-heading">
-    Специальные темы (Задания)
-  </div>
+  <div class="extra-grid">
 
-  <div class="button-grid" style="margin-top: 15px;">
-    <a class="special" href="russian_arctic.html">Арктика</a>
-  </div>
+  <div class="extra-section">
 
-  <div class="section-heading">
-    Аудиокниги
-  </div>
+    <div class="extra-heading">
+      Специальные темы
+    </div>
 
-  <div class="button-grid" style="margin-top: 15px;">
-    <a class="audio1" href="audiobook-dmitriy.html">
-      Личный дневник Дмитрия (A2)
+    <a class="extra-card" href="russian_arctic.html">
+
+      <div class="extra-icon extra-icon-arctic">
+        ❄️
+      </div>
+
+      <div class="extra-content">
+        <div class="extra-title">
+          Арктика
+        </div>
+
+        <div class="extra-description">
+          Тексты и задания на тему Арктики, климата, природы и исследований
+        </div>
+      </div>
+
+      <div class="extra-arrow">›</div>
+
     </a>
+
   </div>
+
+
+  <div class="extra-section">
+
+    <div class="extra-heading">
+      Аудиокниги
+    </div>
+
+    <a class="extra-card" href="audiobook-dmitriy.html">
+
+      <div class="extra-icon extra-icon-audio">
+        📖
+      </div>
+
+      <div class="extra-content">
+        <div class="extra-title">
+          Личный дневник Дмитрия (A2)
+        </div>
+
+        <div class="extra-description">
+          Адаптированная аудиокнига
+        </div>
+      </div>
+
+      <div class="extra-arrow">›</div>
+
+    </a>
+
+  </div>
+
+</div>
 
   <hr style="margin: 40px 0;">
 
