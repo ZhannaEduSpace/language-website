@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>English Language — Tasks</title>
+  <title>English Language Exercises Online | LanguageEduSpace</title>
+<meta name="description" content="Interactive English exercises in grammar, vocabulary, reading and listening. Free online practice and learning materials on LanguageEduSpace.">
 
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
@@ -128,61 +129,153 @@
   margin-right: 70px;
   padding: 25px 0 50px;
 }
-    h2 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+    .hero {
+  min-height: 285px;
+  border-radius: 16px;
+  padding: 42px 48px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-    h3 {
-     text-align: center;
-    margin-bottom: 20px; /* можешь регулировать */
-  }
+  background:
+    linear-gradient(
+      90deg,
+      rgba(248, 249, 250, 0.92) 0%,
+      rgba(248, 249, 250, 0.72) 42%,
+      rgba(248, 249, 250, 0.12) 75%
+    ),
+    url("/images/english-hero.png") center / cover no-repeat;
 
-    .button-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .button-grid a {
-      padding: 15px 25px;
-      text-decoration: none;
-      color: white;
-      border-radius: 8px;
-      font-size: 16px;
-      text-align: center;
-      min-width: 220px;
-    }
-
-    .vocab { background-color: #005b94; }
-    .grammar { background-color: #2c9ab7; }
-    .reading { background-color: #4caf50; }
-    .listening { background-color: #ff9800; }
-    .mixed { background-color: #9c27b0; }
-    .special { background-color: #424242; }
-
-    .button-grid a:hover {
-      opacity: 0.85;
-    }
-
-    .section-heading {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 1.4em;
-      color: #1f4e79;
-    }
-
-    .update-note {
-  background-color: #e9f2fb;      /* мягкий светло-синий */
-  color: #1f4e79;                 /* тот же цвет, что в шапке */
-  text-align: center;
-  padding: 10px 15px;
-  font-size: 0.95em;
-  border-bottom: 1px solid #cfdceb;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
 }
 
-@media (max-width: 600px) {
+.hero h1 {
+  margin: 0 0 12px;
+  color: #173f68;
+  font-size: 2.2em;
+  line-height: 1.15;
+}
+
+.hero-text {
+  margin: 0 0 20px;
+  max-width: 560px;
+  color: #354657;
+  font-size: 1.08em;
+  line-height: 1.5;
+}
+
+.hero-note {
+  align-self: flex-start;
+  background-color: rgba(255, 255, 255, 0.82);
+  color: #1f4e79;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  border: 1px solid rgba(31, 78, 121, 0.15);
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 30px auto 0;
+}
+
+.task-card {
+  position: relative;
+  min-height: 170px;
+  padding: 22px 18px 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: white;
+  border: 1px solid #dde4ea;
+  border-radius: 12px;
+
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.09);
+}
+
+.task-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 14px;
+  right: 14px;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  background-color: var(--card-color);
+}
+
+.task-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+  background-color: var(--icon-bg);
+}
+
+.task-title {
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 1.02em;
+  color: var(--card-color);
+}
+
+.task-description {
+  font-size: 0.88em;
+  line-height: 1.35;
+  color: #66727d;
+}
+
+.card-vocab {
+  --card-color: #17689b;
+  --icon-bg: #e7f1f8;
+}
+
+.card-grammar {
+  --card-color: #2495ad;
+  --icon-bg: #e5f5f7;
+}
+
+.card-listening {
+  --card-color: #e08a00;
+  --icon-bg: #fbf1dd;
+}
+
+.card-reading {
+  --card-color: #43a047;
+  --icon-bg: #eaf5ea;
+}
+
+
+  @media (max-width: 1100px) {
+  .task-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+  @media (max-width: 600px) {
 
   .container {
     margin-left: 0;
@@ -190,27 +283,40 @@
     padding: 20px 15px 50px;
   }
 
-  h2 {
-    font-size: 1.6em;
-    margin-bottom: 25px;
+  .hero {
+    min-height: 260px;
+    padding: 30px 24px;
+    border-radius: 12px;
+
+    background:
+      linear-gradient(
+        rgba(248, 249, 250, 0.88),
+        rgba(248, 249, 250, 0.68)
+      ),
+      url("/images/english-hero.png") center / cover no-repeat;
   }
 
-  h3 {
-    font-size: 1.2em;
+  .hero h1 {
+    font-size: 1.8em;
   }
 
-  .button-grid {
-    flex-direction: column;
-    gap: 15px;
+  .hero-text {
+    font-size: 1em;
   }
 
-  .button-grid a {
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-    font-size: 16px;
+  .hero-note {
+    font-size: 0.85em;
   }
-}    
+
+  .task-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .task-card {
+    min-height: 125px;
+  }
+}   
   </style>
 
 <link rel="stylesheet" href="/side-menu.css">
@@ -228,6 +334,7 @@
           <a href="english_grammar.html">Grammar</a>
           <a href="english_vocabulary.html">Vocabulary</a>
           <a href="english_listening.html">Listening</a>
+          <a href="english_reading.html">Reading</a>
           <a href="russian.html"><strong>Русский</strong></a>
           <a href="suomi.html"><strong>Suomi</strong></a>
         </div>
@@ -239,20 +346,54 @@
   
   <div class="container">
 
-<div class="update-note">
-  The site is updated daily. Come back for new tasks.
-</div>
-    
-    <h2>English Language</h2>
-    <h3>Choose a Section</h3>
+<section class="hero">
+  <h1>English Language</h1>
 
-    <div class="button-grid">
-      <a class="vocab" href="english_vocabulary.html">Vocabulary</a>
-      <a class="grammar" href="english_grammar.html">Grammar</a>
-      <a class="listening" href="english_listening.html">Listening</a>
-      <a class="reading" href="english_reading.html">Reading</a>
+  <p class="hero-text">
+    Interactive exercises in grammar, vocabulary,
+    reading and listening for English learners.
+  </p>
 
+  <div class="hero-note">
+    ✦ New tasks are added regularly
+  </div>
+</section>
+
+<div class="task-grid">
+
+  <a class="task-card card-vocab" href="english_vocabulary.html">
+    <div class="task-icon">📚</div>
+    <div class="task-title">Vocabulary</div>
+    <div class="task-description">
+      Words, expressions and topic-based practice
     </div>
+  </a>
+
+  <a class="task-card card-grammar" href="english_grammar.html">
+    <div class="task-icon">✏️</div>
+    <div class="task-title">Grammar</div>
+    <div class="task-description">
+      Rules and interactive grammar exercises
+    </div>
+  </a>
+
+  <a class="task-card card-listening" href="english_listening.html">
+    <div class="task-icon">🎧</div>
+    <div class="task-title">Listening</div>
+    <div class="task-description">
+      Audio materials and listening practice
+    </div>
+  </a>
+
+  <a class="task-card card-reading" href="english_reading.html">
+    <div class="task-icon">📖</div>
+    <div class="task-title">Reading</div>
+    <div class="task-description">
+      Texts and reading comprehension tasks
+    </div>
+  </a>
+
+</div>
   </div>
     
   <div id="footer-placeholder"></div>
