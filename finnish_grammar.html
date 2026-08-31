@@ -198,21 +198,54 @@ nav a:hover {
       color: #1f4e79;
     }
 
-    .btn {
+   .btn {
+  position: relative;
+  padding: 14px 42px 14px 18px;
+  border-radius: 10px;
+
+  background-color: white;
+  border: 1px solid #dde4ea;
+  border-left: 4px solid var(--level-color);
+
+  color: #354657;
+  text-align: left;
+  text-decoration: none;
+  font-size: 15px;
+
   display: block;
   width: 100%;
   box-sizing: border-box;
-  padding: 15px;
-  border-radius: 10px;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
+
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-    .a1a2 { background-color: #2e7d32; }         /* Dark green */
-    .a2 { background-color: #1560BD; }       /* Dark green */
-    .b1 { background-color: #03045e; }       /* Blue */
+.btn::after {
+  content: "›";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-52%);
+  color: var(--level-color);
+  font-size: 1.5em;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.a1a2 {
+  --level-color: #4d9b45;
+}
+
+.a2 {
+  --level-color: #2f73c8;
+}
+
+.b1 {
+  --level-color: #315fae;
+}
 
 @media (max-width: 600px) {
 
