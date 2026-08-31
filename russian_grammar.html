@@ -140,12 +140,43 @@ nav a:hover {
   margin-right: 70px;
   padding: 25px 0 50px;
 }
+    .grammar-hero {
+  min-height: 145px;
+  padding: 26px 36px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
 
-    h2 {
-      text-align: center;
-      color: #1f4e79;
-      margin-bottom: 40px;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(248, 249, 250, 0.94) 0%,
+      rgba(248, 249, 250, 0.76) 40%,
+      rgba(248, 249, 250, 0.15) 72%
+    ),
+    url("/images/russian-grammar-hero.png") center / cover no-repeat;
+
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+}
+
+.grammar-hero h1 {
+  margin: 0 0 6px;
+  color: #173f68;
+  font-size: 2em;
+  line-height: 1.15;
+}
+
+.grammar-hero p {
+  margin: 0;
+  color: #526170;
+  font-size: 1em;
+}
 
     .columns {
   display: grid;
@@ -197,11 +228,6 @@ nav a:hover {
     gap: 30px;
   }
 
-  h2 {
-    font-size: 1.6em;
-    margin-bottom: 25px;
-  }
-
   .column {
     width: 100%;
   }
@@ -210,6 +236,23 @@ nav a:hover {
     width: 100%;
     font-size: 16px;
   }
+      .grammar-hero {
+  min-height: 125px;
+  padding: 22px 20px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      rgba(248, 249, 250, 0.88),
+      rgba(248, 249, 250, 0.68)
+    ),
+    url("/images/russian-grammar-hero.png") center / cover no-repeat;
+}
+
+.grammar-hero h1 {
+  font-size: 1.7em;
+}
 }
     
   </style>
@@ -244,7 +287,11 @@ nav a:hover {
 <div id="side-menu-placeholder"></div>
 
   <div class="container">
-    <h2>Грамматика — задания по уровням</h2>
+   <section class="grammar-hero">
+  <h1>Грамматика</h1>
+  <p>Задания по уровням</p>
+</section>
+    
     <div class="columns">
       <div class="column">
         <h3>A1–A2</h3>
@@ -269,7 +316,9 @@ nav a:hover {
         <a class="btn c1" href="punctuation_ru_c1.html">Пунктуация (C1)</a>
       </div>
 
-       <!-- HorizontalAd -->
+  </div>
+
+   <!-- HorizontalAd -->
       <ins class="adsbygoogle"
            style="display:block; margin-top:40px;"
            data-ad-client="ca-pub-6488869290074237"
@@ -281,8 +330,7 @@ nav a:hover {
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
   
-    </div>
-  </div>
+   </div>
   
     <div id="footer-placeholder"></div>
 <script>
