@@ -126,6 +126,44 @@
       max-width: 750px;
       margin: auto;
     }
+    
+    .audiobook-hero {
+  min-height: 125px;
+  padding: 26px 36px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(248, 249, 250, 0.94) 0%,
+      rgba(248, 249, 250, 0.76) 40%,
+      rgba(248, 249, 250, 0.15) 72%
+    ),
+    url("/images/audiobook-hero.png") center / cover no-repeat;
+
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+}
+
+.audiobook-hero h1 {
+  margin: 0 0 6px;
+  color: #173f68;
+  font-size: 2em;
+  line-height: 1.15;
+}
+
+.audiobook-hero p {
+  margin: 0;
+  color: #526170;
+  font-size: 1em;
+}
 
     h2, .instruction {
       text-align: left;
@@ -186,6 +224,14 @@
     margin-top: 30px;
     margin-bottom: 30px;
     }
+
+    .book-intro {
+  margin-bottom: 30px;
+}
+
+.book-intro p {
+  margin: 0;
+}
     
     @media (max-width: 600px) {
   body {
@@ -221,6 +267,23 @@
   html, body {
     overflow-y: visible !important;
   }
+      .audiobook-hero {
+  min-height: 125px;
+  padding: 22px 20px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      rgba(248, 249, 250, 0.88),
+      rgba(248, 249, 250, 0.68)
+    ),
+    url("/images/audiobook-hero.png") center / cover no-repeat;
+}
+
+.audiobook-hero h1 {
+  font-size: 1.7em;
+}
 }
     
   </style>
@@ -254,10 +317,15 @@
   <div id="side-menu-placeholder"></div>
 
   <div class="container">
+    
+<section class="audiobook-hero">
+  <h1>Личный дневник Дмитрия</h1>
+  <p>Аудиокнига • уровень A2</p>
+</section>
+
 <div class="book-intro">
-  <h1>Аудиокнига «Личный дневник Дмитрия» (A2)</h1>
   <p>
-    Это рассказ о молодом человеке Дмитрии, его приключениях и открытиях.  
+    Это рассказ о молодом человеке Дмитрии, его приключениях и открытиях.
     В каждой главе вы сможете послушать аудио и при желании прочитать текст.
   </p>
 </div>
