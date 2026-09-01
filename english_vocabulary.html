@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>English Vocabulary Tasks</title>
+  <title>English Vocabulary Exercises A1–C1 | LanguageEduSpace</title>
   
    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TVEFE4L1Y"></script>
@@ -140,11 +140,43 @@ nav a:hover {
   padding: 25px 0 50px;
 }
 
-    h2 {
-      text-align: center;
-      color: #1f4e79;
-      margin-bottom: 40px;
-    }
+    .vocab-hero {
+  min-height: 125px;
+  padding: 26px 36px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(248, 249, 250, 0.94) 0%,
+      rgba(248, 249, 250, 0.76) 40%,
+      rgba(248, 249, 250, 0.15) 72%
+    ),
+    url("/images/vocabulary-hero.png") center / cover no-repeat;
+
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+}
+
+.vocab-hero h1 {
+  margin: 0 0 6px;
+  color: #173f68;
+  font-size: 2em;
+  line-height: 1.15;
+}
+
+.vocab-hero p {
+  margin: 0;
+  color: #526170;
+  font-size: 1em;
+}
 
     .columns {
   display: grid;
@@ -166,22 +198,55 @@ nav a:hover {
     }
 
     .btn {
+  position: relative;
+  padding: 14px 42px 14px 18px;
+  border-radius: 10px;
+
+  background-color: white;
+  border: 1px solid #dde4ea;
+  border-left: 4px solid var(--level-color);
+
+  color: #354657;
+  text-align: left;
+  text-decoration: none;
+  font-size: 15px;
+
   display: block;
   width: 100%;
   box-sizing: border-box;
-  padding: 15px;
-  border-radius: 10px;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
+
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-    .a1 { background-color: #37943b; }         /* Dark green */
-    .a2 { background-color: #276e2b; }         /* Dark green */
-    .a1a2 { background-color: #2e7d32; }         /* Dark green */
-    .b1b2 { background-color: #03045e; }       /* Blue */
-    .c1 { background-color: #ae2012; }       /* Dark red */
+.btn::after {
+  content: "›";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-52%);
+  color: var(--level-color);
+  font-size: 1.5em;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.a1,
+.a2,
+.a1a2 {
+  --level-color: #4d9b45;
+}
+
+.b1b2 {
+  --level-color: #315fae;
+}
+
+.c1 {
+  --level-color: #c64a42;
+}
 
 @media (max-width: 600px) {
 
@@ -196,11 +261,6 @@ nav a:hover {
     gap: 30px;
   }
 
-  h2 {
-    font-size: 1.6em;
-    margin-bottom: 25px;
-  }
-
   .column {
     width: 100%;
   }
@@ -209,6 +269,24 @@ nav a:hover {
     width: 100%;
     font-size: 16px;
   }
+
+  .vocab-hero {
+  min-height: 125px;
+  padding: 22px 20px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      rgba(248, 249, 250, 0.88),
+      rgba(248, 249, 250, 0.68)
+    ),
+    url("/images/vocabulary-hero.png") center / cover no-repeat;
+}
+
+.vocab-hero h1 {
+  font-size: 1.7em;
+}
 }
     
   </style>
@@ -239,7 +317,12 @@ nav a:hover {
 <div id="side-menu-placeholder"></div>
 
   <div class="container">
-    <h2>Задания по уровням / Tasks by Level</h2>
+   
+    <section class="vocab-hero">
+  <h1>Vocabulary</h1>
+  <p>Exercises by level</p>
+</section>
+    
     <div class="columns">
       <div class="column">
         <h3>A1–A2</h3>
