@@ -129,38 +129,103 @@
   padding: 25px 0 50px;
 }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+    .video-hero {
+  min-height: 125px;
+  padding: 26px 36px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(248, 249, 250, 0.94) 0%,
+      rgba(248, 249, 250, 0.76) 40%,
+      rgba(248, 249, 250, 0.15) 72%
+    ),
+    url("/images/video-hero.png") center / cover no-repeat;
+
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+}
+
+.video-hero h1 {
+  margin: 0 0 6px;
+  color: #173f68;
+  font-size: 2em;
+  line-height: 1.15;
+}
+
+.video-hero p {
+  margin: 0;
+  color: #526170;
+  font-size: 1em;
+}
 
     .button-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
 
-    .button-grid a {
-      padding: 15px 25px;
-      text-decoration: none;
-      color: white;
-      border-radius: 8px;
-      font-size: 16px;
-      text-align: center;
-      min-width: 220px;
-    }
+.button-grid a {
+  position: relative;
+  padding: 16px 42px 16px 18px;
+  box-sizing: border-box;
 
-    .texts { background-color: #03b861; }
-    .listening { background-color: #8c52ff; }
-    .gender { background-color: #ff7023; }
-    .called { background-color: #004F98; }
-    .vocabulary { background-color: #23d0d6; }
-   
+  background-color: white;
+  border: 1px solid #dde4ea;
+  border-left: 4px solid var(--topic-color);
+  border-radius: 10px;
 
-    .button-grid a:hover {
-      opacity: 0.85;
-    }
+  color: #354657;
+  text-align: left;
+  text-decoration: none;
+  font-size: 15px;
+
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button-grid a::after {
+  content: "›";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-52%);
+  color: var(--topic-color);
+  font-size: 1.5em;
+}
+
+.button-grid a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.texts {
+  --topic-color: #43a047;
+}
+
+.listening {
+  --topic-color: #8c52c7;
+}
+
+.gender {
+  --topic-color: #d98200;
+}
+
+.called {
+  --topic-color: #315fae;
+}
+
+.vocabulary {
+  --topic-color: #2495ad;
+}
 
     .section-heading {
       margin-top: 40px;
@@ -177,22 +242,32 @@
     padding: 20px 15px 50px;
   }
 
-  h2 {
-    font-size: 1.6em;
-    margin-bottom: 25px;
-  }
+ .video-hero {
+  min-height: 125px;
+  padding: 22px 20px;
+  margin-bottom: 25px;
+  border-radius: 12px;
 
-  .button-grid {
-    flex-direction: column;
-    gap: 15px;
-  }
+  background:
+    linear-gradient(
+      rgba(248, 249, 250, 0.88),
+      rgba(248, 249, 250, 0.68)
+    ),
+    url("/images/video-hero.png") center / cover no-repeat;
+}
 
-  .button-grid a {
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
+.video-hero h1 {
+  font-size: 1.7em;
+}
+
+.button-grid {
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.button-grid a {
+  font-size: 16px;
+}
 }
     
   </style>
@@ -227,8 +302,12 @@
 <div id="side-menu-placeholder"></div>
 
   <div class="container">
-    <h2>Выберите тему / Choose a Topic</h2>
-
+    
+    <section class="video-hero">
+  <h1>Видео</h1>
+  <p>Выберите тему</p>
+</section>
+    
     <div class="button-grid">
       <a class="texts" href="texts_about_Russia.html">Тексты о России</a>
       <a class="listening" href="did_you_hear_that.html">Ты это слышал?</a>
@@ -236,8 +315,7 @@
       <a class="called" href="whats-this-in-russian.html">Как это называется по-русски?</a>
       <a class="vocabulary" href="vocabulary_video_ru.html">Слова по темам</a>
     </div>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6488869290074237"
-     crossorigin="anonymous"></script>
+
 <!-- HorizontalAd -->
 <ins class="adsbygoogle"
      style="display:block; margin-top:30px;"
