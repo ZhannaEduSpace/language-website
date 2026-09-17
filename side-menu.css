@@ -1,57 +1,89 @@
-/* ===== БОКОВОЕ МЕНЮ ZhannaEduSpace ===== */
+/* ===== БОКОВОЕ МЕНЮ LanguageEduSpace ===== */
 
-/* Колонка слева: позиция, размеры, фон */
 .side-menu {
   position: fixed;
-  top: 0;                 /* фон начинается прямо от верхнего края окна */
+  top: 0;
   left: 0;
-  width: 240px;
-  min-height: 100vh;      /* тянем колонку на всю высоту экрана */
-  padding: 70px 0 40px;   /* отступ сверху = высота хедера примерно */
-  font-size: 1.05rem;
-  z-index: 900;           /* ниже хедера, чтобы его не перекрывать */
 
-  background-color: #e6eff7;       /* светло-голубой фон всей колонки */
-  border-right: 1px solid #c3d3e6; /* тонкая граница справа */
+  width: 312px;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  padding: 76px 14px 40px;
+
+  font-size: 1rem;
+  z-index: 900;
+
+  background-color: #eef4f8;
+  border-right: 1px solid #d7e1ea;
 }
 
-/* Отступы между группами ссылок */
+/* Отдельные языковые группы */
 .side-section {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
-/* Общий стиль ссылок в меню (языки + разделы) */
+/* Все ссылки */
 .lang-link,
 .section-link {
   display: block;
-  color: #ffffff;
+  box-sizing: border-box;
+
   text-decoration: none;
-  border-radius: 0 8px 8px 0;
-  margin-bottom: 4px;
+  color: #29465f;
+
+  border-radius: 10px;
+  margin-bottom: 6px;
+
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
-/* Большая плашка языка: "Русский язык", "English language", "Suomen kieli" */
+/* Название языка */
 .lang-link {
-  padding: 12px 20px;
+  padding: 13px 16px;
+
   font-weight: 600;
   font-size: 1.05rem;
-  background-color: #1f4e79;   /* тёмно-синий, как шапка */
+
+  color: #173f68;
+
+  background-color: #dceaf5;
+  border: 1px solid #cbddea;
+  border-left: 4px solid #1f4e79;
 }
 
-/* Плашки разделов: "Словарный запас", "Грамматика" и т.п. */
+/* Разделы языка */
 .section-link {
-  padding: 10px 24px;
-  font-size: 1rem;
-  background-color: #2b5f90;   /* чуть светлее синий */
+  padding: 11px 16px;
+
+  font-size: 0.98rem;
+
+  background-color: #ffffff;
+  border: 1px solid #dde5ec;
+  border-left: 4px solid #8fb3cf;
+
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.025);
 }
 
-/* Hover для всех кнопок */
-.lang-link:hover,
+/* Наведение */
+.lang-link:hover {
+  background-color: #d1e4f2;
+  transform: translateX(2px);
+}
+
 .section-link:hover {
-  background-color: #163d5c;   /* чуть темнее при наведении */
+  background-color: #f8fbfd;
+  border-left-color: #1f6fa5;
+
+  transform: translateX(2px);
+
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.055);
 }
 
-/* На планшетах/телефонах боковое меню прячем */
+/* Планшеты и телефоны */
 @media (max-width: 1024px) {
   .side-menu {
     display: none;
