@@ -337,7 +337,7 @@
   </select>
   до́ма.
 
-  С одно́й стороны́, э́то позво́ляет экономи́ть вре́мя
+  С одно́й стороны́, э́то позво́ляет эконо́мить вре́мя
   <select id="q15">
     <option value="">—</option>
     <option value="на">на</option>
@@ -429,6 +429,150 @@
     });
 
     document.getElementById('result2').textContent =
+      `Вы правильно ответили на ${score} из ${total} вопросов.`;
+  }
+</script>
+
+  <hr style="margin: 45px 0; border: 0; border-top: 1px solid #d9e1e8;">
+
+<h3 class="task-title">Задание 3. Поездка в Таллин</h3>
+
+<p>
+  <strong>
+    Прочитайте текст. В каждом пропуске выберите один правильный вариант.
+  </strong>
+</p>
+
+<form id="quizForm3">
+
+  Про́шлой весно́й мы с друзья́ми реши́ли
+  <select id="q21">
+    <option value="">—</option>
+    <option value="пое́хать">пое́хать</option>
+    <option value="пое́хали">пое́хали</option>
+  </select>
+  в Та́ллин на выходны́е.
+
+  Мы зара́нее купи́ли биле́ты и заброни́ровали
+  <select id="q22">
+    <option value="">—</option>
+    <option value="небольшо́й">небольшо́й</option>
+    <option value="небольшо́го">небольшо́го</option>
+  </select>
+  о́тель недалеко́ от це́нтра.
+
+  Из Хе́льсинки мы реши́ли добира́ться
+  <select id="q23">
+    <option value="">—</option>
+    <option value="на">на</option>
+    <option value="в">в</option>
+  </select>
+  паро́ме.
+
+  У́тром пого́да была́ хоро́шая, но по́зже подня́лся си́льный ве́тер, и
+  <select id="q24">
+    <option value="">—</option>
+    <option value="из-за">из-за</option>
+    <option value="благодаря́">благодаря́</option>
+  </select>
+  него́ отправле́ние немно́го задержа́ли.
+
+  Нам пришлось
+  <select id="q25">
+    <option value="">—</option>
+    <option value="ждать">ждать</option>
+    <option value="жда́ли">жда́ли</option>
+  </select>
+  о́коло часа́, но мы не расстро́ились.
+
+  Когда́ мы наконе́ц
+  <select id="q26">
+    <option value="">—</option>
+    <option value="прибы́ли">прибы́ли</option>
+    <option value="прибыва́ли">прибыва́ли</option>
+  </select>
+  в Та́ллин, сра́зу пошли́ гуля́ть по ста́рому го́роду.
+
+  На у́лицах бы́ло мно́го тури́стов, поэ́тому це́нтр оказа́лся дово́льно
+  <select id="q27">
+    <option value="">—</option>
+    <option value="оживлённым">оживлённым</option>
+    <option value="пу́стым">пу́стым</option>
+  </select>.
+
+  На обе́д мы зашли́ в ма́ленькое кафе́. На у́лице бы́ло прохла́дно, поэ́тому я заказа́л
+  <select id="q28">
+    <option value="">—</option>
+    <option value="горя́чий">горя́чий</option>
+    <option value="холо́дный">холо́дный</option>
+  </select>
+  чай.
+
+  Пе́ред возвраще́нием мы купи́ли не́сколько сувени́ров
+  <select id="q29">
+    <option value="">—</option>
+    <option value="для">для</option>
+    <option value="от">от</option>
+  </select>
+  друзе́й и роди́телей.
+
+  Ве́чером пошёл дождь, но,
+  <select id="q30">
+    <option value="">—</option>
+    <option value="несмотря́ на">несмотря́ на</option>
+    <option value="из-за">из-за</option>
+  </select>
+  плоху́ю пого́ду, поездка́ оста́вила у нас о́чень хоро́шие впечатле́ния.
+
+  <br>
+
+  <button type="button" onclick="checkAnswers3()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result3"></div>
+
+<script>
+  const answers3 = {
+    q21: "пое́хать",
+    q22: "небольшо́й",
+    q23: "на",
+    q24: "из-за",
+    q25: "ждать",
+    q26: "прибы́ли",
+    q27: "оживлённым",
+    q28: "горя́чий",
+    q29: "для",
+    q30: "несмотря́ на"
+  };
+
+  function checkAnswers3() {
+    let score = 0;
+    const total = Object.keys(answers3).length;
+
+    document
+      .querySelectorAll('#quizForm3 .feedback')
+      .forEach(n => n.remove());
+
+    Object.entries(answers3).forEach(([id, correct]) => {
+      const sel = document.getElementById(id);
+      if (!sel) return;
+
+      const val = (sel.value || '').trim();
+
+      const fb = document.createElement('span');
+      fb.className =
+        'feedback ' + (val === correct ? 'correct' : 'incorrect');
+
+      fb.textContent = val === correct ? '✅' : '❌';
+
+      sel.insertAdjacentElement('afterend', fb);
+
+      if (val === correct) {
+        score++;
+      }
+    });
+
+    document.getElementById('result3').textContent =
       `Вы правильно ответили на ${score} из ${total} вопросов.`;
   }
 </script>
