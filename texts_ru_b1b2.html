@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Задание по русскому языку: Уборка (B1–B2)</title>
+  <title>Тексты B1–B2 – смешанные задания по русскому языку | LanguageEduSpace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Google tag (gtag.js) -->
@@ -78,6 +78,12 @@
   line-height: 1.7;
 }
     h2 { margin: 16px 0; color: #1f4e79; }
+
+    .task-title {
+  margin: 35px 0 12px;
+  color: #1f4e79;
+  font-size: 1.35em;
+}
     .result { margin-top: 24px; font-weight: bold; font-size: 1.1em; }
 
     select {
@@ -157,8 +163,11 @@
   <div id="side-menu-placeholder"></div>
 
 <div class="container">
-  <h2>🧹 Уборка (B1–B2)</h2>
-  <p><strong>Прочитайте текст. В каждом пропуске выберите одно правильное слово из двух предложенных.</strong></p>
+  <h2>Тексты (B1–B2)</h2>
+<p>Смешанные задания на лексику, грамматику и понимание текста.</p>
+
+<h3 class="task-title">Задание 1. Уборка</h3>
+<p><strong>Прочитайте текст. В каждом пропуске выберите одно правильное слово из двух предложенных.</strong></p>
 
   <form id="quizForm">
     Для одни́х люде́й убо́рка — э́то ску́чная обя́занность, для други́х — спо́соб
@@ -265,7 +274,7 @@
       const total = Object.keys(answers).length;
 
       // убрать старые значки
-      document.querySelectorAll('.feedback').forEach(n => n.remove());
+      document.querySelectorAll('#quizForm .feedback').forEach(n => n.remove());
 
       Object.entries(answers).forEach(([id, correct]) => {
         const sel = document.getElementById(id);
@@ -286,6 +295,143 @@
         `Вы правильно ответили на ${score} из ${total} вопросов.`;
     }
   </script>
+
+  <hr style="margin: 45px 0; border: 0; border-top: 1px solid #d9e1e8;">
+
+<h3 class="task-title">Задание 2. Работа из дома</h3>
+
+<p>
+  <strong>
+    Прочитайте текст. В каждом пропуске выберите один правильный вариант.
+  </strong>
+</p>
+
+<form id="quizForm2">
+
+  За после́дние го́ды удалённая рабо́та стала́ о́чень
+  <select id="q11">
+    <option value="">—</option>
+    <option value="распространённой">распространённой</option>
+    <option value="распространённо">распространённо</option>
+  </select>.
+  
+  Сейча́с мно́гие сотру́дники хотя́ бы не́сколько дней в неде́лю рабо́тают
+  <select id="q12">
+    <option value="">—</option>
+    <option value="из">из</option>
+    <option value="с">с</option>
+  </select>
+  до́ма.
+
+  Е́сли ра́ньше челове́к ка́ждый день
+  <select id="q13">
+    <option value="">—</option>
+    <option value="е́здил">е́здил</option>
+    <option value="е́здили">е́здили</option>
+  </select>
+  в о́фис, то тепе́рь он мо́жет ча́ще
+  <select id="q14">
+    <option value="">—</option>
+    <option value="остава́ться">остава́ться</option>
+    <option value="остаётся">остаётся</option>
+  </select>
+  до́ма.
+
+  С одно́й стороны́, э́то позво́ляет экономи́ть вре́мя
+  <select id="q15">
+    <option value="">—</option>
+    <option value="на">на</option>
+    <option value="в">в</option>
+  </select>
+  доро́гу и рабо́тать в бо́лее
+  <select id="q16">
+    <option value="">—</option>
+    <option value="споко́йной">споко́йной</option>
+    <option value="споко́йно">споко́йно</option>
+  </select>
+  обстано́вке.
+
+  С друго́й стороны́, не всем удаётся рабо́тать до́ма
+  <select id="q17">
+    <option value="">—</option>
+    <option value="эффекти́вно">эффекти́вно</option>
+    <option value="эффекти́вный">эффекти́вный</option>
+  </select>.
+
+  Наприме́р, е́сли до́ма кто́-то постоя́нно
+  <select id="q18">
+    <option value="">—</option>
+    <option value="отвлека́ет">отвлека́ет</option>
+    <option value="отвлека́ют">отвлека́ют</option>
+  </select>,
+  сосредото́читься быва́ет тру́дно.
+
+  Поэ́тому ва́жно зара́нее
+  <select id="q19">
+    <option value="">—</option>
+    <option value="организова́ть">организова́ть</option>
+    <option value="организа́ция">организа́ция</option>
+  </select>
+  рабо́чее ме́сто и установи́ть грани́цу
+  <select id="q20">
+    <option value="">—</option>
+    <option value="ме́жду">ме́жду</option>
+    <option value="сре́ди">сре́ди</option>
+  </select>
+  рабо́той и о́тдыхом.
+
+  <br>
+
+  <button type="button" onclick="checkAnswers2()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result2"></div>
+
+  <script>
+  const answers2 = {
+    q11: "распространённой",
+    q12: "из",
+    q13: "е́здил",
+    q14: "остава́ться",
+    q15: "на",
+    q16: "споко́йной",
+    q17: "эффекти́вно",
+    q18: "отвлека́ет",
+    q19: "организова́ть",
+    q20: "ме́жду"
+  };
+
+  function checkAnswers2() {
+    let score = 0;
+    const total = Object.keys(answers2).length;
+
+    document
+      .querySelectorAll('#quizForm2 .feedback')
+      .forEach(n => n.remove());
+
+    Object.entries(answers2).forEach(([id, correct]) => {
+      const sel = document.getElementById(id);
+      if (!sel) return;
+
+      const val = (sel.value || '').trim();
+
+      const fb = document.createElement('span');
+      fb.className =
+        'feedback ' + (val === correct ? 'correct' : 'incorrect');
+
+      fb.textContent = val === correct ? '✅' : '❌';
+
+      sel.insertAdjacentElement('afterend', fb);
+
+      if (val === correct) {
+        score++;
+      }
+    });
+
+    document.getElementById('result2').textContent =
+      `Вы правильно ответили на ${score} из ${total} вопросов.`;
+  }
+</script>
   </div>
 
 <!-- Футер -->
