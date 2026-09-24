@@ -29,15 +29,15 @@
       min-height: 1500px;
       overflow: visible !important;
     }
-     body {
-      font-family: Arial, sans-serif;
-      margin: auto;
-      padding: 20;
-      font-size: 16px;
-      line-height: 1.4;
-      background-color: #f8f9fa;
-      color: #333;
-    }
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  background-color: #f8f9fa;
+  color: #333;
+}
       header {
       background-color: #1f4e79;
       color: white;
@@ -126,11 +126,15 @@
     }
     /* ▲▲▲ Конец блока dropdown ▲▲▲ */
 
-    .container {
-      padding: 30px 20px;
-      max-width: 850px;
-      margin: auto;
-    }
+    :root {
+  --side-menu-width: 312px;
+}
+
+.container {
+  margin-left: calc(var(--side-menu-width) + 15px);
+  margin-right: 70px;
+  padding: 35px 0 50px;
+}
 
     h2 {
       text-align: center;
@@ -189,6 +193,13 @@
       background-color: #163d5c;
     }
     @media (max-width: 600px) {
+
+      .container {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 25px 15px 50px;
+}
+      
   body {
     font-size: 14px;
     margin: auto;
