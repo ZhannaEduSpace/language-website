@@ -576,6 +576,151 @@
       `Вы правильно ответили на ${score} из ${total} вопросов.`;
   }
 </script>
+
+  <hr style="margin: 45px 0; border: 0; border-top: 1px solid #d9e1e8;">
+
+<h3 class="task-title">Задание 4. Здоровый образ жизни</h3>
+
+<p>
+  <strong>
+    Прочитайте текст. В каждом пропуске выберите один правильный вариант.
+  </strong>
+</p>
+
+<form id="quizForm4">
+
+  Здоро́вый о́браз жи́зни не означа́ет, что ну́жно по́лностью отка́зываться
+  <select id="q31">
+    <option value="">—</option>
+    <option value="от">от</option>
+    <option value="с">с</option>
+  </select>
+  люби́мой еды́ и́ли ка́ждый день тренирова́ться по два часа́.
+
+  Гора́здо важне́е формирова́ть привы́чки, кото́рые мо́жно
+  <select id="q32">
+    <option value="">—</option>
+    <option value="соблюда́ть">соблюда́ть</option>
+    <option value="соблюда́ют">соблюда́ют</option>
+  </select>
+  в тече́ние до́лгого вре́мени.
+
+  Наприме́р, челове́ку, кото́рый мно́го вре́мени
+  <select id="q33">
+    <option value="">—</option>
+    <option value="прово́дит">прово́дит</option>
+    <option value="прово́дят">прово́дят</option>
+  </select>
+  си́дя, поле́зно хотя́ бы не́сколько раз в день встава́ть и немно́го дви́гаться.
+
+  Е́сли есть возмо́жность, часть доро́ги на рабо́ту мо́жно пройти́ пешко́м, а вме́сто ли́фта подня́ться
+  <select id="q34">
+    <option value="">—</option>
+    <option value="по">по</option>
+    <option value="на">на</option>
+  </select>
+  ле́стнице.
+
+  Не ме́нее ва́жен сон. Е́сли регуля́рно ложи́ться сли́шком по́здно, у́тром быва́ет
+  <select id="q35">
+    <option value="">—</option>
+    <option value="трудне́е">трудне́е</option>
+    <option value="легче́">легче́</option>
+  </select>
+  сосредото́читься.
+
+  Пита́ние то́же игра́ет ва́жную роль. Вме́сто того́ что́бы запреща́ть себе́ всё сла́дкое, мо́жно про́сто есть его́
+  <select id="q36">
+    <option value="">—</option>
+    <option value="ре́же">ре́же</option>
+    <option value="ре́дкий">ре́дкий</option>
+  </select>
+  и обраща́ть внима́ние на разме́р по́рций.
+
+  Поле́зно та́кже добавля́ть в рацио́н бо́льше овоще́й и проду́ктов,
+  <select id="q37">
+    <option value="">—</option>
+    <option value="бога́тых">бога́тых</option>
+    <option value="бога́то">бога́то</option>
+  </select>
+  клетча́ткой.
+
+  Е́сли челове́к реши́л измени́ть свои́ привы́чки, лу́чше начина́ть
+  <select id="q38">
+    <option value="">—</option>
+    <option value="постепе́нно">постепе́нно</option>
+    <option value="внеза́пно">внеза́пно</option>
+  </select>,
+  а не пыта́ться измени́ть всё за оди́н день.
+
+  Кро́ме физи́ческой акти́вности, ва́жно находи́ть вре́мя на о́тдых, потому́ что органи́зму ну́жно восстана́вливаться
+  <select id="q39">
+    <option value="">—</option>
+    <option value="по́сле">по́сле</option>
+    <option value="пе́ред">пе́ред</option>
+  </select>
+  нагру́зки.
+
+  Так здоро́вый о́браз жи́зни постепе́нно
+  <select id="q40">
+    <option value="">—</option>
+    <option value="стано́вится">стано́вится</option>
+    <option value="станови́ться">станови́ться</option>
+  </select>
+  ча́стью повседне́вной жи́зни, а не вре́менным экспериме́нтом.
+
+  <br>
+
+  <button type="button" onclick="checkAnswers4()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result4"></div>
+
+<script>
+  const answers4 = {
+    q31: "от",
+    q32: "соблюда́ть",
+    q33: "прово́дит",
+    q34: "по",
+    q35: "трудне́е",
+    q36: "ре́же",
+    q37: "бога́тых",
+    q38: "постепе́нно",
+    q39: "по́сле",
+    q40: "стано́вится"
+  };
+
+  function checkAnswers4() {
+    let score = 0;
+    const total = Object.keys(answers4).length;
+
+    document
+      .querySelectorAll('#quizForm4 .feedback')
+      .forEach(n => n.remove());
+
+    Object.entries(answers4).forEach(([id, correct]) => {
+      const sel = document.getElementById(id);
+      if (!sel) return;
+
+      const val = (sel.value || '').trim();
+
+      const fb = document.createElement('span');
+      fb.className =
+        'feedback ' + (val === correct ? 'correct' : 'incorrect');
+
+      fb.textContent = val === correct ? '✅' : '❌';
+
+      sel.insertAdjacentElement('afterend', fb);
+
+      if (val === correct) {
+        score++;
+      }
+    });
+
+    document.getElementById('result4').textContent =
+      `Вы правильно ответили на ${score} из ${total} вопросов.`;
+  }
+</script>
   </div>
 
 <!-- Футер -->
