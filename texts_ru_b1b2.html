@@ -721,6 +721,150 @@
       `Вы правильно ответили на ${score} из ${total} вопросов.`;
   }
 </script>
+
+  <hr style="margin: 45px 0; border: 0; border-top: 1px solid #d9e1e8;">
+
+<h3 class="task-title">Задание 5. Технологии в повседневной жизни</h3>
+
+<p>
+  <strong>
+    Прочитайте текст. В каждом пропуске выберите один правильный вариант.
+  </strong>
+</p>
+
+<form id="quizForm5">
+
+  Совреме́нные техноло́гии давно́
+  <select id="q41">
+    <option value="">—</option>
+    <option value="ста́ли">ста́ли</option>
+    <option value="ста́ло">ста́ло</option>
+  </select>
+  ча́стью повседне́вной жи́зни.
+
+  Мы испо́льзуем телефо́ны не то́лько для звонко́в, но и
+  <select id="q42">
+    <option value="">—</option>
+    <option value="для">для</option>
+    <option value="из-за">из-за</option>
+  </select>
+  рабо́ты, учёбы, навига́ции и обще́ния.
+
+  Благодаря́ мобильным приложе́ниям мно́гие зада́чи мо́жно
+  <select id="q43">
+    <option value="">—</option>
+    <option value="реши́ть">реши́ть</option>
+    <option value="реша́ет">реша́ет</option>
+  </select>
+  за не́сколько мину́т.
+
+  Наприме́р, ра́ньше, что́бы перевести́ де́ньги друго́му челове́ку, ну́жно бы́ло идти́ в банк, а тепе́рь э́то мо́жно сде́лать
+  <select id="q44">
+    <option value="">—</option>
+    <option value="мгнове́нно">мгнове́нно</option>
+    <option value="медле́нный">медле́нный</option>
+  </select>
+  че́рез телефо́н.
+
+  В то же вре́мя постоя́нное испо́льзование устро́йств мо́жет
+  <select id="q45">
+    <option value="">—</option>
+    <option value="влия́ть">влия́ть</option>
+    <option value="влия́ет">влия́ет</option>
+  </select>
+  на сон и концентра́цию.
+
+  Осо́бенно тру́дно отложи́ть телефо́н, е́сли уведомле́ния прихо́дят
+  <select id="q46">
+    <option value="">—</option>
+    <option value="постоя́нно">постоя́нно</option>
+    <option value="ре́дкий">ре́дкий</option>
+  </select>.
+
+  Поэ́тому не́которые лю́ди стара́ются хотя́ бы иногда́
+  <select id="q47">
+    <option value="">—</option>
+    <option value="отключа́ть">отключа́ть</option>
+    <option value="отключа́ют">отключа́ют</option>
+  </select>
+  нену́жные уведомле́ния.
+
+  Ещё одна́ пробле́ма заключа́ется
+  <select id="q48">
+    <option value="">—</option>
+    <option value="в">в</option>
+    <option value="на">на</option>
+  </select>
+  том, что не вся информа́ция в интерне́те явля́ется достове́рной.
+
+  Поэ́тому пе́ред тем, как подели́ться но́востью, поле́зно
+  <select id="q49">
+    <option value="">—</option>
+    <option value="прове́рить">прове́рить</option>
+    <option value="прове́рка">прове́рка</option>
+  </select>
+  исто́чник.
+
+  Техноло́гии мо́гут сде́лать жизнь намно́го
+  <select id="q50">
+    <option value="">—</option>
+    <option value="удо́бнее">удо́бнее</option>
+    <option value="удо́бный">удо́бный</option>
+  </select>,
+  е́сли испо́льзовать их осо́знанно.
+
+  <br>
+
+  <button type="button" onclick="checkAnswers5()">Проверить ответы</button>
+</form>
+
+<div class="result" id="result5"></div>
+
+<script>
+  const answers5 = {
+    q41: "ста́ли",
+    q42: "для",
+    q43: "реши́ть",
+    q44: "мгнове́нно",
+    q45: "влия́ть",
+    q46: "постоя́нно",
+    q47: "отключа́ть",
+    q48: "в",
+    q49: "прове́рить",
+    q50: "удо́бнее"
+  };
+
+  function checkAnswers5() {
+    let score = 0;
+    const total = Object.keys(answers5).length;
+
+    document
+      .querySelectorAll('#quizForm5 .feedback')
+      .forEach(n => n.remove());
+
+    Object.entries(answers5).forEach(([id, correct]) => {
+      const sel = document.getElementById(id);
+      if (!sel) return;
+
+      const val = (sel.value || '').trim();
+
+      const fb = document.createElement('span');
+      fb.className =
+        'feedback ' + (val === correct ? 'correct' : 'incorrect');
+
+      fb.textContent = val === correct ? '✅' : '❌';
+
+      sel.insertAdjacentElement('afterend', fb);
+
+      if (val === correct) {
+        score++;
+      }
+    });
+
+    document.getElementById('result5').textContent =
+      `Вы правильно ответили на ${score} из ${total} вопросов.`;
+  }
+</script>
   </div>
 
 <!-- Футер -->
