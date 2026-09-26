@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Задание по русскому языку: Наречия от прилагательных (B1)</title>
+ <title>Наречия от прилагательных B1 – упражнения | LanguageEduSpace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
    <!-- Google tag (gtag.js) -->
@@ -119,15 +119,20 @@
     }
     /* ▲▲▲ Конец блока dropdown ▲▲▲ */
 
-    .container {
-      padding: 30px 40px;
-      max-width: 900px;
-      margin: auto;
-    }
+    :root {
+  --side-menu-width: 312px;
+}
 
-    h2 {
-      color: #1f4e79;
-    }
+.container {
+  margin-left: calc(var(--side-menu-width) + 35px);
+  margin-right: 70px;
+  padding: 30px 0 50px;
+}
+   h1 {
+  margin: 10px 0 25px;
+  color: #1f4e79;
+  font-size: 2em;
+}
 
     .question {
       margin-bottom: 18px;
@@ -183,6 +188,38 @@
     button:hover {
       background-color: #163d5c;
     }
+
+    @media (max-width: 1024px) {
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 25px 24px 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px 15px 50px;
+  }
+
+  h1 {
+    font-size: 1.7em;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+  }
+
+  .question {
+    gap: 8px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
   </style>
 
   <link rel="stylesheet" href="/side-menu.css">
@@ -215,8 +252,8 @@
   <div id="side-menu-placeholder"></div>
 
   <div class="container">
-  <h2>📘 Наречия от прилагательных (B1)</h2>
-
+ <h1>📘 Наречия от прилагательных (B1)</h1>
+    
   <p><strong>Задание 1. Образуйте наречие от прилагательного.</strong></p>
 <p>Напишите ответ в поле. <strong>Обратите внимание на е/ё. В ответах обязательно используйте ё там, где она требуется.</strong><br>
 Например: <em>аккуратный → аккуратно</em></p>
