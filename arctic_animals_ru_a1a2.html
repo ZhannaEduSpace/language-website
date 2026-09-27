@@ -188,6 +188,43 @@
       background-color: #163d5c;
     }
 
+    .task-image {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  margin: 18px 0 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+}
+
+.animal-options {
+  margin: 15px 0 20px;
+}
+
+.animal-option {
+  display: block;
+  margin: 3px 0;
+  line-height: 1.3;
+  cursor: pointer;
+}
+
+.animal-option input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-right: 9px;
+  cursor: pointer;
+}
+
+.animal-feedback {
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+.animal-result {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
     @media (max-width: 1024px) {
       .container {
         margin-left: 0;
@@ -385,6 +422,113 @@
         `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
     }
   </script>
+
+  <hr style="margin: 40px 0;">
+
+<h2 class="task-title">Задание 2. Какие животные вы видите на картинке?</h2>
+
+<p>
+  <strong>Посмотрите на картинку и отметьте животных, которых вы видите.</strong><br>
+  На картинке 5 животных.
+</p>
+
+<img
+  src="/images/arctic-animals-1.png"
+  alt="Животные Арктики"
+  class="task-image"
+>
+
+<form id="animalsForm2" class="animal-options"></form>
+
+<button type="button" onclick="checkAnimals2()">Проверить ответы</button>
+
+<div class="animal-result" id="animalResult2"></div>
+
+<script>
+  const animals2 = [
+    { text: "Белый медведь", correct: true },
+    { text: "Тюлень", correct: false },
+    { text: "Песец", correct: true },
+    { text: "Пингвин", correct: false },
+    { text: "Морж", correct: true },
+    { text: "Заяц", correct: false },
+    { text: "Северный олень", correct: true },
+    { text: "Кит", correct: false },
+    { text: "Полярная сова", correct: true },
+    { text: "Лиса", correct: false }
+  ];
+
+  const animalsForm2 = document.getElementById("animalsForm2");
+
+  animals2.forEach((animal, index) => {
+    const label = document.createElement("label");
+    label.className = "animal-option";
+
+    label.innerHTML = `
+      <input type="checkbox" id="animal2-${index}">
+      <span>${animal.text}</span>
+      <span class="animal-feedback" id="animalFeedback2-${index}"></span>
+    `;
+
+    animalsForm2.appendChild(label);
+  });
+
+  function checkAnimals2() {
+    let selectedCount = 0;
+    let correctSelected = 0;
+    let wrongSelected = 0;
+
+    animals2.forEach((animal, index) => {
+      const checkbox = document.getElementById(`animal2-${index}`);
+      const feedback = document.getElementById(`animalFeedback2-${index}`);
+
+      feedback.textContent = "";
+
+      if (checkbox.checked) {
+        selectedCount++;
+      }
+    });
+
+    if (selectedCount === 0) {
+      document.getElementById("animalResult2").textContent =
+        "⚠️ Сначала выберите хотя бы одно животное.";
+      return;
+    }
+
+    animals2.forEach((animal, index) => {
+      const checkbox = document.getElementById(`animal2-${index}`);
+      const feedback = document.getElementById(`animalFeedback2-${index}`);
+
+      if (checkbox.checked && animal.correct) {
+        correctSelected++;
+        feedback.innerHTML = '<span style="color:green;">✅</span>';
+      }
+
+      if (checkbox.checked && !animal.correct) {
+        wrongSelected++;
+        feedback.innerHTML = '<span style="color:red;">❌</span>';
+      }
+    });
+
+    const totalCorrect = animals2.filter(animal => animal.correct).length;
+
+    let score = correctSelected - wrongSelected;
+
+    if (score < 0) {
+      score = 0;
+    }
+
+    const percent = Math.round((score / totalCorrect) * 100);
+
+    if (correctSelected === totalCorrect && wrongSelected === 0) {
+      document.getElementById("animalResult2").textContent =
+        "✅ Отлично! Вы нашли всех животных. Результат: 100%.";
+    } else {
+      document.getElementById("animalResult2").textContent =
+        `Правильно выбрано: ${correctSelected} из ${totalCorrect}. Лишних ответов: ${wrongSelected}. Результат: ${percent}%.`;
+    }
+  }
+</script>
 
   <!-- HorizontalAd -->
   <ins class="adsbygoogle"
