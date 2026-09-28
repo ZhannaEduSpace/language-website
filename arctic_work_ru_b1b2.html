@@ -190,6 +190,16 @@
       background-color: #163d5c;
     }
 
+    .vacancy-image {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  margin: 18px 0 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+}
+
     @media (max-width: 1024px) {
       .container {
         margin-left: 0;
@@ -427,6 +437,145 @@
         `Вы правильно ответили на ${score} из ${questions.length} вопросов.`;
     }
   </script>
+
+  <hr style="margin: 40px 0;">
+
+<h2 class="task-title">Задание 2. Объявление о работе</h2>
+
+<p>
+  <strong>Прочитайте объявление и выберите правильный ответ.</strong>
+</p>
+
+<img
+  src="/images/arctic-mechanic-vacancy.png"
+  alt="Объявление о вакансии механика на арктической станции"
+  class="vacancy-image"
+>
+
+<form id="quizForm2"></form>
+
+<button type="button" onclick="checkAnswers2()">Проверить ответы</button>
+
+<div class="result" id="result2"></div>
+
+<script>
+  const questions2 = [
+    {
+      q: "1. Что входит в обязанности механика?",
+      a: "Ремонт, обслуживание и проверка техники",
+      options: [
+        "Организация питания и проживания сотрудников",
+        "Составление прогнозов погоды",
+        "Ремонт, обслуживание и проверка техники",
+        "Сопровождение туристических групп"
+      ]
+    },
+    {
+      q: "2. Когда нужно проверять технику?",
+      a: "До начала поездок",
+      options: [
+        "После каждой поездки",
+        "До начала поездок",
+        "Только один раз в месяц",
+        "Только после поломки"
+      ]
+    },
+    {
+      q: "3. Какой опыт работы требуется кандидату?",
+      a: "Не менее двух лет",
+      options: [
+        "Опыт работы не требуется",
+        "Менее двух лет",
+        "Не менее двадцати лет",
+        "Не менее двух лет"
+      ]
+    },
+    {
+      q: "4. Сколько дней длится одна вахта?",
+      a: "60 дней",
+      options: [
+        "30 дней",
+        "20 дней",
+        "60 дней",
+        "90 дней"
+      ]
+    },
+    {
+      q: "5. Как нужно откликнуться на вакансию?",
+      a: "Отправить резюме онлайн",
+      options: [
+        "Позвонить работодателю",
+        "Прийти на станцию лично",
+        "Отправить резюме онлайн",
+        "Отправить бумажное письмо по почте"
+      ]
+    }
+  ];
+
+  const form2 = document.getElementById("quizForm2");
+
+  questions2.forEach((item, index) => {
+    const div = document.createElement("div");
+    div.className = "quiz-question";
+    div.id = `q2-${index + 1}-block`;
+
+    div.innerHTML =
+      `<h3>${item.q}</h3>` +
+      item.options.map(option => `
+        <label>
+          <input
+            type="radio"
+            name="q2-${index + 1}"
+            value="${option}"
+          >
+          ${option}
+        </label>
+      `).join("");
+
+    form2.appendChild(div);
+  });
+
+  function checkAnswers2() {
+    let score = 0;
+
+    questions2.forEach((item, index) => {
+      const name = `q2-${index + 1}`;
+
+      const selected =
+        form2.querySelector(`input[name="${name}"]:checked`);
+
+      const block =
+        document.getElementById(`${name}-block`);
+
+      const oldFeedback =
+        block.querySelector(".correct-answer");
+
+      if (oldFeedback) {
+        oldFeedback.remove();
+      }
+
+      const feedback = document.createElement("div");
+      feedback.className = "correct-answer";
+
+      if (!selected) {
+        feedback.classList.add("incorrect");
+        feedback.textContent = "⚠️ Сначала выберите ответ.";
+      } else if (selected.value === item.a) {
+        feedback.classList.add("correct");
+        feedback.textContent = `✅ Правильно: ${item.a}`;
+        score++;
+      } else {
+        feedback.classList.add("incorrect");
+        feedback.textContent = `❌ Правильный ответ: ${item.a}`;
+      }
+
+      block.appendChild(feedback);
+    });
+
+    document.getElementById("result2").textContent =
+      `Вы правильно ответили на ${score} из ${questions2.length} вопросов.`;
+  }
+</script>
 
   <!-- HorizontalAd -->
   <ins class="adsbygoogle"
