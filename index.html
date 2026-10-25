@@ -265,32 +265,67 @@
   <main class="wrap">
   <style>
   .hero {
-    max-width: 1100px;
-    margin: 48px auto 28px;
-    padding: 0 24px;
-  }
-  .hero-title {
-    color: #1f2a3a;
-    font-weight: 800;
-    line-height: 1.15;
-    font-size: clamp(28px, 4.2vw, 46px);
-    letter-spacing: 0.2px;
-    margin: 0 0 10px;
-  }
-  .hero-title .alt {
-    display: block;
-    font-weight: 700;
-    font-size: 0.72em;          /* меньше основного */
-    line-height: 1.25;
-    color: #5c6b7a;             /* приглушённый */
-    margin-top: 6px;
-  }
- 
-  @media (max-width: 640px) {
-    .hero { margin-top: 28px; }
-    .hero-title .alt { font-size: .78em; }
+  min-height: 285px;
+  margin: 28px auto 30px;
+  padding: 42px 48px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(248,249,250,.96) 0%,
+      rgba(248,249,250,.82) 40%,
+      rgba(248,249,250,.16) 72%
+    ),
+    url("/images/home-hero.png") center / cover no-repeat;
+  box-shadow: 0 4px 18px rgba(0,0,0,.08);
+  overflow: hidden;
+}
+
+.hero .hero-title {
+  margin: 0;
+  max-width: 680px;
+  color: #173f68;
+  font-weight: 800;
+  line-height: 1.15;
+  font-size: clamp(30px, 3vw, 42px);
+  letter-spacing: .2px;
+}
+
+.hero .hero-title .alt {
+  display: block;
+  margin-top: 7px;
+  color: #526170;
+  font-weight: 700;
+  font-size: .58em;
+  line-height: 1.3;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    min-height: 260px;
+    margin: 20px auto 25px;
+    padding: 30px 24px;
+    border-radius: 12px;
+    background:
+      linear-gradient(
+        rgba(248,249,250,.90),
+        rgba(248,249,250,.72)
+      ),
+      url("/images/home-hero.png") center / cover no-repeat;
   }
 
+  .hero .hero-title {
+    font-size: 1.8em;
+  }
+
+  .hero .hero-title .alt {
+    font-size: .68em;
+  }
+}
     /* Promo: индивидуальные/групповые занятия */
 .lesson-cta{
   margin-top:24px;
@@ -343,10 +378,9 @@
 <div class="hero">
   <h1 class="hero-title">
     <span class="primary">Online exercises in English, Russian and Finnish</span>
-    <span class="alt">Онлайн-задания по английскому, русскому и финскому</span>
+    <span class="alt">Онлайн-упражнения по английскому, русскому и финскому языкам</span>
     <span class="alt">Verkkoharjoituksia englanniksi, venäjäksi ja suomeksi</span>
   </h1>
-
 </div>
 
     <!-- Карточки языков -->
